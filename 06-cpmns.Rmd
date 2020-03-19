@@ -18,7 +18,6 @@ library(ggfortify)
 library(cluster)
 ```
 
-### Set wd, and load data
 
 ```{r setwd ld define variables 5, echo=TRUE}
 # set working directory

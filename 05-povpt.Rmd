@@ -18,18 +18,16 @@ library(ggfortify)
 library(cluster)
 ```
 
-### Set wd, and load data
+## Gary varieties proposed by Ford and Webb [-@RN20898]
 
-```{r setwd ld define variables 4, echo=TRUE}
+The `tv1` argument used within this chapter articulates with three variants of the Gary type that include _Large_, _Medium/Typical_, and _Small_ that were assigned using those morphological criteria first advanced by Ford, Phillips, and Haag [-@RN20899] at the Jaketown site, and later refined by Ford and Webb [-@RN20898] at Poverty Point.
+
+```{r setwdld4, echo=TRUE}
 # set working directory
 setwd(getwd())
 # load data
 data<-read.csv("garymorphlm.csv",header = TRUE, as.is=TRUE)
 ```
-
-## Gary varieties proposed by Ford and Webb [-@RN20898]
-
-The `tv1` argument used within this and the subsequent section articulates with three variants of the Gary type that include _Large_, _Medium/Typical_, and _Small_, which were assigned using those morphological criteria first advanced by Ford, Phillips, and Haag [-@RN20899] at the Jaketown site, and later refined by Ford and Webb [-@RN20898] at Poverty Point.
 
 Each of the three type-varieties proposed by Ford and Webb [-@RN20898] was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for _Gary Large_; between 46 to 79 mm in maxl, and between 20 and 45 mm in maxw for _Gary Medium/Typical_; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for _Gary Small_ [@RN20898].
 
