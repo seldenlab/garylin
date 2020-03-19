@@ -1,0 +1,249 @@
+# Jaketown type-varieties
+
+## Reconstructing Gary type-varieties
+
+Reconstructing and expanding the type-varieties of Gary dart points proposed at Poverty Point, Cooper, and Means was necessary, as the type-variety assignments for each specimen were not reported or preserved on the associated paperwork when the collections were curated. Additionally, the collection of Gary dart points at Poverty Point has continued to grow, and this method provides a replicable means of assigning each new specimen to the previously-established type-varieties.
+
+```{r load packages 0, echo=TRUE}
+# install required analysis packages
+#devtools::install_github("tidyverse/tidyverse")
+#devtools::install_github("rich-iannone/DiagrammeR")
+#devtools::install_github("vqv/ggbiplot")
+#devtools::install_github("mlcollyer/RRPP")
+#devtools::install_github("kassambara/ggpubr")
+#devtools::install_github('sinhrks/ggfortify')
+# load libraries
+library(tidyverse)
+library(DiagrammeR)
+library(ggbiplot)
+library(RRPP)
+library(ggpubr)
+library(ggfortify)
+library(cluster)
+```
+
+### Set wd, and load data
+
+```{r setwd ld define variables 0, echo=TRUE}
+# set working directory
+setwd(getwd())
+# load data
+data<-read.csv("garymorphlm.csv",header = TRUE, as.is=TRUE)
+```
+
+## Gary varieties proposed by Ford, Phillips, and Haag [-@RN20899]
+
+The `tv0` argument used within this and the subsequent section articulates with three variants of the Gary type--including _Gary Stemmed_, _Typical Gary Stemmed_, _Broad Gary Stemmed_, _Thin Gary Stemmed_, and _Small Gary Stemmed_, which were assigned using those morphological criteria advanced by Ford, Phillips, and Haag [-@RN20899] at the Jaketown site in west central Mississippi. The _Long Gary Stemmed_ type was omitted from consideration due to the absence of reported metrics.
+
+```{r fphgantt, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955)."}
+# Ford, Phillips, and Haag (1955)
+fphl<-data.frame(Name=c('var.GaryStemmed','var.TypicalGaryStemmed','var.BroadGaryStemmed','var.ThinGaryStemmed','var.SmallGaryStemmed'),
+                 Length=c(45,45,45,55,35), # in mm
+                 end=c(70,79,70,75,50) # in mm
+)
+fphlength<-ggplot(fphl,aes(x=Length,xend=end,y=Name,yend=Name,color=Name)) +
+  geom_segment(size=2) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+fphw<-data.frame(Name=c('var.GaryStemmed','var.TypicalGaryStemmed','var.BroadGaryStemmed','var.ThinGaryStemmed','var.SmallGaryStemmed'),
+                 Width=c(22,22,32,30,20), # in mm
+                 end=c(31,31,48,36,30) # in mm
+)
+fphwidth<-ggplot(fphw,aes(x=Width,xend=end,y=Name,yend=Name,color=Name)) +
+  geom_segment(size=2) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# render figure
+fphfig<-ggarrange(fphlength,fphwidth,
+                    labels = c("a","b"),
+                    ncol = 1, nrow = 2)
+fphfig
+```
+
+## Assign Gary type-varieties proposed by Ford, Phillips, and Haag [-@RN20899]
+
+Ford, Phillips, and Haag [-@RN20899] used a series of metrics to assign Gary varieties at the Jaketown site. The approach empoyed here enlists the full range of reported metrics, and applies those to each of the points. Any points that do not articulate with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment. Due to the degree of overlap in the ranges associated with the Gary type-varieties advanced by Ford, Phillips, and Haag [-@RN20898], it is expected that _Gary Stemmed_ will fall out due to overlap in length with _Broad Gary Stemmed_, and overlap in width with _Typical Gary Stemmed_.
+
+_**Data for Gary dart points from the Jaketown site have not yet been collected, and are substituted with those data from the Poverty Point site.**_
+
+```{r tv0, echo=TRUE}
+# subset poverty point data
+jmx<-subset(data,Site=="Pov Pt",select=maxl:maxstw)
+
+# assign varieties based upon reported metrics in Ford, Phillips, and Haag [1954]
+fphlcheck1 <- jmx$maxl >= 45 & jmx$maxl <= 70
+fphlcheck2 <- jmx$maxl >= 45 & jmx$maxl <= 79
+fphlcheck3 <- jmx$maxl >= 45 & jmx$maxl <= 70
+fphlcheck4 <- jmx$maxl >= 55 & jmx$maxl <= 75
+fphlcheck5 <- jmx$maxl >= 35 & jmx$maxl <= 50
+
+fphwcheck1 <- jmx$maxw >= 22 & jmx$maxw <= 31
+fphwcheck2 <- jmx$maxw >= 22 & jmx$maxw <= 31
+fphwcheck3 <- jmx$maxw >= 32 & jmx$maxw <= 48
+fphwcheck4 <- jmx$maxw >= 30 & jmx$maxw <= 36
+fphwcheck5 <- jmx$maxw >= 20 & jmx$maxw <= 30
+
+jmx$tv0 <- "Gnv" # = Gary points (no variety)
+jmx$tv0 <- ifelse(fphlcheck1 & fphwcheck1, "GS", jmx$tv0)
+jmx$tv0 <- ifelse(fphlcheck2 & fphwcheck2, "TyGS", jmx$tv0)
+jmx$tv0 <- ifelse(fphlcheck3 & fphwcheck3, "BGS", jmx$tv0)
+jmx$tv0 <- ifelse(fphlcheck4 & fphwcheck4, "ThGS", jmx$tv0)
+jmx$tv0 <- ifelse(fphlcheck5 & fphwcheck5, "SGS", jmx$tv0)
+
+tv0<-jmx$tv0
+tv0
+```
+
+## Boxplots for site by Ford, Phillips, and Haag's [-@RN20899] Gary type-varieties
+
+```{r boxplottv0, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "Boxplots for maximum a, length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points assigned to the Ford, Phillips, and Haag type-varieties."}
+# boxplot of maximum length
+jmaxl<-ggplot(jmx,aes(x=tv0,y=maxl,color=tv0)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum width
+jmaxw<-ggplot(jmx,aes(x=tv0,y=maxw,color=tv0)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum thickness
+jmaxth<-ggplot(jmx,aes(x=tv0,y=maxth,color=tv0)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum stem length
+jmaxstl<-ggplot(jmx,aes(x=tv0,y=maxstl,color=tv0)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum thickness
+jmaxstw<-ggplot(jmx,aes(x=tv0,y=maxstw,color=tv0)) + 
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# render figure
+jfigure<-ggarrange(jmaxl,jmaxw,jmaxth,jmaxstl,jmaxstw,
+                     labels = c("a","b","c","d","e"),
+                     ncol = 3, nrow = 2)
+jfigure
+```
+
+## Density plots for variables by type-varieties
+
+### Density plot for maximum length by tv0
+
+```{r jdensity1, out.width = "100%", dpi = 300, echo=TRUE}
+# define variables in jaketown subset
+j.maxl<-jmx$maxl
+j.maxw<-jmx$maxw
+j.maxth<-jmx$maxth
+j.maxstl<-jmx$maxstl
+j.maxstw<-jmx$maxstw
+j.tv0<-jmx$tv0
+# density plot of maxl by tv0
+ggplot(jmx, aes(x=j.maxl, fill = j.tv0)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,140) #full range of variation included in the linear measurements associated with type-varieties
+```
+
+### Density plot for maximum width by tv0
+
+```{r jdensityw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot of maxw by tv0
+ggplot(jmx, aes(x=j.maxw, fill = j.tv0)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(5,45)
+```
+
+### Density plot for maximum thickness by tv0
+
+```{r jdensityth, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot of maxth by tv0
+ggplot(jmx, aes(x=j.maxth, fill = j.tv0)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,25)
+```
+
+### Density plot for maximum stem length by tv0
+
+```{r jdensitystl, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot of maxstl by tv0
+ggplot(jmx, aes(x=j.maxstl, fill = j.tv0)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,35)
+```
+
+### Density plot for maximum stem width by tv0
+
+```{r jdensitystw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot of maxstw by tv0
+ggplot(jmx, aes(x=j.maxstw, fill = j.tv0)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,45)
+```
+
+## Principal Components Analysis for Ford, Phillips, and Haag's [-@RN20899] type-varieties at all sites
+
+```{r pcatv0, out.width = "100%", dpi = 200, echo=TRUE, fig.cap = "PCA by Gary type-varieties reported by Ford, Phillips, and Haag (1955)."}
+#pca
+df<-jmx[c(1:5)]
+tv0pca<-autoplot(prcomp(df),data = jmx, colour = 'tv0',
+                 loadings = TRUE, loadings.colour = 'blue',
+                 loadings.label = TRUE,loadings.label.size = 3, 
+                 frame = TRUE)
+#render figure
+tv0pca
+```
+
+## Analyses of Variance (ANOVA) for _linear variables_ ~ _type-varieties_
+
+### _Maximum length_ ~ _type-variety_ at Jaketown
+
+```{r j.maxl-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
+# anova = maximum length ~ tv1
+t0ml<-lm.rrpp(j.maxl ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0ml)
+# visualise model predictions for maximum length ~ type-variety at poverty point
+j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
+rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
+jPreds<-predict(t0ml,j.tvDF)
+jPreds
+plot(jPreds, col = 1:NROW(j.tvDF))
+# pairwise comparison of LS means = which sites differ?
+j.ml<-pairwise(t0ml, groups = jmx$tv0)
+summary(j.ml, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(j.ml, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(j.ml, confidence = 0.95, test.type = "var")
+```
+
+
+```{r anova tv0, echo=TRUE}
+# anova = maximum length ~ tv0
+t0ml<-lm.rrpp(maxl ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0ml)
+# anova = maximum width ~ tv0
+t0mw<-lm.rrpp(maxw ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0mw)
+# anova = maximum thickness ~ tv0
+t0mth<-lm.rrpp(maxth ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0mth)
+# anova = maximum stem length ~ tv0
+t0mstl<-lm.rrpp(maxstl ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0mstl)
+# anova = maximum stem width ~ tv0
+t0mstw<-lm.rrpp(maxstw ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+anova(t0mstw)
+```

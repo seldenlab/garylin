@@ -1,0 +1,90 @@
+# A brief history of the Gary dart point
+
+## The Gary type prior to formal definition by Suhm, Krieger, and Jelks [-@RN5066, 430-431, Plate 94]
+
+Gary dart points were formally defined by Suhm, Krieger, and Jelks [-@RN5066, 430-431, Plate 94], providing a description with defining morphological characteristics for a projectile point known to investigators working across the region, but by different names. The earliest recorded Gary dart point was excavated on September 14, 1930 by Frank Bryan [@RN20871, 76]. The point was recovered from the chest cavity, behind the sternum of a flexed burial eroding from a wall in an active gravel pit---roughly two and one-half feet below the surface---located around 14 miles from Waco, Texas on the East side of the Brazos River in Texas [@RN20871, 76, 78-79, Plate XIV:6]. While discovered in association with the burial, this point may have been included in the fill that was excavated when the burial was interred. In the same burial, a Perdiz arrow point was found lodged in the upper end of the right humerus [@RN20871, Plate XIV:4a, 4b, 5], and a small arrow point fragment was found lodged between the neck and greater trochanter of the left femur [@RN20871, Plate XIV:3].
+
+In Limestone County, Texas, [@RN20872B, 83-84] found Gary points in the Delia Area (sites 7, 8, 9, 10, 11, 18, 19, and 20), the Cooledge Area [@RN20872B, 85-86] (sites 1, 2, 3, 4, 5, and 6), the Tehuacana-Wortham Area [@RN20872B, 85, 87] (sites 3, 4, and 6), on Christmas Creek [@RN20872B, 85, 90] (all sites; 1-6), the Frosa Area [@RN20872B, 89-90] (sites 1, 2, 4, and 5), the Ben Hur Area [@RN20872B, 89, 94] (sites 1, 2, 3, and 6), and near Groesbeck and Thornton [@RN20872B, 89, 91] (sites 6 and 7). In Hill County, Texas, [@RN20872B, 92, 95] also found Gary points at sites 1, 3, and 4. Bryan [-@RN20872B, 92, Plate XV] determined that this point type was common enough across the various localities that it was deserving of a name, dubbing them _Dead-Man Triangle Points_, which would later be replaced by _Gary Contracting Stemmed_, _Gary Stemmed_ [@RN800, 164-166], and finally, Gary [@RN5066, 430-431, Plate 94].
+
+Ford, Quimby Jr., and Snow [-@RN20876, 35] refer to the Gary type that articulates with the Tchefuncte period as Simple Haft 1A; however, that type is first introduced in the analysis of the materials from the Crooks site [@RN20875, 97]. In that volume, Gary points were also assigned to Simple Haft 1C [@RN20875, 97, Figures 45a-b, 46a-d], described as leaf-shaped with a stem that may be either flat or convex, and Simple Haft 2A [@RN20875, 99, Figures 45d, 46g-h], described as the narrowest of their Blade 2 group, which is almost as thick as they are wide, with sloped shoulders, a pronounced median ridge, and an ill-organised approach to secondary flaking. Ford and Willey [-@RN20875, 99] describe Simple Haft 2B as identical in shape to Simple Haft 2A, but with excellent primary and secondary flaking, no similarities in execution, and a cross-section that is less than 5mm thick. This is the only type at the Crooks site that was assigned based upon execution alone. Simple Haft 2C [@RN20875, 99, Figure 45f] displays thickening at the median, with a triangular blade, small contracting stem, and broad, straight shoulders. This is the earliest work that begins to expound upon the diversity of morphological variation thought to occur within what would later become the Gary type.
+
+Webb and DeJarnette [-@RN11562, 8-9] developed a hierarchically-nested classification system for projectile points from the Pickwick Basin. Within that system, the number _2_ denoted a stemmed point, and _b_ that it contracted toward the base. It is noteworthy that the shape of the projectile points was considered the dominant element in classification, and comparison of each specimen with the type form was made by the same individual throughout their multi-year study [@RN11562]. Many of the _2b_ (and various other) projectile point types identified during that study would now be considered Gary or Adena, depending upon their temporal and contextual association. 
+
+In the winter of 1938, two Gary points were excavated from midden B, a 150 x 100 foot (long axis along northeast-southwest line) elongated-oval shell midden, at the Tchefuncte site, located parallel to the shoreline of Lake Pontchartrain (Louisiana) [@RN20876, 11-12, Figure 5]. Ford, Quimby Jr., and Snow [-@RN20876, 35] refer to the type as Simple Haft 1A, described earlier by Ford and Willey [-@RN20875, 97], noting that blade shape is represented by a near-equilateral triangle, straight shoulders, and the characteristic broad stem atop a convex base. This point type was also found to occur in Marksville period sites [@RN20876, 35]. While Newell and Krieger [-@RN800] later considered five of the point types found by Ford et al. [-@RN20876, Figure 8:D, H-K] to be Gary, that assignment is revised to include only one type---represented by two projectiles (one illustrated) [@RN20876, Figure 8:K]---based upon the initial [@RN5066, 430-431, Plate 94] and current formal definitions [@RN871, 107-108].
+
+In his discussion of the assemblage from the Harrell site, Krieger [-@RN2518, 115-117, Table 2, Figure 8p] includes _Gary Contracting Stem_ among those dart points that are very common in northeast Texas pottery sites. All three of the _Gary Contracting Stem_ specimens were noted to have possibly come from Level II [@RN2518, Table 2].
+
+Lewis and Kneberg [-@RN20895, 12-18] identified Gary dart points as the Tapered Stem and Beaver Tail Stem types as Eva Focus traits not shared by Lauderdale and Indian Knoll. Both types were noted to be rare or alien [@RN20895]. The Tapered Stem type was noted to be ubiquitous but rare, and the Beaver Tail Stem type--noted to be a specialised variant of the Tapered Stem (the earliest recorded Gary variety)--was reported to rarely occur at most sites, but frequently at two of the southernmost sites in the area [@RN20895]. The Tapered Stem _var. Beaver Tail Stem_ was noted to be an Archaic or Woodland type [@RN20895].
+
+* Ford [-@RN1836, 115, Figure 45]
+
+* Baerreis [-@RN20896]
+
+* Bell and Baerreis [-@RN1085, Plate 1 (8,22), Plate 3 (6), Plate 8 (8), Plate 9 (3,4), Plate 10 (1,4), Plate 11 (14), and Plate 13 (15)]
+
+* Wheat [-@RN20873, 204-205, Plate 36]
+
+## Gary type-varieties
+
+Soon after the Gary type was formally defined, the type-varieties followed. Like the Gary point itself, the previously-defined type-varieties include substantial variation. 
+
+* Ford, Phillips, and Haag (1955) at the Jaketown site (MS)
+    + Gary Stemmed
+    + Typical Gary Stemmed
+    + Broad Gary Stemmed
+    + Thin Gary Stemmed
+    + Small Gary Stemmed
+
+* Ford and Webb (1956) at the Poverty Point site (LA)
+    + Gary Large
+    + Gary Typical
+    + Gary Small
+
+* Johnson (1961) at the Yarbrough and Miller sites (TX)
+    + var. Kaufman
+    + var. Alsa
+    + var. Hobson
+    + var. Runge
+    + var. Emory
+    + var. Kemp
+    + var. Panna Maria
+    + var. Kenedy
+    + var. Colfax
+
+* Phillips (1970) in the lower Yazoo Basin (MS)
+    + var. Mabin
+
+* Schambach (1970) at the Cooper and Means sites (AR)
+    + var. Gary
+    + var. Malvern
+    + var. LeFlore
+    + var. Bodcaw
+    + var. Manice
+    + var. Camden
+    + var. Camden subgroup A
+    + var. Camden subgroup B
+
+* Shafer (1973) at the George C. Davis site (TX)
+    + Group 1
+    + Group 2
+    
+* Shafer (1975) at Lake Conroe (TX)
+    + ?
+    + ?
+
+* Williams and Brain (1983) at the Lake George Site (MS)
+    + var. Maybon
+
+* Densmore (2007) at the Scott site (OK)
+    + Class A
+    + Class B
+    + Class C
+
+## Discussions of manufacture and retouch in Gary dart points
+
+In his study of the lithic assemblage from the Icy Eye site, Studer [-@RN20894, 67-73, Figure 3] posited an archaic pebble core reduction sequence. Unlike other areas where Gary dart points are produced, the available raw materials from the area where Studer was working (east Texas) were small [@RN20894]. Studer [-@RN20894, 71] posits that bipolar flaking may have been used to reflect the percussion force otherwise lost through movement, where anvil stones were used to hold the pebbles stationary and localise percussion forces. The anvil stones recovered from the Icy Eye site included U-shaped pits, which Studer [-@RN20894, 71] believed to be suggestive of the bipolar technique used in flaking, or splitting, rounded pebbles. He further reasons that "few angular or worked pebbles were chipped on the anvils since such object pieces would tend to cause V-shaped pits" [@RN20894, 71].
+
+* Ensor and Carlson [-@RN20913, Figure 85]
+
+* Patterson [-@RN20852]
+

@@ -1,0 +1,224 @@
+# Gary dart point metrics by site
+
+```{r load packages 3, echo=TRUE}
+# install required analysis packages
+#devtools::install_github("tidyverse/tidyverse")
+#devtools::install_github("rich-iannone/DiagrammeR")
+#devtools::install_github("vqv/ggbiplot")
+#devtools::install_github("mlcollyer/RRPP")
+#devtools::install_github("kassambara/ggpubr")
+#devtools::install_github('sinhrks/ggfortify')
+# load libraries
+library(tidyverse)
+library(DiagrammeR)
+library(ggbiplot)
+library(RRPP)
+library(ggpubr)
+library(ggfortify)
+library(cluster)
+```
+
+## Set working directory, load data, and define variables
+
+```{r setwd ld define variables 3, echo=TRUE}
+# set working directory
+setwd(getwd())
+data<-read.csv("garymorphlm.csv",header = TRUE, as.is=TRUE)
+# define variables
+maxl<-data$maxl # maximum length
+maxw<-data$maxw # maximum width
+maxth<-data$maxth # maximum thickness
+maxstl<-data$maxstl # maximum stem length
+maxstw<-data$maxstw # maximum stem width
+site<-data$Site # site name
+```
+
+### Calculate dart-arrow index [@RN20881]
+
+Others have noted the gradual diminution in the size of Gary dart points through time [@RN20896;@RN20898;@RN3132;@RN20874], thus it was necessary to begin by asking whether the size of those points aggregated for this study may fall below the arbitrary 11.8 mm dart-arrow index (DAI) threshold posited by Hildebrandt and King [-@RN20881]. The temporal span associated with morphologically-diagnostic Gary dart points is thought to transcend the cultural shift in subsistence practices from hunter-gatherer to emergent horticulturalist, and overlaps temporally with the advent and flourescence of the bow and arrow.
+
+Stem width (neck width) and thickness are among those variables included in this study, and can be used to identify whether Gary dart points may transcend the threshold between dart and arrow points [@RN20881]. The dart-arrow index was calculated for all specimens of Gary dart points used in this study, and none fall below the dart-arrow threshold posited by Hildebrandt and King [-@RN20881]. It is noteworthy that others [@RN20880] have found that the DAI may not be universally applicable; however, the DAI and the threshold identified by Hildebrandt and King [-@RN20881] is a useful heuristic in this instance.
+
+```{r dart-arrow, echo=TRUE}
+# calculate dart-arrow index (max stem width + max thickness)
+dai<-maxstw + maxth
+dai
+# how many observations fall at or below 11.8 mm
+arrow<-sum(data$dai <= 11.8)
+arrow
+```
+
+## Boxplots for _variable_ by _site_
+
+```{r boxsite, out.width = "100%", dpi = 300, echo=TRUE}
+# boxplot of maximum length ~ site
+sitemaxl<-ggplot(data,aes(x=Site,y=maxl,color=Site)) + geom_boxplot(notch = TRUE) +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum width ~ site
+sitemaxw<-ggplot(data,aes(x=Site,y=maxw,color=Site)) + geom_boxplot(notch = TRUE) +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of maximum thickness ~ site
+sitemaxth<-ggplot(data,aes(x=Site,y=maxth,color=Site)) + geom_boxplot(notch = TRUE) +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of stem length ~ site
+sitemaxstl<-ggplot(data,aes(x=Site,y=maxstl,color=Site)) + geom_boxplot(notch = TRUE) +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# boxplot of stem width ~ site
+sitemaxstw<-ggplot(data,aes(x=Site,y=maxstw,color=Site)) + geom_boxplot(notch = TRUE) +
+  geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "none")
+# render figure
+sitefigure<-ggarrange(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,
+                  labels = c("a","b","c","d","e"),
+                  ncol = 3, nrow = 2)
+sitefigure
+fig.cap = "Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study."
+```
+
+## Principal Components Analysis for _site_
+
+```{r pcasite, out.width = "100%", dpi = 300, echo=TRUE}
+#pca
+df<-data[c(2:6)]
+sitepca<-autoplot(prcomp(df),data = data, colour = 'Site',
+         loadings = TRUE, loadings.colour = 'blue',
+         loadings.label = TRUE,loadings.label.size = 3, 
+         frame = TRUE)
+#render figure
+sitepca
+fig.cap = "PCA by site."
+```
+
+## Analyses of Variance (ANOVA) for _variable_ ~ _site_
+
+### _Maximum length_ of Gary points
+
+```{r anovasitemaxl, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxl by site
+ggplot(data, aes(x=maxl, fill = Site)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,150)
+# anova = maximum length ~ site
+siteml<-lm.rrpp(maxl ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
+anova(siteml)
+# visualise model predictions for maximum length ~ site
+siteDF<-data.frame(Site = c("Cooper","Means","Pov Pt"))
+rownames(siteDF)<-c("Cooper","Means","Pov Pt")
+sitePreds<-predict(siteml,siteDF)
+sitePreds
+plot(sitePreds, col = 1:NROW(siteDF))
+# pairwise comparison of LS means = which sites differ?
+site.pwml<-pairwise(siteml, groups = data$Site)
+summary(site.pwml, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(site.pwml, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(site.pwml, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum width_ of Gary points
+
+```{r anovasitemaxw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxw by site
+ggplot(data, aes(x=maxw, fill = Site)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,75)
+# anova = maximum width ~ site
+sitemw<-lm.rrpp(maxw ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
+anova(sitemw)
+# visualise model predictions for maximum width ~ site
+sitePreds<-predict(sitemw,siteDF)
+sitePreds
+plot(sitePreds, col = 1:NROW(siteDF))
+# pairwise comparison = which sites differ?
+site.pwmw<-pairwise(siteml, groups = data$Site)
+summary(site.pwmw, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(site.pwmw, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(site.pwmw, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum thickness_ of Gary points
+
+```{r anovasitemaxth, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxth by site
+ggplot(data, aes(x=maxth, fill = Site)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,25)
+# anova = maximum thickness ~ site
+sitemth<-lm.rrpp(maxth ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
+anova(sitemth)
+# visualise model predictions for maximum thickness ~ site
+sitePreds<-predict(sitemth,siteDF)
+sitePreds
+plot(sitePreds, col = 1:NROW(siteDF))
+# pairwise comparison = which sites differ?
+site.pwmth<-pairwise(siteml, groups = data$Site)
+summary(site.pwmth, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(site.pwmth, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(site.pwmth, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum stem length_ of Gary points
+
+```{r anovasitemaxstl, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxstl by site
+ggplot(data, aes(x=maxstl, fill = Site)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,35)
+# anova = maximum stem length ~ site
+sitemstl<-lm.rrpp(maxstl ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
+anova(sitemstl)
+# visualise model predictions for maximum stem length ~ site
+sitePreds<-predict(sitemstl,siteDF)
+sitePreds
+plot(sitePreds, col = 1:NROW(siteDF))
+# pairwise comparison = which sites differ?
+site.pwmstl<-pairwise(siteml, groups = data$Site)
+summary(site.pwmstl, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(site.pwmstl, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(site.pwmstl, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum stem width_ of Gary points
+
+```{r anovasitemaxstw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxstw by site
+ggplot(data, aes(x=maxstw, fill = Site)) +
+  geom_density(alpha = .4) +
+  scale_color_brewer(palette = "Set1") +
+  xlim(0,40)
+# anova = maximum stem width ~ site
+sitemstw<-lm.rrpp(maxstw ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
+anova(sitemstw)
+# visualise model predictions for maximum stem width ~ site
+sitePreds<-predict(sitemstw,siteDF)
+sitePreds
+plot(sitePreds, col = 1:NROW(siteDF))
+# pairwise comparison = which sites differ?
+site.pwmstw<-pairwise(siteml, groups = data$Site)
+summary(site.pwmstw, confidence = 0.95, test.type = "dist")
+# correlation between mean vectors (angles in degrees)
+summary(site.pwmstw, confidence = 0.95, test.type = "VC", angle.type = "deg")
+# pairwise distances between variances = standardization?
+summary(site.pwmstw, confidence = 0.95, test.type = "var")
+```
+

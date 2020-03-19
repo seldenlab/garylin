@@ -1,0 +1,99 @@
+# Introduction
+
+## Theoretical underpinnings
+
+### Krieger's [-@RN3937, Figure 25] typological concept and the Gary dart point
+
+>...the purpose of a type in archaeology must be to provide an organizational tool which will enable the investigator to group specimens into bodies which have _demonstrable historical meaning in terms of behavior patterns_. Any group which may be labeled a 'type' must embrace material which can be shown to consist of individual variations in the execution of a definite constructional idea; likewise, the dividing lines between a series of types must be based upon demonstrable historical factors, not, as is often the case, upon the inclinations of the analyst or the niceties of descriptive orderliness. [@RN3937, 272]
+
+```{r krieger, fig.fullwidth = TRUE, echo=TRUE, fig.cap = "Step 1: sorting into working patterns of distinct structural plan. Step 2: sorting into detailed working groups each consistently combining features in but one way. Step 3: recombining working groups into tentative types on basis of comparative distributions and associations of working groups. Step 4: consolidation of types through further testing for consistency in form and variation. Step 5: description and illustration of types with full range of variation. Step 6: a - determination of series of linked types, b - determination of material-culture complexes, and c - determination of type relationships in related cultures."}
+# reconstruct Krieger's graph
+library(DiagrammeR)
+
+grViz("
+  digraph{
+    node[shape = rectangle
+         fontname = lato
+         penwidth = 0.2]
+    Material; Pattern1; Pattern2; Pattern3; 1; 2; 3; 4
+    
+    node[shape = doublecircle]
+    A; B; C; D; E; F; G
+    
+    node[shape = diamond
+         style = filled
+         fillcolor = grey]
+    x
+    
+    edge[fontname = lato
+         penwidth = 0.2]
+    Material->Pattern1; Material->Pattern2; Material->Pattern3;
+    Pattern2->A; Pattern2->B; Pattern2->C; Pattern2->D; 
+    Pattern2->E; Pattern2->F; Pattern2->G; A->1; C->1; F->1; B->2;
+    D->3; E->3; G->4; x->4
+    
+    graph[nodesep = 0.8]
+  }
+")
+```
+
+### Modeling archaeological epistemology for Gary dart point type-varieties
+
+```{r archepistmod, fig.fullwidth = TRUE, echo=TRUE, fig.cap = "Caption when final."}
+# try, fail, try again
+grViz("
+  digraph{
+  
+    graph[layout = dot
+          rankdir = LR]
+
+    node[shape = doubleoctagon
+          fontname = lato
+          penwidth = 0.2
+          style = filled
+          fillcolor = White]
+    
+    GaryDP
+  
+    node[shape = doublecircle
+         fontname = lato
+         penwidth = 0.2
+         style = filled
+         fillcolor = WhiteSmoke]
+    Jtv; PPtv; YMtv; CMtv; GCDtv; Stv
+    
+    node[shape = egg
+         fontname = lato
+         style = filled
+         fillcolor = White]
+    Gs; TyGs; BGs; TGs; SGs; 
+    LGs; GLg; GTy; GS; GL; 
+    Kf; Al; Ho; Ru; Em; Ke; PM; KN; Cl; 
+    G; Ml; LF; Bd; Mn; Cm; 
+    G1; G2; 
+    Ca; Cb; Cc
+    
+    node[shape = folder
+         style = filled
+         fillcolor = Gainsboro]
+    Typ; Mal; Lrg; Med; Sml
+    
+    edge[fontname = lato
+         penwidth = 0.2]
+    GaryDP->Jtv; GaryDP->PPtv; GaryDP->YMtv; GaryDP->CMtv; GaryDP->GCDtv; GaryDP->Stv;
+    Jtv->Gs; Jtv->TyGs; Jtv->BGs; Jtv->TGs; Jtv->SGs; Jtv->LGs;
+    PPtv->GLg; PPtv->GTy; PPtv->GS; PPtv->GL; 
+    YMtv->Kf; YMtv->Al; YMtv->Ho; YMtv->Ru; YMtv->Em; YMtv->Ke; YMtv->PM; YMtv->KN; YMtv->Cl
+    CMtv->G; CMtv->Ml; CMtv->LF; CMtv->Bd; CMtv->Mn; CMtv->Cm;
+    GCDtv->G1; GCDtv->G2;
+    Stv->Ca; Stv->Cb; Stv->Cc;
+    GTy->Typ; Gs->Typ;
+    TyGs->Mal; Ml->Mal;
+    GLg->Lrg; Ca->Lrg;
+    GTy->Med; Cb->Med;
+    GS->Sml; Cc->Sml
+    
+    graph[nodesep = 0.01]
+  }
+")
+```
