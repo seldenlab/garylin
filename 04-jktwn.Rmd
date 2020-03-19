@@ -14,6 +14,7 @@ Reconstructing and expanding the type-varieties of Gary dart points proposed at 
 #devtools::install_github('sinhrks/ggfortify')
 # load libraries
 library(tidyverse)
+library(dplyr)
 library(DiagrammeR)
 library(ggbiplot)
 library(RRPP)
@@ -63,6 +64,67 @@ fphfig
 ## Assign Gary type-varieties proposed by Ford, Phillips, and Haag [-@RN20899]
 
 Ford, Phillips, and Haag [-@RN20899] used a series of metrics to assign Gary varieties at the Jaketown site. The approach empoyed here enlists the full range of reported metrics, and applies those to each of the points. Any points that do not articulate with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment. Due to the degree of overlap in the ranges associated with the Gary type-varieties advanced by Ford, Phillips, and Haag [-@RN20898], it is expected that _Gary Stemmed_ will fall out due to overlap in length with _Broad Gary Stemmed_, and overlap in width with _Typical Gary Stemmed_.
+
+```{r vizdiag, out.width = "100%", dpi = 300, echo=TRUE,fig.cap="Logic graph used to visualize the process of assigning type-varieties based upon linear metrics."}
+# logic graph that visualizes the process of sorting the sample
+grViz("
+  digraph{
+
+    node[shape = ellipse
+          fontname = lato
+          penwidth = 0.2
+          style = filled
+          fillcolor = White]
+    
+    Gary
+  
+    node[shape = circle
+         fontname = lato
+         style = filled
+         fillcolor = WhiteSmoke]
+   45; 70; 79; 55; 75; 35; 50
+    
+    node[shape = doublecircle
+         fontname = lato
+         style = filled
+         fillcolor = White]
+    22; 31; 32; 48; 36; 20; 30
+    
+    node[shape = folder
+         style = filled
+         fillcolor = Gainsboro]
+     Gnv; GS; TyGS; BGS; ThGS; SGS
+    
+    edge[fontname = lato
+         penwidth = 0.2]
+    Gary->Gnv [label = 'start'];
+    Gnv->55 [label = 'if L >=']
+    55->75 [label = 'and L <=']
+    75->30 [label = 'if W >=']
+    30->36 [label = 'if W <=']
+    36->ThGS [label = 'then']
+    Gnv->35 [label = 'if L >=']
+    35->50 [label = 'and L <=']
+    50->20 [label = 'if W >=']
+    20->30 [label = 'if W <=']
+    30->SGS [label = 'then']
+    Gnv->45 [label = 'if L >=']
+    45->70 [label = 'and L <=']
+    70->22 [label = 'if W >=']
+    22->31 [label = 'and W <=']            
+    31->GS [label = 'then']
+    45->79 [label = 'and L <=']
+    79->22 [label = 'if W >=']
+    31->TyGS [label = 'then']
+    70->32 [label = 'if W >=']
+    32->48 [label = 'and W <=']
+    48->BGS [label = 'then']
+
+    graph[nodesep = 1.5]
+  }
+")
+```
+
 
 _**Data for Gary dart points from the Jaketown site have not yet been collected, and are substituted with those data from the Poverty Point site.**_
 
