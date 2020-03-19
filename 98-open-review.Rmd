@@ -4,7 +4,7 @@ Open Review means that you can freely read this volume and easily help to make i
 
 Open Review takes place before and during the peer review process. The feedback from Open Review and peer review will be used to create a revised manuscript. The Open Review period will end when the final manuscript is submitted to the publisher. 
 
-The concept of Open Review, as it is implemented here, is taken from [Matthew Salganik's](https://twitter.com/msalganik) [Open Review Toolkit](http://www.openreviewtoolkit.org/). Much of the text on this page comes from the [Open Review Toolkit About page](http://www.bitbybitbook.com/en/open-review/) and the [Open Review Toolkit Privacy and Consent page](http://www.bitbybitbook.com/en/privacy/)
+The concept of Open Review, as implemented here, is taken from [Matthew Salganik's](https://twitter.com/msalganik) [Open Review Toolkit](http://www.openreviewtoolkit.org/). Much of the text on this page comes from the [Open Review Toolkit About page](http://www.bitbybitbook.com/en/open-review/) and the [Open Review Toolkit Privacy and Consent page](http://www.bitbybitbook.com/en/privacy/)
 
 ## FAQ about open review
 
@@ -14,7 +14,7 @@ Open Review is not just about catching typos. Rather, Open Review is designed to
 
 ### Can I see the annotations that others are making?
 
-Yes, all annotations are public. You can view them on right side of the each page, or you can read them in [stream form](https://hypothes.is/stream?q=benmarwick-bookdown-ort).
+Yes, all annotations are public. You can view them on right side of the each page, or you can read them in [stream form](https://hypothes.is/stream?q=aksel-blaise-garylin).
 
 ### What are the benefits for readers?
 
@@ -26,11 +26,11 @@ The Open Review process will benefit both authors and publishers, even if they h
 
 ### Has anyone ever done something like this before?
 
-This is based on [Matthew Salganik's](https://twitter.com/msalganik) [Open Review Toolkit](http://www.openreviewtoolkit.org/). He's written about some related efforts here: <http://www.bitbybitbook.com/en/open-review/>
+This is based on [Matthew Salganik's](https://twitter.com/msalganik) [Open Review Toolkit](http://www.openreviewtoolkit.org/). He has written about some related efforts here: <http://www.bitbybitbook.com/en/open-review/>
 
 ### What kind of information are you collecting and how will that information be used?
 
-Please read our privacy and consent policy, below. 
+Please read the privacy and consent policy, below. 
 
 ### How I can learn more about traditional peer review of academic books?
 
@@ -80,7 +80,7 @@ By using this site, you consent to the privacy policy.
 
 ### Questions
 
-If you have any questions, please send us an email `zselden@sfasu.edu`
+If you have any questions, please contact me by email at `zselden@sfasu.edu`
 
 ### Changes to our Privacy and Consent Policy
 
@@ -88,4 +88,4 @@ I reserve the right to this privacy policy from time to time at my discretion. P
 
 ### Acknowledgments
 
-The bulk of the (modified) text above comes directly from [Ben Marwick's](https://github.com/benmarwick/bookdown-ort) excellent bookdown example that illustrates how each of the pieces of this volume function independently, and as a whole. Many thanks to Ben for making this available.
+The bulk of the (modified) text above comes directly from [Ben Marwick's](https://github.com/benmarwick/bookdown-ort) excellent bookdown example that illustrates how each of the pieces of this volume function independently, and as a whole. Many thanks to Ben for making this available, and I encourage other archaeologists to fork his repository, and make use of these tools.
