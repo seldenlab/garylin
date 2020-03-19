@@ -54,6 +54,7 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.5.9000/grViz.js"></script>
+<script async defer src="https://hypothes.is/embed.js"></script>
 
 
 <style type="text/css">
@@ -138,6 +139,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.1</b> Acknowledgments</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i><b>0.2</b> Funding</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#privacy-and-consent-policy"><i class="fa fa-check"></i><b>0.3</b> Privacy and Consent Policy</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>0.3.1</b> Overview</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#what-information-do-we-collect"><i class="fa fa-check"></i><b>0.3.2</b> What information do we collect?</a></li>
+<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#how-do-we-use-your-information"><i class="fa fa-check"></i><b>0.3.3</b> How do we use your information?</a></li>
+<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#how-do-we-protect-your-information"><i class="fa fa-check"></i><b>0.3.4</b> How do we protect your information?</a></li>
+<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#do-we-use-cookies"><i class="fa fa-check"></i><b>0.3.5</b> Do we use cookies?</a></li>
+<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#your-consent"><i class="fa fa-check"></i><b>0.3.6</b> Your consent</a></li>
+<li class="chapter" data-level="0.3.7" data-path="index.html"><a href="index.html#questions"><i class="fa fa-check"></i><b>0.3.7</b> Questions</a></li>
+<li class="chapter" data-level="0.3.8" data-path="index.html"><a href="index.html#changes-to-our-privacy-and-consent-policy"><i class="fa fa-check"></i><b>0.3.8</b> Changes to our Privacy and Consent Policy</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#theoretical-underpinnings"><i class="fa fa-check"></i><b>1.1</b> Theoretical underpinnings</a><ul>
@@ -245,61 +256,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
+
+<div class = rmdreview>
+This volume is in <b>Open Review</b>. I want your feedback to make the volume better for you and other readers. To add your annotation, <span style="background-color: #3297FD; color: white">select some text</span> and then click the <i class="h-icon-annotate"></i> on the pop-up menu. To see the annotations of others, click the <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
 <div id="jaketown-type-varieties" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Jaketown type-varieties</h1>
 <div id="reconstructing-gary-type-varieties" class="section level2">
 <h2><span class="header-section-number">4.1</span> Reconstructing Gary type-varieties</h2>
 <p>Reconstructing and expanding the type-varieties of Gary dart points proposed at Poverty Point, Cooper, and Means was necessary, as the type-variety assignments for each specimen were not reported or preserved on the associated paperwork when the collections were curated. Additionally, the collection of Gary dart points at Poverty Point has continued to grow, and this method provides a replicable means of assigning each new specimen to the previously-established type-varieties.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># install required analysis packages</span></a>
-<a class="sourceLine" id="cb102-2" title="2"><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></a>
-<a class="sourceLine" id="cb102-3" title="3"><span class="co">#devtools::install_github(&quot;rich-iannone/DiagrammeR&quot;)</span></a>
-<a class="sourceLine" id="cb102-4" title="4"><span class="co">#devtools::install_github(&quot;vqv/ggbiplot&quot;)</span></a>
-<a class="sourceLine" id="cb102-5" title="5"><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></a>
-<a class="sourceLine" id="cb102-6" title="6"><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></a>
-<a class="sourceLine" id="cb102-7" title="7"><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></a>
-<a class="sourceLine" id="cb102-8" title="8"><span class="co"># load libraries</span></a>
-<a class="sourceLine" id="cb102-9" title="9"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb102-10" title="10"><span class="kw">library</span>(DiagrammeR)</a>
-<a class="sourceLine" id="cb102-11" title="11"><span class="kw">library</span>(ggbiplot)</a>
-<a class="sourceLine" id="cb102-12" title="12"><span class="kw">library</span>(RRPP)</a>
-<a class="sourceLine" id="cb102-13" title="13"><span class="kw">library</span>(ggpubr)</a>
-<a class="sourceLine" id="cb102-14" title="14"><span class="kw">library</span>(ggfortify)</a>
-<a class="sourceLine" id="cb102-15" title="15"><span class="kw">library</span>(cluster)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># install required analysis packages</span></a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="co">#devtools::install_github(&quot;rich-iannone/DiagrammeR&quot;)</span></a>
+<a class="sourceLine" id="cb75-4" title="4"><span class="co">#devtools::install_github(&quot;vqv/ggbiplot&quot;)</span></a>
+<a class="sourceLine" id="cb75-5" title="5"><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></a>
+<a class="sourceLine" id="cb75-6" title="6"><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></a>
+<a class="sourceLine" id="cb75-7" title="7"><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></a>
+<a class="sourceLine" id="cb75-8" title="8"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb75-9" title="9"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb75-10" title="10"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb75-11" title="11"><span class="kw">library</span>(ggbiplot)</a>
+<a class="sourceLine" id="cb75-12" title="12"><span class="kw">library</span>(RRPP)</a>
+<a class="sourceLine" id="cb75-13" title="13"><span class="kw">library</span>(ggpubr)</a>
+<a class="sourceLine" id="cb75-14" title="14"><span class="kw">library</span>(ggfortify)</a>
+<a class="sourceLine" id="cb75-15" title="15"><span class="kw">library</span>(cluster)</a></code></pre></div>
 <div id="set-wd-and-load-data" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Set wd, and load data</h3>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># set working directory</span></a>
-<a class="sourceLine" id="cb103-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
-<a class="sourceLine" id="cb103-3" title="3"><span class="co"># load data</span></a>
-<a class="sourceLine" id="cb103-4" title="4">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="co"># set working directory</span></a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb76-4" title="4">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="gary-varieties-proposed-by-ford-phillips-and-haag--rn20899" class="section level2">
 <h2><span class="header-section-number">4.2</span> Gary varieties proposed by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span></h2>
 <p>The <code>tv0</code> argument used within this and the subsequent section articulates with three variants of the Gary type–including <em>Gary Stemmed</em>, <em>Typical Gary Stemmed</em>, <em>Broad Gary Stemmed</em>, <em>Thin Gary Stemmed</em>, and <em>Small Gary Stemmed</em>, which were assigned using those morphological criteria advanced by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> at the Jaketown site in west central Mississippi. The <em>Long Gary Stemmed</em> type was omitted from consideration due to the absence of reported metrics.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># Ford, Phillips, and Haag (1955)</span></a>
-<a class="sourceLine" id="cb104-2" title="2">fphl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</a>
-<a class="sourceLine" id="cb104-3" title="3">                 <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">35</span>), <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb104-4" title="4">                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">79</span>,<span class="dv">70</span>,<span class="dv">75</span>,<span class="dv">50</span>) <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb104-5" title="5">)</a>
-<a class="sourceLine" id="cb104-6" title="6">fphlength&lt;-<span class="kw">ggplot</span>(fphl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-7" title="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-8" title="8"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb104-10" title="10">fphw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</a>
-<a class="sourceLine" id="cb104-11" title="11">                 <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">20</span>), <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb104-12" title="12">                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">48</span>,<span class="dv">36</span>,<span class="dv">30</span>) <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb104-13" title="13">)</a>
-<a class="sourceLine" id="cb104-14" title="14">fphwidth&lt;-<span class="kw">ggplot</span>(fphw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-15" title="15"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-16" title="16"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-17" title="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb104-18" title="18"><span class="co"># render figure</span></a>
-<a class="sourceLine" id="cb104-19" title="19">fphfig&lt;-<span class="kw">ggarrange</span>(fphlength,fphwidth,</a>
-<a class="sourceLine" id="cb104-20" title="20">                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>),</a>
-<a class="sourceLine" id="cb104-21" title="21">                    <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb104-22" title="22">fphfig</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co"># Ford, Phillips, and Haag (1955)</span></a>
+<a class="sourceLine" id="cb77-2" title="2">fphl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</a>
+<a class="sourceLine" id="cb77-3" title="3">                 <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">35</span>), <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb77-4" title="4">                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">79</span>,<span class="dv">70</span>,<span class="dv">75</span>,<span class="dv">50</span>) <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb77-5" title="5">)</a>
+<a class="sourceLine" id="cb77-6" title="6">fphlength&lt;-<span class="kw">ggplot</span>(fphl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-7" title="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-8" title="8"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb77-10" title="10">fphw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</a>
+<a class="sourceLine" id="cb77-11" title="11">                 <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">20</span>), <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb77-12" title="12">                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">48</span>,<span class="dv">36</span>,<span class="dv">30</span>) <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb77-13" title="13">)</a>
+<a class="sourceLine" id="cb77-14" title="14">fphwidth&lt;-<span class="kw">ggplot</span>(fphw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-15" title="15"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-16" title="16"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-17" title="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb77-18" title="18"><span class="co"># render figure</span></a>
+<a class="sourceLine" id="cb77-19" title="19">fphfig&lt;-<span class="kw">ggarrange</span>(fphlength,fphwidth,</a>
+<a class="sourceLine" id="cb77-20" title="20">                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>),</a>
+<a class="sourceLine" id="cb77-21" title="21">                    <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb77-22" title="22">fphfig</a></code></pre></div>
 <div class="figure"><span id="fig:fphgantt"></span>
-<img src="gary_files/figure-html/fphgantt-1.png" alt="Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955)." width="100%" />
+<img src="gt-v_files/figure-html/fphgantt-1.png" alt="Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955)." width="100%" />
 <p class="caption">
 Figure 4.1: Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955).
 </p>
@@ -309,31 +324,31 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 <h2><span class="header-section-number">4.3</span> Assign Gary type-varieties proposed by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span></h2>
 <p>Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> used a series of metrics to assign Gary varieties at the Jaketown site. The approach empoyed here enlists the full range of reported metrics, and applies those to each of the points. Any points that do not articulate with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment. Due to the degree of overlap in the ranges associated with the Gary type-varieties advanced by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span>, it is expected that <em>Gary Stemmed</em> will fall out due to overlap in length with <em>Broad Gary Stemmed</em>, and overlap in width with <em>Typical Gary Stemmed</em>.</p>
 <p><em><strong>Data for Gary dart points from the Jaketown site have not yet been collected, and are substituted with those data from the Poverty Point site.</strong></em></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co"># subset poverty point data</span></a>
-<a class="sourceLine" id="cb105-2" title="2">jmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</a>
-<a class="sourceLine" id="cb105-3" title="3"></a>
-<a class="sourceLine" id="cb105-4" title="4"><span class="co"># assign varieties based upon reported metrics in Ford, Phillips, and Haag [1954]</span></a>
-<a class="sourceLine" id="cb105-5" title="5">fphlcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></a>
-<a class="sourceLine" id="cb105-6" title="6">fphlcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">79</span></a>
-<a class="sourceLine" id="cb105-7" title="7">fphlcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></a>
-<a class="sourceLine" id="cb105-8" title="8">fphlcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">55</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">75</span></a>
-<a class="sourceLine" id="cb105-9" title="9">fphlcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb105-10" title="10"></a>
-<a class="sourceLine" id="cb105-11" title="11">fphwcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></a>
-<a class="sourceLine" id="cb105-12" title="12">fphwcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></a>
-<a class="sourceLine" id="cb105-13" title="13">fphwcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">32</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">48</span></a>
-<a class="sourceLine" id="cb105-14" title="14">fphwcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">36</span></a>
-<a class="sourceLine" id="cb105-15" title="15">fphwcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></a>
-<a class="sourceLine" id="cb105-16" title="16"></a>
-<a class="sourceLine" id="cb105-17" title="17">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></a>
-<a class="sourceLine" id="cb105-18" title="18">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck1 <span class="op">&amp;</span><span class="st"> </span>fphwcheck1, <span class="st">&quot;GS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb105-19" title="19">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck2 <span class="op">&amp;</span><span class="st"> </span>fphwcheck2, <span class="st">&quot;TyGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb105-20" title="20">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck3 <span class="op">&amp;</span><span class="st"> </span>fphwcheck3, <span class="st">&quot;BGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb105-21" title="21">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck4 <span class="op">&amp;</span><span class="st"> </span>fphwcheck4, <span class="st">&quot;ThGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb105-22" title="22">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck5 <span class="op">&amp;</span><span class="st"> </span>fphwcheck5, <span class="st">&quot;SGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb105-23" title="23"></a>
-<a class="sourceLine" id="cb105-24" title="24">tv0&lt;-jmx<span class="op">$</span>tv0</a>
-<a class="sourceLine" id="cb105-25" title="25">tv0</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># subset poverty point data</span></a>
+<a class="sourceLine" id="cb78-2" title="2">jmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</a>
+<a class="sourceLine" id="cb78-3" title="3"></a>
+<a class="sourceLine" id="cb78-4" title="4"><span class="co"># assign varieties based upon reported metrics in Ford, Phillips, and Haag [1954]</span></a>
+<a class="sourceLine" id="cb78-5" title="5">fphlcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></a>
+<a class="sourceLine" id="cb78-6" title="6">fphlcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">79</span></a>
+<a class="sourceLine" id="cb78-7" title="7">fphlcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></a>
+<a class="sourceLine" id="cb78-8" title="8">fphlcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">55</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">75</span></a>
+<a class="sourceLine" id="cb78-9" title="9">fphlcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb78-10" title="10"></a>
+<a class="sourceLine" id="cb78-11" title="11">fphwcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></a>
+<a class="sourceLine" id="cb78-12" title="12">fphwcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></a>
+<a class="sourceLine" id="cb78-13" title="13">fphwcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">32</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">48</span></a>
+<a class="sourceLine" id="cb78-14" title="14">fphwcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">36</span></a>
+<a class="sourceLine" id="cb78-15" title="15">fphwcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></a>
+<a class="sourceLine" id="cb78-16" title="16"></a>
+<a class="sourceLine" id="cb78-17" title="17">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></a>
+<a class="sourceLine" id="cb78-18" title="18">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck1 <span class="op">&amp;</span><span class="st"> </span>fphwcheck1, <span class="st">&quot;GS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb78-19" title="19">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck2 <span class="op">&amp;</span><span class="st"> </span>fphwcheck2, <span class="st">&quot;TyGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb78-20" title="20">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck3 <span class="op">&amp;</span><span class="st"> </span>fphwcheck3, <span class="st">&quot;BGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb78-21" title="21">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck4 <span class="op">&amp;</span><span class="st"> </span>fphwcheck4, <span class="st">&quot;ThGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb78-22" title="22">jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck5 <span class="op">&amp;</span><span class="st"> </span>fphwcheck5, <span class="st">&quot;SGS&quot;</span>, jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb78-23" title="23"></a>
+<a class="sourceLine" id="cb78-24" title="24">tv0&lt;-jmx<span class="op">$</span>tv0</a>
+<a class="sourceLine" id="cb78-25" title="25">tv0</a></code></pre></div>
 <pre><code>##  [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot;
 ## [11] &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot;
 ## [21] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
@@ -344,48 +359,48 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 </div>
 <div id="boxplots-for-site-by-ford-phillips-and-haags--rn20899-gary-type-varieties" class="section level2">
 <h2><span class="header-section-number">4.4</span> Boxplots for site by Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> Gary type-varieties</h2>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="co"># boxplot of maximum length</span></a>
-<a class="sourceLine" id="cb107-2" title="2">jmaxl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-4" title="4"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-5" title="5"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb107-7" title="7"><span class="co"># boxplot of maximum width</span></a>
-<a class="sourceLine" id="cb107-8" title="8">jmaxw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-9" title="9"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-10" title="10"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb107-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb107-13" title="13"><span class="co"># boxplot of maximum thickness</span></a>
-<a class="sourceLine" id="cb107-14" title="14">jmaxth&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-15" title="15"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-16" title="16"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb107-17" title="17"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-18" title="18"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb107-19" title="19"><span class="co"># boxplot of maximum stem length</span></a>
-<a class="sourceLine" id="cb107-20" title="20">jmaxstl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-21" title="21"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-22" title="22"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb107-23" title="23"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-24" title="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb107-25" title="25"><span class="co"># boxplot of maximum thickness</span></a>
-<a class="sourceLine" id="cb107-26" title="26">jmaxstw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-27" title="27"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-28" title="28"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb107-29" title="29"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb107-30" title="30"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb107-31" title="31"><span class="co"># render figure</span></a>
-<a class="sourceLine" id="cb107-32" title="32">jfigure&lt;-<span class="kw">ggarrange</span>(jmaxl,jmaxw,jmaxth,jmaxstl,jmaxstw,</a>
-<a class="sourceLine" id="cb107-33" title="33">                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
-<a class="sourceLine" id="cb107-34" title="34">                     <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="co"># boxplot of maximum length</span></a>
+<a class="sourceLine" id="cb80-2" title="2">jmaxl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-4" title="4"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-5" title="5"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb80-7" title="7"><span class="co"># boxplot of maximum width</span></a>
+<a class="sourceLine" id="cb80-8" title="8">jmaxw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-9" title="9"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-10" title="10"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb80-13" title="13"><span class="co"># boxplot of maximum thickness</span></a>
+<a class="sourceLine" id="cb80-14" title="14">jmaxth&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-15" title="15"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-16" title="16"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-17" title="17"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-18" title="18"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb80-19" title="19"><span class="co"># boxplot of maximum stem length</span></a>
+<a class="sourceLine" id="cb80-20" title="20">jmaxstl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-21" title="21"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-22" title="22"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-23" title="23"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-24" title="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb80-25" title="25"><span class="co"># boxplot of maximum thickness</span></a>
+<a class="sourceLine" id="cb80-26" title="26">jmaxstw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-27" title="27"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-28" title="28"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb80-29" title="29"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb80-30" title="30"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb80-31" title="31"><span class="co"># render figure</span></a>
+<a class="sourceLine" id="cb80-32" title="32">jfigure&lt;-<span class="kw">ggarrange</span>(jmaxl,jmaxw,jmaxth,jmaxstl,jmaxstw,</a>
+<a class="sourceLine" id="cb80-33" title="33">                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
+<a class="sourceLine" id="cb80-34" title="34">                     <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">jfigure</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">jfigure</a></code></pre></div>
 <div class="figure"><span id="fig:boxplottv0"></span>
-<img src="gary_files/figure-html/boxplottv0-1.png" alt="Boxplots for maximum a, length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points assigned to the Ford, Phillips, and Haag type-varieties." width="100%" />
+<img src="gt-v_files/figure-html/boxplottv0-1.png" alt="Boxplots for maximum a, length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points assigned to the Ford, Phillips, and Haag type-varieties." width="100%" />
 <p class="caption">
 Figure 4.2: Boxplots for maximum a, length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points assigned to the Ford, Phillips, and Haag type-varieties.
 </p>
@@ -395,69 +410,69 @@ Figure 4.2: Boxplots for maximum a, length; b, width; c, thickness; d, stem leng
 <h2><span class="header-section-number">4.5</span> Density plots for variables by type-varieties</h2>
 <div id="density-plot-for-maximum-length-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Density plot for maximum length by tv0</h3>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co"># define variables in jaketown subset</span></a>
-<a class="sourceLine" id="cb110-2" title="2">j.maxl&lt;-jmx<span class="op">$</span>maxl</a>
-<a class="sourceLine" id="cb110-3" title="3">j.maxw&lt;-jmx<span class="op">$</span>maxw</a>
-<a class="sourceLine" id="cb110-4" title="4">j.maxth&lt;-jmx<span class="op">$</span>maxth</a>
-<a class="sourceLine" id="cb110-5" title="5">j.maxstl&lt;-jmx<span class="op">$</span>maxstl</a>
-<a class="sourceLine" id="cb110-6" title="6">j.maxstw&lt;-jmx<span class="op">$</span>maxstw</a>
-<a class="sourceLine" id="cb110-7" title="7">j.tv0&lt;-jmx<span class="op">$</span>tv0</a>
-<a class="sourceLine" id="cb110-8" title="8"><span class="co"># density plot of maxl by tv0</span></a>
-<a class="sourceLine" id="cb110-9" title="9"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb110-10" title="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb110-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb110-12" title="12"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></a></code></pre></div>
-<p><img src="gary_files/figure-html/jdensity1-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="co"># define variables in jaketown subset</span></a>
+<a class="sourceLine" id="cb83-2" title="2">j.maxl&lt;-jmx<span class="op">$</span>maxl</a>
+<a class="sourceLine" id="cb83-3" title="3">j.maxw&lt;-jmx<span class="op">$</span>maxw</a>
+<a class="sourceLine" id="cb83-4" title="4">j.maxth&lt;-jmx<span class="op">$</span>maxth</a>
+<a class="sourceLine" id="cb83-5" title="5">j.maxstl&lt;-jmx<span class="op">$</span>maxstl</a>
+<a class="sourceLine" id="cb83-6" title="6">j.maxstw&lt;-jmx<span class="op">$</span>maxstw</a>
+<a class="sourceLine" id="cb83-7" title="7">j.tv0&lt;-jmx<span class="op">$</span>tv0</a>
+<a class="sourceLine" id="cb83-8" title="8"><span class="co"># density plot of maxl by tv0</span></a>
+<a class="sourceLine" id="cb83-9" title="9"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-10" title="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-12" title="12"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></a></code></pre></div>
+<p><img src="gt-v_files/figure-html/jdensity1-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Density plot for maximum width by tv0</h3>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># density plot of maxw by tv0</span></a>
-<a class="sourceLine" id="cb111-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb111-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb111-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb111-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
-<p><img src="gary_files/figure-html/jdensityw-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="co"># density plot of maxw by tv0</span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/jdensityw-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-thickness-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Density plot for maximum thickness by tv0</h3>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># density plot of maxth by tv0</span></a>
-<a class="sourceLine" id="cb112-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxth, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb112-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb112-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb112-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</a></code></pre></div>
-<p><img src="gary_files/figure-html/jdensityth-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="co"># density plot of maxth by tv0</span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxth, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb85-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/jdensityth-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-length-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.4</span> Density plot for maximum stem length by tv0</h3>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># density plot of maxstl by tv0</span></a>
-<a class="sourceLine" id="cb113-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb113-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb113-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb113-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</a></code></pre></div>
-<p><img src="gary_files/figure-html/jdensitystl-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co"># density plot of maxstl by tv0</span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/jdensitystl-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-width-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.5</span> Density plot for maximum stem width by tv0</h3>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="co"># density plot of maxstw by tv0</span></a>
-<a class="sourceLine" id="cb114-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb114-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb114-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb114-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">45</span>)</a></code></pre></div>
-<p><img src="gary_files/figure-html/jdensitystw-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="co"># density plot of maxstw by tv0</span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">45</span>)</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/jdensitystw-1.png" width="100%" /></p>
 </div>
 </div>
 <div id="principal-components-analysis-for-ford-phillips-and-haags--rn20899-type-varieties-at-all-sites" class="section level2">
 <h2><span class="header-section-number">4.6</span> Principal Components Analysis for Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> type-varieties at all sites</h2>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="co">#pca</span></a>
-<a class="sourceLine" id="cb115-2" title="2">df&lt;-jmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
-<a class="sourceLine" id="cb115-3" title="3">tv0pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> jmx, <span class="dt">colour =</span> <span class="st">&#39;tv0&#39;</span>,</a>
-<a class="sourceLine" id="cb115-4" title="4">                 <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
-<a class="sourceLine" id="cb115-5" title="5">                 <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb115-6" title="6">                 <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb115-7" title="7"><span class="co">#render figure</span></a>
-<a class="sourceLine" id="cb115-8" title="8">tv0pca</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co">#pca</span></a>
+<a class="sourceLine" id="cb88-2" title="2">df&lt;-jmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb88-3" title="3">tv0pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> jmx, <span class="dt">colour =</span> <span class="st">&#39;tv0&#39;</span>,</a>
+<a class="sourceLine" id="cb88-4" title="4">                 <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
+<a class="sourceLine" id="cb88-5" title="5">                 <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb88-6" title="6">                 <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb88-7" title="7"><span class="co">#render figure</span></a>
+<a class="sourceLine" id="cb88-8" title="8">tv0pca</a></code></pre></div>
 <div class="figure"><span id="fig:pcatv0"></span>
-<img src="gary_files/figure-html/pcatv0-1.png" alt="PCA by Gary type-varieties reported by Ford, Phillips, and Haag (1955)." width="100%" />
+<img src="gt-v_files/figure-html/pcatv0-1.png" alt="PCA by Gary type-varieties reported by Ford, Phillips, and Haag (1955)." width="100%" />
 <p class="caption">
 Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (1955).
 </p>
@@ -467,9 +482,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 <h2><span class="header-section-number">4.7</span> Analyses of Variance (ANOVA) for <em>linear variables</em> ~ <em>type-varieties</em></h2>
 <div id="maximum-length-type-variety-at-jaketown" class="section level3">
 <h3><span class="header-section-number">4.7.1</span> <em>Maximum length</em> ~ <em>type-variety</em> at Jaketown</h3>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
-<a class="sourceLine" id="cb116-2" title="2">t0ml&lt;-<span class="kw">lm.rrpp</span>(j.maxl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb116-3" title="3"><span class="kw">anova</span>(t0ml)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
+<a class="sourceLine" id="cb89-2" title="2">t0ml&lt;-<span class="kw">lm.rrpp</span>(j.maxl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb89-3" title="3"><span class="kw">anova</span>(t0ml)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -487,11 +502,11 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Call: lm.rrpp(f1 = j.maxl ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb118-2" title="2">j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</a>
-<a class="sourceLine" id="cb118-3" title="3"><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</a>
-<a class="sourceLine" id="cb118-4" title="4">jPreds&lt;-<span class="kw">predict</span>(t0ml,j.tvDF)</a>
-<a class="sourceLine" id="cb118-5" title="5">jPreds</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb91-2" title="2">j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</a>
+<a class="sourceLine" id="cb91-4" title="4">jPreds&lt;-<span class="kw">predict</span>(t0ml,j.tvDF)</a>
+<a class="sourceLine" id="cb91-5" title="5">jPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -527,11 +542,11 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## BGS  57.18866
 ## ThGS 48.63331
 ## SGS  64.15411</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</a></code></pre></div>
-<p><img src="gary_files/figure-html/j.maxl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
-<a class="sourceLine" id="cb121-2" title="2">j.ml&lt;-<span class="kw">pairwise</span>(t0ml, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</a>
-<a class="sourceLine" id="cb121-3" title="3"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/j.maxl-x-tv-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
+<a class="sourceLine" id="cb94-2" title="2">j.ml&lt;-<span class="kw">pairwise</span>(t0ml, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -554,8 +569,8 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## SGS:ThGS  19.616058  6.970952  7.8126181 0.0001
 ## SGS:TyGS  13.829676  5.946205  6.2588412 0.0001
 ## ThGS:TyGS  5.786382  6.420657  1.6093651 0.0774</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb123-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -578,8 +593,8 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## SGS:ThGS  1 0.000000e+00 8.537736e-07 -0.7747801    0.69070
 ## SGS:TyGS  1 0.000000e+00 8.537736e-07 -0.7637240    0.68735
 ## ThGS:TyGS 1 0.000000e+00 8.537736e-07 -0.7563550    0.68505</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb125-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb98-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -605,9 +620,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## SGS:ThGS   11.0241184  57.66377 -0.7530169 0.7207
 ## SGS:TyGS   27.3397447  47.35996  0.4626217 0.2943
 ## ThGS:TyGS  16.3156263  51.91995 -0.3638797 0.5677</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="co"># anova = maximum length ~ tv0</span></a>
-<a class="sourceLine" id="cb127-2" title="2">t0ml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb127-3" title="3"><span class="kw">anova</span>(t0ml)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># anova = maximum length ~ tv0</span></a>
+<a class="sourceLine" id="cb100-2" title="2">t0ml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="kw">anova</span>(t0ml)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -625,9 +640,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Call: lm.rrpp(f1 = maxl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="co"># anova = maximum width ~ tv0</span></a>
-<a class="sourceLine" id="cb129-2" title="2">t0mw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb129-3" title="3"><span class="kw">anova</span>(t0mw)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># anova = maximum width ~ tv0</span></a>
+<a class="sourceLine" id="cb102-2" title="2">t0mw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb102-3" title="3"><span class="kw">anova</span>(t0mw)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -645,9 +660,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Call: lm.rrpp(f1 = maxw ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="co"># anova = maximum thickness ~ tv0</span></a>
-<a class="sourceLine" id="cb131-2" title="2">t0mth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb131-3" title="3"><span class="kw">anova</span>(t0mth)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># anova = maximum thickness ~ tv0</span></a>
+<a class="sourceLine" id="cb104-2" title="2">t0mth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="kw">anova</span>(t0mth)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -665,9 +680,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Call: lm.rrpp(f1 = maxth ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="co"># anova = maximum stem length ~ tv0</span></a>
-<a class="sourceLine" id="cb133-2" title="2">t0mstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb133-3" title="3"><span class="kw">anova</span>(t0mstl)</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co"># anova = maximum stem length ~ tv0</span></a>
+<a class="sourceLine" id="cb106-2" title="2">t0mstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb106-3" title="3"><span class="kw">anova</span>(t0mstl)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -685,9 +700,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Call: lm.rrpp(f1 = maxstl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># anova = maximum stem width ~ tv0</span></a>
-<a class="sourceLine" id="cb135-2" title="2">t0mstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb135-3" title="3"><span class="kw">anova</span>(t0mstw)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># anova = maximum stem width ~ tv0</span></a>
+<a class="sourceLine" id="cb108-2" title="2">t0mstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb108-3" title="3"><span class="kw">anova</span>(t0mstw)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -766,7 +781,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["gary.pdf", "gary.epub"],
+"download": ["gt-v.pdf", "gt-v.epub"],
 "toc": {
 "collapse": "subsection"
 }
