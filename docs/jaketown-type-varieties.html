@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Z. Selden, Jr." />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -381,23 +381,23 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 <a class="sourceLine" id="cb105-32" title="32"><span class="st">    Gary-&gt;Gnv [label = &#39;start&#39;];</span></a>
 <a class="sourceLine" id="cb105-33" title="33"><span class="st">    Gnv-&gt;55 [label = &#39;if L &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-34" title="34"><span class="st">    55-&gt;75 [label = &#39;and L &lt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-35" title="35"><span class="st">    75-&gt;30 [label = &#39;if W &gt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-36" title="36"><span class="st">    30-&gt;36 [label = &#39;if W &lt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-35" title="35"><span class="st">    75-&gt;30 [label = &#39;and if W &gt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-36" title="36"><span class="st">    30-&gt;36 [label = &#39;and W &lt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-37" title="37"><span class="st">    36-&gt;ThGS [label = &#39;then&#39;]</span></a>
 <a class="sourceLine" id="cb105-38" title="38"><span class="st">    Gnv-&gt;35 [label = &#39;if L &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-39" title="39"><span class="st">    35-&gt;50 [label = &#39;and L &lt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-40" title="40"><span class="st">    50-&gt;20 [label = &#39;if W &gt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-41" title="41"><span class="st">    20-&gt;30 [label = &#39;if W &lt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-40" title="40"><span class="st">    50-&gt;20 [label = &#39;and if W &gt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-41" title="41"><span class="st">    20-&gt;30 [label = &#39;and W &lt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-42" title="42"><span class="st">    30-&gt;SGS [label = &#39;then&#39;]</span></a>
 <a class="sourceLine" id="cb105-43" title="43"><span class="st">    Gnv-&gt;45 [label = &#39;if L &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-44" title="44"><span class="st">    45-&gt;70 [label = &#39;and L &lt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-45" title="45"><span class="st">    70-&gt;22 [label = &#39;if W &gt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-45" title="45"><span class="st">    70-&gt;22 [label = &#39;and if W &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-46" title="46"><span class="st">    22-&gt;31 [label = &#39;and W &lt;=&#39;]            </span></a>
 <a class="sourceLine" id="cb105-47" title="47"><span class="st">    31-&gt;GS [label = &#39;then&#39;]</span></a>
 <a class="sourceLine" id="cb105-48" title="48"><span class="st">    45-&gt;79 [label = &#39;and L &lt;=&#39;]</span></a>
-<a class="sourceLine" id="cb105-49" title="49"><span class="st">    79-&gt;22 [label = &#39;if W &gt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-49" title="49"><span class="st">    79-&gt;22 [label = &#39;and if W &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-50" title="50"><span class="st">    31-&gt;TyGS [label = &#39;then&#39;]</span></a>
-<a class="sourceLine" id="cb105-51" title="51"><span class="st">    70-&gt;32 [label = &#39;if W &gt;=&#39;]</span></a>
+<a class="sourceLine" id="cb105-51" title="51"><span class="st">    70-&gt;32 [label = &#39;and if W &gt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-52" title="52"><span class="st">    32-&gt;48 [label = &#39;and W &lt;=&#39;]</span></a>
 <a class="sourceLine" id="cb105-53" title="53"><span class="st">    48-&gt;BGS [label = &#39;then&#39;]</span></a>
 <a class="sourceLine" id="cb105-54" title="54"></a>
@@ -405,8 +405,8 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 <a class="sourceLine" id="cb105-56" title="56"><span class="st">  }</span></a>
 <a class="sourceLine" id="cb105-57" title="57"><span class="st">&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:vizdiag"></span>
-<div id="htmlwidget-c611b366041ded9ab464" style="width:100%;height:1500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c611b366041ded9ab464">{"x":{"diagram":"\n  digraph{\n\n    node[shape = ellipse\n          fontname = lato\n          penwidth = 0.2\n          style = filled\n          fillcolor = White]\n    \n    Gary\n  \n    node[shape = circle\n         fontname = lato\n         style = filled\n         fillcolor = WhiteSmoke]\n   45; 70; 79; 55; 75; 35; 50\n    \n    node[shape = doublecircle\n         fontname = lato\n         style = filled\n         fillcolor = White]\n    22; 31; 32; 48; 36; 20; 30\n    \n    node[shape = folder\n         style = filled\n         fillcolor = Gainsboro]\n     Gnv; GS; TyGS; BGS; ThGS; SGS\n    \n    edge[fontname = lato\n         penwidth = 0.2]\n    Gary->Gnv [label = \"start\"];\n    Gnv->55 [label = \"if L >=\"]\n    55->75 [label = \"and L <=\"]\n    75->30 [label = \"if W >=\"]\n    30->36 [label = \"if W <=\"]\n    36->ThGS [label = \"then\"]\n    Gnv->35 [label = \"if L >=\"]\n    35->50 [label = \"and L <=\"]\n    50->20 [label = \"if W >=\"]\n    20->30 [label = \"if W <=\"]\n    30->SGS [label = \"then\"]\n    Gnv->45 [label = \"if L >=\"]\n    45->70 [label = \"and L <=\"]\n    70->22 [label = \"if W >=\"]\n    22->31 [label = \"and W <=\"]            \n    31->GS [label = \"then\"]\n    45->79 [label = \"and L <=\"]\n    79->22 [label = \"if W >=\"]\n    31->TyGS [label = \"then\"]\n    70->32 [label = \"if W >=\"]\n    32->48 [label = \"and W <=\"]\n    48->BGS [label = \"then\"]\n\n    graph[nodesep = 1.5]\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ff36b0f62adae2fb4054" style="width:100%;height:1500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ff36b0f62adae2fb4054">{"x":{"diagram":"\n  digraph{\n\n    node[shape = ellipse\n          fontname = lato\n          penwidth = 0.2\n          style = filled\n          fillcolor = White]\n    \n    Gary\n  \n    node[shape = circle\n         fontname = lato\n         style = filled\n         fillcolor = WhiteSmoke]\n   45; 70; 79; 55; 75; 35; 50\n    \n    node[shape = doublecircle\n         fontname = lato\n         style = filled\n         fillcolor = White]\n    22; 31; 32; 48; 36; 20; 30\n    \n    node[shape = folder\n         style = filled\n         fillcolor = Gainsboro]\n     Gnv; GS; TyGS; BGS; ThGS; SGS\n    \n    edge[fontname = lato\n         penwidth = 0.2]\n    Gary->Gnv [label = \"start\"];\n    Gnv->55 [label = \"if L >=\"]\n    55->75 [label = \"and L <=\"]\n    75->30 [label = \"and if W >=\"]\n    30->36 [label = \"and W <=\"]\n    36->ThGS [label = \"then\"]\n    Gnv->35 [label = \"if L >=\"]\n    35->50 [label = \"and L <=\"]\n    50->20 [label = \"and if W >=\"]\n    20->30 [label = \"and W <=\"]\n    30->SGS [label = \"then\"]\n    Gnv->45 [label = \"if L >=\"]\n    45->70 [label = \"and L <=\"]\n    70->22 [label = \"and if W >=\"]\n    22->31 [label = \"and W <=\"]            \n    31->GS [label = \"then\"]\n    45->79 [label = \"and L <=\"]\n    79->22 [label = \"and if W >=\"]\n    31->TyGS [label = \"then\"]\n    70->32 [label = \"and if W >=\"]\n    32->48 [label = \"and W <=\"]\n    48->BGS [label = \"then\"]\n\n    graph[nodesep = 1.5]\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 4.2: Logic graph used to visualize the process of assigning type-varieties based upon linear metrics.
 </p>
@@ -437,11 +437,14 @@ Figure 4.2: Logic graph used to visualize the process of assigning type-varietie
 <a class="sourceLine" id="cb106-23" title="23"></a>
 <a class="sourceLine" id="cb106-24" title="24">tv0&lt;-jmx<span class="op">$</span>tv0</a>
 <a class="sourceLine" id="cb106-25" title="25">tv0</a></code></pre></div>
-<pre><code>##  [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot;
-## [14] &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
-## [27] &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;BGS&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
-## [40] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot; 
-## [53] &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;</code></pre>
+<pre><code>##  [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot;
+## [10] &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
+## [19] &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot;
+## [28] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;BGS&quot;  &quot;TyGS&quot;
+## [37] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot; 
+## [46] &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot; 
+## [55] &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot; 
+## [64] &quot;SGS&quot;</code></pre>
 </div>
 <div id="boxplots-for-site-by-ford-phillips-and-haags--rn20899-gary-type-varieties" class="section level2">
 <h2><span class="header-section-number">4.4</span> Boxplots for site by Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> Gary type-varieties</h2>
@@ -724,7 +727,8 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = maxl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,      print.progress = FALSE)</code></pre>
+## Call: lm.rrpp(f1 = maxl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
+##     print.progress = FALSE)</code></pre>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># anova = maximum width ~ tv0</span></a>
 <a class="sourceLine" id="cb130-2" title="2">t0mw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb130-3" title="3"><span class="kw">anova</span>(t0mw)</a></code></pre></div>
@@ -743,7 +747,8 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = maxw ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,      print.progress = FALSE)</code></pre>
+## Call: lm.rrpp(f1 = maxw ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
+##     print.progress = FALSE)</code></pre>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co"># anova = maximum thickness ~ tv0</span></a>
 <a class="sourceLine" id="cb132-2" title="2">t0mth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb132-3" title="3"><span class="kw">anova</span>(t0mth)</a></code></pre></div>
@@ -762,7 +767,8 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = maxth ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,      print.progress = FALSE)</code></pre>
+## Call: lm.rrpp(f1 = maxth ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
+##     print.progress = FALSE)</code></pre>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># anova = maximum stem length ~ tv0</span></a>
 <a class="sourceLine" id="cb134-2" title="2">t0mstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb134-3" title="3"><span class="kw">anova</span>(t0mstl)</a></code></pre></div>
@@ -781,7 +787,8 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = maxstl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,      print.progress = FALSE)</code></pre>
+## Call: lm.rrpp(f1 = maxstl ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
+##     print.progress = FALSE)</code></pre>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="co"># anova = maximum stem width ~ tv0</span></a>
 <a class="sourceLine" id="cb136-2" title="2">t0mstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb136-3" title="3"><span class="kw">anova</span>(t0mstw)</a></code></pre></div>
@@ -800,7 +807,8 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = maxstw ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,      print.progress = FALSE)</code></pre>
+## Call: lm.rrpp(f1 = maxstw ~ tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
+##     print.progress = FALSE)</code></pre>
 
 </div>
 </div>
