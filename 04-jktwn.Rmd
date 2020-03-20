@@ -97,7 +97,7 @@ grViz("
     
     edge[fontname = lato
          penwidth = 0.2]
-    Gary->Gnv [label = 'start'];
+    Gary->Gnv [label = 'start no var'];
     Gnv->55 [label = 'if L >=']
     55->75 [label = 'and L <=']
     75->30 [label = 'and if W >=']
