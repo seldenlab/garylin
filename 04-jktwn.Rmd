@@ -120,11 +120,10 @@ grViz("
     32->48 [label = 'and W <=']
     48->BGS [label = 'then']
 
-    graph[nodesep = 1.5]
+    graph[nodesep = 0.75]
   }
 ")
 ```
-
 
 _**Data for Gary dart points from the Jaketown site have not yet been collected, and are substituted with those data from the Poverty Point site.**_
 
