@@ -24,7 +24,7 @@ This exploratory study of linear metrics includes those Gary dart point type-var
 
 I extend my gratitude to the Poverty Point World Heritage Site, and The University Museum in the J. William Fulbright College of Arts and Sciences at the University of Arkansas. Personal thanks go to Diana Greenlee and Mary C. Suter for their help and guidance regarding permissions and access to the collections. Additional thanks to Jared S. Pebworth and Ernest Gann for their assistance aggregating the Gary dart points from the collections, and with locating and sorting through the various associated site records from the Cooper and Means sites.
 
-This volume enlists a variety of tools from the [Open Review Toolkit](https://www.openreviewtoolkit.org/), and some of the code provided for bookdown, and follows the excellent example advanced by [Ben Marwick](https://benmarwick.github.io/bookdown-ort/). I extend my gratitude to all who contribute comments and constructive criticisms throughout the development and maturation of this project.
+This volume enlists a variety of tools from the [Open Review Toolkit](https://www.openreviewtoolkit.org/), and some of the code provided for bookdown, and follows the excellent example advanced by [Ben Marwick](https://benmarwick.github.io/bookdown-ort/). I extend my gratitude to all who contribute comments and constructive criticisms throughout the development and maturation of this project. This document will remain in open review until the article is published.
 
 ## Funding
 
