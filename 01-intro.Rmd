@@ -37,7 +37,7 @@ grViz("
 ")
 ```
 
-### Modeling archaeological epistemology for Gary dart point type-varieties
+### Applying Krieger's model to Gary dart point type-varieties
 
 ```{r archepistmod, fig.fullwidth = TRUE, echo=TRUE, fig.cap = "Caption when final."}
 # try, fail, try again
