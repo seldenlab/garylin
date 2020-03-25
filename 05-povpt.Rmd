@@ -29,7 +29,7 @@ setwd(getwd())
 data<-read.csv("garymorphlm.csv",header = TRUE, as.is=TRUE)
 ```
 
-Each of the three type-varieties proposed by Ford and Webb [-@RN20898] was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for _Gary Large_; between 46 to 79 mm in maxl, and between 20 and 45 mm in maxw for _Gary Medium/Typical_; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for _Gary Small_ [@RN20898].
+Each of the three type-varieties proposed by Ford and Webb [-@RN20898] was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for _Gary Large_; between 46 to 79 mm in maxl. Ford and Webb [-@RN20898] also noted ranges in width and thickness values, which they did not use to make their assignments. Those range between 20 and 45 mm in maxw for _Gary Medium/Typical_; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for _Gary Small_ [@RN20898].
 
 ```{r fordwebbgantt, out.width = "100%", dpi = 300, echo=TRUE,fig.cap = "Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford and Webb (1956)."}
 # Ford and Webb (1956)

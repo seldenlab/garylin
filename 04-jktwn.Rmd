@@ -4,10 +4,11 @@
 
 Reconstructing and expanding the type-varieties of Gary dart points proposed at Poverty Point, Cooper, and Means was necessary, as the type-variety assignments for each specimen were not reported or preserved on the associated paperwork when the collections were curated. Additionally, the collection of Gary dart points at Poverty Point has continued to grow, and this method provides a replicable means of assigning each new specimen to the previously-established type-varieties.
 
+_**Data for Gary dart points from the Jaketown site have not yet been collected, and in the interim are substituted with those data from the Poverty Point site, which is closer in proximity than the Cooper and Means sites.**_
+
 ```{r load packages 0, echo=TRUE}
 # install required analysis packages
 #devtools::install_github("tidyverse/tidyverse")
-#devtools::install_github("rich-iannone/DiagrammeR")
 #devtools::install_github("vqv/ggbiplot")
 #devtools::install_github("mlcollyer/RRPP")
 #devtools::install_github("kassambara/ggpubr")
@@ -15,7 +16,6 @@ Reconstructing and expanding the type-varieties of Gary dart points proposed at 
 # load libraries
 library(tidyverse)
 library(dplyr)
-library(DiagrammeR)
 library(ggbiplot)
 library(RRPP)
 library(ggpubr)
@@ -34,7 +34,7 @@ data<-read.csv("garymorphlm.csv",header = TRUE, as.is=TRUE)
 
 ## Gary varieties proposed by Ford, Phillips, and Haag [-@RN20899]
 
-The `tv0` argument used within this and the subsequent section articulates with three variants of the Gary type--including _Gary Stemmed_, _Typical Gary Stemmed_, _Broad Gary Stemmed_, _Thin Gary Stemmed_, and _Small Gary Stemmed_, which were assigned using those morphological criteria advanced by Ford, Phillips, and Haag [-@RN20899] at the Jaketown site in west central Mississippi. The _Long Gary Stemmed_ type was omitted from consideration due to the absence of reported metrics.
+The `tv0` argument used within this section articulates with five variants of the Gary type---including _Gary Stemmed_, _Typical Gary Stemmed_, _Broad Gary Stemmed_, _Thin Gary Stemmed_, and _Small Gary Stemmed_---which were assigned using those morphological criteria advanced by Ford, Phillips, and Haag [-@RN20899] at the Jaketown site in west central Mississippi. The _Long Gary Stemmed_ type was omitted from consideration due to the absence of reported metrics.
 
 ```{r fphgantt, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955)."}
 # Ford, Phillips, and Haag (1955)
@@ -125,7 +125,9 @@ grViz("
 ")
 ```
 
-_**Data for Gary dart points from the Jaketown site have not yet been collected, and are substituted with those data from the Poverty Point site.**_
+## Subset the Jaketown sample
+
+During code development, the Poverty Point sample is being used in place of the Jaketown sample until the requisite permissions and access are granted to those collections.
 
 ```{r tv0, echo=TRUE}
 # subset poverty point data
