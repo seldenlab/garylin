@@ -1,6 +1,6 @@
 --- 
 title: "Supplementary data for paper: A pilot study of linear metrics for previously-defined type-varieties of Gary dart points"
-author: "Robert Z. Selden, Jr."
+author: "Robert Z. Selden, Jr.; Christian S. Hoggard; and John E. Dockall"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

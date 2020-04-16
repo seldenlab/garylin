@@ -21,10 +21,10 @@
   <meta name="twitter:description" content="This pilot study is focused upon the analysis of linear metrics for whole/intact specimens of Gary dart points from the Poverty Point, Cooper, and Means sites in advance of a geometric morphometric study." />
   
 
-<meta name="author" content="Robert Z. Selden, Jr." />
+<meta name="author" content="Robert Z. Selden, Jr.; Christian S. Hoggard; and John E. Dockall" />
 
 
-<meta name="date" content="2020-03-25" />
+<meta name="date" content="2020-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -405,8 +405,8 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 <a class="sourceLine" id="cb78-56" title="56"><span class="st">  }</span></a>
 <a class="sourceLine" id="cb78-57" title="57"><span class="st">&quot;</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:vizdiag"></span>
-<div id="htmlwidget-b3b9cc73b0b902d97b2d" style="width:100%;height:1500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b3b9cc73b0b902d97b2d">{"x":{"diagram":"\n  digraph{\n\n    node[shape = ellipse\n          fontname = lato\n          penwidth = 0.2\n          style = filled\n          fillcolor = White]\n    \n    Gary\n  \n    node[shape = circle\n         fontname = lato\n         style = filled\n         fillcolor = WhiteSmoke]\n   45; 70; 79; 55; 75; 35; 50\n    \n    node[shape = doublecircle\n         fontname = lato\n         style = filled\n         fillcolor = White]\n    22; 31; 32; 48; 36; 20; 30\n    \n    node[shape = folder\n         style = filled\n         fillcolor = Gainsboro]\n     Gnv; GS; TyGS; BGS; ThGS; SGS\n    \n    edge[fontname = lato\n         penwidth = 0.2]\n    Gary->Gnv [label = \"start no var\"];\n    Gnv->55 [label = \"if L >=\"]\n    55->75 [label = \"and L <=\"]\n    75->30 [label = \"and if W >=\"]\n    30->36 [label = \"and W <=\"]\n    36->ThGS [label = \"then\"]\n    Gnv->35 [label = \"if L >=\"]\n    35->50 [label = \"and L <=\"]\n    50->20 [label = \"and if W >=\"]\n    20->30 [label = \"and W <=\"]\n    30->SGS [label = \"then\"]\n    Gnv->45 [label = \"if L >=\"]\n    45->70 [label = \"and L <=\"]\n    70->22 [label = \"and if W >=\"]\n    22->31 [label = \"and W <=\"]            \n    31->GS [label = \"then\"]\n    45->79 [label = \"and L <=\"]\n    79->22 [label = \"and if W >=\"]\n    31->TyGS [label = \"then\"]\n    70->32 [label = \"and if W >=\"]\n    32->48 [label = \"and W <=\"]\n    48->BGS [label = \"then\"]\n\n    graph[nodesep = 0.75]\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-799417877b9b60b88ab1" style="width:100%;height:1500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-799417877b9b60b88ab1">{"x":{"diagram":"\n  digraph{\n\n    node[shape = ellipse\n          fontname = lato\n          penwidth = 0.2\n          style = filled\n          fillcolor = White]\n    \n    Gary\n  \n    node[shape = circle\n         fontname = lato\n         style = filled\n         fillcolor = WhiteSmoke]\n   45; 70; 79; 55; 75; 35; 50\n    \n    node[shape = doublecircle\n         fontname = lato\n         style = filled\n         fillcolor = White]\n    22; 31; 32; 48; 36; 20; 30\n    \n    node[shape = folder\n         style = filled\n         fillcolor = Gainsboro]\n     Gnv; GS; TyGS; BGS; ThGS; SGS\n    \n    edge[fontname = lato\n         penwidth = 0.2]\n    Gary->Gnv [label = \"start no var\"];\n    Gnv->55 [label = \"if L >=\"]\n    55->75 [label = \"and L <=\"]\n    75->30 [label = \"and if W >=\"]\n    30->36 [label = \"and W <=\"]\n    36->ThGS [label = \"then\"]\n    Gnv->35 [label = \"if L >=\"]\n    35->50 [label = \"and L <=\"]\n    50->20 [label = \"and if W >=\"]\n    20->30 [label = \"and W <=\"]\n    30->SGS [label = \"then\"]\n    Gnv->45 [label = \"if L >=\"]\n    45->70 [label = \"and L <=\"]\n    70->22 [label = \"and if W >=\"]\n    22->31 [label = \"and W <=\"]            \n    31->GS [label = \"then\"]\n    45->79 [label = \"and L <=\"]\n    79->22 [label = \"and if W >=\"]\n    31->TyGS [label = \"then\"]\n    70->32 [label = \"and if W >=\"]\n    32->48 [label = \"and W <=\"]\n    48->BGS [label = \"then\"]\n\n    graph[nodesep = 0.75]\n  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 4.2: Logic graph used to visualize the process of assigning type-varieties based upon linear metrics.
 </p>
@@ -440,12 +440,19 @@ Figure 4.2: Logic graph used to visualize the process of assigning type-varietie
 <a class="sourceLine" id="cb79-23" title="23"></a>
 <a class="sourceLine" id="cb79-24" title="24">tv0&lt;-jmx<span class="op">$</span>tv0</a>
 <a class="sourceLine" id="cb79-25" title="25">tv0</a></code></pre></div>
-<pre><code>##  [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot;
-## [12] &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
-## [23] &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
-## [34] &quot;TyGS&quot; &quot;BGS&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot; 
-## [45] &quot;SGS&quot;  &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot; 
-## [56] &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;</code></pre>
+<pre><code>##   [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot;
+##  [10] &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
+##  [19] &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot;
+##  [28] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;BGS&quot;  &quot;TyGS&quot;
+##  [37] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot; 
+##  [46] &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;BGS&quot;  &quot;SGS&quot; 
+##  [55] &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot; 
+##  [64] &quot;SGS&quot;  &quot;Gnv&quot;  &quot;BGS&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;SGS&quot; 
+##  [73] &quot;Gnv&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;Gnv&quot;  &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot;
+##  [82] &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;TyGS&quot; &quot;Gnv&quot;  &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot;
+##  [91] &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;ThGS&quot; &quot;SGS&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;SGS&quot; 
+## [100] &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;SGS&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
+## [109] &quot;SGS&quot;  &quot;TyGS&quot; &quot;Gnv&quot;  &quot;SGS&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;</code></pre>
 </div>
 <div id="boxplots-for-site-by-ford-phillips-and-haags--rn20899-gary-type-varieties" class="section level2">
 <h2><span class="header-section-number">4.5</span> Boxplots for site by Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> Gary type-varieties</h2>
@@ -583,10 +590,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0      4 3256.9 814.21 0.54881 17.942 3.9043  1e-04 ***
-## Residuals 59 2677.5  45.38 0.45119                         
-## Total     63 5934.4                                        
+##            Df    SS      MS     Rsq      F      Z Pr(&gt;F)    
+## j.tv0       4  6458 1614.49 0.46264 23.676 4.2277  1e-04 ***
+## Residuals 110  7501   68.19 0.53736                         
+## Total     114 13959                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -607,31 +614,31 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   49.71877
-## TyGS 64.83232
-## BGS  49.71877
-## ThGS 45.20059
-## SGS  57.95582
+## GS   50.54521
+## TyGS 66.54197
+## BGS  50.54521
+## ThGS 45.16947
+## SGS  59.60231
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   43.52476
-## TyGS 61.39407
-## BGS  43.52476
-## ThGS 42.09993
-## SGS  52.72822
+## GS   43.63540
+## TyGS 63.33433
+## BGS  43.63540
+## ThGS 41.90463
+## SGS  55.36906
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   57.18866
-## TyGS 68.52566
-## BGS  57.18866
-## ThGS 48.63331
-## SGS  64.15411</code></pre>
+## GS   58.53110
+## TyGS 70.00061
+## BGS  58.53110
+## ThGS 48.45472
+## SGS  64.16316</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxl-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
@@ -648,17 +655,17 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv    8.202000 13.835433  0.5788008 0.2587
-## BGS:SGS    4.573750 11.707552 -0.1022504 0.4702
-## BGS:ThGS  15.042308 12.061641  2.7000891 0.0120
-## BGS:TyGS   9.255926 11.288278  1.2857534 0.1202
-## Gnv:SGS   12.775750  9.809825  2.9163694 0.0095
-## Gnv:ThGS   6.840308 10.014023  0.8753376 0.1874
-## Gnv:TyGS   1.053926  9.128011 -0.9891383 0.8316
-## SGS:ThGS  19.616058  6.970952  7.8126181 0.0001
-## SGS:TyGS  13.829676  5.946205  6.2588412 0.0001
-## ThGS:TyGS  5.786382  6.420657  1.6093651 0.0774</code></pre>
+##                    d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv    9.0264286 12.127018  1.0724972 0.1492
+## BGS:SGS    5.4305556 11.558801  0.1914608 0.3623
+## BGS:ThGS  15.9450000 11.665340  3.1379709 0.0067
+## BGS:TyGS   8.1752222 11.234447  1.0244996 0.1570
+## Gnv:SGS   14.4569841  7.067009  5.3084975 0.0002
+## Gnv:ThGS   6.9185714  7.179720  1.7886274 0.0614
+## Gnv:TyGS   0.8512063  6.738968 -0.9128385 0.8085
+## SGS:ThGS  21.3755556  6.019508 10.1876180 0.0001
+## SGS:TyGS  13.6057778  5.276707  7.0577704 0.0001
+## ThGS:TyGS  7.7697778  5.403833  3.3681160 0.0042</code></pre>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
 <a class="sourceLine" id="cb97-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
@@ -672,17 +679,17 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##           r        angle    UCL (95%)          Z Pr &gt; angle
-## BGS:Gnv   1 8.537736e-07 8.537736e-07  1.2222743    0.20100
-## BGS:SGS   1 0.000000e+00 8.537736e-07 -0.7539312    0.68400
-## BGS:ThGS  1 0.000000e+00 8.537736e-07 -0.7444567    0.68110
-## BGS:TyGS  1 0.000000e+00 8.537736e-07 -0.7334114    0.67770
-## Gnv:SGS   1 8.537736e-07 8.537736e-07  1.1610444    0.21350
-## Gnv:ThGS  1 8.537736e-07 8.537736e-07  1.1738057    0.21080
-## Gnv:TyGS  1 8.537736e-07 8.537736e-07  1.1891737    0.20765
-## SGS:ThGS  1 0.000000e+00 8.537736e-07 -0.7747801    0.69070
-## SGS:TyGS  1 0.000000e+00 8.537736e-07 -0.7637240    0.68735
-## ThGS:TyGS 1 0.000000e+00 8.537736e-07 -0.7563550    0.68505</code></pre>
+##           r angle    UCL (95%)          Z Pr &gt; angle
+## BGS:Gnv   1     0 8.537736e-07 -0.7366210    0.67865
+## BGS:SGS   1     0 8.537736e-07 -0.7482865    0.68240
+## BGS:ThGS  1     0 8.537736e-07 -0.7383502    0.67910
+## BGS:TyGS  1     0 8.537736e-07 -0.7503028    0.68310
+## Gnv:SGS   1     0 8.537736e-07 -0.7627412    0.68690
+## Gnv:ThGS  1     0 8.537736e-07 -0.7507391    0.68305
+## Gnv:TyGS  1     0 8.537736e-07 -0.7647752    0.68760
+## SGS:ThGS  1     0 8.537736e-07 -0.7653962    0.68760
+## SGS:TyGS  1     0 8.537736e-07 -0.7799259    0.69225
+## ThGS:TyGS 1     0 8.537736e-07 -0.7616503    0.68670</code></pre>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
 <a class="sourceLine" id="cb99-2" title="2"><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
@@ -695,21 +702,21 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Observed variances by group
 ## 
-##       BGS       Gnv       SGS      ThGS      TyGS 
-##  10.95407 231.98634  10.77216  21.79628  38.11191 
+##        BGS        Gnv        SGS       ThGS       TyGS 
+##   9.106625 342.260255  13.521921  31.697176  33.676242 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                     d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   221.0322693 137.39099  4.2931918 0.0031
-## BGS:SGS     0.1819057 109.58685 -0.9993246 0.9968
-## BGS:ThGS   10.8422126 111.33476 -0.7057040 0.7970
-## BGS:TyGS   27.1578390 108.26801 -0.2195305 0.5106
-## Gnv:SGS   221.2141751  89.64848  6.9274689 0.0001
-## Gnv:ThGS  210.1900567  90.29874  6.3047705 0.0001
-## Gnv:TyGS  193.8744304  87.76304  6.2407980 0.0003
-## SGS:ThGS   11.0241184  57.66377 -0.7530169 0.7207
-## SGS:TyGS   27.3397447  47.35996  0.4626217 0.2943
-## ThGS:TyGS  16.3156263  51.91995 -0.3638797 0.5677</code></pre>
+##                    d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   333.153630 185.73064  4.1844527 0.0054
+## BGS:SGS     4.415296 175.24172 -0.9329033 0.9571
+## BGS:ThGS   22.590551 174.75830 -0.6251515 0.7412
+## BGS:TyGS   24.569617 170.55697 -0.5869554 0.7534
+## Gnv:SGS   328.738334 102.53744  8.9338903 0.0001
+## Gnv:ThGS  310.563079 104.05987  8.3347778 0.0001
+## Gnv:TyGS  308.584013  94.42489  9.0935706 0.0001
+## SGS:ThGS   18.175255  85.58937 -0.6647821 0.6895
+## SGS:TyGS   20.154321  74.26247 -0.4952563 0.6246
+## ThGS:TyGS   1.979066  75.95510 -1.2904191 0.9603</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># anova = maximum length ~ tv0</span></a>
 <a class="sourceLine" id="cb101-2" title="2">t0ml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb101-3" title="3"><span class="kw">anova</span>(t0ml)</a></code></pre></div>
@@ -721,10 +728,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## tv0        4 3256.9 814.21 0.54881 17.942 3.9043  1e-04 ***
-## Residuals 59 2677.5  45.38 0.45119                         
-## Total     63 5934.4                                        
+##            Df    SS      MS     Rsq      F      Z Pr(&gt;F)    
+## tv0         4  6458 1614.49 0.46264 23.676 4.2277  1e-04 ***
+## Residuals 110  7501   68.19 0.53736                         
+## Total     114 13959                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -741,10 +748,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## tv0        4  570.85 142.712 0.48489 13.885 3.4853  1e-04 ***
-## Residuals 59  606.41  10.278 0.51511                         
-## Total     63 1177.26                                         
+##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
+## tv0         4  972.85 243.213 0.45267 22.744 4.2205  1e-04 ***
+## Residuals 110 1176.26  10.693 0.54733                         
+## Total     114 2149.11                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -761,10 +768,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df      SS     MS     Rsq      F      Z Pr(&gt;F)  
-## tv0        4  34.118 8.5295 0.12858 2.1765 1.2448 0.0835 .
-## Residuals 59 231.217 3.9189 0.87142                       
-## Total     63 265.335                                      
+##            Df     SS      MS     Rsq     F      Z Pr(&gt;F)   
+## tv0         4  90.33 22.5819 0.16835 5.567 2.4172 0.0015 **
+## Residuals 110 446.20  4.0564 0.83165                       
+## Total     114 536.53                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -781,10 +788,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df     SS     MS    Rsq      F      Z Pr(&gt;F)  
-## tv0        4 143.33 35.832 0.1819 3.2796 1.7418 0.0197 *
-## Residuals 59 644.61 10.926 0.8181                       
-## Total     63 787.94                                     
+##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)  
+## tv0         4  128.5 32.124 0.09183 2.7807 1.5649 0.0314 *
+## Residuals 110 1270.8 11.552 0.90817                       
+## Total     114 1399.3                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -801,10 +808,10 @@ Figure 4.4: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##           Df     SS     MS     Rsq      F      Z Pr(&gt;F)  
-## tv0        4 110.27 27.568 0.14201 2.4414 1.3848  0.057 .
-## Residuals 59 666.22 11.292 0.85799                       
-## Total     63 776.50                                      
+##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
+## tv0         4  206.45 51.612 0.15479 5.0363 2.3257  8e-04 ***
+## Residuals 110 1127.27 10.248 0.84521                         
+## Total     114 1333.72                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
