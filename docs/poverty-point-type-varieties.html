@@ -311,7 +311,7 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 <p>Each of the three type-varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for <em>Gary Large</em>; between 46 to 79 mm in maxl. Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> also noted ranges in width and thickness values, which they did not use to make their assignments. Those range between 20 and 45 mm in maxw for <em>Gary Medium/Typical</em>; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for <em>Gary Small</em> <span class="citation">(Ford and Webb <a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span>.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># Ford and Webb (1956)</span></a>
 <a class="sourceLine" id="cb113-2" title="2">fwebbl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
-<a class="sourceLine" id="cb113-3" title="3">           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">33</span>), <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb113-3" title="3">           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">30</span>), <span class="co"># in mm (Gary Small changed from 33 to 30)</span></a>
 <a class="sourceLine" id="cb113-4" title="4">           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">140</span>,<span class="dv">80</span>,<span class="dv">45</span>) <span class="co"># in mm</span></a>
 <a class="sourceLine" id="cb113-5" title="5">)</a>
 <a class="sourceLine" id="cb113-6" title="6">fwebblength&lt;-<span class="kw">ggplot</span>(fwebbl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
@@ -356,7 +356,7 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 <a class="sourceLine" id="cb114-4" title="4"><span class="co"># assign varieties based upon reported metrics in Ford and Webb [1956]</span></a>
 <a class="sourceLine" id="cb114-5" title="5">lcheck1 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">140</span></a>
 <a class="sourceLine" id="cb114-6" title="6">lcheck2 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">46</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span></a>
-<a class="sourceLine" id="cb114-7" title="7">lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">33</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></a>
+<a class="sourceLine" id="cb114-7" title="7">lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></a>
 <a class="sourceLine" id="cb114-8" title="8"></a>
 <a class="sourceLine" id="cb114-9" title="9">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></a>
 <a class="sourceLine" id="cb114-10" title="10">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck1, <span class="st">&quot;L&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
@@ -375,7 +375,7 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 ##  [78] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;L&quot;   &quot;M/T&quot;
 ##  [89] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ## [100] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
-## [111] &quot;Gnv&quot; &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;</code></pre>
+## [111] &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;</code></pre>
 </div>
 <div id="boxplots-for-ford-and-webbs--rn20898-type-varieties-of-gary-dart-points-from-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.3</span> Boxplots for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties of Gary dart points from Poverty Point</h2>
@@ -442,60 +442,55 @@ Figure 5.2: Boxplots for a, maximum length; b, width; c, thickness; d, stem leng
 <a class="sourceLine" id="cb119-10" title="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb119-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb119-12" title="12"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></a></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
 <p><img src="gt-v_files/figure-html/ppdensity1-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># density plot of maxw by tv1</span></a>
-<a class="sourceLine" id="cb121-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb121-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb121-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb121-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co"># density plot of maxw by tv1</span></a>
+<a class="sourceLine" id="cb120-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensityw-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-thickness-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Density plot for maximum thickness by tv1</h3>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="co"># density plot of maxth by tv1</span></a>
-<a class="sourceLine" id="cb123-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb123-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb123-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb123-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># density plot of maxth by tv1</span></a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensityth-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1-1" class="section level3">
 <h3><span class="header-section-number">5.4.4</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># density plot of maxstl by tv1</span></a>
-<a class="sourceLine" id="cb125-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb125-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb125-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb125-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co"># density plot of maxstl by tv1</span></a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensitystl-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1-2" class="section level3">
 <h3><span class="header-section-number">5.4.5</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="co"># density plot of maxstw by tv1</span></a>
-<a class="sourceLine" id="cb127-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb127-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb127-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb127-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="co"># density plot of maxstw by tv1</span></a>
+<a class="sourceLine" id="cb123-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensitystw-1.png" width="100%" /></p>
 </div>
 </div>
 <div id="principal-components-analysis-for-ford-and-webbs--rn20898-type-varieties-at-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.5</span> Principal Components Analysis for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties at Poverty Point</h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="co">#pca</span></a>
-<a class="sourceLine" id="cb129-2" title="2">df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
-<a class="sourceLine" id="cb129-3" title="3">t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</a>
-<a class="sourceLine" id="cb129-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
-<a class="sourceLine" id="cb129-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb129-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb129-7" title="7"><span class="co">#render figure</span></a>
-<a class="sourceLine" id="cb129-8" title="8">t1pca</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co">#pca</span></a>
+<a class="sourceLine" id="cb124-2" title="2">df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb124-3" title="3">t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</a>
+<a class="sourceLine" id="cb124-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
+<a class="sourceLine" id="cb124-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb124-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb124-7" title="7"><span class="co">#render figure</span></a>
+<a class="sourceLine" id="cb124-8" title="8">t1pca</a></code></pre></div>
 <div class="figure"><span id="fig:pca"></span>
 <img src="gt-v_files/figure-html/pca-1.png" alt="PCA by Gary type-varieties reported by Ford and Webb (1956) at Poverty Point." width="100%" />
 <p class="caption">
@@ -507,9 +502,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 <h2><span class="header-section-number">5.6</span> Analyses of Variance (ANOVA) for <em>linear variables</em> ~ <em>type-varieties</em></h2>
 <div id="maximum-length-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> <em>Maximum length</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
-<a class="sourceLine" id="cb130-2" title="2">t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb130-3" title="3"><span class="kw">anova</span>(t1ml)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
+<a class="sourceLine" id="cb125-2" title="2">t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb125-3" title="3"><span class="kw">anova</span>(t1ml)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -518,20 +513,20 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df    SS      MS     Rsq      F      Z Pr(&gt;F)    
-## pp.tv1      3  8375 2791.66 0.59997 55.493 4.4971  1e-04 ***
-## Residuals 111  5584   50.31 0.40003                         
-## Total     114 13959                                         
+##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
+## pp.tv1      2  8266.6 4133.3 0.59221 81.325 3.7926  1e-04 ***
+## Residuals 112  5692.4   50.8 0.40779                         
+## Total     114 13959.0                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = pp.maxl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb132-2" title="2">pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</a>
-<a class="sourceLine" id="cb132-3" title="3"><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</a>
-<a class="sourceLine" id="cb132-4" title="4">ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</a>
-<a class="sourceLine" id="cb132-5" title="5">ppPreds</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb127-2" title="2">pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</a>
+<a class="sourceLine" id="cb127-3" title="3"><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</a>
+<a class="sourceLine" id="cb127-4" title="4">ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</a>
+<a class="sourceLine" id="cb127-5" title="5">ppPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -542,35 +537,82 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   31.71063
-## M/T 84.21306
-## S   58.82111
+## L   83.84351
+## M/T 58.45225
+## S   41.48500
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   20.96607
-## M/T 77.78314
-## S   57.32171
+## L   77.35672
+## M/T 57.00367
+## S   38.56933
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   45.86443
-## M/T 91.32650
-## S   60.31230</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+## L   91.00783
+## M/T 59.91455
+## S   44.42210</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># pairwise comparisons not possible until more than one specimen falls within each category</span></a>
-<a class="sourceLine" id="cb135-2" title="2"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
-<a class="sourceLine" id="cb135-3" title="3"><span class="co">#pp.ml&lt;-pairwise(t1ml, groups = pvptmx$tv1)</span></a>
-<a class="sourceLine" id="cb135-4" title="4"><span class="co">#summary(pp.ml, confidence = 0.95, test.type = &quot;dist&quot;)</span></a>
-<a class="sourceLine" id="cb135-5" title="5"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb135-6" title="6"><span class="co">#summary(pp.ml, confidence = 0.95, test.type = &quot;VC&quot;, angle.type = &quot;deg&quot;)</span></a>
-<a class="sourceLine" id="cb135-7" title="7"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb135-8" title="8"><span class="co">#summary(pp.ml, confidence = 0.95, test.type = &quot;var&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
+<a class="sourceLine" id="cb130-2" title="2">pp.ml&lt;-<span class="kw">pairwise</span>(t1ml, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</a>
+<a class="sourceLine" id="cb130-3" title="3"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: L M/T S 
+## 
+## RRPP: 10000 permutations
+## 
+## LS means:
+## Vectors hidden (use show.vectors = TRUE to view)
+## 
+## Pairwise distances between means, plus statistics
+##              d UCL (95%)         Z Pr &gt; d
+## L:M/T 25.37508 11.338860  6.027520  1e-04
+## L:S   42.34205 11.722898 10.334613  1e-04
+## M/T:S 16.96696  5.157368  9.349122  1e-04</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb132-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: L M/T S 
+## 
+## RRPP: 10000 permutations
+## 
+## LS means:
+## Vectors hidden (use show.vectors = TRUE to view)
+## 
+## Pairwise statistics based on mean vector correlations
+##       r angle    UCL (95%)          Z Pr &gt; angle
+## L:M/T 1     0 8.537736e-07 -0.7400724     0.6799
+## L:S   1     0 8.537736e-07 -0.7452610     0.6813
+## M/T:S 1     0 8.537736e-07 -0.7645579     0.6876</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb134-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: L M/T S 
+## 
+## RRPP: 10000 permutations
+## 
+## 
+## Observed variances by group
+## 
+##        L      M/T        S 
+## 30.01472 59.35210 13.18021 
+## 
+## Pairwise distances between variances, plus statistics
+##              d UCL (95%)          Z Pr &gt; d
+## L:M/T 29.33738  58.54236  0.2379734 0.3617
+## L:S   16.83451  63.23886 -0.4831369 0.6267
+## M/T:S 46.17188  27.71542  4.0620984 0.0011</code></pre>
 </div>
 <div id="maximum-width-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> <em>Maximum width</em> ~ <em>type-variety</em> at Poverty Point</h3>
@@ -586,8 +628,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## pp.tv1      3  364.75 121.583 0.16972 7.5633 2.4984  5e-04 ***
-## Residuals 111 1784.36  16.075 0.83028                         
+## pp.tv1      2  345.23 172.616 0.16064 10.717 2.2861  2e-04 ***
+## Residuals 112 1803.88  16.106 0.83936                         
 ## Total     114 2149.11                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -607,25 +649,25 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   20.50620
-## M/T 32.41598
-## S   28.67512
+## L   32.25978
+## M/T 28.51921
+## S   24.63772
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   13.31021
-## M/T 28.53045
-## S   27.81725
+## L   28.39419
+## M/T 27.70614
+## S   22.98711
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   27.86674
-## M/T 36.18024
-## S   29.53125</code></pre>
+## L   36.05426
+## M/T 29.32760
+## S   26.29526</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxw-x-tv-1.png" width="100%" /></p>
 </div>
@@ -642,10 +684,10 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS      MS     Rsq      F      Z Pr(&gt;F)  
-## pp.tv1      3  72.08 24.0268 0.13434 5.7422 2.1099 0.0112 *
-## Residuals 111 464.45  4.1843 0.86566                       
-## Total     114 536.53                                       
+##            Df     SS     MS     Rsq      F     Z Pr(&gt;F)   
+## pp.tv1      2  67.96 33.982 0.12667 8.1226 2.074 0.0022 **
+## Residuals 112 468.57  4.184 0.87333                       
+## Total     114 536.53                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -663,26 +705,26 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Predicted values:
 ## 
-##         [,1]
-## L   10.89047
-## M/T 12.49642
-## S   10.54234
+##          [,1]
+## L   12.568915
+## M/T 10.614705
+## S    8.973022
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## L    7.815292
-## M/T 10.779017
-## S   10.116306
+## L   10.848370
+## M/T 10.204670
+## S    8.179496
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
-##         [,1]
-## L   15.35251
-## M/T 14.81109
-## S   10.98598</code></pre>
+##          [,1]
+## L   14.861018
+## M/T 11.045800
+## S    9.886202</code></pre>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxth-x-tv-1.png" width="100%" /></p>
 </div>
@@ -699,9 +741,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS    MS     Rsq      F      Z Pr(&gt;F)   
-## pp.tv1      3  186.03 62.01 0.13295 5.6734 2.0831 0.0016 **
-## Residuals 111 1213.24 10.93 0.86705                        
+##            Df      SS     MS     Rsq     F      Z Pr(&gt;F)   
+## pp.tv1      2  164.26 82.128 0.11739 7.448 2.0006 0.0016 **
+## Residuals 112 1235.01 11.027 0.88261                       
 ## Total     114 1399.27                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -720,26 +762,26 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Predicted values:
 ## 
-##          [,1]
-## L    8.207566
-## M/T 17.186133
-## S   15.638889
+##         [,1]
+## L   17.02024
+## M/T 15.47331
+## S   12.59530
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
-##          [,1]
-## L    2.098764
-## M/T 14.120128
-## S   14.931844
+##         [,1]
+## L   13.95401
+## M/T 14.79760
+## S   11.24718
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   15.15513
-## M/T 20.51614
-## S   16.37358</code></pre>
+## L   20.37480
+## M/T 16.17334
+## S   13.97647</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxstl-x-tv-1.png" width="100%" /></p>
 </div>
@@ -756,10 +798,10 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)   
-## pp.tv1      3  177.76 59.253 0.13328 5.6897 2.1435  0.001 **
-## Residuals 111 1155.96 10.414 0.86672                        
-## Total     114 1333.72                                       
+##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
+## pp.tv1      2  174.53 87.265 0.13086 8.4315 2.1001  7e-04 ***
+## Residuals 112 1159.19 10.350 0.86914                         
+## Total     114 1333.72                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -778,25 +820,25 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   15.31338
-## M/T 23.36625
-## S   19.40629
+## L   23.30297
+## M/T 19.34313
+## S   16.98705
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   10.39943
-## M/T 20.46761
-## S   18.69777
+## L   20.42674
+## M/T 18.67761
+## S   15.69019
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   22.33236
-## M/T 26.58140
-## S   20.09274</code></pre>
+## L   26.52993
+## M/T 20.01401
+## S   18.34996</code></pre>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxstw-x-tv-1.png" width="100%" /></p>
 

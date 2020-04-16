@@ -34,7 +34,7 @@ Each of the three type-varieties proposed by Ford and Webb [-@RN20898] was based
 ```{r fordwebbgantt, out.width = "100%", dpi = 300, echo=TRUE,fig.cap = "Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford and Webb (1956)."}
 # Ford and Webb (1956)
 fwebbl<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall'),
-           Length=c(80,46,33), # in mm
+           Length=c(80,46,30), # in mm (Gary Small changed from 33 to 30)
            end=c(140,80,45) # in mm
 )
 fwebblength<-ggplot(fwebbl,aes(x=Length,xend=end,y=Name,yend=Name,color=Name)) +
@@ -76,7 +76,7 @@ pvptmx<-subset(data,Site=="Pov Pt",select=maxl:maxstw)
 # assign varieties based upon reported metrics in Ford and Webb [1956]
 lcheck1 <- pvptmx$maxl >= 80 & pvptmx$maxl <= 140
 lcheck2 <- pvptmx$maxl >= 46 & pvptmx$maxl < 80
-lcheck3 <- pvptmx$maxl >= 33 & pvptmx$maxl < 46
+lcheck3 <- pvptmx$maxl >= 30 & pvptmx$maxl < 46
 
 pvptmx$tv1 <- "Gnv" # = Gary points (no variety)
 pvptmx$tv1 <- ifelse(lcheck1, "L", pvptmx$tv1)
@@ -214,14 +214,13 @@ rownames(pp.tvDF)<-c("L","M/T","S")
 ppPreds<-predict(t1ml,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
-# pairwise comparisons not possible until more than one specimen falls within each category
 # pairwise comparison of LS means = which sites differ?
-#pp.ml<-pairwise(t1ml, groups = pvptmx$tv1)
-#summary(pp.ml, confidence = 0.95, test.type = "dist")
+pp.ml<-pairwise(t1ml, groups = pvptmx$tv1)
+summary(pp.ml, confidence = 0.95, test.type = "dist")
 # correlation between mean vectors (angles in degrees)
-#summary(pp.ml, confidence = 0.95, test.type = "VC", angle.type = "deg")
+summary(pp.ml, confidence = 0.95, test.type = "VC", angle.type = "deg")
 # pairwise distances between variances = standardization?
-#summary(pp.ml, confidence = 0.95, test.type = "var")
+summary(pp.ml, confidence = 0.95, test.type = "var")
 ```
 
 ### _Maximum width_ ~ _type-variety_ at Poverty Point
