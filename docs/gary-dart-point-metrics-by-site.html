@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Z. Selden, Jr.; Christian S. Hoggard; and John E. Dockall" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2020-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -294,75 +294,32 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 <a class="sourceLine" id="cb3-6" title="6"><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></a>
 <a class="sourceLine" id="cb3-7" title="7"><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></a>
 <a class="sourceLine" id="cb3-8" title="8"><span class="co"># load libraries</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## -- Attaching packages ---------------------------------- tidyverse 1.3.0.9000 --</code></pre>
-<pre><code>## v ggplot2 3.3.0.9000     v purrr   0.3.3     
-## v tibble  3.0.0          v dplyr   0.8.5     
-## v tidyr   1.0.2          v stringr 1.4.0     
-## v readr   1.3.1          v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">library</span>(DiagrammeR)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">library</span>(ggbiplot)</a></code></pre></div>
-<pre><code>## Loading required package: plyr</code></pre>
-<pre><code>## ------------------------------------------------------------------------</code></pre>
-<pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
-## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-## library(plyr); library(dplyr)</code></pre>
-<pre><code>## ------------------------------------------------------------------------</code></pre>
-<pre><code>## 
-## Attaching package: &#39;plyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     arrange, count, desc, failwith, id, mutate, rename,
-##     summarise, summarize</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     compact</code></pre>
-<pre><code>## Loading required package: scales</code></pre>
-<pre><code>## 
-## Attaching package: &#39;scales&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     discard</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     col_factor</code></pre>
-<pre><code>## Loading required package: grid</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">library</span>(RRPP)</a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="kw">library</span>(ggpubr)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;ggpubr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:plyr&#39;:
-## 
-##     mutate</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">library</span>(ggfortify)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;ggfortify&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggbiplot&#39;:
-## 
-##     ggbiplot</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">library</span>(cluster)</a></code></pre></div>
+<a class="sourceLine" id="cb3-9" title="9"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="kw">library</span>(ggbiplot)</a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="kw">library</span>(RRPP)</a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="kw">library</span>(ggpubr)</a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="kw">library</span>(ggfortify)</a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="kw">library</span>(cluster)</a></code></pre></div>
 <div id="set-working-directory-load-data-and-define-variables" class="section level2">
 <h2><span class="header-section-number">3.1</span> Set working directory, load data, and define variables</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># set working directory</span></a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
-<a class="sourceLine" id="cb27-3" title="3">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb27-4" title="4"><span class="co"># define variables</span></a>
-<a class="sourceLine" id="cb27-5" title="5">maxl&lt;-data<span class="op">$</span>maxl <span class="co"># maximum length</span></a>
-<a class="sourceLine" id="cb27-6" title="6">maxw&lt;-data<span class="op">$</span>maxw <span class="co"># maximum width</span></a>
-<a class="sourceLine" id="cb27-7" title="7">maxth&lt;-data<span class="op">$</span>maxth <span class="co"># maximum thickness</span></a>
-<a class="sourceLine" id="cb27-8" title="8">maxstl&lt;-data<span class="op">$</span>maxstl <span class="co"># maximum stem length</span></a>
-<a class="sourceLine" id="cb27-9" title="9">maxstw&lt;-data<span class="op">$</span>maxstw <span class="co"># maximum stem width</span></a>
-<a class="sourceLine" id="cb27-10" title="10">site&lt;-data<span class="op">$</span>Site <span class="co"># site name</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># set working directory</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
+<a class="sourceLine" id="cb4-3" title="3">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co"># define variables</span></a>
+<a class="sourceLine" id="cb4-5" title="5">maxl&lt;-data<span class="op">$</span>maxl <span class="co"># maximum length</span></a>
+<a class="sourceLine" id="cb4-6" title="6">maxw&lt;-data<span class="op">$</span>maxw <span class="co"># maximum width</span></a>
+<a class="sourceLine" id="cb4-7" title="7">maxth&lt;-data<span class="op">$</span>maxth <span class="co"># maximum thickness</span></a>
+<a class="sourceLine" id="cb4-8" title="8">maxstl&lt;-data<span class="op">$</span>maxstl <span class="co"># maximum stem length</span></a>
+<a class="sourceLine" id="cb4-9" title="9">maxstw&lt;-data<span class="op">$</span>maxstw <span class="co"># maximum stem width</span></a>
+<a class="sourceLine" id="cb4-10" title="10">site&lt;-data<span class="op">$</span>Site <span class="co"># site name</span></a></code></pre></div>
 <div id="calculate-dart-arrow-index-rn20881" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Calculate dart-arrow index <span class="citation">(Hildebrandt and King <a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span></h3>
 <p>Others have noted the gradual diminution in the size of Gary dart points through time <span class="citation">(Baerreis <a href="#ref-RN20896" role="doc-biblioref">1951</a>; Ford and Webb <a href="#ref-RN20898" role="doc-biblioref">1956</a>; Schambach <a href="#ref-RN3132" role="doc-biblioref">1998</a>; Densmore <a href="#ref-RN20874" role="doc-biblioref">2007</a>)</span>, thus it was necessary to begin by asking whether the size of those points aggregated for this study may fall below the arbitrary 11.8 mm dart-arrow index (DAI) threshold posited by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. The temporal span associated with morphologically-diagnostic Gary dart points is thought to transcend the cultural shift in subsistence practices from hunter-gatherer to emergent horticulturalist, and overlaps temporally with the advent and flourescence of the bow and arrow.</p>
 <p>Stem width (neck width) and thickness are among those variables included in this study, and can be used to identify whether Gary dart points may transcend the threshold between dart and arrow points <span class="citation">(Hildebrandt and King <a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. The dart-arrow index was calculated for all specimens of Gary dart points used in this study, and none fall below the dart-arrow threshold posited by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. It is noteworthy that others <span class="citation">(Erlandson, Watts, and Jew <a href="#ref-RN20880" role="doc-biblioref">2014</a>)</span> have found that the DAI may not be universally applicable; however, the DAI and the threshold identified by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span> is a useful heuristic in this instance.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># calculate dart-arrow index (max stem width + max thickness)</span></a>
-<a class="sourceLine" id="cb28-2" title="2">dai&lt;-maxstw <span class="op">+</span><span class="st"> </span>maxth</a>
-<a class="sourceLine" id="cb28-3" title="3">dai</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># calculate dart-arrow index (max stem width + max thickness)</span></a>
+<a class="sourceLine" id="cb5-2" title="2">dai&lt;-maxstw <span class="op">+</span><span class="st"> </span>maxth</a>
+<a class="sourceLine" id="cb5-3" title="3">dai</a></code></pre></div>
 <pre><code>##   [1] 44.05 42.17 27.59 40.47 37.55 36.55 38.94 34.81 37.01 39.62 37.32
 ##  [12] 32.32 33.60 27.26 28.58 25.96 28.76 28.00 32.85 36.73 38.55 29.36
 ##  [23] 39.01 34.68 28.28 24.73 25.19 28.01 23.81 24.53 20.59 25.92 27.12
@@ -388,79 +345,84 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## [243] 32.55 26.36 24.99 35.60 24.29 32.13 24.38 36.43 27.93 32.92 27.40
 ## [254] 26.19 24.57 26.40 25.75 28.36 26.18 27.49 27.83 23.51 25.02 26.52
 ## [265] 25.51 30.05 30.03 39.25 39.05 33.92 29.66 35.46 33.10 29.63 35.40
-## [276] 29.84 31.37 34.96 27.84 32.89 27.02 29.10 22.95 23.54 23.94 26.74</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># how many observations fall at or below 11.8 mm</span></a>
-<a class="sourceLine" id="cb30-2" title="2">arrow&lt;-<span class="kw">sum</span>(data<span class="op">$</span>dai <span class="op">&lt;=</span><span class="st"> </span><span class="fl">11.8</span>)</a>
-<a class="sourceLine" id="cb30-3" title="3">arrow</a></code></pre></div>
+## [276] 29.84 31.37 34.96 27.84 32.89 27.02 29.10 22.95 23.54 23.94 26.74
+## [287] 29.80 21.49 23.90 33.71 25.18 25.89 31.74 26.67 24.38 26.34 29.85
+## [298] 27.67 22.89 16.18 26.22 20.41 21.08 34.94 34.58 30.68 28.04 29.17
+## [309] 32.08 18.06 28.30 26.80 30.92 28.98 26.72 29.06 39.24 36.00 30.80
+## [320] 34.46 29.56 36.82 32.31 39.98 35.10 39.78 35.27 31.19 33.22 34.62
+## [331] 33.47 27.45 22.60 24.96 37.45 31.47 31.68 33.73</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># how many observations fall at or below 11.8 mm</span></a>
+<a class="sourceLine" id="cb7-2" title="2">arrow&lt;-<span class="kw">sum</span>(data<span class="op">$</span>dai <span class="op">&lt;=</span><span class="st"> </span><span class="fl">11.8</span>)</a>
+<a class="sourceLine" id="cb7-3" title="3">arrow</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
 </div>
 <div id="boxplots-for-variable-by-site" class="section level2">
 <h2><span class="header-section-number">3.2</span> Boxplots for <em>variable</em> by <em>site</em></h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># boxplot of maximum length ~ site</span></a>
-<a class="sourceLine" id="cb32-2" title="2">sitemaxl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb32-6" title="6"><span class="co"># boxplot of maximum width ~ site</span></a>
-<a class="sourceLine" id="cb32-7" title="7">sitemaxw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-8" title="8"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-9" title="9"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-10" title="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb32-11" title="11"><span class="co"># boxplot of maximum thickness ~ site</span></a>
-<a class="sourceLine" id="cb32-12" title="12">sitemaxth&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxth,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-13" title="13"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-14" title="14"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-15" title="15"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb32-16" title="16"><span class="co"># boxplot of stem length ~ site</span></a>
-<a class="sourceLine" id="cb32-17" title="17">sitemaxstl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-18" title="18"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-19" title="19"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-20" title="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb32-21" title="21"><span class="co"># boxplot of stem width ~ site</span></a>
-<a class="sourceLine" id="cb32-22" title="22">sitemaxstw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-23" title="23"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-24" title="24"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb32-25" title="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb32-26" title="26"><span class="co"># render figure</span></a>
-<a class="sourceLine" id="cb32-27" title="27">sitefigure&lt;-<span class="kw">ggarrange</span>(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,</a>
-<a class="sourceLine" id="cb32-28" title="28">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
-<a class="sourceLine" id="cb32-29" title="29">                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># boxplot of maximum length ~ site</span></a>
+<a class="sourceLine" id="cb9-2" title="2">sitemaxl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co"># boxplot of maximum width ~ site</span></a>
+<a class="sourceLine" id="cb9-7" title="7">sitemaxw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co"># boxplot of maximum thickness ~ site</span></a>
+<a class="sourceLine" id="cb9-12" title="12">sitemaxth&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxth,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="co"># boxplot of stem length ~ site</span></a>
+<a class="sourceLine" id="cb9-17" title="17">sitemaxstl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="co"># boxplot of stem width ~ site</span></a>
+<a class="sourceLine" id="cb9-22" title="22">sitemaxstw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="co"># render figure</span></a>
+<a class="sourceLine" id="cb9-27" title="27">sitefigure&lt;-<span class="kw">ggarrange</span>(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,</a>
+<a class="sourceLine" id="cb9-28" title="28">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
+<a class="sourceLine" id="cb9-29" title="29">                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">sitefigure</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">sitefigure</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/boxsite-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">fig.cap =<span class="st"> &quot;Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study.&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">fig.cap =<span class="st"> &quot;Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study.&quot;</span></a></code></pre></div>
 </div>
 <div id="principal-components-analysis-for-site" class="section level2">
 <h2><span class="header-section-number">3.3</span> Principal Components Analysis for <em>site</em></h2>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co">#pca</span></a>
-<a class="sourceLine" id="cb36-2" title="2">df&lt;-data[<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)]</a>
-<a class="sourceLine" id="cb36-3" title="3">sitepca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> data, <span class="dt">colour =</span> <span class="st">&#39;Site&#39;</span>,</a>
-<a class="sourceLine" id="cb36-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
-<a class="sourceLine" id="cb36-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb36-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb36-7" title="7"><span class="co">#render figure</span></a>
-<a class="sourceLine" id="cb36-8" title="8">sitepca</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">#pca</span></a>
+<a class="sourceLine" id="cb13-2" title="2">df&lt;-data[<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)]</a>
+<a class="sourceLine" id="cb13-3" title="3">sitepca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> data, <span class="dt">colour =</span> <span class="st">&#39;Site&#39;</span>,</a>
+<a class="sourceLine" id="cb13-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
+<a class="sourceLine" id="cb13-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb13-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">#render figure</span></a>
+<a class="sourceLine" id="cb13-8" title="8">sitepca</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pcasite-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">fig.cap =<span class="st"> &quot;PCA by site.&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">fig.cap =<span class="st"> &quot;PCA by site.&quot;</span></a></code></pre></div>
 </div>
 <div id="analyses-of-variance-anova-for-variable-site" class="section level2">
 <h2><span class="header-section-number">3.4</span> Analyses of Variance (ANOVA) for <em>variable</em> ~ <em>site</em></h2>
 <div id="maximum-length-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> <em>Maximum length</em> of Gary points</h3>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># density plot for maxl by site</span></a>
-<a class="sourceLine" id="cb38-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxl, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb38-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb38-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb38-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">150</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># density plot for maxl by site</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxl, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">150</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxl-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># anova = maximum length ~ site</span></a>
-<a class="sourceLine" id="cb39-2" title="2">siteml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb39-3" title="3"><span class="kw">anova</span>(siteml)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># anova = maximum length ~ site</span></a>
+<a class="sourceLine" id="cb16-2" title="2">siteml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="kw">anova</span>(siteml)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -470,19 +432,19 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df    SS     MS     Rsq      F      Z Pr(&gt;F)   
-## Site        2  1792 896.10 0.04457 6.6015 1.9158  0.002 **
-## Residuals 283 38415 135.74 0.95543                        
-## Total     285 40207                                       
+## Site        2  1421 710.60 0.03025 5.2244 1.7324 0.0061 **
+## Residuals 335 45565 136.02 0.96975                        
+## Total     337 46987                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxl ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># visualise model predictions for maximum length ~ site</span></a>
-<a class="sourceLine" id="cb41-2" title="2">siteDF&lt;-<span class="kw">data.frame</span>(<span class="dt">Site =</span> <span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>))</a>
-<a class="sourceLine" id="cb41-3" title="3"><span class="kw">rownames</span>(siteDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>)</a>
-<a class="sourceLine" id="cb41-4" title="4">sitePreds&lt;-<span class="kw">predict</span>(siteml,siteDF)</a>
-<a class="sourceLine" id="cb41-5" title="5">sitePreds</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># visualise model predictions for maximum length ~ site</span></a>
+<a class="sourceLine" id="cb18-2" title="2">siteDF&lt;-<span class="kw">data.frame</span>(<span class="dt">Site =</span> <span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>))</a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">rownames</span>(siteDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>)</a>
+<a class="sourceLine" id="cb18-4" title="4">sitePreds&lt;-<span class="kw">predict</span>(siteml,siteDF)</a>
+<a class="sourceLine" id="cb18-5" title="5">sitePreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -493,30 +455,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 55.68792
-## Means  49.36062
-## Pov Pt 55.49959
+## Cooper 55.68233
+## Means  49.36245
+## Pov Pt 53.48390
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 53.34121
-## Means  46.37964
-## Pov Pt 53.59600
+## Cooper 53.31785
+## Means  46.39635
+## Pov Pt 51.90968
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 58.15419
-## Means  52.40813
-## Pov Pt 57.45927</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
+## Cooper 58.09374
+## Means  52.44590
+## Pov Pt 55.10560</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxl-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
-<a class="sourceLine" id="cb44-2" title="2">site.pwml&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
+<a class="sourceLine" id="cb21-2" title="2">site.pwml&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -528,12 +490,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  3.877761  3.954631 0.0016
-## Cooper:Pov Pt 0.1825845  3.175349 -1.130766 0.9089
-## Means:Pov Pt  6.1505572  3.610613  4.194984 0.0011</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+##                      d UCL (95%)        Z Pr &gt; d
+## Cooper:Means  6.333142  3.964718 3.901736 0.0018
+## Cooper:Pov Pt 2.201292  2.955428 1.087047 0.1464
+## Means:Pov Pt  4.131849  3.472061 2.546287 0.0193</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -545,12 +507,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 0.000000e+00 8.537736e-07 -0.7513138    0.68320
-## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2226305    0.20085
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.2144472    0.20250</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+##               r        angle    UCL (95%)        Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07 1.205306    0.20435
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07 1.216681    0.20210
+## Means:Pov Pt  1 1.207418e-06 8.537736e-07 2.029311    0.02055</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -562,25 +524,143 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 131.33742 
+## 180.31774  70.02501 133.02777 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.29274  91.84657 2.5669511 0.0151
-## Cooper:Pov Pt  48.98032  70.67255 0.8035219 0.2148
-## Means:Pov Pt   61.31242  85.75288 0.9933674 0.1609</code></pre>
+## Cooper:Means  110.29274  90.38321 2.6816725 0.0162
+## Cooper:Pov Pt  47.28997  65.76420 0.9630893 0.1759
+## Means:Pov Pt   63.00277  80.95985 1.2417007 0.1139</code></pre>
 </div>
 <div id="maximum-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> <em>Maximum width</em> of Gary points</h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co"># density plot for maxw by site</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxw, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb50-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">75</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># density plot for maxw by site</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxw, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">75</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxw-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># anova = maximum width ~ site</span></a>
-<a class="sourceLine" id="cb51-2" title="2">sitemw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="kw">anova</span>(sitemw)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># anova = maximum width ~ site</span></a>
+<a class="sourceLine" id="cb28-2" title="2">sitemw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="kw">anova</span>(sitemw)</a></code></pre></div>
+<pre><code>## 
+## Analysis of Variance, using Residual Randomization
+## Permutation procedure: Randomization of null model residuals 
+## Number of permutations: 10000 
+## Estimation method: Ordinary Least Squares 
+## Sums of Squares and Cross-products: Type I 
+## Effect sizes (Z) based on F distributions
+## 
+##            Df      SS     MS     Rsq      F     Z Pr(&gt;F)    
+## Site        2  1382.8 691.40 0.12221 23.319 2.888  1e-04 ***
+## Residuals 335  9932.4  29.65 0.87779                        
+## Total     337 11315.2                                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Call: lm.rrpp(f1 = maxw ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
+##     print.progress = FALSE)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># visualise model predictions for maximum width ~ site</span></a>
+<a class="sourceLine" id="cb30-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemw,siteDF)</a>
+<a class="sourceLine" id="cb30-3" title="3">sitePreds</a></code></pre></div>
+<pre><code>## 
+## Linear Model fit with lm.rrpp
+## 
+## Number of predictions: 3
+## Confidence level: 95 %
+## Number of bootstrap permutations: 10000
+## 
+## Predicted values:
+## 
+##            [,1]
+## Cooper 28.19028
+## Means  22.14584
+## Pov Pt 26.89358
+## 
+## 
+##  95 % Lower confidence limits:
+## 
+##            [,1]
+## Cooper 27.09932
+## Means  20.80883
+## Pov Pt 26.13525
+## 
+## 
+##  95 % Upper confidence limits:
+## 
+##            [,1]
+## Cooper 29.34037
+## Means  23.59232
+## Pov Pt 27.67204</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/anovasitemaxw-2.png" width="100%" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
+<a class="sourceLine" id="cb33-2" title="2">site.pwmw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: Cooper Means Pov Pt 
+## 
+## RRPP: 10000 permutations
+## 
+## LS means:
+## Vectors hidden (use show.vectors = TRUE to view)
+## 
+## Pairwise distances between means, plus statistics
+##                      d UCL (95%)        Z Pr &gt; d
+## Cooper:Means  6.333142  3.964718 3.901736 0.0018
+## Cooper:Pov Pt 2.201292  2.955428 1.087047 0.1464
+## Means:Pov Pt  4.131849  3.472061 2.546287 0.0193</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: Cooper Means Pov Pt 
+## 
+## RRPP: 10000 permutations
+## 
+## LS means:
+## Vectors hidden (use show.vectors = TRUE to view)
+## 
+## Pairwise statistics based on mean vector correlations
+##               r        angle    UCL (95%)        Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07 1.205306    0.20435
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07 1.216681    0.20210
+## Means:Pov Pt  1 1.207418e-06 8.537736e-07 2.029311    0.02055</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Pairwise comparisons
+## 
+## Groups: Cooper Means Pov Pt 
+## 
+## RRPP: 10000 permutations
+## 
+## 
+## Observed variances by group
+## 
+##    Cooper     Means    Pov Pt 
+## 180.31774  70.02501 133.02777 
+## 
+## Pairwise distances between variances, plus statistics
+##                       d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.29274  90.38321 2.6816725 0.0162
+## Cooper:Pov Pt  47.28997  65.76420 0.9630893 0.1759
+## Means:Pov Pt   63.00277  80.95985 1.2417007 0.1139</code></pre>
+</div>
+<div id="maximum-thickness-of-gary-points" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> <em>Maximum thickness</em> of Gary points</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># density plot for maxth by site</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxth, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/anovasitemaxth-1.png" width="100%" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># anova = maximum thickness ~ site</span></a>
+<a class="sourceLine" id="cb40-2" title="2">sitemth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="kw">anova</span>(sitemth)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -590,135 +670,17 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  1580.2 790.09 0.15623 26.199 2.9775  1e-04 ***
-## Residuals 283  8534.5  30.16 0.84377                         
-## Total     285 10114.7                                        
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Call: lm.rrpp(f1 = maxw ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
-##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co"># visualise model predictions for maximum width ~ site</span></a>
-<a class="sourceLine" id="cb53-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemw,siteDF)</a>
-<a class="sourceLine" id="cb53-3" title="3">sitePreds</a></code></pre></div>
-<pre><code>## 
-## Linear Model fit with lm.rrpp
-## 
-## Number of predictions: 3
-## Confidence level: 95 %
-## Number of bootstrap permutations: 10000
-## 
-## Predicted values:
-## 
-##            [,1]
-## Cooper 28.19582
-## Means  22.14341
-## Pov Pt 27.84578
-## 
-## 
-##  95 % Lower confidence limits:
-## 
-##            [,1]
-## Cooper 27.07884
-## Means  20.78463
-## Pov Pt 26.93956
-## 
-## 
-##  95 % Upper confidence limits:
-## 
-##            [,1]
-## Cooper 29.37266
-## Means  23.59047
-## Pov Pt 28.77750</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
-<p><img src="gt-v_files/figure-html/anovasitemaxw-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
-<a class="sourceLine" id="cb56-2" title="2">site.pwmw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
-<a class="sourceLine" id="cb56-3" title="3"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
-<pre><code>## 
-## Pairwise comparisons
-## 
-## Groups: Cooper Means Pov Pt 
-## 
-## RRPP: 10000 permutations
-## 
-## LS means:
-## Vectors hidden (use show.vectors = TRUE to view)
-## 
-## Pairwise distances between means, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  3.877761  3.954631 0.0016
-## Cooper:Pov Pt 0.1825845  3.175349 -1.130766 0.9089
-## Means:Pov Pt  6.1505572  3.610613  4.194984 0.0011</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
-<pre><code>## 
-## Pairwise comparisons
-## 
-## Groups: Cooper Means Pov Pt 
-## 
-## RRPP: 10000 permutations
-## 
-## LS means:
-## Vectors hidden (use show.vectors = TRUE to view)
-## 
-## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 0.000000e+00 8.537736e-07 -0.7513138    0.68320
-## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2226305    0.20085
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.2144472    0.20250</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb60-2" title="2"><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
-<pre><code>## 
-## Pairwise comparisons
-## 
-## Groups: Cooper Means Pov Pt 
-## 
-## RRPP: 10000 permutations
-## 
-## 
-## Observed variances by group
-## 
-##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 131.33742 
-## 
-## Pairwise distances between variances, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.29274  91.84657 2.5669511 0.0151
-## Cooper:Pov Pt  48.98032  70.67255 0.8035219 0.2148
-## Means:Pov Pt   61.31242  85.75288 0.9933674 0.1609</code></pre>
-</div>
-<div id="maximum-thickness-of-gary-points" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> <em>Maximum thickness</em> of Gary points</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># density plot for maxth by site</span></a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxth, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb62-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb62-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</a></code></pre></div>
-<p><img src="gt-v_files/figure-html/anovasitemaxth-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co"># anova = maximum thickness ~ site</span></a>
-<a class="sourceLine" id="cb63-2" title="2">sitemth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb63-3" title="3"><span class="kw">anova</span>(sitemth)</a></code></pre></div>
-<pre><code>## 
-## Analysis of Variance, using Residual Randomization
-## Permutation procedure: Randomization of null model residuals 
-## Number of permutations: 10000 
-## Estimation method: Ordinary Least Squares 
-## Sums of Squares and Cross-products: Type I 
-## Effect sizes (Z) based on F distributions
-## 
-##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  218.67 109.333 0.15074 25.116 2.9951  1e-04 ***
-## Residuals 283 1231.95   4.353 0.84926                         
-## Total     285 1450.61                                         
+## Site        2  197.61 98.804 0.12108 23.074 2.8613  1e-04 ***
+## Residuals 335 1434.46  4.282 0.87892                         
+## Total     337 1632.06                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxth ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="co"># visualise model predictions for maximum thickness ~ site</span></a>
-<a class="sourceLine" id="cb65-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemth,siteDF)</a>
-<a class="sourceLine" id="cb65-3" title="3">sitePreds</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># visualise model predictions for maximum thickness ~ site</span></a>
+<a class="sourceLine" id="cb42-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemth,siteDF)</a>
+<a class="sourceLine" id="cb42-3" title="3">sitePreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -729,30 +691,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##             [,1]
-## Cooper  9.075713
-## Means   8.218692
-## Pov Pt 10.384166
+## Cooper  9.073554
+## Means   8.222886
+## Pov Pt 10.177619
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
-##             [,1]
-## Cooper  8.651976
-## Means   7.700452
-## Pov Pt 10.044453
+##            [,1]
+## Cooper 8.651641
+## Means  7.722050
+## Pov Pt 9.889998
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##             [,1]
-## Cooper  9.520084
-## Means   8.775326
-## Pov Pt 10.735486</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
+## Cooper  9.506683
+## Means   8.769922
+## Pov Pt 10.475605</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxth-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
-<a class="sourceLine" id="cb68-2" title="2">site.pwmth&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
-<a class="sourceLine" id="cb68-3" title="3"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
+<a class="sourceLine" id="cb45-2" title="2">site.pwmth&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
+<a class="sourceLine" id="cb45-3" title="3"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -764,12 +726,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  3.877761  3.954631 0.0016
-## Cooper:Pov Pt 0.1825845  3.175349 -1.130766 0.9089
-## Means:Pov Pt  6.1505572  3.610613  4.194984 0.0011</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+##                      d UCL (95%)        Z Pr &gt; d
+## Cooper:Means  6.333142  3.964718 3.901736 0.0018
+## Cooper:Pov Pt 2.201292  2.955428 1.087047 0.1464
+## Means:Pov Pt  4.131849  3.472061 2.546287 0.0193</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -781,12 +743,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 0.000000e+00 8.537736e-07 -0.7513138    0.68320
-## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2226305    0.20085
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.2144472    0.20250</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+##               r        angle    UCL (95%)        Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07 1.205306    0.20435
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07 1.216681    0.20210
+## Means:Pov Pt  1 1.207418e-06 8.537736e-07 2.029311    0.02055</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -798,25 +760,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 131.33742 
+## 180.31774  70.02501 133.02777 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.29274  91.84657 2.5669511 0.0151
-## Cooper:Pov Pt  48.98032  70.67255 0.8035219 0.2148
-## Means:Pov Pt   61.31242  85.75288 0.9933674 0.1609</code></pre>
+## Cooper:Means  110.29274  90.38321 2.6816725 0.0162
+## Cooper:Pov Pt  47.28997  65.76420 0.9630893 0.1759
+## Means:Pov Pt   63.00277  80.95985 1.2417007 0.1139</code></pre>
 </div>
 <div id="maximum-stem-length-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> <em>Maximum stem length</em> of Gary points</h3>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co"># density plot for maxstl by site</span></a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstl, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb74-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb74-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># density plot for maxstl by site</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstl, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstl-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># anova = maximum stem length ~ site</span></a>
-<a class="sourceLine" id="cb75-2" title="2">sitemstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb75-3" title="3"><span class="kw">anova</span>(sitemstl)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># anova = maximum stem length ~ site</span></a>
+<a class="sourceLine" id="cb52-2" title="2">sitemstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="kw">anova</span>(sitemstl)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -825,18 +787,18 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS      MS     Rsq      F     Z Pr(&gt;F)    
-## Site        2  299.8 149.921 0.07241 11.046 2.343  2e-04 ***
-## Residuals 283 3840.8  13.572 0.92759                        
-## Total     285 4140.7                                        
+##            Df     SS      MS     Rsq      F      Z Pr(&gt;F)    
+## Site        2  311.1 155.549 0.06165 11.004 2.3221  2e-04 ***
+## Residuals 335 4735.3  14.135 0.93835                         
+## Total     337 5046.4                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxstl ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ site</span></a>
-<a class="sourceLine" id="cb77-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemstl,siteDF)</a>
-<a class="sourceLine" id="cb77-3" title="3">sitePreds</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ site</span></a>
+<a class="sourceLine" id="cb54-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemstl,siteDF)</a>
+<a class="sourceLine" id="cb54-3" title="3">sitePreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -847,30 +809,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 15.41241
-## Means  12.65918
-## Pov Pt 15.00142
+## Cooper 15.40816
+## Means  12.65382
+## Pov Pt 15.05864
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 14.67198
-## Means  11.72946
-## Pov Pt 14.40099
+## Cooper 14.64709
+## Means  11.69871
+## Pov Pt 14.52824
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 16.17223
-## Means  13.61097
-## Pov Pt 15.60176</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
+## Cooper 16.18682
+## Means  13.63227
+## Pov Pt 15.58745</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstl-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
-<a class="sourceLine" id="cb80-2" title="2">site.pwmstl&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
-<a class="sourceLine" id="cb80-3" title="3"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
+<a class="sourceLine" id="cb57-2" title="2">site.pwmstl&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -882,12 +844,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  3.877761  3.954631 0.0016
-## Cooper:Pov Pt 0.1825845  3.175349 -1.130766 0.9089
-## Means:Pov Pt  6.1505572  3.610613  4.194984 0.0011</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+##                      d UCL (95%)        Z Pr &gt; d
+## Cooper:Means  6.333142  3.964718 3.901736 0.0018
+## Cooper:Pov Pt 2.201292  2.955428 1.087047 0.1464
+## Means:Pov Pt  4.131849  3.472061 2.546287 0.0193</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb59-2" title="2"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -899,12 +861,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 0.000000e+00 8.537736e-07 -0.7513138    0.68320
-## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2226305    0.20085
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.2144472    0.20250</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+##               r        angle    UCL (95%)        Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07 1.205306    0.20435
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07 1.216681    0.20210
+## Means:Pov Pt  1 1.207418e-06 8.537736e-07 2.029311    0.02055</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb61-2" title="2"><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -916,25 +878,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 131.33742 
+## 180.31774  70.02501 133.02777 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.29274  91.84657 2.5669511 0.0151
-## Cooper:Pov Pt  48.98032  70.67255 0.8035219 0.2148
-## Means:Pov Pt   61.31242  85.75288 0.9933674 0.1609</code></pre>
+## Cooper:Means  110.29274  90.38321 2.6816725 0.0162
+## Cooper:Pov Pt  47.28997  65.76420 0.9630893 0.1759
+## Means:Pov Pt   63.00277  80.95985 1.2417007 0.1139</code></pre>
 </div>
 <div id="maximum-stem-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.5</span> <em>Maximum stem width</em> of Gary points</h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co"># density plot for maxstw by site</span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstw, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co"># density plot for maxstw by site</span></a>
+<a class="sourceLine" id="cb63-2" title="2"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstw, <span class="dt">fill =</span> Site)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb63-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb63-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstw-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="co"># anova = maximum stem width ~ site</span></a>
-<a class="sourceLine" id="cb87-2" title="2">sitemstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb87-3" title="3"><span class="kw">anova</span>(sitemstw)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># anova = maximum stem width ~ site</span></a>
+<a class="sourceLine" id="cb64-2" title="2">sitemstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="kw">anova</span>(sitemstw)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -944,17 +906,17 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  683.6 341.79 0.14857 24.692 2.9605  1e-04 ***
-## Residuals 283 3917.4  13.84 0.85143                         
-## Total     285 4601.0                                        
+## Site        2  783.1 391.56 0.13902 27.046 3.0292  1e-04 ***
+## Residuals 335 4850.0  14.48 0.86098                         
+## Total     337 5633.1                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxstw ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co"># visualise model predictions for maximum stem width ~ site</span></a>
-<a class="sourceLine" id="cb89-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemstw,siteDF)</a>
-<a class="sourceLine" id="cb89-3" title="3">sitePreds</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># visualise model predictions for maximum stem width ~ site</span></a>
+<a class="sourceLine" id="cb66-2" title="2">sitePreds&lt;-<span class="kw">predict</span>(sitemstw,siteDF)</a>
+<a class="sourceLine" id="cb66-3" title="3">sitePreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -965,30 +927,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 19.03078
-## Means  15.27460
-## Pov Pt 19.16973
+## Cooper 19.02552
+## Means  15.27445
+## Pov Pt 19.41363
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 18.28575
-## Means  14.35379
-## Pov Pt 18.56751
+## Cooper 18.24396
+## Means  14.33430
+## Pov Pt 18.87448
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 19.79403
-## Means  16.23445
-## Pov Pt 19.78988</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
+## Cooper 19.81952
+## Means  16.22921
+## Pov Pt 19.95905</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstw-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
-<a class="sourceLine" id="cb92-2" title="2">site.pwmstw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
-<a class="sourceLine" id="cb92-3" title="3"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="co"># pairwise comparison = which sites differ?</span></a>
+<a class="sourceLine" id="cb69-2" title="2">site.pwmstw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</a>
+<a class="sourceLine" id="cb69-3" title="3"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -1000,12 +962,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  3.877761  3.954631 0.0016
-## Cooper:Pov Pt 0.1825845  3.175349 -1.130766 0.9089
-## Means:Pov Pt  6.1505572  3.610613  4.194984 0.0011</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb94-2" title="2"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+##                      d UCL (95%)        Z Pr &gt; d
+## Cooper:Means  6.333142  3.964718 3.901736 0.0018
+## Cooper:Pov Pt 2.201292  2.955428 1.087047 0.1464
+## Means:Pov Pt  4.131849  3.472061 2.546287 0.0193</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -1017,12 +979,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 0.000000e+00 8.537736e-07 -0.7513138    0.68320
-## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2226305    0.20085
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.2144472    0.20250</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb96-2" title="2"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+##               r        angle    UCL (95%)        Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07 1.205306    0.20435
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07 1.216681    0.20210
+## Means:Pov Pt  1 1.207418e-06 8.537736e-07 2.029311    0.02055</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -1034,13 +996,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 131.33742 
+## 180.31774  70.02501 133.02777 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.29274  91.84657 2.5669511 0.0151
-## Cooper:Pov Pt  48.98032  70.67255 0.8035219 0.2148
-## Means:Pov Pt   61.31242  85.75288 0.9933674 0.1609</code></pre>
+## Cooper:Means  110.29274  90.38321 2.6816725 0.0162
+## Cooper:Pov Pt  47.28997  65.76420 0.9630893 0.1759
+## Means:Pov Pt   63.00277  80.95985 1.2417007 0.1139</code></pre>
 
 </div>
 </div>

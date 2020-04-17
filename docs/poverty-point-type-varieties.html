@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Z. Selden, Jr.; Christian S. Hoggard; and John E. Dockall" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2020-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -286,60 +286,60 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 </div>
 <div id="poverty-point-type-varieties" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Poverty Point type-varieties</h1>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># install required analysis packages</span></a>
-<a class="sourceLine" id="cb134-2" title="2"><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></a>
-<a class="sourceLine" id="cb134-3" title="3"><span class="co">#devtools::install_github(&quot;rich-iannone/DiagrammeR&quot;)</span></a>
-<a class="sourceLine" id="cb134-4" title="4"><span class="co">#devtools::install_github(&quot;vqv/ggbiplot&quot;)</span></a>
-<a class="sourceLine" id="cb134-5" title="5"><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></a>
-<a class="sourceLine" id="cb134-6" title="6"><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></a>
-<a class="sourceLine" id="cb134-7" title="7"><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></a>
-<a class="sourceLine" id="cb134-8" title="8"><span class="co"># load libraries</span></a>
-<a class="sourceLine" id="cb134-9" title="9"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb134-10" title="10"><span class="kw">library</span>(DiagrammeR)</a>
-<a class="sourceLine" id="cb134-11" title="11"><span class="kw">library</span>(ggbiplot)</a>
-<a class="sourceLine" id="cb134-12" title="12"><span class="kw">library</span>(RRPP)</a>
-<a class="sourceLine" id="cb134-13" title="13"><span class="kw">library</span>(ggpubr)</a>
-<a class="sourceLine" id="cb134-14" title="14"><span class="kw">library</span>(ggfortify)</a>
-<a class="sourceLine" id="cb134-15" title="15"><span class="kw">library</span>(cluster)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># install required analysis packages</span></a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></a>
+<a class="sourceLine" id="cb111-3" title="3"><span class="co">#devtools::install_github(&quot;rich-iannone/DiagrammeR&quot;)</span></a>
+<a class="sourceLine" id="cb111-4" title="4"><span class="co">#devtools::install_github(&quot;vqv/ggbiplot&quot;)</span></a>
+<a class="sourceLine" id="cb111-5" title="5"><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></a>
+<a class="sourceLine" id="cb111-6" title="6"><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></a>
+<a class="sourceLine" id="cb111-7" title="7"><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></a>
+<a class="sourceLine" id="cb111-8" title="8"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb111-9" title="9"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb111-10" title="10"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb111-11" title="11"><span class="kw">library</span>(ggbiplot)</a>
+<a class="sourceLine" id="cb111-12" title="12"><span class="kw">library</span>(RRPP)</a>
+<a class="sourceLine" id="cb111-13" title="13"><span class="kw">library</span>(ggpubr)</a>
+<a class="sourceLine" id="cb111-14" title="14"><span class="kw">library</span>(ggfortify)</a>
+<a class="sourceLine" id="cb111-15" title="15"><span class="kw">library</span>(cluster)</a></code></pre></div>
 <div id="gary-varieties-proposed-by-ford-and-webb--rn20898" class="section level2">
 <h2><span class="header-section-number">5.1</span> Gary varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span></h2>
 <p>The <code>tv1</code> argument used within this chapter articulates with three variants of the Gary type that include <em>Large</em>, <em>Medium/Typical</em>, and <em>Small</em> that were assigned using those morphological criteria first advanced by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> at the Jaketown site, and later refined by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> at Poverty Point.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># set working directory</span></a>
-<a class="sourceLine" id="cb135-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
-<a class="sourceLine" id="cb135-3" title="3"><span class="co"># load data</span></a>
-<a class="sourceLine" id="cb135-4" title="4">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># set working directory</span></a>
+<a class="sourceLine" id="cb112-2" title="2"><span class="kw">setwd</span>(<span class="kw">getwd</span>())</a>
+<a class="sourceLine" id="cb112-3" title="3"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb112-4" title="4">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Each of the three type-varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for <em>Gary Large</em>; between 46 to 79 mm in maxl. Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> also noted ranges in width and thickness values, which they did not use to make their assignments. Those range between 20 and 45 mm in maxw for <em>Gary Medium/Typical</em>; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for <em>Gary Small</em> <span class="citation">(Ford and Webb <a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span>.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="co"># Ford and Webb (1956)</span></a>
-<a class="sourceLine" id="cb136-2" title="2">fwebbl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
-<a class="sourceLine" id="cb136-3" title="3">           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">30</span>), <span class="co"># in mm (Gary Small changed from 33 to 30)</span></a>
-<a class="sourceLine" id="cb136-4" title="4">           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">140</span>,<span class="dv">80</span>,<span class="dv">45</span>) <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb136-5" title="5">)</a>
-<a class="sourceLine" id="cb136-6" title="6">fwebblength&lt;-<span class="kw">ggplot</span>(fwebbl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-7" title="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-8" title="8"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb136-10" title="10">fwebbw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
-<a class="sourceLine" id="cb136-11" title="11">           <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">19</span>), <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb136-12" title="12">           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">42</span>,<span class="dv">45</span>,<span class="dv">32</span>) <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb136-13" title="13">)</a>
-<a class="sourceLine" id="cb136-14" title="14">fwebbwidth&lt;-<span class="kw">ggplot</span>(fwebbw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-15" title="15"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-16" title="16"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-17" title="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb136-18" title="18"><span class="co"># thickness values were not precisely reported for GaryLarge and GaryTypical, and are included here for reference only</span></a>
-<a class="sourceLine" id="cb136-19" title="19">fwebbth&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
-<a class="sourceLine" id="cb136-20" title="20">           <span class="dt">Thickness=</span><span class="kw">c</span>(<span class="fl">12.9</span>,<span class="dv">9</span>,<span class="dv">5</span>), <span class="co"># in mm (actual thickness of var. GaryLarge is 13. Plotted as 12.9-13.1 so that it shows on chart)</span></a>
-<a class="sourceLine" id="cb136-21" title="21">           <span class="dt">end=</span><span class="kw">c</span>(<span class="fl">13.1</span>,<span class="dv">10</span>,<span class="dv">10</span>) <span class="co"># in mm</span></a>
-<a class="sourceLine" id="cb136-22" title="22">)</a>
-<a class="sourceLine" id="cb136-23" title="23">fwebbthickness&lt;-<span class="kw">ggplot</span>(fwebbth,<span class="kw">aes</span>(<span class="dt">x=</span>Thickness,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-24" title="24"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-25" title="25"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-26" title="26"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb136-27" title="27"><span class="co"># render figure</span></a>
-<a class="sourceLine" id="cb136-28" title="28">fwebbfig&lt;-<span class="kw">ggarrange</span>(fwebblength,fwebbwidth,fwebbthickness,</a>
-<a class="sourceLine" id="cb136-29" title="29">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),</a>
-<a class="sourceLine" id="cb136-30" title="30">                  <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb136-31" title="31">fwebbfig</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># Ford and Webb (1956)</span></a>
+<a class="sourceLine" id="cb113-2" title="2">fwebbl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
+<a class="sourceLine" id="cb113-3" title="3">           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">30</span>), <span class="co"># in mm (Gary Small changed from 33 to 30)</span></a>
+<a class="sourceLine" id="cb113-4" title="4">           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">140</span>,<span class="dv">80</span>,<span class="dv">45</span>) <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb113-5" title="5">)</a>
+<a class="sourceLine" id="cb113-6" title="6">fwebblength&lt;-<span class="kw">ggplot</span>(fwebbl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-7" title="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-8" title="8"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb113-10" title="10">fwebbw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
+<a class="sourceLine" id="cb113-11" title="11">           <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">19</span>), <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb113-12" title="12">           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">42</span>,<span class="dv">45</span>,<span class="dv">32</span>) <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb113-13" title="13">)</a>
+<a class="sourceLine" id="cb113-14" title="14">fwebbwidth&lt;-<span class="kw">ggplot</span>(fwebbw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-15" title="15"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-16" title="16"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-17" title="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb113-18" title="18"><span class="co"># thickness values were not precisely reported for GaryLarge and GaryTypical, and are included here for reference only</span></a>
+<a class="sourceLine" id="cb113-19" title="19">fwebbth&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</a>
+<a class="sourceLine" id="cb113-20" title="20">           <span class="dt">Thickness=</span><span class="kw">c</span>(<span class="fl">12.9</span>,<span class="dv">9</span>,<span class="dv">5</span>), <span class="co"># in mm (actual thickness of var. GaryLarge is 13. Plotted as 12.9-13.1 so that it shows on chart)</span></a>
+<a class="sourceLine" id="cb113-21" title="21">           <span class="dt">end=</span><span class="kw">c</span>(<span class="fl">13.1</span>,<span class="dv">10</span>,<span class="dv">10</span>) <span class="co"># in mm</span></a>
+<a class="sourceLine" id="cb113-22" title="22">)</a>
+<a class="sourceLine" id="cb113-23" title="23">fwebbthickness&lt;-<span class="kw">ggplot</span>(fwebbth,<span class="kw">aes</span>(<span class="dt">x=</span>Thickness,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-24" title="24"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-25" title="25"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb113-26" title="26"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb113-27" title="27"><span class="co"># render figure</span></a>
+<a class="sourceLine" id="cb113-28" title="28">fwebbfig&lt;-<span class="kw">ggarrange</span>(fwebblength,fwebbwidth,fwebbthickness,</a>
+<a class="sourceLine" id="cb113-29" title="29">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),</a>
+<a class="sourceLine" id="cb113-30" title="30">                  <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb113-31" title="31">fwebbfig</a></code></pre></div>
 <div class="figure"><span id="fig:fordwebbgantt"></span>
 <img src="gt-v_files/figure-html/fordwebbgantt-1.png" alt="Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford and Webb (1956)." width="100%" />
 <p class="caption">
@@ -350,21 +350,21 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 <div id="assign-gary-type-varieties-proposed-by-ford-and-webb--rn20898" class="section level2">
 <h2><span class="header-section-number">5.2</span> Assign Gary type-varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span></h2>
 <p>Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> used a single metric (maximum length) to assign Gary varieties at the Poverty Point site. The approach empoyed here enlists all of Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> reported metrics, including maximum length and maximum width for all varieties, coupled with maximum thickness for <em>Gary Small</em>. No metrics were reported for <em>Gary Long</em>, which was omitted from this analysis. Those points that do not match with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="co"># subset poverty point data</span></a>
-<a class="sourceLine" id="cb137-2" title="2">pvptmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</a>
-<a class="sourceLine" id="cb137-3" title="3"></a>
-<a class="sourceLine" id="cb137-4" title="4"><span class="co"># assign varieties based upon reported metrics in Ford and Webb [1956]</span></a>
-<a class="sourceLine" id="cb137-5" title="5">lcheck1 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">140</span></a>
-<a class="sourceLine" id="cb137-6" title="6">lcheck2 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">46</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span></a>
-<a class="sourceLine" id="cb137-7" title="7">lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></a>
-<a class="sourceLine" id="cb137-8" title="8"></a>
-<a class="sourceLine" id="cb137-9" title="9">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></a>
-<a class="sourceLine" id="cb137-10" title="10">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck1, <span class="st">&quot;L&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
-<a class="sourceLine" id="cb137-11" title="11">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck2, <span class="st">&quot;M/T&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
-<a class="sourceLine" id="cb137-12" title="12">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck3, <span class="st">&quot;S&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
-<a class="sourceLine" id="cb137-13" title="13"></a>
-<a class="sourceLine" id="cb137-14" title="14">tv1&lt;-pvptmx<span class="op">$</span>tv1</a>
-<a class="sourceLine" id="cb137-15" title="15">tv1</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="co"># subset poverty point data</span></a>
+<a class="sourceLine" id="cb114-2" title="2">pvptmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</a>
+<a class="sourceLine" id="cb114-3" title="3"></a>
+<a class="sourceLine" id="cb114-4" title="4"><span class="co"># assign varieties based upon reported metrics in Ford and Webb [1956]</span></a>
+<a class="sourceLine" id="cb114-5" title="5">lcheck1 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">140</span></a>
+<a class="sourceLine" id="cb114-6" title="6">lcheck2 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">46</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span></a>
+<a class="sourceLine" id="cb114-7" title="7">lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></a>
+<a class="sourceLine" id="cb114-8" title="8"></a>
+<a class="sourceLine" id="cb114-9" title="9">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></a>
+<a class="sourceLine" id="cb114-10" title="10">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck1, <span class="st">&quot;L&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
+<a class="sourceLine" id="cb114-11" title="11">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck2, <span class="st">&quot;M/T&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
+<a class="sourceLine" id="cb114-12" title="12">pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck3, <span class="st">&quot;S&quot;</span>, pvptmx<span class="op">$</span>tv1)</a>
+<a class="sourceLine" id="cb114-13" title="13"></a>
+<a class="sourceLine" id="cb114-14" title="14">tv1&lt;-pvptmx<span class="op">$</span>tv1</a>
+<a class="sourceLine" id="cb114-15" title="15">tv1</a></code></pre></div>
 <pre><code>##   [1] &quot;L&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ##  [12] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ##  [23] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
@@ -377,50 +377,55 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 ## [100] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ## [111] &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;L&quot;  
 ## [122] &quot;L&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;  
-## [133] &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;S&quot;</code></pre>
+## [133] &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;  
+## [144] &quot;S&quot;   &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;  
+## [155] &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot;
+## [166] &quot;S&quot;   &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
+## [177] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;S&quot;   &quot;M/T&quot; &quot;M/T&quot;
+## [188] &quot;S&quot;   &quot;M/T&quot; &quot;S&quot;</code></pre>
 </div>
 <div id="boxplots-for-ford-and-webbs--rn20898-type-varieties-of-gary-dart-points-from-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.3</span> Boxplots for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties of Gary dart points from Poverty Point</h2>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="co"># boxplot of maximum length</span></a>
-<a class="sourceLine" id="cb139-2" title="2">pvptmaxl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-4" title="4"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-5" title="5"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb139-7" title="7"><span class="co"># boxplot of maximum width</span></a>
-<a class="sourceLine" id="cb139-8" title="8">pvptmaxw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-9" title="9"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-10" title="10"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb139-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb139-13" title="13"><span class="co"># boxplot of maximum thickness</span></a>
-<a class="sourceLine" id="cb139-14" title="14">pvptmaxth&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-15" title="15"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-16" title="16"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb139-17" title="17"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-18" title="18"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb139-19" title="19"><span class="co"># boxplot of maximum stem length</span></a>
-<a class="sourceLine" id="cb139-20" title="20">pvptmaxstl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-21" title="21"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-22" title="22"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb139-23" title="23"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-24" title="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb139-25" title="25"><span class="co"># boxplot of maximum thickness</span></a>
-<a class="sourceLine" id="cb139-26" title="26">pvptmaxstw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb139-27" title="27"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-28" title="28"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb139-29" title="29"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-30" title="30"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
-<a class="sourceLine" id="cb139-31" title="31"><span class="co"># render figure</span></a>
-<a class="sourceLine" id="cb139-32" title="32">ppfigure&lt;-<span class="kw">ggarrange</span>(pvptmaxl,pvptmaxw,pvptmaxth,pvptmaxstl,pvptmaxstw,</a>
-<a class="sourceLine" id="cb139-33" title="33">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
-<a class="sourceLine" id="cb139-34" title="34">                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="co"># boxplot of maximum length</span></a>
+<a class="sourceLine" id="cb116-2" title="2">pvptmaxl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-4" title="4"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-5" title="5"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb116-7" title="7"><span class="co"># boxplot of maximum width</span></a>
+<a class="sourceLine" id="cb116-8" title="8">pvptmaxw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-9" title="9"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-10" title="10"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb116-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-12" title="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb116-13" title="13"><span class="co"># boxplot of maximum thickness</span></a>
+<a class="sourceLine" id="cb116-14" title="14">pvptmaxth&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-15" title="15"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-16" title="16"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb116-17" title="17"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-18" title="18"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb116-19" title="19"><span class="co"># boxplot of maximum stem length</span></a>
+<a class="sourceLine" id="cb116-20" title="20">pvptmaxstl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-21" title="21"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-22" title="22"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb116-23" title="23"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-24" title="24"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb116-25" title="25"><span class="co"># boxplot of maximum thickness</span></a>
+<a class="sourceLine" id="cb116-26" title="26">pvptmaxstw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-27" title="27"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-28" title="28"><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb116-29" title="29"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb116-30" title="30"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a>
+<a class="sourceLine" id="cb116-31" title="31"><span class="co"># render figure</span></a>
+<a class="sourceLine" id="cb116-32" title="32">ppfigure&lt;-<span class="kw">ggarrange</span>(pvptmaxl,pvptmaxw,pvptmaxth,pvptmaxstl,pvptmaxstw,</a>
+<a class="sourceLine" id="cb116-33" title="33">                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</a>
+<a class="sourceLine" id="cb116-34" title="34">                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">ppfigure</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">ppfigure</a></code></pre></div>
 <div class="figure"><span id="fig:boxplotpp"></span>
 <img src="gt-v_files/figure-html/boxplotpp-1.png" alt="Boxplots for a, maximum length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points from the Poverty Point site." width="100%" />
 <p class="caption">
@@ -432,67 +437,67 @@ Figure 5.2: Boxplots for a, maximum length; b, width; c, thickness; d, stem leng
 <h2><span class="header-section-number">5.4</span> Density plots for variables by type-varieties</h2>
 <div id="density-plot-for-maximum-length-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Density plot for maximum length by tv1</h3>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="co"># define variables in poverty point subset</span></a>
-<a class="sourceLine" id="cb142-2" title="2">pp.maxl&lt;-pvptmx<span class="op">$</span>maxl</a>
-<a class="sourceLine" id="cb142-3" title="3">pp.maxw&lt;-pvptmx<span class="op">$</span>maxw</a>
-<a class="sourceLine" id="cb142-4" title="4">pp.maxth&lt;-pvptmx<span class="op">$</span>maxth</a>
-<a class="sourceLine" id="cb142-5" title="5">pp.maxstl&lt;-pvptmx<span class="op">$</span>maxstl</a>
-<a class="sourceLine" id="cb142-6" title="6">pp.maxstw&lt;-pvptmx<span class="op">$</span>maxstw</a>
-<a class="sourceLine" id="cb142-7" title="7">pp.tv1&lt;-pvptmx<span class="op">$</span>tv1</a>
-<a class="sourceLine" id="cb142-8" title="8"><span class="co"># density plot of maxl by tv1</span></a>
-<a class="sourceLine" id="cb142-9" title="9"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-10" title="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-12" title="12"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="co"># define variables in poverty point subset</span></a>
+<a class="sourceLine" id="cb119-2" title="2">pp.maxl&lt;-pvptmx<span class="op">$</span>maxl</a>
+<a class="sourceLine" id="cb119-3" title="3">pp.maxw&lt;-pvptmx<span class="op">$</span>maxw</a>
+<a class="sourceLine" id="cb119-4" title="4">pp.maxth&lt;-pvptmx<span class="op">$</span>maxth</a>
+<a class="sourceLine" id="cb119-5" title="5">pp.maxstl&lt;-pvptmx<span class="op">$</span>maxstl</a>
+<a class="sourceLine" id="cb119-6" title="6">pp.maxstw&lt;-pvptmx<span class="op">$</span>maxstw</a>
+<a class="sourceLine" id="cb119-7" title="7">pp.tv1&lt;-pvptmx<span class="op">$</span>tv1</a>
+<a class="sourceLine" id="cb119-8" title="8"><span class="co"># density plot of maxl by tv1</span></a>
+<a class="sourceLine" id="cb119-9" title="9"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-10" title="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-11" title="11"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb119-12" title="12"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensity1-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="co"># density plot of maxw by tv1</span></a>
-<a class="sourceLine" id="cb143-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co"># density plot of maxw by tv1</span></a>
+<a class="sourceLine" id="cb120-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb120-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensityw-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-thickness-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Density plot for maximum thickness by tv1</h3>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="co"># density plot of maxth by tv1</span></a>
-<a class="sourceLine" id="cb144-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># density plot of maxth by tv1</span></a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensityth-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1-1" class="section level3">
 <h3><span class="header-section-number">5.4.4</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="co"># density plot of maxstl by tv1</span></a>
-<a class="sourceLine" id="cb145-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co"># density plot of maxstl by tv1</span></a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb122-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensitystl-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1-2" class="section level3">
 <h3><span class="header-section-number">5.4.5</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="co"># density plot of maxstw by tv1</span></a>
-<a class="sourceLine" id="cb146-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="co"># density plot of maxstw by tv1</span></a>
+<a class="sourceLine" id="cb123-2" title="2"><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-3" title="3"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-4" title="4"><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-5" title="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensitystw-1.png" width="100%" /></p>
 </div>
 </div>
 <div id="principal-components-analysis-for-ford-and-webbs--rn20898-type-varieties-at-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.5</span> Principal Components Analysis for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties at Poverty Point</h2>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="co">#pca</span></a>
-<a class="sourceLine" id="cb147-2" title="2">df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
-<a class="sourceLine" id="cb147-3" title="3">t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</a>
-<a class="sourceLine" id="cb147-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
-<a class="sourceLine" id="cb147-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb147-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb147-7" title="7"><span class="co">#render figure</span></a>
-<a class="sourceLine" id="cb147-8" title="8">t1pca</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co">#pca</span></a>
+<a class="sourceLine" id="cb124-2" title="2">df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb124-3" title="3">t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</a>
+<a class="sourceLine" id="cb124-4" title="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</a>
+<a class="sourceLine" id="cb124-5" title="5">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb124-6" title="6">         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb124-7" title="7"><span class="co">#render figure</span></a>
+<a class="sourceLine" id="cb124-8" title="8">t1pca</a></code></pre></div>
 <div class="figure"><span id="fig:pca"></span>
 <img src="gt-v_files/figure-html/pca-1.png" alt="PCA by Gary type-varieties reported by Ford and Webb (1956) at Poverty Point." width="100%" />
 <p class="caption">
@@ -504,9 +509,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 <h2><span class="header-section-number">5.6</span> Analyses of Variance (ANOVA) for <em>linear variables</em> ~ <em>type-varieties</em></h2>
 <div id="maximum-length-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> <em>Maximum length</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
-<a class="sourceLine" id="cb148-2" title="2">t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb148-3" title="3"><span class="kw">anova</span>(t1ml)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># anova = maximum length ~ tv1</span></a>
+<a class="sourceLine" id="cb125-2" title="2">t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb125-3" title="3"><span class="kw">anova</span>(t1ml)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -515,20 +520,20 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
-## pp.tv1      2 11751.4 5875.7 0.64837 124.46 4.1737  1e-04 ***
-## Residuals 135  6373.2   47.2 0.35163                         
-## Total     137 18124.6                                        
+##            Df      SS     MS     Rsq     F      Z Pr(&gt;F)    
+## pp.tv1      2 16621.9 8311.0 0.65764 179.6 4.4182  1e-04 ***
+## Residuals 187  8653.3   46.3 0.34236                        
+## Total     189 25275.3                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = pp.maxl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb150-2" title="2">pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</a>
-<a class="sourceLine" id="cb150-3" title="3"><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</a>
-<a class="sourceLine" id="cb150-4" title="4">ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</a>
-<a class="sourceLine" id="cb150-5" title="5">ppPreds</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb127-2" title="2">pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</a>
+<a class="sourceLine" id="cb127-3" title="3"><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</a>
+<a class="sourceLine" id="cb127-4" title="4">ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</a>
+<a class="sourceLine" id="cb127-5" title="5">ppPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -539,30 +544,30 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   82.74144
-## M/T 58.31648
-## S   41.02489
+## L   82.77480
+## M/T 57.44049
+## S   40.02478
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   77.57875
-## M/T 57.01006
-## S   38.63560
+## L   77.66582
+## M/T 56.31471
+## S   38.21594
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   88.35050
-## M/T 59.64509
-## S   43.39610</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+## L   88.47320
+## M/T 58.61779
+## S   41.83194</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
-<a class="sourceLine" id="cb153-2" title="2">pp.ml&lt;-<span class="kw">pairwise</span>(t1ml, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</a>
-<a class="sourceLine" id="cb153-3" title="3"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># pairwise comparison of LS means = which sites differ?</span></a>
+<a class="sourceLine" id="cb130-2" title="2">pp.ml&lt;-<span class="kw">pairwise</span>(t1ml, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</a>
+<a class="sourceLine" id="cb130-3" title="3"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -575,11 +580,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Pairwise distances between means, plus statistics
 ##              d UCL (95%)         Z Pr &gt; d
-## L:M/T 24.43540  9.533894  6.978396  1e-04
-## L:S   41.72565  9.965567 12.040532  1e-04
-## M/T:S 17.29025  4.548630 10.922766  1e-04</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
-<a class="sourceLine" id="cb155-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
+## L:M/T 25.30917  9.497072  7.354312  1e-04
+## L:S   42.72269  9.741256 12.782023  1e-04
+## M/T:S 17.41353  3.740293 13.766752  1e-04</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co"># correlation between mean vectors (angles in degrees)</span></a>
+<a class="sourceLine" id="cb132-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -592,11 +597,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Pairwise statistics based on mean vector correlations
 ##       r angle    UCL (95%)          Z Pr &gt; angle
-## L:M/T 1     0 8.537736e-07 -0.7713909     0.6897
-## L:S   1     0 8.537736e-07 -0.7747541     0.6904
-## M/T:S 1     0 8.537736e-07 -0.7817075     0.6927</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
-<a class="sourceLine" id="cb157-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
+## L:M/T 1     0 8.537736e-07 -0.7436484    0.68085
+## L:S   1     0 8.537736e-07 -0.7324064    0.67735
+## M/T:S 1     0 8.537736e-07 -0.7514113    0.68330</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># pairwise distances between variances = standardization?</span></a>
+<a class="sourceLine" id="cb134-2" title="2"><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -608,19 +613,19 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Observed variances by group
 ## 
 ##        L      M/T        S 
-## 22.35986 56.07627 18.55930 
+## 22.35986 56.31234 20.88383 
 ## 
 ## Pairwise distances between variances, plus statistics
-##               d UCL (95%)          Z Pr &gt; d
-## L:M/T 33.716415  44.90139  0.9838301 0.1535
-## L:S    3.800556  49.43822 -1.0862823 0.8854
-## M/T:S 37.516970  23.12847  3.9450350 0.0013</code></pre>
+##               d UCL (95%)         Z Pr &gt; d
+## L:M/T 33.952478  48.47635  0.898799 0.1460
+## L:S    1.476025  49.78446 -1.204128 0.9577
+## M/T:S 35.428503  19.26415  4.668677 0.0002</code></pre>
 </div>
 <div id="maximum-width-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> <em>Maximum width</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="co"># anova = maximum width ~ tv1</span></a>
-<a class="sourceLine" id="cb159-2" title="2">t1mw&lt;-<span class="kw">lm.rrpp</span>(pp.maxw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb159-3" title="3"><span class="kw">anova</span>(t1mw)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="co"># anova = maximum width ~ tv1</span></a>
+<a class="sourceLine" id="cb136-2" title="2">t1mw&lt;-<span class="kw">lm.rrpp</span>(pp.maxw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb136-3" title="3"><span class="kw">anova</span>(t1mw)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -629,18 +634,18 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
-## pp.tv1      2  669.23 334.62 0.22918 20.069 2.7532  1e-04 ***
-## Residuals 135 2250.94  16.67 0.77082                         
-## Total     137 2920.17                                        
+##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
+## pp.tv1      2 1165.2 582.62 0.26986 34.557 3.2125  1e-04 ***
+## Residuals 187 3152.8  16.86 0.73014                         
+## Total     189 4318.0                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = pp.maxw ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="co"># visualise model predictions for maximum width ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb161-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mw,pp.tvDF)</a>
-<a class="sourceLine" id="cb161-3" title="3">ppPreds</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="co"># visualise model predictions for maximum width ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb138-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mw,pp.tvDF)</a>
+<a class="sourceLine" id="cb138-3" title="3">ppPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -651,33 +656,33 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   34.19786
-## M/T 28.54362
-## S   24.35017
+## L   34.20253
+## M/T 27.99152
+## S   23.25932
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   30.98694
-## M/T 27.75817
-## S   22.94474
+## L   30.97377
+## M/T 27.30981
+## S   22.17974
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   37.42689
-## M/T 29.31930
-## S   25.76240</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+## L   37.61021
+## M/T 28.68146
+## S   24.37097</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxw-x-tv-1.png" width="100%" /></p>
 </div>
 <div id="maximum-thickness-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.3</span> <em>Maximum thickness</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="co"># anova = maximum thickness ~ tv1</span></a>
-<a class="sourceLine" id="cb164-2" title="2">t1mth&lt;-<span class="kw">lm.rrpp</span>(pp.maxth <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb164-3" title="3"><span class="kw">anova</span>(t1mth)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="co"># anova = maximum thickness ~ tv1</span></a>
+<a class="sourceLine" id="cb141-2" title="2">t1mth&lt;-<span class="kw">lm.rrpp</span>(pp.maxth <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb141-3" title="3"><span class="kw">anova</span>(t1mth)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -686,18 +691,18 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS     MS     Rsq     F      Z Pr(&gt;F)    
-## pp.tv1      2  78.44 39.220 0.12422 9.574 2.1838  5e-04 ***
-## Residuals 135 553.04  4.097 0.87578                        
-## Total     137 631.48                                       
+##            Df     SS     MS     Rsq    F      Z Pr(&gt;F)    
+## pp.tv1      2 114.63 57.317 0.13745 14.9 2.5487  1e-04 ***
+## Residuals 187 719.36  3.847 0.86255                       
+## Total     189 833.99                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = pp.maxth ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="co"># visualise model predictions for maximum thickness ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb166-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mth,pp.tvDF)</a>
-<a class="sourceLine" id="cb166-3" title="3">ppPreds</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="co"># visualise model predictions for maximum thickness ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb143-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mth,pp.tvDF)</a>
+<a class="sourceLine" id="cb143-3" title="3">ppPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -708,90 +713,33 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##          [,1]
-## L   12.136605
-## M/T 10.678399
-## S    9.094138
+## L   12.114922
+## M/T 10.557065
+## S    8.997275
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## L   10.689257
-## M/T 10.300983
-## S    8.430348
+## L   10.683676
+## M/T 10.231911
+## S    8.486907
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## L   13.950933
-## M/T 11.080667
-## S    9.814274</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+## L   13.877522
+## M/T 10.892421
+## S    9.555307</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxth-x-tv-1.png" width="100%" /></p>
 </div>
 <div id="maximum-stem-length-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.4</span> <em>Maximum stem length</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="co"># anova = maximum stem length ~ tv1</span></a>
-<a class="sourceLine" id="cb169-2" title="2">t1mstl&lt;-<span class="kw">lm.rrpp</span>(pp.maxstl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb169-3" title="3"><span class="kw">anova</span>(t1mstl)</a></code></pre></div>
-<pre><code>## 
-## Analysis of Variance, using Residual Randomization
-## Permutation procedure: Randomization of null model residuals 
-## Number of permutations: 10000 
-## Estimation method: Ordinary Least Squares 
-## Sums of Squares and Cross-products: Type I 
-## Effect sizes (Z) based on F distributions
-## 
-##            Df      SS      MS     Rsq      F     Z Pr(&gt;F)    
-## pp.tv1      2  290.28 145.140 0.17058 13.882 2.456  1e-04 ***
-## Residuals 135 1411.42  10.455 0.82942                        
-## Total     137 1701.70                                        
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Call: lm.rrpp(f1 = pp.maxstl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
-##     data = pvptmx, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb171-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mstl,pp.tvDF)</a>
-<a class="sourceLine" id="cb171-3" title="3">ppPreds</a></code></pre></div>
-<pre><code>## 
-## Linear Model fit with lm.rrpp
-## 
-## Number of predictions: 3
-## Confidence level: 95 %
-## Number of bootstrap permutations: 10000
-## 
-## Predicted values:
-## 
-##         [,1]
-## L   17.99210
-## M/T 15.60471
-## S   12.46049
-## 
-## 
-##  95 % Lower confidence limits:
-## 
-##         [,1]
-## L   15.45263
-## M/T 14.97927
-## S   11.34726
-## 
-## 
-##  95 % Upper confidence limits:
-## 
-##         [,1]
-## L   20.64266
-## M/T 16.21941
-## S   13.58973</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
-<p><img src="gt-v_files/figure-html/pp.maxstl-x-tv-1.png" width="100%" /></p>
-</div>
-<div id="maximum-stem-width-type-variety-at-poverty-point" class="section level3">
-<h3><span class="header-section-number">5.6.5</span> <em>Maximum stem width</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="co"># anova = maximum stem width ~ tv1</span></a>
-<a class="sourceLine" id="cb174-2" title="2">t1mstw&lt;-<span class="kw">lm.rrpp</span>(pp.maxstw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb174-3" title="3"><span class="kw">anova</span>(t1mstw)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="co"># anova = maximum stem length ~ tv1</span></a>
+<a class="sourceLine" id="cb146-2" title="2">t1mstl&lt;-<span class="kw">lm.rrpp</span>(pp.maxstl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb146-3" title="3"><span class="kw">anova</span>(t1mstl)</a></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -801,17 +749,17 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## pp.tv1      2  276.13 138.065 0.16913 13.741 2.4876  1e-04 ***
-## Residuals 135 1356.48  10.048 0.83087                         
-## Total     137 1632.61                                         
+## pp.tv1      2  470.41 235.206 0.18119 20.691 2.8197  1e-04 ***
+## Residuals 187 2125.76  11.368 0.81881                         
+## Total     189 2596.17                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Call: lm.rrpp(f1 = pp.maxstw ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
+## Call: lm.rrpp(f1 = pp.maxstl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
 ##     data = pvptmx, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></a>
-<a class="sourceLine" id="cb176-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mstw,pp.tvDF)</a>
-<a class="sourceLine" id="cb176-3" title="3">ppPreds</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb148-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mstl,pp.tvDF)</a>
+<a class="sourceLine" id="cb148-3" title="3">ppPreds</a></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -822,26 +770,83 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## Predicted values:
 ## 
 ##         [,1]
-## L   23.94496
-## M/T 19.50846
-## S   17.14968
+## L   18.01096
+## M/T 15.89493
+## S   12.56673
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##         [,1]
-## L   21.52995
-## M/T 18.90273
-## S   16.05371
+## L   15.34436
+## M/T 15.31925
+## S   11.65645
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##         [,1]
-## L   26.48831
-## M/T 20.11941
-## S   18.28007</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+## L   20.76116
+## M/T 16.48052
+## S   13.48630</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
+<p><img src="gt-v_files/figure-html/pp.maxstl-x-tv-1.png" width="100%" /></p>
+</div>
+<div id="maximum-stem-width-type-variety-at-poverty-point" class="section level3">
+<h3><span class="header-section-number">5.6.5</span> <em>Maximum stem width</em> ~ <em>type-variety</em> at Poverty Point</h3>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="co"># anova = maximum stem width ~ tv1</span></a>
+<a class="sourceLine" id="cb151-2" title="2">t1mstw&lt;-<span class="kw">lm.rrpp</span>(pp.maxstw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb151-3" title="3"><span class="kw">anova</span>(t1mstw)</a></code></pre></div>
+<pre><code>## 
+## Analysis of Variance, using Residual Randomization
+## Permutation procedure: Randomization of null model residuals 
+## Number of permutations: 10000 
+## Estimation method: Ordinary Least Squares 
+## Sums of Squares and Cross-products: Type I 
+## Effect sizes (Z) based on F distributions
+## 
+##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
+## pp.tv1      2  387.21 193.603 0.15095 16.622 2.6464  1e-04 ***
+## Residuals 187 2177.99  11.647 0.84905                         
+## Total     189 2565.20                                         
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Call: lm.rrpp(f1 = pp.maxstw ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
+##     data = pvptmx, print.progress = FALSE)</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></a>
+<a class="sourceLine" id="cb153-2" title="2">ppPreds&lt;-<span class="kw">predict</span>(t1mstw,pp.tvDF)</a>
+<a class="sourceLine" id="cb153-3" title="3">ppPreds</a></code></pre></div>
+<pre><code>## 
+## Linear Model fit with lm.rrpp
+## 
+## Number of predictions: 3
+## Confidence level: 95 %
+## Number of bootstrap permutations: 10000
+## 
+## Predicted values:
+## 
+##         [,1]
+## L   23.97803
+## M/T 20.00154
+## S   17.37407
+## 
+## 
+##  95 % Lower confidence limits:
+## 
+##         [,1]
+## L   21.30012
+## M/T 19.42381
+## S   16.47517
+## 
+## 
+##  95 % Upper confidence limits:
+## 
+##         [,1]
+## L   26.74520
+## M/T 20.56842
+## S   18.31291</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</a></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxstw-x-tv-1.png" width="100%" /></p>
 
 </div>
