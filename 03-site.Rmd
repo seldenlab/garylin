@@ -3,15 +3,11 @@
 ```{r load packages 3, echo=TRUE}
 # install required analysis packages
 #devtools::install_github("tidyverse/tidyverse")
-#devtools::install_github("rich-iannone/DiagrammeR")
-#devtools::install_github("vqv/ggbiplot")
 #devtools::install_github("mlcollyer/RRPP")
 #devtools::install_github("kassambara/ggpubr")
 #devtools::install_github('sinhrks/ggfortify')
 # load libraries
 library(tidyverse)
-library(DiagrammeR)
-library(ggbiplot)
 library(RRPP)
 library(ggpubr)
 library(ggfortify)

@@ -9,14 +9,12 @@ _**Data for Gary dart points from the Jaketown site have not yet been collected,
 ```{r load packages 0, echo=TRUE}
 # install required analysis packages
 #devtools::install_github("tidyverse/tidyverse")
-#devtools::install_github("vqv/ggbiplot")
 #devtools::install_github("mlcollyer/RRPP")
 #devtools::install_github("kassambara/ggpubr")
 #devtools::install_github('sinhrks/ggfortify')
 # load libraries
 library(tidyverse)
 library(dplyr)
-library(ggbiplot)
 library(RRPP)
 library(ggpubr)
 library(ggfortify)
@@ -65,69 +63,9 @@ fphfig
 
 Ford, Phillips, and Haag [-@RN20899] used a series of metrics to assign Gary varieties at the Jaketown site. The approach empoyed here enlists the full range of reported metrics, and applies those to each of the points. Any points that do not articulate with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment. Due to the degree of overlap in the ranges associated with the Gary type-varieties advanced by Ford, Phillips, and Haag [-@RN20898], it is expected that _Gary Stemmed_ will fall out due to overlap in length with _Broad Gary Stemmed_, and overlap in width with _Typical Gary Stemmed_.
 
-```{r vizdiag, out.width = "100%", dpi = 300, echo=TRUE,fig.cap="Logic graph used to visualize the process of assigning type-varieties based upon linear metrics."}
-# logic graph that visualizes the process of sorting the sample
-grViz("
-  digraph{
+### Subset the sample
 
-    node[shape = ellipse
-          fontname = lato
-          penwidth = 0.2
-          style = filled
-          fillcolor = White]
-    
-    Gary
-  
-    node[shape = circle
-         fontname = lato
-         style = filled
-         fillcolor = WhiteSmoke]
-   45; 70; 79; 55; 75; 35; 50
-    
-    node[shape = doublecircle
-         fontname = lato
-         style = filled
-         fillcolor = White]
-    22; 31; 32; 48; 36; 20; 30
-    
-    node[shape = folder
-         style = filled
-         fillcolor = Gainsboro]
-     Gnv; GS; TyGS; BGS; ThGS; SGS
-    
-    edge[fontname = lato
-         penwidth = 0.2]
-    Gary->Gnv [label = 'start no var'];
-    Gnv->55 [label = 'if L >=']
-    55->75 [label = 'and L <=']
-    75->30 [label = 'and if W >=']
-    30->36 [label = 'and W <=']
-    36->ThGS [label = 'then']
-    Gnv->35 [label = 'if L >=']
-    35->50 [label = 'and L <=']
-    50->20 [label = 'and if W >=']
-    20->30 [label = 'and W <=']
-    30->SGS [label = 'then']
-    Gnv->45 [label = 'if L >=']
-    45->70 [label = 'and L <=']
-    70->22 [label = 'and if W >=']
-    22->31 [label = 'and W <=']            
-    31->GS [label = 'then']
-    45->79 [label = 'and L <=']
-    79->22 [label = 'and if W >=']
-    31->TyGS [label = 'then']
-    70->32 [label = 'and if W >=']
-    32->48 [label = 'and W <=']
-    48->BGS [label = 'then']
-
-    graph[nodesep = 0.75]
-  }
-")
-```
-
-## Subset the Jaketown sample
-
-During code development, the Poverty Point sample is being used in place of the Jaketown sample until the requisite permissions and access are granted to those collections.
+During code development, the Poverty Point sample was used in place of the Jaketown sample as the requisite permissions and access were sought to access and scan those collections. Due to the COVID-19 pandemic, we were unable to collect data from the Jaketown sample; however, since those type-varieties presented at Poverty Point are representative of the logical maturation of these type-varieties, the Poverty Point specimens were classified using those metrics associated with the Gary dart point type-varieties that were advanced at Jaketown.
 
 ```{r tv0, echo=TRUE}
 # subset poverty point data
@@ -271,13 +209,13 @@ tv0pca
 
 ## Analyses of Variance (ANOVA) for _linear variables_ ~ _type-varieties_
 
-### _Maximum length_ ~ _type-variety_ at Jaketown
+### _Maximum length_ ~ _type-variety_
 
 ```{r j.maxl-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum length ~ tv1
 t0ml<-lm.rrpp(j.maxl ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
 anova(t0ml)
-# visualise model predictions for maximum length ~ type-variety at poverty point
+# visualise model predictions for maximum length ~ type-variety
 j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
 rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
 jPreds<-predict(t0ml,j.tvDF)
@@ -286,27 +224,82 @@ plot(jPreds, col = 1:NROW(j.tvDF))
 # pairwise comparison of LS means = which sites differ?
 j.ml<-pairwise(t0ml, groups = jmx$tv0)
 summary(j.ml, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(j.ml, confidence = 0.95, test.type = "VC", angle.type = "deg")
 # pairwise distances between variances = standardization?
 summary(j.ml, confidence = 0.95, test.type = "var")
 ```
 
+### _Maximum width_ ~ _type-variety_
 
-```{r anova tv0, echo=TRUE}
-# anova = maximum length ~ tv0
-t0ml<-lm.rrpp(maxl ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
-anova(t0ml)
-# anova = maximum width ~ tv0
-t0mw<-lm.rrpp(maxw ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+```{r j.maxw-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
+# anova = maximum width ~ tv1
+t0mw<-lm.rrpp(j.maxw ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
 anova(t0mw)
-# anova = maximum thickness ~ tv0
-t0mth<-lm.rrpp(maxth ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+# visualise model predictions for maximum width ~ type-variety
+j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
+rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
+jPreds<-predict(t0mw,j.tvDF)
+jPreds
+plot(jPreds, col = 1:NROW(j.tvDF))
+# pairwise comparison of LS means = which sites differ?
+j.mw<-pairwise(t0mw, groups = jmx$tv0)
+summary(j.mw, confidence = 0.95, test.type = "dist")
+# pairwise distances between variances = standardization?
+summary(j.mw, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum thickness_ ~ _type-variety_
+
+```{r j.maxth-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
+# anova = maximum thickness ~ tv1
+t0mth<-lm.rrpp(j.maxth ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
 anova(t0mth)
-# anova = maximum stem length ~ tv0
-t0mstl<-lm.rrpp(maxstl ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+# visualise model predictions for maximum thickness ~ type-variety
+j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
+rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
+jPreds<-predict(t0mth,j.tvDF)
+jPreds
+plot(jPreds, col = 1:NROW(j.tvDF))
+# pairwise comparison of LS means = which sites differ?
+j.mth<-pairwise(t0mth, groups = jmx$tv0)
+summary(j.mth, confidence = 0.95, test.type = "dist")
+# pairwise distances between variances = standardization?
+summary(j.mth, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum stem length_ ~ _type-variety_
+
+```{r j.maxstl-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
+# anova = maximum stem length ~ tv1
+t0mstl<-lm.rrpp(j.maxstl ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
 anova(t0mstl)
-# anova = maximum stem width ~ tv0
-t0mstw<-lm.rrpp(maxstw ~ tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
+# visualise model predictions for maximum stem length ~ type-variety
+j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
+rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
+jPreds<-predict(t0mstl,j.tvDF)
+jPreds
+plot(jPreds, col = 1:NROW(j.tvDF))
+# pairwise comparison of LS means = which sites differ?
+j.mstl<-pairwise(t0mstl, groups = jmx$tv0)
+summary(j.mstl, confidence = 0.95, test.type = "dist")
+# pairwise distances between variances = standardization?
+summary(j.mstl, confidence = 0.95, test.type = "var")
+```
+
+### _Maximum stem width_ ~ _type-variety_
+
+```{r j.maxstw-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
+# anova = maximum stem width ~ tv1
+t0mstw<-lm.rrpp(j.maxstw ~ j.tv0, SS.type = "I",data = jmx,iter = 9999,print.progress = FALSE)
 anova(t0mstw)
+# visualise model predictions for maximum stem width ~ type-variety
+j.tvDF<-data.frame(j.tv0 = c("GS","TyGS","BGS","ThGS","SGS"))
+rownames(j.tvDF)<-c("GS","TyGS","BGS","ThGS","SGS")
+jPreds<-predict(t0mstw,j.tvDF)
+jPreds
+plot(jPreds, col = 1:NROW(j.tvDF))
+# pairwise comparison of LS means = which sites differ?
+j.mstw<-pairwise(t0mstw, groups = jmx$tv0)
+summary(j.mstw, confidence = 0.95, test.type = "dist")
+# pairwise distances between variances = standardization?
+summary(j.mstw, confidence = 0.95, test.type = "var")
 ```

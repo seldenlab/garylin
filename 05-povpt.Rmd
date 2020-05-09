@@ -3,15 +3,11 @@
 ```{r load packages 4, echo=TRUE}
 # install required analysis packages
 #devtools::install_github("tidyverse/tidyverse")
-#devtools::install_github("rich-iannone/DiagrammeR")
-#devtools::install_github("vqv/ggbiplot")
 #devtools::install_github("mlcollyer/RRPP")
 #devtools::install_github("kassambara/ggpubr")
 #devtools::install_github('sinhrks/ggfortify')
 # load libraries
 library(tidyverse)
-library(DiagrammeR)
-library(ggbiplot)
 library(RRPP)
 library(ggpubr)
 library(ggfortify)
@@ -167,7 +163,7 @@ ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1)) +
   xlim(0,30)
 ```
 
-### Density plot for maximum width by tv1
+### Density plot for maximum stem length by tv1
 
 ```{r ppdensitystl, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot of maxstl by tv1
@@ -177,7 +173,7 @@ ggplot(pvptmx, aes(x=pp.maxstl, fill = pp.tv1)) +
   xlim(0,30)
 ```
 
-### Density plot for maximum width by tv1
+### Density plot for maximum stem width by tv1
 
 ```{r ppdensitystw, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot of maxstw by tv1
@@ -214,12 +210,10 @@ rownames(pp.tvDF)<-c("L","M/T","S")
 ppPreds<-predict(t1ml,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
-# pairwise comparison of LS means = which sites differ?
+# pairwise comparison of LS means = which differ?
 pp.ml<-pairwise(t1ml, groups = pvptmx$tv1)
 summary(pp.ml, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(pp.ml, confidence = 0.95, test.type = "VC", angle.type = "deg")
-# pairwise distances between variances = standardization?
+# pairwise distance between variances = standardization?
 summary(pp.ml, confidence = 0.95, test.type = "var")
 ```
 
@@ -233,6 +227,11 @@ anova(t1mw)
 ppPreds<-predict(t1mw,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+# pairwise comparison of LS means = which differ?
+pp.mw<-pairwise(t1mw, groups = pvptmx$tv1)
+summary(pp.mw, confidence = 0.95, test.type = "dist")
+# pairwise distance between variances = standardization?
+summary(pp.mw, confidence = 0.95, test.type = "var")
 ```
 
 ### _Maximum thickness_ ~ _type-variety_ at Poverty Point
@@ -245,6 +244,11 @@ anova(t1mth)
 ppPreds<-predict(t1mth,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+# pairwise comparison of LS means = which differ?
+pp.mth<-pairwise(t1mth, groups = pvptmx$tv1)
+summary(pp.mth, confidence = 0.95, test.type = "dist")
+# pairwise distance between variances = standardization?
+summary(pp.mth, confidence = 0.95, test.type = "var")
 ```
 
 ### _Maximum stem length_ ~ _type-variety_ at Poverty Point
@@ -257,6 +261,11 @@ anova(t1mstl)
 ppPreds<-predict(t1mstl,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+# pairwise comparison of LS means = which differ?
+pp.mstl<-pairwise(t1mstl, groups = pvptmx$tv1)
+summary(pp.mstl, confidence = 0.95, test.type = "dist")
+# pairwise distance between variances = standardization?
+summary(pp.mstl, confidence = 0.95, test.type = "var")
 ```
 
 ### _Maximum stem width_ ~ _type-variety_ at Poverty Point
@@ -269,4 +278,9 @@ anova(t1mstw)
 ppPreds<-predict(t1mstw,pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+# pairwise comparison of LS means = which differ?
+pp.mstw<-pairwise(t1mstw, groups = pvptmx$tv1)
+summary(pp.mstw, confidence = 0.95, test.type = "dist")
+# pairwise distance between variances = standardization?
+summary(pp.mstw, confidence = 0.95, test.type = "var")
 ```
