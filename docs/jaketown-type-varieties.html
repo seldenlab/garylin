@@ -389,7 +389,9 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 ## [217] &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;BGS&quot;  &quot;Gnv&quot; 
 ## [226] &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;Gnv&quot; 
 ## [235] &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;ThGS&quot; &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot; 
-## [244] &quot;SGS&quot;</code></pre>
+## [244] &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
+## [253] &quot;SGS&quot;  &quot;BGS&quot;  &quot;ThGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;SGS&quot; 
+## [262] &quot;ThGS&quot; &quot;SGS&quot;  &quot;SGS&quot;</code></pre>
 </div>
 </div>
 <div id="boxplots-for-site-by-ford-phillips-and-haags--rn20899-gary-type-varieties" class="section level2">
@@ -529,10 +531,10 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df    SS      MS     Rsq     F      Z Pr(&gt;F)    
-## j.tv0       4 12446 3111.57 0.28375 23.67 4.3109  1e-04 ***
-## Residuals 239 31418  131.46 0.71625                        
-## Total     243 43864                                        
+##            Df    SS     MS    Rsq      F      Z Pr(&gt;F)    
+## j.tv0       4 13480 3370.0 0.2904 26.499 4.3331  1e-04 ***
+## Residuals 259 32937  127.2 0.7096                         
+## Total     263 46417                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -553,31 +555,31 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   56.51423
-## TyGS 64.93089
-## BGS  56.51423
-## ThGS 44.49992
-## SGS  59.75514
+## GS   56.61304
+## TyGS 64.42364
+## BGS  56.61304
+## ThGS 44.45094
+## SGS  60.40641
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   51.27418
-## TyGS 61.06463
-## BGS  51.27418
-## ThGS 41.26660
-## SGS  56.37685
+## GS   51.70471
+## TyGS 60.84246
+## BGS  51.70471
+## ThGS 41.40668
+## SGS  57.19849
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   62.03854
-## TyGS 68.88019
-## BGS  62.03854
-## ThGS 47.70448
-## SGS  63.29210</code></pre>
+## GS   61.80688
+## TyGS 68.08914
+## BGS  61.80688
+## ThGS 47.45209
+## SGS  63.72833</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="jaketown-type-varieties.html#cb94-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxl-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="jaketown-type-varieties.html#cb95-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -594,17 +596,17 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                    d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv    3.2858111  8.646242 -0.09011381 0.4603
-## BGS:SGS   11.9682712  8.507803  3.22152122 0.0073
-## BGS:ThGS   8.4638038  8.986694  1.74077167 0.0631
-## BGS:TyGS   2.3169332  8.379361 -0.43103060 0.5899
-## Gnv:SGS   15.2540823  4.961783  8.74972383 0.0001
-## Gnv:ThGS   5.1779928  5.548851  1.67291119 0.0705
-## Gnv:TyGS   0.9688779  4.621549 -0.66327480 0.6949
-## SGS:ThGS  20.4320751  5.377630 10.94367040 0.0001
-## SGS:TyGS  14.2852044  4.420736  9.19376970 0.0001
-## ThGS:TyGS  6.1468706  5.157628  2.54903992 0.0195</code></pre>
+##                   d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv    3.744352  8.371481  0.13493708 0.3804
+## BGS:SGS   12.220379  8.216379  3.50665145 0.0034
+## BGS:ThGS   7.770357  8.484560  1.64087577 0.0740
+## BGS:TyGS   2.016167  7.989725 -0.49974475 0.6202
+## Gnv:SGS   15.964731  4.823078  9.41386800 0.0001
+## Gnv:ThGS   4.026005  5.297172  1.12906765 0.1420
+## Gnv:TyGS   1.728185  4.531856 -0.06717469 0.4416
+## SGS:ThGS  19.990736  5.167895 11.10032971 0.0001
+## SGS:TyGS  14.236545  4.242719  9.51477672 0.0001
+## ThGS:TyGS  5.754190  4.864377  2.54390982 0.0199</code></pre>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="jaketown-type-varieties.html#cb97-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb97-2"><a href="jaketown-type-varieties.html#cb97-2"></a><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -618,20 +620,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-##  72.00748 496.38035  13.10507  31.41826  39.96433 
+##  66.58074 488.78713  12.82375  31.30004  39.81170 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   424.372869 168.19922  6.6518513 0.0001
-## BGS:SGS    58.902408 164.04378 -0.1660832 0.4931
-## BGS:ThGS   40.589218 172.61090 -0.5519106 0.6552
-## BGS:TyGS   32.043156 158.17272 -0.6691544 0.7081
-## Gnv:SGS   483.275277  96.30343 14.7552761 0.0001
-## Gnv:ThGS  464.962088 108.78891 12.4044230 0.0001
-## Gnv:TyGS  456.416025  89.87750 15.0899387 0.0001
-## SGS:ThGS   18.313190 104.56572 -0.7768953 0.7443
-## SGS:TyGS   26.859252  86.08045 -0.3283762 0.5511
-## ThGS:TyGS   8.546062  99.15586 -1.0578509 0.8690</code></pre>
+##                   d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   422.20639 156.32216  7.2248065 0.0002
+## BGS:SGS    53.75698 151.17711 -0.1906948 0.4996
+## BGS:ThGS   35.28069 159.90092 -0.5964888 0.6635
+## BGS:TyGS   26.76903 146.05227 -0.7304983 0.7332
+## Gnv:SGS   475.96338  91.36377 15.3474870 0.0001
+## Gnv:ThGS  457.48709 102.00278 13.0945276 0.0001
+## Gnv:TyGS  448.97543  86.65508 15.3565774 0.0001
+## SGS:ThGS   18.47629  97.95225 -0.7247478 0.7146
+## SGS:TyGS   26.98795  80.50730 -0.2376075 0.5117
+## ThGS:TyGS   8.51166  91.77568 -1.0428252 0.8594</code></pre>
 </div>
 <div id="maximum-width-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.2</span> <em>Maximum width</em> ~ <em>type-variety</em></h3>
@@ -647,9 +649,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0       4 2294.9 573.73 0.32609 28.912 4.4661  1e-04 ***
-## Residuals 239 4742.7  19.84 0.67391                         
-## Total     243 7037.7                                        
+## j.tv0       4 2424.1 606.02 0.31052 29.161 4.5235  1e-04 ***
+## Residuals 259 5382.4  20.78 0.68948                         
+## Total     263 7806.5                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -670,31 +672,31 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   34.19896
-## TyGS 30.47306
-## BGS  34.19896
-## ThGS 22.63616
-## SGS  25.50340
+## GS   34.24262
+## TyGS 30.53969
+## BGS  34.24262
+## ThGS 22.88122
+## SGS  26.25178
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   32.16981
-## TyGS 28.95196
-## BGS  32.16981
-## ThGS 21.38426
-## SGS  24.17239
+## GS   32.22612
+## TyGS 29.06737
+## BGS  32.22612
+## ThGS 21.68210
+## SGS  24.95677
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   36.38083
-## TyGS 32.00685
-## BGS  36.38083
-## ThGS 23.87665
-## SGS  26.85401</code></pre>
+## GS   36.35752
+## TyGS 32.03559
+## BGS  36.35752
+## ThGS 24.10622
+## SGS  27.58654</code></pre>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="jaketown-type-varieties.html#cb103-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxw-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="jaketown-type-varieties.html#cb104-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -711,17 +713,17 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv    8.6681640  3.517397  6.7009601 0.0001
-## BGS:SGS   11.5441878  3.467224  9.5042930 0.0001
-## BGS:ThGS   3.7024880  3.627579  2.0035405 0.0452
-## BGS:TyGS   9.3457284  3.408697  7.5559501 0.0001
-## Gnv:SGS    2.8760238  1.974222  3.3908275 0.0053
-## Gnv:ThGS   4.9656760  2.259308  5.8274767 0.0001
-## Gnv:TyGS   0.6775644  1.879372 -0.1492419 0.4786
-## SGS:ThGS   7.8416997  2.160489 10.4546345 0.0001
-## SGS:TyGS   2.1984594  1.784397  2.7121385 0.0127
-## ThGS:TyGS  5.6432403  2.064026  7.6090861 0.0001</code></pre>
+##                   d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv    8.009815  3.464343  6.2221803 0.0001
+## BGS:SGS   11.386212  3.350466  9.6682396 0.0001
+## BGS:ThGS   3.738810  3.482185  2.1510987 0.0333
+## BGS:TyGS   9.305667  3.293772  7.8281970 0.0001
+## Gnv:SGS    3.376397  1.960979  4.2717276 0.0007
+## Gnv:ThGS   4.271005  2.181313  5.0609923 0.0001
+## Gnv:TyGS   1.295852  1.854389  0.9656541 0.1653
+## SGS:ThGS   7.647403  2.075762 10.5100555 0.0001
+## SGS:TyGS   2.080545  1.737057  2.5820981 0.0173
+## ThGS:TyGS  5.566857  2.006414  7.7381192 0.0001</code></pre>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="jaketown-type-varieties.html#cb106-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb106-2"><a href="jaketown-type-varieties.html#cb106-2"></a><span class="kw">summary</span>(j.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -735,20 +737,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-## 15.862172 72.797377  5.181481  3.242476  5.015765 
+## 14.546708 78.496729  5.707165  2.954847  5.203128 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)            Z Pr &gt; d
-## BGS:Gnv   56.9352049  25.77126  5.546796413 0.0011
-## BGS:SGS   10.6806908  25.37855  0.001601053 0.4240
-## BGS:ThGS  12.6196954  26.85286  0.176659275 0.3561
-## BGS:TyGS  10.8464072  25.24357  0.040663549 0.4175
-## Gnv:SGS   67.6158957  14.94912 13.281442750 0.0001
-## Gnv:ThGS  69.5549003  16.84278 12.104443223 0.0001
-## Gnv:TyGS  67.7816121  13.97595 14.317696833 0.0001
-## SGS:ThGS   1.9390046  16.07381 -0.948630801 0.8186
-## SGS:TyGS   0.1657163  13.34645 -1.297971930 0.9831
-## ThGS:TyGS  1.7732883  15.42338 -0.957704623 0.8216</code></pre>
+##                    d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv   63.9500203  26.18211  6.41557142 0.0001
+## BGS:SGS    8.8395431  25.74161 -0.24740954 0.5308
+## BGS:ThGS  11.5918609  26.86725  0.04744333 0.4101
+## BGS:TyGS   9.3435799  25.15555 -0.16076430 0.5020
+## Gnv:SGS   72.7895635  15.48352 13.89707155 0.0001
+## Gnv:ThGS  75.5418813  17.22722 12.80392042 0.0001
+## Gnv:TyGS  73.2936002  14.41575 14.91235630 0.0001
+## SGS:ThGS   2.7523178  17.00936 -0.79306430 0.7465
+## SGS:TyGS   0.5040368  13.68378 -1.21166080 0.9440
+## ThGS:TyGS  2.2482811  15.46573 -0.87513748 0.7850</code></pre>
 </div>
 <div id="maximum-thickness-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.3</span> <em>Maximum thickness</em> ~ <em>type-variety</em></h3>
@@ -763,10 +765,10 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS      MS     Rsq     F      Z Pr(&gt;F)    
-## j.tv0       4  111.74 27.9345 0.10256 6.828 2.6943  2e-04 ***
-## Residuals 239  977.79  4.0912 0.89744                        
-## Total     243 1089.53                                        
+##            Df     SS      MS     Rsq   F      Z Pr(&gt;F)    
+## j.tv0       4  107.1 26.7748 0.08739 6.2 2.5699  1e-04 ***
+## Residuals 259 1118.5  4.3185 0.91261                      
+## Total     263 1225.6                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -787,31 +789,31 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##           [,1]
-## GS   10.992366
-## TyGS 11.204411
-## BGS  10.992366
-## ThGS  9.136185
-## SGS  10.014210
+## GS   10.839029
+## TyGS 11.032178
+## BGS  10.839029
+## ThGS  9.126814
+## SGS  10.226137
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##           [,1]
-## GS   10.086282
-## TyGS 10.529775
-## BGS  10.086282
-## ThGS  8.573869
-## SGS   9.395334
+## GS    9.956545
+## TyGS 10.380146
+## BGS   9.956545
+## ThGS  8.570587
+## SGS   9.626226
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
-##           [,1]
-## GS   11.993741
-## TyGS 11.904485
-## BGS  11.993741
-## ThGS  9.709965
-## SGS  10.644294</code></pre>
+##          [,1]
+## GS   11.81295
+## TyGS 11.70776
+## BGS  11.81295
+## ThGS  9.70000
+## SGS  10.84845</code></pre>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="jaketown-type-varieties.html#cb112-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxth-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="jaketown-type-varieties.html#cb113-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -829,16 +831,16 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Pairwise distances between means, plus statistics
 ##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   0.97696970 1.3785963  0.9844200 0.1637
-## BGS:SGS   1.85461997 1.3653241  3.1145606 0.0082
-## BGS:ThGS  0.21399522 1.4349462 -0.8321738 0.7697
-## BGS:TyGS  0.87713034 1.3483100  0.8059916 0.1937
-## Gnv:SGS   0.87765027 0.7765104  2.3333517 0.0279
-## Gnv:ThGS  1.19096491 0.8908413  3.0269486 0.0092
-## Gnv:TyGS  0.09983936 0.7406667 -0.8928713 0.7979
-## SGS:ThGS  2.06861519 0.8582254  6.4770263 0.0001
-## SGS:TyGS  0.97748963 0.6993847  3.2136407 0.0065
-## ThGS:TyGS 1.09112555 0.8056051  3.0556435 0.0094</code></pre>
+## BGS:Gnv   0.61351852 1.3507685  0.1536757 0.3710
+## BGS:SGS   1.71621212 1.3185000  2.9110015 0.0120
+## BGS:ThGS  0.19380952 1.3683571 -0.8596515 0.7814
+## BGS:TyGS  0.68900000 1.3122278  0.4061584 0.2948
+## Gnv:SGS   1.10269360 0.7850084  3.2775102 0.0047
+## Gnv:ThGS  0.80732804 0.8676204  1.6942742 0.0696
+## Gnv:TyGS  0.07548148 0.7345000 -1.0049180 0.8443
+## SGS:ThGS  1.91002165 0.8382695  6.0373642 0.0001
+## SGS:TyGS  1.02721212 0.6911773  3.5721757 0.0016
+## ThGS:TyGS 0.88280952 0.7951175  2.2676084 0.0307</code></pre>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="jaketown-type-varieties.html#cb115-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb115-2"><a href="jaketown-type-varieties.html#cb115-2"></a><span class="kw">summary</span>(j.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -852,20 +854,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##      BGS      Gnv      SGS     ThGS     TyGS 
-## 6.253132 5.617669 2.703245 5.002029 3.223244 
+## 6.144483 6.581023 2.665008 5.404257 3.183438 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   0.6354630  5.185383 -0.7890133 0.7889
-## BGS:SGS   3.5498873  5.010690  1.0144130 0.1146
-## BGS:ThGS  1.2511036  5.307765 -0.4335734 0.5971
-## BGS:TyGS  3.0298878  5.017593  0.7240880 0.1565
-## Gnv:SGS   2.9144243  2.827236  2.0237369 0.0432
-## Gnv:ThGS  0.6156407  3.214635 -0.6834192 0.6980
-## Gnv:TyGS  2.3944249  2.609206  1.6288197 0.0781
-## SGS:ThGS  2.2987837  3.047363  1.1154260 0.1462
-## SGS:TyGS  0.5199995  2.472526 -0.6746535 0.6935
-## ThGS:TyGS 1.7787842  2.912971  0.6608894 0.2293</code></pre>
+## BGS:Gnv   0.4365395  4.945386 -0.8992760 0.8527
+## BGS:SGS   3.4794750  4.912252  0.9966132 0.1237
+## BGS:ThGS  0.7402264  5.117226 -0.7408355 0.7596
+## BGS:TyGS  2.9610454  4.773910  0.7156578 0.1641
+## Gnv:SGS   3.9160144  2.839164  3.1877371 0.0056
+## Gnv:ThGS  1.1767659  3.208255 -0.1245251 0.4728
+## Gnv:TyGS  3.3975849  2.685926  2.7700177 0.0130
+## SGS:ThGS  2.7392485  3.049096  1.5816043 0.0798
+## SGS:TyGS  0.5184295  2.477564 -0.6780481 0.6973
+## ThGS:TyGS 2.2208190  2.918066  1.1508584 0.1316</code></pre>
 </div>
 <div id="maximum-stem-length-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.4</span> <em>Maximum stem length</em> ~ <em>type-variety</em></h3>
@@ -881,9 +883,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)  
-## j.tv0       4  156.8 39.189 0.04275 2.6684 1.5485 0.0311 *
-## Residuals 239 3510.0 14.686 0.95725                       
-## Total     243 3666.8                                      
+## j.tv0       4  179.2 44.806 0.04475 3.0334 1.6999 0.0165 *
+## Residuals 259 3825.7 14.771 0.95525                       
+## Total     263 4004.9                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -904,31 +906,31 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   15.99090
-## TyGS 15.23433
-## BGS  15.99090
-## ThGS 14.21310
-## SGS  15.81869
+## GS   15.83500
+## TyGS 15.54421
+## BGS  15.83500
+## ThGS 14.35396
+## SGS  15.95324
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   14.23231
-## TyGS 13.96885
-## BGS  14.23231
-## ThGS 13.15218
-## SGS  14.69646
+## GS   14.18609
+## TyGS 14.31241
+## BGS  14.18609
+## ThGS 13.30009
+## SGS  14.83805
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   17.83214
-## TyGS 16.53729
-## BGS  17.83214
-## ThGS 15.29223
-## SGS  17.00187</code></pre>
+## GS   17.60817
+## TyGS 16.81379
+## BGS  17.60817
+## ThGS 15.40379
+## SGS  17.07508</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="jaketown-type-varieties.html#cb121-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxstl-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="jaketown-type-varieties.html#cb122-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -945,17 +947,17 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   0.1711765  2.535238 -1.1059592 0.8971
-## BGS:SGS   1.7685246  2.465317  0.9823466 0.1684
-## BGS:ThGS  0.7447368  2.603593 -0.3987170 0.5809
-## BGS:TyGS  0.2609639  2.434503 -0.9738732 0.8324
-## Gnv:SGS   1.5973481  1.457823  2.2624623 0.0298
-## Gnv:ThGS  0.5735604  1.633252 -0.1816487 0.4904
-## Gnv:TyGS  0.4321403  1.361853 -0.3019167 0.5391
-## SGS:ThGS  1.0237877  1.577190  0.8011124 0.1997
-## SGS:TyGS  2.0294884  1.288679  3.8148215 0.0021
-## ThGS:TyGS 1.0057007  1.482845  0.8703628 0.1873</code></pre>
+##                   d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv   0.1162963  2.434829 -1.16539032 0.9278
+## BGS:SGS   1.4895455  2.384246  0.70523111 0.2267
+## BGS:ThGS  0.3004762  2.474244 -0.93437204 0.8169
+## BGS:TyGS  0.6385556  2.336731 -0.43510165 0.5942
+## Gnv:SGS   1.6058418  1.401481  2.37683842 0.0256
+## Gnv:ThGS  0.4167725  1.572238 -0.46247569 0.6014
+## Gnv:TyGS  0.5222593  1.309943 -0.03206598 0.4383
+## SGS:ThGS  1.1890693  1.524587  1.24096919 0.1237
+## SGS:TyGS  2.1281010  1.241710  4.27256922 0.0009
+## ThGS:TyGS 0.9390317  1.424810  0.81280686 0.1989</code></pre>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="jaketown-type-varieties.html#cb124-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb124-2"><a href="jaketown-type-varieties.html#cb124-2"></a><span class="kw">summary</span>(j.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -969,20 +971,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-## 10.025164 28.790693 10.194072  6.399641 12.848218 
+##  9.738389 27.542999 10.478869  7.026124 13.720418 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   18.765529 17.524170  2.0778488 0.0467
-## BGS:SGS    0.168908 17.251129 -0.9704666 0.9787
-## BGS:ThGS   3.625523 18.804936 -0.4388720 0.6038
-## BGS:TyGS   2.823055 16.356052 -0.5071031 0.6671
-## Gnv:SGS   18.596621  9.495098  5.0308888 0.0001
-## Gnv:ThGS  22.391052 10.935284  5.3086363 0.0001
-## Gnv:TyGS  15.942474  9.014451  4.4521667 0.0001
-## SGS:ThGS   3.794431 10.767856 -0.1401490 0.4699
-## SGS:TyGS   2.654147  8.310998 -0.3545445 0.5654
-## ThGS:TyGS  6.448578  9.954522  0.8006075 0.1996</code></pre>
+##                    d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv   17.8046097 16.802348  2.10032343 0.0467
+## BGS:SGS    0.7404801 16.675568 -0.89433847 0.9118
+## BGS:ThGS   2.7122653 17.448230 -0.57363649 0.6802
+## BGS:TyGS   3.9820294 15.898050 -0.29195332 0.5288
+## Gnv:SGS   17.0641296  9.220479  4.75116605 0.0001
+## Gnv:ThGS  20.5168750 10.461498  5.09770423 0.0001
+## Gnv:TyGS  13.8225803  8.574284  3.90972541 0.0006
+## SGS:ThGS   3.4527454  9.908546 -0.17504187 0.4811
+## SGS:TyGS   3.2415493  8.098761 -0.05745915 0.4530
+## ThGS:TyGS  6.6942947  9.405416  0.99833576 0.1607</code></pre>
 </div>
 <div id="maximum-stem-width-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.5</span> <em>Maximum stem width</em> ~ <em>type-variety</em></h3>
@@ -997,10 +999,10 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS     MS     Rsq      F     Z Pr(&gt;F)   
-## j.tv0       4  250.8 62.694 0.07059 4.5382 2.177 0.0015 **
-## Residuals 239 3301.7 13.815 0.92941                       
-## Total     243 3552.5                                      
+##            Df     SS     MS     Rsq     F      Z Pr(&gt;F)   
+## j.tv0       4  253.5 63.382 0.06481 4.487 2.1932 0.0018 **
+## Residuals 259 3658.5 14.126 0.93519                       
+## Total     263 3912.1                                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -1021,31 +1023,31 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   21.51556
-## TyGS 21.11889
-## BGS  21.51556
-## ThGS 18.19087
-## SGS  19.61469
+## GS   21.27687
+## TyGS 21.43973
+## BGS  21.27687
+## ThGS 18.51303
+## SGS  19.98241
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   19.78656
-## TyGS 19.87163
-## BGS  19.78656
-## ThGS 17.13782
-## SGS  18.51464
+## GS   19.63481
+## TyGS 20.23252
+## BGS  19.63481
+## ThGS 17.51174
+## SGS  18.92444
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   23.28451
-## TyGS 22.37626
-## BGS  23.28451
-## ThGS 19.22770
-## SGS  20.72184</code></pre>
+## GS   22.99645
+## TyGS 22.64446
+## BGS  22.99645
+## ThGS 19.52136
+## SGS  21.05667</code></pre>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="jaketown-type-varieties.html#cb130-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxstw-x-tv-1.png" width="100%" /></p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="jaketown-type-varieties.html#cb131-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -1063,16 +1065,16 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Pairwise distances between means, plus statistics
 ##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   1.8913725  2.515599  1.1344473 0.1405
-## BGS:SGS   3.3142623  2.461904  3.0584978 0.0086
-## BGS:ThGS  0.3794737  2.587837 -0.8471050 0.7730
-## BGS:TyGS  2.1107229  2.404553  1.5103162 0.0882
-## Gnv:SGS   1.4228897  1.404558  1.9668354 0.0466
-## Gnv:ThGS  1.5118989  1.582591  1.7440423 0.0633
-## Gnv:TyGS  0.2193503  1.345735 -0.7847608 0.7445
-## SGS:ThGS  2.9347886  1.563709  4.8297822 0.0001
-## SGS:TyGS  1.2035394  1.269174  1.7495265 0.0647
-## ThGS:TyGS 1.7312492  1.497035  2.4782815 0.0237</code></pre>
+## BGS:Gnv   1.2998148  2.377870  0.4206144 0.2963
+## BGS:SGS   2.7824242  2.362962  2.4778629 0.0229
+## BGS:ThGS  0.1445238  2.485601 -1.1349116 0.9064
+## BGS:TyGS  1.6576667  2.322292  0.9936966 0.1632
+## Gnv:SGS   1.4826094  1.392195  2.1225044 0.0383
+## Gnv:ThGS  1.4443386  1.545794  1.7223474 0.0653
+## Gnv:TyGS  0.3578519  1.277263 -0.4349638 0.5941
+## SGS:ThGS  2.9269481  1.481667  5.0958293 0.0002
+## SGS:TyGS  1.1247576  1.231778  1.6380622 0.0742
+## ThGS:TyGS 1.8021905  1.410702  2.8263829 0.0128</code></pre>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="jaketown-type-varieties.html#cb133-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb133-2"><a href="jaketown-type-varieties.html#cb133-2"></a><span class="kw">summary</span>(j.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -1086,20 +1088,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-## 18.297873 24.714251  9.061041 11.136437 10.411214 
+## 17.923039 24.903536  9.602406 12.332701 10.521553 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv    6.4163783 10.859764  0.5800574 0.2473
-## BGS:SGS    9.2368319 10.629985  1.4644685 0.0868
-## BGS:ThGS   7.1614362 11.115750  0.7390520 0.2097
-## BGS:TyGS   7.8866588 10.300724  1.1079869 0.1331
-## Gnv:SGS   15.6532102  6.259455  6.8098630 0.0001
-## Gnv:ThGS  13.5778145  7.058303  4.9651168 0.0001
-## Gnv:TyGS  14.3030371  5.893547  6.4993440 0.0001
-## SGS:ThGS   2.0753957  6.719400 -0.3299770 0.5530
-## SGS:TyGS   1.3501731  5.534539 -0.5454711 0.6390
-## ThGS:TyGS  0.7252226  6.439013 -0.9842204 0.8339</code></pre>
+##                    d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv    6.9804975 10.405634  0.84240360 0.1821
+## BGS:SGS    8.3206326 10.092993  1.30290200 0.1079
+## BGS:ThGS   5.5903379 10.635312  0.36842381 0.3031
+## BGS:TyGS   7.4014854  9.936450  1.05172892 0.1439
+## Gnv:SGS   15.3011301  5.974483  6.94396902 0.0001
+## Gnv:ThGS  12.5708354  6.727170  4.77475328 0.0003
+## Gnv:TyGS  14.3819829  5.678098  6.88487399 0.0001
+## SGS:ThGS   2.7302947  6.461894  0.04886391 0.4108
+## SGS:TyGS   0.9191472  5.281701 -0.77577612 0.7403
+## ThGS:TyGS  1.8111475  6.124196 -0.36983779 0.5651</code></pre>
 
 </div>
 </div>

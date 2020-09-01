@@ -340,7 +340,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## [353] 34.05 32.16 27.64 30.99 35.08 31.03 29.00 29.86 29.45 28.14 35.54
 ## [364] 30.88 40.36 25.73 29.37 27.08 29.29 31.82 34.25 21.86 28.32 29.55
 ## [375] 24.44 24.29 23.91 29.82 28.34 32.06 35.62 35.92 42.50 36.47 35.48
-## [386] 35.95 45.88 41.13 34.51 29.89 35.92 27.80</code></pre>
+## [386] 35.95 45.88 41.13 34.51 29.89 35.92 27.80 23.11 39.13 25.33 41.31
+## [397] 26.28 29.46 29.68 36.40 33.03 26.92 27.62 45.03 31.83 33.81 30.26
+## [408] 35.62 30.33 36.07 28.83 34.59</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="gary-dart-point-metrics-by-site.html#cb7-1"></a><span class="co"># how many observations fall at or below 11.8 mm</span></span>
 <span id="cb7-2"><a href="gary-dart-point-metrics-by-site.html#cb7-2"></a>arrow&lt;-<span class="kw">sum</span>(data<span class="op">$</span>dai <span class="op">&lt;=</span><span class="st"> </span><span class="fl">11.8</span>)</span>
 <span id="cb7-3"><a href="gary-dart-point-metrics-by-site.html#cb7-3"></a>arrow</span></code></pre></div>
@@ -421,10 +423,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df    SS      MS     Rsq      F      Z Pr(&gt;F)   
-## Site        2  2043 1021.44 0.03086 6.1935 1.8843 0.0022 **
-## Residuals 389 64154  164.92 0.96914                        
-## Total     391 66197                                        
+##            Df    SS     MS     Rsq      F      Z Pr(&gt;F)   
+## Site        2  2092 1046.2 0.03041 6.4143 1.9102 0.0028 **
+## Residuals 409 66707  163.1 0.96959                        
+## Total     411 68800                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -445,25 +447,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 55.68162
-## Means  49.32808
-## Pov Pt 55.81272
+## Cooper 55.67914
+## Means  49.34669
+## Pov Pt 55.86944
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 53.12670
-## Means  46.15704
-## Pov Pt 54.25177
+## Cooper 53.14573
+## Means  46.19199
+## Pov Pt 54.35389
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 58.36272
-## Means  52.71216
-## Pov Pt 57.45285</code></pre>
+## Cooper 58.38009
+## Means  52.63463
+## Pov Pt 57.42052</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="gary-dart-point-metrics-by-site.html#cb20-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxl-2.png" width="100%" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="gary-dart-point-metrics-by-site.html#cb21-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
@@ -481,9 +483,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  4.274024  3.500824 0.0039
-## Cooper:Pov Pt 0.1295264  3.131624 -1.193091 0.9363
-## Means:Pov Pt  6.4626682  3.718611  4.331386 0.0006</code></pre>
+## Cooper:Means  6.3331418  4.294920  3.461983 0.0041
+## Cooper:Pov Pt 0.1912626  3.102927 -1.103847 0.9031
+## Means:Pov Pt  6.5244044  3.686211  4.388951 0.0011</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="gary-dart-point-metrics-by-site.html#cb23-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
 <span id="cb23-2"><a href="gary-dart-point-metrics-by-site.html#cb23-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -497,10 +499,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1     0 8.537736e-07 -0.7525075    0.68380
-## Cooper:Pov Pt 1     0 8.537736e-07 -0.7608207    0.68640
-## Means:Pov Pt  1     0 8.537736e-07 -0.7525480    0.68365</code></pre>
+##               r        angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1861334    0.20825
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2052106    0.20440
+## Means:Pov Pt  1 0.000000e+00 8.537736e-07 -0.7612293    0.68625</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="gary-dart-point-metrics-by-site.html#cb25-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb25-2"><a href="gary-dart-point-metrics-by-site.html#cb25-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -514,13 +516,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 179.77098 
+## 180.31774  70.02501 175.82313 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                         d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.2927376 102.38480  2.195983 0.0353
-## Cooper:Pov Pt   0.5467602  73.50575 -1.328519 0.9892
-## Means:Pov Pt  109.7459774  86.76379  2.750591 0.0171</code></pre>
+##                        d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.292738  99.72958  2.282897 0.0299
+## Cooper:Pov Pt   4.494614  72.20369 -1.152539 0.9059
+## Means:Pov Pt  105.798124  84.17267  2.677450 0.0179</code></pre>
 </div>
 <div id="maximum-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> <em>Maximum width</em> of Gary points</h3>
@@ -541,10 +543,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  1608.7 804.37 0.11281 24.731 2.9017  1e-04 ***
-## Residuals 389 12652.1  32.52 0.88719                         
-## Total     391 14260.8                                        
+##            Df      SS     MS    Rsq      F      Z Pr(&gt;F)    
+## Site        2  1702.9 851.43 0.1126 25.947 2.9345  1e-04 ***
+## Residuals 409 13420.9  32.81 0.8874                         
+## Total     411 15123.7                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -563,25 +565,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 28.19163
-## Means  22.14393
-## Pov Pt 27.68533
+## Cooper 28.19414
+## Means  22.14149
+## Pov Pt 27.91082
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 27.02578
-## Means  20.70345
-## Pov Pt 26.98110
+## Cooper 27.02657
+## Means  20.73040
+## Pov Pt 27.23480
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 29.40911
-## Means  23.63614
-## Pov Pt 28.41985</code></pre>
+## Cooper 29.37879
+## Means  23.63561
+## Pov Pt 28.61224</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="gary-dart-point-metrics-by-site.html#cb32-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxw-2.png" width="100%" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="gary-dart-point-metrics-by-site.html#cb33-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
@@ -599,9 +601,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  4.274024  3.500824 0.0039
-## Cooper:Pov Pt 0.1295264  3.131624 -1.193091 0.9363
-## Means:Pov Pt  6.4626682  3.718611  4.331386 0.0006</code></pre>
+## Cooper:Means  6.3331418  4.294920  3.461983 0.0041
+## Cooper:Pov Pt 0.1912626  3.102927 -1.103847 0.9031
+## Means:Pov Pt  6.5244044  3.686211  4.388951 0.0011</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="gary-dart-point-metrics-by-site.html#cb35-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
 <span id="cb35-2"><a href="gary-dart-point-metrics-by-site.html#cb35-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -615,10 +617,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1     0 8.537736e-07 -0.7525075    0.68380
-## Cooper:Pov Pt 1     0 8.537736e-07 -0.7608207    0.68640
-## Means:Pov Pt  1     0 8.537736e-07 -0.7525480    0.68365</code></pre>
+##               r        angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1861334    0.20825
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2052106    0.20440
+## Means:Pov Pt  1 0.000000e+00 8.537736e-07 -0.7612293    0.68625</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="gary-dart-point-metrics-by-site.html#cb37-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb37-2"><a href="gary-dart-point-metrics-by-site.html#cb37-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -632,13 +634,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 179.77098 
+## 180.31774  70.02501 175.82313 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                         d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.2927376 102.38480  2.195983 0.0353
-## Cooper:Pov Pt   0.5467602  73.50575 -1.328519 0.9892
-## Means:Pov Pt  109.7459774  86.76379  2.750591 0.0171</code></pre>
+##                        d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.292738  99.72958  2.282897 0.0299
+## Cooper:Pov Pt   4.494614  72.20369 -1.152539 0.9059
+## Means:Pov Pt  105.798124  84.17267  2.677450 0.0179</code></pre>
 </div>
 <div id="maximum-thickness-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> <em>Maximum thickness</em> of Gary points</h3>
@@ -659,10 +661,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS      MS    Rsq      F      Z Pr(&gt;F)    
-## Site        2  233.3 116.652 0.1213 26.851 3.0327  1e-04 ***
-## Residuals 389 1690.0   4.344 0.8787                         
-## Total     391 1923.3                                        
+##            Df      SS      MS     Rsq    F      Z Pr(&gt;F)    
+## Site        2  233.95 116.974 0.11357 26.2 2.9582  1e-04 ***
+## Residuals 409 1826.05   4.465 0.88643                       
+## Total     411 2060.00                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -681,25 +683,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##             [,1]
-## Cooper  9.075032
-## Means   8.217476
-## Pov Pt 10.242627
+## Cooper  9.076985
+## Means   8.221077
+## Pov Pt 10.221094
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 8.662275
-## Means  7.703482
-## Pov Pt 9.985302
+## Cooper 8.650211
+## Means  7.701775
+## Pov Pt 9.971718
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##             [,1]
-## Cooper  9.515280
-## Means   8.768854
-## Pov Pt 10.505025</code></pre>
+## Cooper  9.521040
+## Means   8.795976
+## Pov Pt 10.479873</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="gary-dart-point-metrics-by-site.html#cb44-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxth-2.png" width="100%" /></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="gary-dart-point-metrics-by-site.html#cb45-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
@@ -717,9 +719,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  4.274024  3.500824 0.0039
-## Cooper:Pov Pt 0.1295264  3.131624 -1.193091 0.9363
-## Means:Pov Pt  6.4626682  3.718611  4.331386 0.0006</code></pre>
+## Cooper:Means  6.3331418  4.294920  3.461983 0.0041
+## Cooper:Pov Pt 0.1912626  3.102927 -1.103847 0.9031
+## Means:Pov Pt  6.5244044  3.686211  4.388951 0.0011</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="gary-dart-point-metrics-by-site.html#cb47-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
 <span id="cb47-2"><a href="gary-dart-point-metrics-by-site.html#cb47-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -733,10 +735,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1     0 8.537736e-07 -0.7525075    0.68380
-## Cooper:Pov Pt 1     0 8.537736e-07 -0.7608207    0.68640
-## Means:Pov Pt  1     0 8.537736e-07 -0.7525480    0.68365</code></pre>
+##               r        angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1861334    0.20825
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2052106    0.20440
+## Means:Pov Pt  1 0.000000e+00 8.537736e-07 -0.7612293    0.68625</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="gary-dart-point-metrics-by-site.html#cb49-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb49-2"><a href="gary-dart-point-metrics-by-site.html#cb49-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -750,13 +752,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 179.77098 
+## 180.31774  70.02501 175.82313 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                         d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.2927376 102.38480  2.195983 0.0353
-## Cooper:Pov Pt   0.5467602  73.50575 -1.328519 0.9892
-## Means:Pov Pt  109.7459774  86.76379  2.750591 0.0171</code></pre>
+##                        d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.292738  99.72958  2.282897 0.0299
+## Cooper:Pov Pt   4.494614  72.20369 -1.152539 0.9059
+## Means:Pov Pt  105.798124  84.17267  2.677450 0.0179</code></pre>
 </div>
 <div id="maximum-stem-length-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> <em>Maximum stem length</em> of Gary points</h3>
@@ -778,9 +780,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS      MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  378.7 189.350 0.06123 12.687 2.4343  1e-04 ***
-## Residuals 389 5805.9  14.925 0.93877                         
-## Total     391 6184.6                                         
+## Site        2  404.4 202.223 0.06176 13.462 2.4772  1e-04 ***
+## Residuals 409 6144.1  15.022 0.93824                         
+## Total     411 6548.5                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -799,25 +801,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 15.41438
-## Means  12.65351
-## Pov Pt 15.42824
+## Cooper 15.41291
+## Means  12.66174
+## Pov Pt 15.52901
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 14.62576
-## Means  11.68230
-## Pov Pt 14.95000
+## Cooper 14.61215
+## Means  11.68316
+## Pov Pt 15.06408
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 16.22224
-## Means  13.65933
-## Pov Pt 15.91883</code></pre>
+## Cooper 16.21449
+## Means  13.65707
+## Pov Pt 16.00066</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="gary-dart-point-metrics-by-site.html#cb56-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstl-2.png" width="100%" /></p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="gary-dart-point-metrics-by-site.html#cb57-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
@@ -835,9 +837,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  4.274024  3.500824 0.0039
-## Cooper:Pov Pt 0.1295264  3.131624 -1.193091 0.9363
-## Means:Pov Pt  6.4626682  3.718611  4.331386 0.0006</code></pre>
+## Cooper:Means  6.3331418  4.294920  3.461983 0.0041
+## Cooper:Pov Pt 0.1912626  3.102927 -1.103847 0.9031
+## Means:Pov Pt  6.5244044  3.686211  4.388951 0.0011</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="gary-dart-point-metrics-by-site.html#cb59-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
 <span id="cb59-2"><a href="gary-dart-point-metrics-by-site.html#cb59-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -851,10 +853,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1     0 8.537736e-07 -0.7525075    0.68380
-## Cooper:Pov Pt 1     0 8.537736e-07 -0.7608207    0.68640
-## Means:Pov Pt  1     0 8.537736e-07 -0.7525480    0.68365</code></pre>
+##               r        angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1861334    0.20825
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2052106    0.20440
+## Means:Pov Pt  1 0.000000e+00 8.537736e-07 -0.7612293    0.68625</code></pre>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="gary-dart-point-metrics-by-site.html#cb61-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb61-2"><a href="gary-dart-point-metrics-by-site.html#cb61-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -868,13 +870,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 179.77098 
+## 180.31774  70.02501 175.82313 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                         d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.2927376 102.38480  2.195983 0.0353
-## Cooper:Pov Pt   0.5467602  73.50575 -1.328519 0.9892
-## Means:Pov Pt  109.7459774  86.76379  2.750591 0.0171</code></pre>
+##                        d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.292738  99.72958  2.282897 0.0299
+## Cooper:Pov Pt   4.494614  72.20369 -1.152539 0.9059
+## Means:Pov Pt  105.798124  84.17267  2.677450 0.0179</code></pre>
 </div>
 <div id="maximum-stem-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.5</span> <em>Maximum stem width</em> of Gary points</h3>
@@ -895,10 +897,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df     SS     MS     Rsq      F     Z Pr(&gt;F)    
-## Site        2 1025.2 512.61 0.14939 34.161 3.161  1e-04 ***
-## Residuals 389 5837.3  15.01 0.85061                        
-## Total     391 6862.5                                       
+##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
+## Site        2 1122.7 561.33 0.15338 37.049 3.2476  1e-04 ***
+## Residuals 409 6196.8  15.15 0.84662                         
+## Total     411 7319.5                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -917,25 +919,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 19.02835
-## Means  15.27270
-## Pov Pt 19.95045
+## Cooper 19.03291
+## Means  15.27158
+## Pov Pt 20.12272
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 18.25779
-## Means  14.29957
-## Pov Pt 19.46989
+## Cooper 18.25793
+## Means  14.28883
+## Pov Pt 19.66508
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 19.83857
-## Means  16.28338
-## Pov Pt 20.43778</code></pre>
+## Cooper 19.82943
+## Means  16.28512
+## Pov Pt 20.59094</code></pre>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="gary-dart-point-metrics-by-site.html#cb68-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstw-2.png" width="100%" /></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="gary-dart-point-metrics-by-site.html#cb69-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
@@ -953,9 +955,9 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  6.3331418  4.274024  3.500824 0.0039
-## Cooper:Pov Pt 0.1295264  3.131624 -1.193091 0.9363
-## Means:Pov Pt  6.4626682  3.718611  4.331386 0.0006</code></pre>
+## Cooper:Means  6.3331418  4.294920  3.461983 0.0041
+## Cooper:Pov Pt 0.1912626  3.102927 -1.103847 0.9031
+## Means:Pov Pt  6.5244044  3.686211  4.388951 0.0011</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="gary-dart-point-metrics-by-site.html#cb71-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
 <span id="cb71-2"><a href="gary-dart-point-metrics-by-site.html#cb71-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -969,10 +971,10 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1     0 8.537736e-07 -0.7525075    0.68380
-## Cooper:Pov Pt 1     0 8.537736e-07 -0.7608207    0.68640
-## Means:Pov Pt  1     0 8.537736e-07 -0.7525480    0.68365</code></pre>
+##               r        angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1861334    0.20825
+## Cooper:Pov Pt 1 8.537736e-07 8.537736e-07  1.2052106    0.20440
+## Means:Pov Pt  1 0.000000e+00 8.537736e-07 -0.7612293    0.68625</code></pre>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="gary-dart-point-metrics-by-site.html#cb73-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
 <span id="cb73-2"><a href="gary-dart-point-metrics-by-site.html#cb73-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -986,13 +988,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 179.77098 
+## 180.31774  70.02501 175.82313 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                         d UCL (95%)         Z Pr &gt; d
-## Cooper:Means  110.2927376 102.38480  2.195983 0.0353
-## Cooper:Pov Pt   0.5467602  73.50575 -1.328519 0.9892
-## Means:Pov Pt  109.7459774  86.76379  2.750591 0.0171</code></pre>
+##                        d UCL (95%)         Z Pr &gt; d
+## Cooper:Means  110.292738  99.72958  2.282897 0.0299
+## Cooper:Pov Pt   4.494614  72.20369 -1.152539 0.9059
+## Means:Pov Pt  105.798124  84.17267  2.677450 0.0179</code></pre>
 
 </div>
 </div>
