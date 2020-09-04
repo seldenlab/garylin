@@ -275,56 +275,56 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 </div>
 <div id="poverty-point-type-varieties" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Poverty Point type-varieties</h1>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="poverty-point-type-varieties.html#cb142-1"></a><span class="co"># install required analysis packages</span></span>
-<span id="cb142-2"><a href="poverty-point-type-varieties.html#cb142-2"></a><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></span>
-<span id="cb142-3"><a href="poverty-point-type-varieties.html#cb142-3"></a><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></span>
-<span id="cb142-4"><a href="poverty-point-type-varieties.html#cb142-4"></a><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></span>
-<span id="cb142-5"><a href="poverty-point-type-varieties.html#cb142-5"></a><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></span>
-<span id="cb142-6"><a href="poverty-point-type-varieties.html#cb142-6"></a><span class="co"># load libraries</span></span>
-<span id="cb142-7"><a href="poverty-point-type-varieties.html#cb142-7"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb142-8"><a href="poverty-point-type-varieties.html#cb142-8"></a><span class="kw">library</span>(RRPP)</span>
-<span id="cb142-9"><a href="poverty-point-type-varieties.html#cb142-9"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb142-10"><a href="poverty-point-type-varieties.html#cb142-10"></a><span class="kw">library</span>(ggfortify)</span>
-<span id="cb142-11"><a href="poverty-point-type-varieties.html#cb142-11"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="poverty-point-type-varieties.html#cb135-1"></a><span class="co"># install required analysis packages</span></span>
+<span id="cb135-2"><a href="poverty-point-type-varieties.html#cb135-2"></a><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></span>
+<span id="cb135-3"><a href="poverty-point-type-varieties.html#cb135-3"></a><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></span>
+<span id="cb135-4"><a href="poverty-point-type-varieties.html#cb135-4"></a><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></span>
+<span id="cb135-5"><a href="poverty-point-type-varieties.html#cb135-5"></a><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></span>
+<span id="cb135-6"><a href="poverty-point-type-varieties.html#cb135-6"></a><span class="co"># load libraries</span></span>
+<span id="cb135-7"><a href="poverty-point-type-varieties.html#cb135-7"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb135-8"><a href="poverty-point-type-varieties.html#cb135-8"></a><span class="kw">library</span>(RRPP)</span>
+<span id="cb135-9"><a href="poverty-point-type-varieties.html#cb135-9"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb135-10"><a href="poverty-point-type-varieties.html#cb135-10"></a><span class="kw">library</span>(ggfortify)</span>
+<span id="cb135-11"><a href="poverty-point-type-varieties.html#cb135-11"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
 <div id="gary-varieties-proposed-by-ford-and-webb--rn20898" class="section level2">
 <h2><span class="header-section-number">5.1</span> Gary varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span></h2>
 <p>The <code>tv1</code> argument used within this chapter articulates with three variants of the Gary type that include <em>Large</em>, <em>Medium/Typical</em>, and <em>Small</em> that were assigned using those morphological criteria first advanced by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> at the Jaketown site, and later refined by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> at Poverty Point.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="poverty-point-type-varieties.html#cb143-1"></a><span class="co"># set working directory</span></span>
-<span id="cb143-2"><a href="poverty-point-type-varieties.html#cb143-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
-<span id="cb143-3"><a href="poverty-point-type-varieties.html#cb143-3"></a><span class="co"># load data</span></span>
-<span id="cb143-4"><a href="poverty-point-type-varieties.html#cb143-4"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="poverty-point-type-varieties.html#cb136-1"></a><span class="co"># set working directory</span></span>
+<span id="cb136-2"><a href="poverty-point-type-varieties.html#cb136-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
+<span id="cb136-3"><a href="poverty-point-type-varieties.html#cb136-3"></a><span class="co"># load data</span></span>
+<span id="cb136-4"><a href="poverty-point-type-varieties.html#cb136-4"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 <p>Each of the three type-varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> was based upon a suite of morphological criteria that can be systematically replicated, and a function was used to assign each of the Gary points to the correct type-variety. Gary type varieties range between 80 and 140 mm in maxl, and between 30 and 42 mm in maxw for <em>Gary Large</em>; between 46 to 79 mm in maxl. Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> also noted ranges in width and thickness values, which they did not use to make their assignments. Those range between 20 and 45 mm in maxw for <em>Gary Medium/Typical</em>; and between 33 to 45 mm in maxl, 19 to 32 mm in maxw, and five to 10 mm in maxth for <em>Gary Small</em> <span class="citation">(Ford and Webb <a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span>.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="poverty-point-type-varieties.html#cb144-1"></a><span class="co"># Ford and Webb (1956)</span></span>
-<span id="cb144-2"><a href="poverty-point-type-varieties.html#cb144-2"></a>fwebbl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
-<span id="cb144-3"><a href="poverty-point-type-varieties.html#cb144-3"></a>           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">30</span>), <span class="co"># in mm (Gary Small changed from 33 to 30)</span></span>
-<span id="cb144-4"><a href="poverty-point-type-varieties.html#cb144-4"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">140</span>,<span class="dv">80</span>,<span class="dv">45</span>) <span class="co"># in mm</span></span>
-<span id="cb144-5"><a href="poverty-point-type-varieties.html#cb144-5"></a>)</span>
-<span id="cb144-6"><a href="poverty-point-type-varieties.html#cb144-6"></a>fwebblength&lt;-<span class="kw">ggplot</span>(fwebbl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
-<span id="cb144-7"><a href="poverty-point-type-varieties.html#cb144-7"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb144-8"><a href="poverty-point-type-varieties.html#cb144-8"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb144-9"><a href="poverty-point-type-varieties.html#cb144-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb144-10"><a href="poverty-point-type-varieties.html#cb144-10"></a>fwebbw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
-<span id="cb144-11"><a href="poverty-point-type-varieties.html#cb144-11"></a>           <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">19</span>), <span class="co"># in mm</span></span>
-<span id="cb144-12"><a href="poverty-point-type-varieties.html#cb144-12"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">42</span>,<span class="dv">45</span>,<span class="dv">32</span>) <span class="co"># in mm</span></span>
-<span id="cb144-13"><a href="poverty-point-type-varieties.html#cb144-13"></a>)</span>
-<span id="cb144-14"><a href="poverty-point-type-varieties.html#cb144-14"></a>fwebbwidth&lt;-<span class="kw">ggplot</span>(fwebbw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
-<span id="cb144-15"><a href="poverty-point-type-varieties.html#cb144-15"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb144-16"><a href="poverty-point-type-varieties.html#cb144-16"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb144-17"><a href="poverty-point-type-varieties.html#cb144-17"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb144-18"><a href="poverty-point-type-varieties.html#cb144-18"></a><span class="co"># thickness values were not precisely reported for GaryLarge and GaryTypical, and are included here for reference only</span></span>
-<span id="cb144-19"><a href="poverty-point-type-varieties.html#cb144-19"></a>fwebbth&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
-<span id="cb144-20"><a href="poverty-point-type-varieties.html#cb144-20"></a>           <span class="dt">Thickness=</span><span class="kw">c</span>(<span class="fl">12.9</span>,<span class="dv">9</span>,<span class="dv">5</span>), <span class="co"># in mm (actual thickness of var. GaryLarge is 13. Plotted as 12.9-13.1 so that it shows on chart)</span></span>
-<span id="cb144-21"><a href="poverty-point-type-varieties.html#cb144-21"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="fl">13.1</span>,<span class="dv">10</span>,<span class="dv">10</span>) <span class="co"># in mm</span></span>
-<span id="cb144-22"><a href="poverty-point-type-varieties.html#cb144-22"></a>)</span>
-<span id="cb144-23"><a href="poverty-point-type-varieties.html#cb144-23"></a>fwebbthickness&lt;-<span class="kw">ggplot</span>(fwebbth,<span class="kw">aes</span>(<span class="dt">x=</span>Thickness,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
-<span id="cb144-24"><a href="poverty-point-type-varieties.html#cb144-24"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb144-25"><a href="poverty-point-type-varieties.html#cb144-25"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb144-26"><a href="poverty-point-type-varieties.html#cb144-26"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb144-27"><a href="poverty-point-type-varieties.html#cb144-27"></a><span class="co"># render figure</span></span>
-<span id="cb144-28"><a href="poverty-point-type-varieties.html#cb144-28"></a>fwebbfig&lt;-<span class="kw">ggarrange</span>(fwebblength,fwebbwidth,fwebbthickness,</span>
-<span id="cb144-29"><a href="poverty-point-type-varieties.html#cb144-29"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),</span>
-<span id="cb144-30"><a href="poverty-point-type-varieties.html#cb144-30"></a>                  <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb144-31"><a href="poverty-point-type-varieties.html#cb144-31"></a>fwebbfig</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="poverty-point-type-varieties.html#cb137-1"></a><span class="co"># Ford and Webb (1956)</span></span>
+<span id="cb137-2"><a href="poverty-point-type-varieties.html#cb137-2"></a>fwebbl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
+<span id="cb137-3"><a href="poverty-point-type-varieties.html#cb137-3"></a>           <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">46</span>,<span class="dv">30</span>), <span class="co"># in mm (Gary Small changed from 33 to 30)</span></span>
+<span id="cb137-4"><a href="poverty-point-type-varieties.html#cb137-4"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">140</span>,<span class="dv">80</span>,<span class="dv">45</span>) <span class="co"># in mm</span></span>
+<span id="cb137-5"><a href="poverty-point-type-varieties.html#cb137-5"></a>)</span>
+<span id="cb137-6"><a href="poverty-point-type-varieties.html#cb137-6"></a>fwebblength&lt;-<span class="kw">ggplot</span>(fwebbl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
+<span id="cb137-7"><a href="poverty-point-type-varieties.html#cb137-7"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb137-8"><a href="poverty-point-type-varieties.html#cb137-8"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb137-9"><a href="poverty-point-type-varieties.html#cb137-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb137-10"><a href="poverty-point-type-varieties.html#cb137-10"></a>fwebbw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
+<span id="cb137-11"><a href="poverty-point-type-varieties.html#cb137-11"></a>           <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">19</span>), <span class="co"># in mm</span></span>
+<span id="cb137-12"><a href="poverty-point-type-varieties.html#cb137-12"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">42</span>,<span class="dv">45</span>,<span class="dv">32</span>) <span class="co"># in mm</span></span>
+<span id="cb137-13"><a href="poverty-point-type-varieties.html#cb137-13"></a>)</span>
+<span id="cb137-14"><a href="poverty-point-type-varieties.html#cb137-14"></a>fwebbwidth&lt;-<span class="kw">ggplot</span>(fwebbw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
+<span id="cb137-15"><a href="poverty-point-type-varieties.html#cb137-15"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb137-16"><a href="poverty-point-type-varieties.html#cb137-16"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb137-17"><a href="poverty-point-type-varieties.html#cb137-17"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb137-18"><a href="poverty-point-type-varieties.html#cb137-18"></a><span class="co"># thickness values were not precisely reported for GaryLarge and GaryTypical, and are included here for reference only</span></span>
+<span id="cb137-19"><a href="poverty-point-type-varieties.html#cb137-19"></a>fwebbth&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryLarge&#39;</span>,<span class="st">&#39;var.GaryMed/Typical&#39;</span>,<span class="st">&#39;var.GarySmall&#39;</span>),</span>
+<span id="cb137-20"><a href="poverty-point-type-varieties.html#cb137-20"></a>           <span class="dt">Thickness=</span><span class="kw">c</span>(<span class="fl">12.9</span>,<span class="dv">9</span>,<span class="dv">5</span>), <span class="co"># in mm (actual thickness of var. GaryLarge is 13. Plotted as 12.9-13.1 so that it shows on chart)</span></span>
+<span id="cb137-21"><a href="poverty-point-type-varieties.html#cb137-21"></a>           <span class="dt">end=</span><span class="kw">c</span>(<span class="fl">13.1</span>,<span class="dv">10</span>,<span class="dv">10</span>) <span class="co"># in mm</span></span>
+<span id="cb137-22"><a href="poverty-point-type-varieties.html#cb137-22"></a>)</span>
+<span id="cb137-23"><a href="poverty-point-type-varieties.html#cb137-23"></a>fwebbthickness&lt;-<span class="kw">ggplot</span>(fwebbth,<span class="kw">aes</span>(<span class="dt">x=</span>Thickness,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
+<span id="cb137-24"><a href="poverty-point-type-varieties.html#cb137-24"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb137-25"><a href="poverty-point-type-varieties.html#cb137-25"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb137-26"><a href="poverty-point-type-varieties.html#cb137-26"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb137-27"><a href="poverty-point-type-varieties.html#cb137-27"></a><span class="co"># render figure</span></span>
+<span id="cb137-28"><a href="poverty-point-type-varieties.html#cb137-28"></a>fwebbfig&lt;-<span class="kw">ggarrange</span>(fwebblength,fwebbwidth,fwebbthickness,</span>
+<span id="cb137-29"><a href="poverty-point-type-varieties.html#cb137-29"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),</span>
+<span id="cb137-30"><a href="poverty-point-type-varieties.html#cb137-30"></a>                  <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb137-31"><a href="poverty-point-type-varieties.html#cb137-31"></a>fwebbfig</span></code></pre></div>
 <div class="figure"><span id="fig:fordwebbgantt"></span>
 <img src="gt-v_files/figure-html/fordwebbgantt-1.png" alt="Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford and Webb (1956)." width="100%" />
 <p class="caption">
@@ -335,21 +335,21 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 <div id="assign-gary-type-varieties-proposed-by-ford-and-webb--rn20898" class="section level2">
 <h2><span class="header-section-number">5.2</span> Assign Gary type-varieties proposed by Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span></h2>
 <p>Ford and Webb <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> used a single metric (maximum length) to assign Gary varieties at the Poverty Point site. The approach empoyed here enlists all of Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> reported metrics, including maximum length and maximum width for all varieties, coupled with maximum thickness for <em>Gary Small</em>. No metrics were reported for <em>Gary Long</em>, which was omitted from this analysis. Those points that do not match with one of the three criteria were assigned as Gary no variety (Gnv), and, for the purpose of this undertaking, are considered to be Gary dart points with no type-variety assignment.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="poverty-point-type-varieties.html#cb145-1"></a><span class="co"># subset poverty point data</span></span>
-<span id="cb145-2"><a href="poverty-point-type-varieties.html#cb145-2"></a>pvptmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</span>
-<span id="cb145-3"><a href="poverty-point-type-varieties.html#cb145-3"></a></span>
-<span id="cb145-4"><a href="poverty-point-type-varieties.html#cb145-4"></a><span class="co"># assign varieties based upon reported metrics in Ford and Webb [1956]</span></span>
-<span id="cb145-5"><a href="poverty-point-type-varieties.html#cb145-5"></a>lcheck1 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">140</span></span>
-<span id="cb145-6"><a href="poverty-point-type-varieties.html#cb145-6"></a>lcheck2 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">46</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span></span>
-<span id="cb145-7"><a href="poverty-point-type-varieties.html#cb145-7"></a>lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></span>
-<span id="cb145-8"><a href="poverty-point-type-varieties.html#cb145-8"></a></span>
-<span id="cb145-9"><a href="poverty-point-type-varieties.html#cb145-9"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></span>
-<span id="cb145-10"><a href="poverty-point-type-varieties.html#cb145-10"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck1, <span class="st">&quot;L&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb145-11"><a href="poverty-point-type-varieties.html#cb145-11"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck2, <span class="st">&quot;M/T&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb145-12"><a href="poverty-point-type-varieties.html#cb145-12"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck3, <span class="st">&quot;S&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb145-13"><a href="poverty-point-type-varieties.html#cb145-13"></a></span>
-<span id="cb145-14"><a href="poverty-point-type-varieties.html#cb145-14"></a>tv1&lt;-pvptmx<span class="op">$</span>tv1</span>
-<span id="cb145-15"><a href="poverty-point-type-varieties.html#cb145-15"></a>tv1</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="poverty-point-type-varieties.html#cb138-1"></a><span class="co"># subset poverty point data</span></span>
+<span id="cb138-2"><a href="poverty-point-type-varieties.html#cb138-2"></a>pvptmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</span>
+<span id="cb138-3"><a href="poverty-point-type-varieties.html#cb138-3"></a></span>
+<span id="cb138-4"><a href="poverty-point-type-varieties.html#cb138-4"></a><span class="co"># assign varieties based upon reported metrics in Ford and Webb [1956]</span></span>
+<span id="cb138-5"><a href="poverty-point-type-varieties.html#cb138-5"></a>lcheck1 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">140</span></span>
+<span id="cb138-6"><a href="poverty-point-type-varieties.html#cb138-6"></a>lcheck2 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">46</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span></span>
+<span id="cb138-7"><a href="poverty-point-type-varieties.html#cb138-7"></a>lcheck3 &lt;-<span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>pvptmx<span class="op">$</span>maxl <span class="op">&lt;</span><span class="st"> </span><span class="dv">46</span></span>
+<span id="cb138-8"><a href="poverty-point-type-varieties.html#cb138-8"></a></span>
+<span id="cb138-9"><a href="poverty-point-type-varieties.html#cb138-9"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></span>
+<span id="cb138-10"><a href="poverty-point-type-varieties.html#cb138-10"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck1, <span class="st">&quot;L&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb138-11"><a href="poverty-point-type-varieties.html#cb138-11"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck2, <span class="st">&quot;M/T&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb138-12"><a href="poverty-point-type-varieties.html#cb138-12"></a>pvptmx<span class="op">$</span>tv1 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(lcheck3, <span class="st">&quot;S&quot;</span>, pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb138-13"><a href="poverty-point-type-varieties.html#cb138-13"></a></span>
+<span id="cb138-14"><a href="poverty-point-type-varieties.html#cb138-14"></a>tv1&lt;-pvptmx<span class="op">$</span>tv1</span>
+<span id="cb138-15"><a href="poverty-point-type-varieties.html#cb138-15"></a>tv1</span></code></pre></div>
 <pre><code>##   [1] &quot;L&quot;   &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ##  [14] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
 ##  [27] &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot; &quot;M/T&quot;
@@ -381,46 +381,46 @@ Figure 5.1: Gantt charts illustrating the range of linear measurements for each 
 </div>
 <div id="boxplots-for-ford-and-webbs--rn20898-type-varieties-of-gary-dart-points-from-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.3</span> Boxplots for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties of Gary dart points from Poverty Point</h2>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="poverty-point-type-varieties.html#cb147-1"></a><span class="co"># boxplot of maximum length</span></span>
-<span id="cb147-2"><a href="poverty-point-type-varieties.html#cb147-2"></a>pvptmaxl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb147-3"><a href="poverty-point-type-varieties.html#cb147-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb147-4"><a href="poverty-point-type-varieties.html#cb147-4"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb147-5"><a href="poverty-point-type-varieties.html#cb147-5"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-6"><a href="poverty-point-type-varieties.html#cb147-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb147-7"><a href="poverty-point-type-varieties.html#cb147-7"></a><span class="co"># boxplot of maximum width</span></span>
-<span id="cb147-8"><a href="poverty-point-type-varieties.html#cb147-8"></a>pvptmaxw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb147-9"><a href="poverty-point-type-varieties.html#cb147-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb147-10"><a href="poverty-point-type-varieties.html#cb147-10"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb147-11"><a href="poverty-point-type-varieties.html#cb147-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-12"><a href="poverty-point-type-varieties.html#cb147-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb147-13"><a href="poverty-point-type-varieties.html#cb147-13"></a><span class="co"># boxplot of maximum thickness</span></span>
-<span id="cb147-14"><a href="poverty-point-type-varieties.html#cb147-14"></a>pvptmaxth&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb147-15"><a href="poverty-point-type-varieties.html#cb147-15"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb147-16"><a href="poverty-point-type-varieties.html#cb147-16"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb147-17"><a href="poverty-point-type-varieties.html#cb147-17"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-18"><a href="poverty-point-type-varieties.html#cb147-18"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb147-19"><a href="poverty-point-type-varieties.html#cb147-19"></a><span class="co"># boxplot of maximum stem length</span></span>
-<span id="cb147-20"><a href="poverty-point-type-varieties.html#cb147-20"></a>pvptmaxstl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb147-21"><a href="poverty-point-type-varieties.html#cb147-21"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb147-22"><a href="poverty-point-type-varieties.html#cb147-22"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb147-23"><a href="poverty-point-type-varieties.html#cb147-23"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-24"><a href="poverty-point-type-varieties.html#cb147-24"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb147-25"><a href="poverty-point-type-varieties.html#cb147-25"></a><span class="co"># boxplot of maximum thickness</span></span>
-<span id="cb147-26"><a href="poverty-point-type-varieties.html#cb147-26"></a>pvptmaxstw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb147-27"><a href="poverty-point-type-varieties.html#cb147-27"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb147-28"><a href="poverty-point-type-varieties.html#cb147-28"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb147-29"><a href="poverty-point-type-varieties.html#cb147-29"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb147-30"><a href="poverty-point-type-varieties.html#cb147-30"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb147-31"><a href="poverty-point-type-varieties.html#cb147-31"></a><span class="co"># render figure</span></span>
-<span id="cb147-32"><a href="poverty-point-type-varieties.html#cb147-32"></a>ppfigure&lt;-<span class="kw">ggarrange</span>(pvptmaxl,pvptmaxw,pvptmaxth,pvptmaxstl,pvptmaxstw,</span>
-<span id="cb147-33"><a href="poverty-point-type-varieties.html#cb147-33"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
-<span id="cb147-34"><a href="poverty-point-type-varieties.html#cb147-34"></a>                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="poverty-point-type-varieties.html#cb140-1"></a><span class="co"># boxplot of maximum length</span></span>
+<span id="cb140-2"><a href="poverty-point-type-varieties.html#cb140-2"></a>pvptmaxl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb140-3"><a href="poverty-point-type-varieties.html#cb140-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb140-4"><a href="poverty-point-type-varieties.html#cb140-4"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb140-5"><a href="poverty-point-type-varieties.html#cb140-5"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb140-6"><a href="poverty-point-type-varieties.html#cb140-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-7"><a href="poverty-point-type-varieties.html#cb140-7"></a><span class="co"># boxplot of maximum width</span></span>
+<span id="cb140-8"><a href="poverty-point-type-varieties.html#cb140-8"></a>pvptmaxw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb140-9"><a href="poverty-point-type-varieties.html#cb140-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb140-10"><a href="poverty-point-type-varieties.html#cb140-10"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb140-11"><a href="poverty-point-type-varieties.html#cb140-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb140-12"><a href="poverty-point-type-varieties.html#cb140-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-13"><a href="poverty-point-type-varieties.html#cb140-13"></a><span class="co"># boxplot of maximum thickness</span></span>
+<span id="cb140-14"><a href="poverty-point-type-varieties.html#cb140-14"></a>pvptmaxth&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb140-15"><a href="poverty-point-type-varieties.html#cb140-15"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb140-16"><a href="poverty-point-type-varieties.html#cb140-16"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb140-17"><a href="poverty-point-type-varieties.html#cb140-17"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb140-18"><a href="poverty-point-type-varieties.html#cb140-18"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-19"><a href="poverty-point-type-varieties.html#cb140-19"></a><span class="co"># boxplot of maximum stem length</span></span>
+<span id="cb140-20"><a href="poverty-point-type-varieties.html#cb140-20"></a>pvptmaxstl&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb140-21"><a href="poverty-point-type-varieties.html#cb140-21"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb140-22"><a href="poverty-point-type-varieties.html#cb140-22"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb140-23"><a href="poverty-point-type-varieties.html#cb140-23"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb140-24"><a href="poverty-point-type-varieties.html#cb140-24"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-25"><a href="poverty-point-type-varieties.html#cb140-25"></a><span class="co"># boxplot of maximum thickness</span></span>
+<span id="cb140-26"><a href="poverty-point-type-varieties.html#cb140-26"></a>pvptmaxstw&lt;-<span class="kw">ggplot</span>(pvptmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv1,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb140-27"><a href="poverty-point-type-varieties.html#cb140-27"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb140-28"><a href="poverty-point-type-varieties.html#cb140-28"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb140-29"><a href="poverty-point-type-varieties.html#cb140-29"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb140-30"><a href="poverty-point-type-varieties.html#cb140-30"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-31"><a href="poverty-point-type-varieties.html#cb140-31"></a><span class="co"># render figure</span></span>
+<span id="cb140-32"><a href="poverty-point-type-varieties.html#cb140-32"></a>ppfigure&lt;-<span class="kw">ggarrange</span>(pvptmaxl,pvptmaxw,pvptmaxth,pvptmaxstl,pvptmaxstw,</span>
+<span id="cb140-33"><a href="poverty-point-type-varieties.html#cb140-33"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
+<span id="cb140-34"><a href="poverty-point-type-varieties.html#cb140-34"></a>                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="poverty-point-type-varieties.html#cb149-1"></a>ppfigure</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="poverty-point-type-varieties.html#cb142-1"></a>ppfigure</span></code></pre></div>
 <div class="figure"><span id="fig:boxplotpp"></span>
 <img src="gt-v_files/figure-html/boxplotpp-1.png" alt="Boxplots for a, maximum length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points from the Poverty Point site." width="100%" />
 <p class="caption">
@@ -432,69 +432,69 @@ Figure 5.2: Boxplots for a, maximum length; b, width; c, thickness; d, stem leng
 <h2><span class="header-section-number">5.4</span> Density plots for variables by type-varieties</h2>
 <div id="density-plot-for-maximum-length-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Density plot for maximum length by tv1</h3>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="poverty-point-type-varieties.html#cb150-1"></a><span class="co"># define variables in poverty point subset</span></span>
-<span id="cb150-2"><a href="poverty-point-type-varieties.html#cb150-2"></a>pp.maxl&lt;-pvptmx<span class="op">$</span>maxl</span>
-<span id="cb150-3"><a href="poverty-point-type-varieties.html#cb150-3"></a>pp.maxw&lt;-pvptmx<span class="op">$</span>maxw</span>
-<span id="cb150-4"><a href="poverty-point-type-varieties.html#cb150-4"></a>pp.maxth&lt;-pvptmx<span class="op">$</span>maxth</span>
-<span id="cb150-5"><a href="poverty-point-type-varieties.html#cb150-5"></a>pp.maxstl&lt;-pvptmx<span class="op">$</span>maxstl</span>
-<span id="cb150-6"><a href="poverty-point-type-varieties.html#cb150-6"></a>pp.maxstw&lt;-pvptmx<span class="op">$</span>maxstw</span>
-<span id="cb150-7"><a href="poverty-point-type-varieties.html#cb150-7"></a>pp.tv1&lt;-pvptmx<span class="op">$</span>tv1</span>
-<span id="cb150-8"><a href="poverty-point-type-varieties.html#cb150-8"></a><span class="co"># density plot of maxl by tv1</span></span>
-<span id="cb150-9"><a href="poverty-point-type-varieties.html#cb150-9"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></span>
-<span id="cb150-10"><a href="poverty-point-type-varieties.html#cb150-10"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb150-11"><a href="poverty-point-type-varieties.html#cb150-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb150-12"><a href="poverty-point-type-varieties.html#cb150-12"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="poverty-point-type-varieties.html#cb143-1"></a><span class="co"># define variables in poverty point subset</span></span>
+<span id="cb143-2"><a href="poverty-point-type-varieties.html#cb143-2"></a>pp.maxl&lt;-pvptmx<span class="op">$</span>maxl</span>
+<span id="cb143-3"><a href="poverty-point-type-varieties.html#cb143-3"></a>pp.maxw&lt;-pvptmx<span class="op">$</span>maxw</span>
+<span id="cb143-4"><a href="poverty-point-type-varieties.html#cb143-4"></a>pp.maxth&lt;-pvptmx<span class="op">$</span>maxth</span>
+<span id="cb143-5"><a href="poverty-point-type-varieties.html#cb143-5"></a>pp.maxstl&lt;-pvptmx<span class="op">$</span>maxstl</span>
+<span id="cb143-6"><a href="poverty-point-type-varieties.html#cb143-6"></a>pp.maxstw&lt;-pvptmx<span class="op">$</span>maxstw</span>
+<span id="cb143-7"><a href="poverty-point-type-varieties.html#cb143-7"></a>pp.tv1&lt;-pvptmx<span class="op">$</span>tv1</span>
+<span id="cb143-8"><a href="poverty-point-type-varieties.html#cb143-8"></a><span class="co"># density plot of maxl by tv1</span></span>
+<span id="cb143-9"><a href="poverty-point-type-varieties.html#cb143-9"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxl, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
+<span id="cb143-10"><a href="poverty-point-type-varieties.html#cb143-10"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb143-11"><a href="poverty-point-type-varieties.html#cb143-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb143-12"><a href="poverty-point-type-varieties.html#cb143-12"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></span></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensity1-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Density plot for maximum width by tv1</h3>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="poverty-point-type-varieties.html#cb151-1"></a><span class="co"># density plot of maxw by tv1</span></span>
-<span id="cb151-2"><a href="poverty-point-type-varieties.html#cb151-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></span>
-<span id="cb151-3"><a href="poverty-point-type-varieties.html#cb151-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb151-4"><a href="poverty-point-type-varieties.html#cb151-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb151-5"><a href="poverty-point-type-varieties.html#cb151-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="poverty-point-type-varieties.html#cb144-1"></a><span class="co"># density plot of maxw by tv1</span></span>
+<span id="cb144-2"><a href="poverty-point-type-varieties.html#cb144-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
+<span id="cb144-3"><a href="poverty-point-type-varieties.html#cb144-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb144-4"><a href="poverty-point-type-varieties.html#cb144-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb144-5"><a href="poverty-point-type-varieties.html#cb144-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="gt-v_files/figure-html/ppdensityw-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-thickness-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Density plot for maximum thickness by tv1</h3>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="poverty-point-type-varieties.html#cb153-1"></a><span class="co"># density plot of maxth by tv1</span></span>
-<span id="cb153-2"><a href="poverty-point-type-varieties.html#cb153-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></span>
-<span id="cb153-3"><a href="poverty-point-type-varieties.html#cb153-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb153-4"><a href="poverty-point-type-varieties.html#cb153-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb153-5"><a href="poverty-point-type-varieties.html#cb153-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="poverty-point-type-varieties.html#cb146-1"></a><span class="co"># density plot of maxth by tv1</span></span>
+<span id="cb146-2"><a href="poverty-point-type-varieties.html#cb146-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxth, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
+<span id="cb146-3"><a href="poverty-point-type-varieties.html#cb146-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb146-4"><a href="poverty-point-type-varieties.html#cb146-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb146-5"><a href="poverty-point-type-varieties.html#cb146-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensityth-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-length-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.4</span> Density plot for maximum stem length by tv1</h3>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="poverty-point-type-varieties.html#cb154-1"></a><span class="co"># density plot of maxstl by tv1</span></span>
-<span id="cb154-2"><a href="poverty-point-type-varieties.html#cb154-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1)) <span class="op">+</span></span>
-<span id="cb154-3"><a href="poverty-point-type-varieties.html#cb154-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb154-4"><a href="poverty-point-type-varieties.html#cb154-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb154-5"><a href="poverty-point-type-varieties.html#cb154-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="poverty-point-type-varieties.html#cb147-1"></a><span class="co"># density plot of maxstl by tv1</span></span>
+<span id="cb147-2"><a href="poverty-point-type-varieties.html#cb147-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstl, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
+<span id="cb147-3"><a href="poverty-point-type-varieties.html#cb147-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb147-4"><a href="poverty-point-type-varieties.html#cb147-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb147-5"><a href="poverty-point-type-varieties.html#cb147-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="gt-v_files/figure-html/ppdensitystl-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-width-by-tv1" class="section level3">
 <h3><span class="header-section-number">5.4.5</span> Density plot for maximum stem width by tv1</h3>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="poverty-point-type-varieties.html#cb156-1"></a><span class="co"># density plot of maxstw by tv1</span></span>
-<span id="cb156-2"><a href="poverty-point-type-varieties.html#cb156-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
-<span id="cb156-3"><a href="poverty-point-type-varieties.html#cb156-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb156-4"><a href="poverty-point-type-varieties.html#cb156-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb156-5"><a href="poverty-point-type-varieties.html#cb156-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="poverty-point-type-varieties.html#cb149-1"></a><span class="co"># density plot of maxstw by tv1</span></span>
+<span id="cb149-2"><a href="poverty-point-type-varieties.html#cb149-2"></a><span class="kw">ggplot</span>(pvptmx, <span class="kw">aes</span>(<span class="dt">x=</span>pp.maxstw, <span class="dt">fill =</span> pp.tv1, <span class="dt">colour =</span> pp.tv1)) <span class="op">+</span></span>
+<span id="cb149-3"><a href="poverty-point-type-varieties.html#cb149-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb149-4"><a href="poverty-point-type-varieties.html#cb149-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb149-5"><a href="poverty-point-type-varieties.html#cb149-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/ppdensitystw-1.png" width="100%" /></p>
 </div>
 </div>
 <div id="principal-components-analysis-for-ford-and-webbs--rn20898-type-varieties-at-poverty-point" class="section level2">
 <h2><span class="header-section-number">5.5</span> Principal Components Analysis for Ford and Webb’s <span class="citation">(<a href="#ref-RN20898" role="doc-biblioref">1956</a>)</span> type-varieties at Poverty Point</h2>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="poverty-point-type-varieties.html#cb157-1"></a><span class="co">#pca</span></span>
-<span id="cb157-2"><a href="poverty-point-type-varieties.html#cb157-2"></a>df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</span>
-<span id="cb157-3"><a href="poverty-point-type-varieties.html#cb157-3"></a>t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</span>
-<span id="cb157-4"><a href="poverty-point-type-varieties.html#cb157-4"></a>         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb157-5"><a href="poverty-point-type-varieties.html#cb157-5"></a>         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
-<span id="cb157-6"><a href="poverty-point-type-varieties.html#cb157-6"></a>         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb157-7"><a href="poverty-point-type-varieties.html#cb157-7"></a><span class="co">#render figure</span></span>
-<span id="cb157-8"><a href="poverty-point-type-varieties.html#cb157-8"></a>t1pca</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="poverty-point-type-varieties.html#cb150-1"></a><span class="co">#pca</span></span>
+<span id="cb150-2"><a href="poverty-point-type-varieties.html#cb150-2"></a>df&lt;-pvptmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</span>
+<span id="cb150-3"><a href="poverty-point-type-varieties.html#cb150-3"></a>t1pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> pvptmx, <span class="dt">colour =</span> <span class="st">&#39;tv1&#39;</span>,</span>
+<span id="cb150-4"><a href="poverty-point-type-varieties.html#cb150-4"></a>         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb150-5"><a href="poverty-point-type-varieties.html#cb150-5"></a>         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
+<span id="cb150-6"><a href="poverty-point-type-varieties.html#cb150-6"></a>         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb150-7"><a href="poverty-point-type-varieties.html#cb150-7"></a><span class="co">#render figure</span></span>
+<span id="cb150-8"><a href="poverty-point-type-varieties.html#cb150-8"></a>t1pca</span></code></pre></div>
 <div class="figure"><span id="fig:pca"></span>
 <img src="gt-v_files/figure-html/pca-1.png" alt="PCA by Gary type-varieties reported by Ford and Webb (1956) at Poverty Point." width="100%" />
 <p class="caption">
@@ -506,9 +506,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 <h2><span class="header-section-number">5.6</span> Analyses of Variance (ANOVA) for <em>linear variables</em> ~ <em>type-varieties</em></h2>
 <div id="maximum-length-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> <em>Maximum length</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="poverty-point-type-varieties.html#cb158-1"></a><span class="co"># anova = maximum length ~ tv1</span></span>
-<span id="cb158-2"><a href="poverty-point-type-varieties.html#cb158-2"></a>t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb158-3"><a href="poverty-point-type-varieties.html#cb158-3"></a><span class="kw">anova</span>(t1ml)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="poverty-point-type-varieties.html#cb151-1"></a><span class="co"># anova = maximum length ~ tv1</span></span>
+<span id="cb151-2"><a href="poverty-point-type-varieties.html#cb151-2"></a>t1ml&lt;-<span class="kw">lm.rrpp</span>(pp.maxl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb151-3"><a href="poverty-point-type-varieties.html#cb151-3"></a><span class="kw">anova</span>(t1ml)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -526,11 +526,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Call: lm.rrpp(f1 = pp.maxl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="poverty-point-type-varieties.html#cb160-1"></a><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></span>
-<span id="cb160-2"><a href="poverty-point-type-varieties.html#cb160-2"></a>pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</span>
-<span id="cb160-3"><a href="poverty-point-type-varieties.html#cb160-3"></a><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</span>
-<span id="cb160-4"><a href="poverty-point-type-varieties.html#cb160-4"></a>ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</span>
-<span id="cb160-5"><a href="poverty-point-type-varieties.html#cb160-5"></a>ppPreds</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="poverty-point-type-varieties.html#cb153-1"></a><span class="co"># visualise model predictions for maximum length ~ type-variety at poverty point</span></span>
+<span id="cb153-2"><a href="poverty-point-type-varieties.html#cb153-2"></a>pp.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">pp.tv1 =</span> <span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>))</span>
+<span id="cb153-3"><a href="poverty-point-type-varieties.html#cb153-3"></a><span class="kw">rownames</span>(pp.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;M/T&quot;</span>,<span class="st">&quot;S&quot;</span>)</span>
+<span id="cb153-4"><a href="poverty-point-type-varieties.html#cb153-4"></a>ppPreds&lt;-<span class="kw">predict</span>(t1ml,pp.tvDF)</span>
+<span id="cb153-5"><a href="poverty-point-type-varieties.html#cb153-5"></a>ppPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -560,11 +560,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L   89.32400
 ## M/T 59.73807
 ## S   42.32322</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="poverty-point-type-varieties.html#cb162-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="poverty-point-type-varieties.html#cb155-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="poverty-point-type-varieties.html#cb163-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
-<span id="cb163-2"><a href="poverty-point-type-varieties.html#cb163-2"></a>pp.ml&lt;-<span class="kw">pairwise</span>(t1ml, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb163-3"><a href="poverty-point-type-varieties.html#cb163-3"></a><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="poverty-point-type-varieties.html#cb156-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
+<span id="cb156-2"><a href="poverty-point-type-varieties.html#cb156-2"></a>pp.ml&lt;-<span class="kw">pairwise</span>(t1ml, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb156-3"><a href="poverty-point-type-varieties.html#cb156-3"></a><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -580,8 +580,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L:M/T 27.27708  5.679481 14.14564  1e-04
 ## L:S   45.46201  6.149198 22.17871  1e-04
 ## M/T:S 18.18494  3.275978 16.46421  1e-04</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="poverty-point-type-varieties.html#cb165-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
-<span id="cb165-2"><a href="poverty-point-type-varieties.html#cb165-2"></a><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="poverty-point-type-varieties.html#cb158-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
+<span id="cb158-2"><a href="poverty-point-type-varieties.html#cb158-2"></a><span class="kw">summary</span>(pp.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -603,9 +603,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 </div>
 <div id="maximum-width-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> <em>Maximum width</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="poverty-point-type-varieties.html#cb167-1"></a><span class="co"># anova = maximum width ~ tv1</span></span>
-<span id="cb167-2"><a href="poverty-point-type-varieties.html#cb167-2"></a>t1mw&lt;-<span class="kw">lm.rrpp</span>(pp.maxw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb167-3"><a href="poverty-point-type-varieties.html#cb167-3"></a><span class="kw">anova</span>(t1mw)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="poverty-point-type-varieties.html#cb160-1"></a><span class="co"># anova = maximum width ~ tv1</span></span>
+<span id="cb160-2"><a href="poverty-point-type-varieties.html#cb160-2"></a>t1mw&lt;-<span class="kw">lm.rrpp</span>(pp.maxw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb160-3"><a href="poverty-point-type-varieties.html#cb160-3"></a><span class="kw">anova</span>(t1mw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -623,9 +623,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Call: lm.rrpp(f1 = pp.maxw ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="poverty-point-type-varieties.html#cb169-1"></a><span class="co"># visualise model predictions for maximum width ~ type-variety at poverty point</span></span>
-<span id="cb169-2"><a href="poverty-point-type-varieties.html#cb169-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mw,pp.tvDF)</span>
-<span id="cb169-3"><a href="poverty-point-type-varieties.html#cb169-3"></a>ppPreds</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="poverty-point-type-varieties.html#cb162-1"></a><span class="co"># visualise model predictions for maximum width ~ type-variety at poverty point</span></span>
+<span id="cb162-2"><a href="poverty-point-type-varieties.html#cb162-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mw,pp.tvDF)</span>
+<span id="cb162-3"><a href="poverty-point-type-varieties.html#cb162-3"></a>ppPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -655,11 +655,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L   34.47715
 ## M/T 29.66877
 ## S   24.85183</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="poverty-point-type-varieties.html#cb171-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="poverty-point-type-varieties.html#cb164-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxw-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="poverty-point-type-varieties.html#cb172-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
-<span id="cb172-2"><a href="poverty-point-type-varieties.html#cb172-2"></a>pp.mw&lt;-<span class="kw">pairwise</span>(t1mw, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb172-3"><a href="poverty-point-type-varieties.html#cb172-3"></a><span class="kw">summary</span>(pp.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="poverty-point-type-varieties.html#cb165-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
+<span id="cb165-2"><a href="poverty-point-type-varieties.html#cb165-2"></a>pp.mw&lt;-<span class="kw">pairwise</span>(t1mw, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb165-3"><a href="poverty-point-type-varieties.html#cb165-3"></a><span class="kw">summary</span>(pp.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -675,8 +675,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L:M/T 3.424897  2.183097  3.768645 0.0021
 ## L:S   8.690844  2.347935 10.610585 0.0001
 ## M/T:S 5.265947  1.289978 11.879808 0.0001</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="poverty-point-type-varieties.html#cb174-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
-<span id="cb174-2"><a href="poverty-point-type-varieties.html#cb174-2"></a><span class="kw">summary</span>(pp.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="poverty-point-type-varieties.html#cb167-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
+<span id="cb167-2"><a href="poverty-point-type-varieties.html#cb167-2"></a><span class="kw">summary</span>(pp.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -698,9 +698,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 </div>
 <div id="maximum-thickness-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.3</span> <em>Maximum thickness</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="poverty-point-type-varieties.html#cb176-1"></a><span class="co"># anova = maximum thickness ~ tv1</span></span>
-<span id="cb176-2"><a href="poverty-point-type-varieties.html#cb176-2"></a>t1mth&lt;-<span class="kw">lm.rrpp</span>(pp.maxth <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb176-3"><a href="poverty-point-type-varieties.html#cb176-3"></a><span class="kw">anova</span>(t1mth)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="poverty-point-type-varieties.html#cb169-1"></a><span class="co"># anova = maximum thickness ~ tv1</span></span>
+<span id="cb169-2"><a href="poverty-point-type-varieties.html#cb169-2"></a>t1mth&lt;-<span class="kw">lm.rrpp</span>(pp.maxth <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb169-3"><a href="poverty-point-type-varieties.html#cb169-3"></a><span class="kw">anova</span>(t1mth)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -718,9 +718,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Call: lm.rrpp(f1 = pp.maxth ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;, data = pvptmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="poverty-point-type-varieties.html#cb178-1"></a><span class="co"># visualise model predictions for maximum thickness ~ type-variety at poverty point</span></span>
-<span id="cb178-2"><a href="poverty-point-type-varieties.html#cb178-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mth,pp.tvDF)</span>
-<span id="cb178-3"><a href="poverty-point-type-varieties.html#cb178-3"></a>ppPreds</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="poverty-point-type-varieties.html#cb171-1"></a><span class="co"># visualise model predictions for maximum thickness ~ type-variety at poverty point</span></span>
+<span id="cb171-2"><a href="poverty-point-type-varieties.html#cb171-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mth,pp.tvDF)</span>
+<span id="cb171-3"><a href="poverty-point-type-varieties.html#cb171-3"></a>ppPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -750,11 +750,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L   12.751626
 ## M/T 10.736728
 ## S    9.589332</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="poverty-point-type-varieties.html#cb180-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="poverty-point-type-varieties.html#cb173-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxth-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="poverty-point-type-varieties.html#cb181-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
-<span id="cb181-2"><a href="poverty-point-type-varieties.html#cb181-2"></a>pp.mth&lt;-<span class="kw">pairwise</span>(t1mth, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb181-3"><a href="poverty-point-type-varieties.html#cb181-3"></a><span class="kw">summary</span>(pp.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="poverty-point-type-varieties.html#cb174-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
+<span id="cb174-2"><a href="poverty-point-type-varieties.html#cb174-2"></a>pp.mth&lt;-<span class="kw">pairwise</span>(t1mth, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb174-3"><a href="poverty-point-type-varieties.html#cb174-3"></a><span class="kw">summary</span>(pp.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -770,8 +770,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L:M/T 1.365366 0.9091353 3.554920 0.0034
 ## L:S   2.735195 0.9992370 7.585356 0.0001
 ## M/T:S 1.369829 0.5302730 7.025201 0.0001</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="poverty-point-type-varieties.html#cb183-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
-<span id="cb183-2"><a href="poverty-point-type-varieties.html#cb183-2"></a><span class="kw">summary</span>(pp.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="poverty-point-type-varieties.html#cb176-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
+<span id="cb176-2"><a href="poverty-point-type-varieties.html#cb176-2"></a><span class="kw">summary</span>(pp.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -793,9 +793,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 </div>
 <div id="maximum-stem-length-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.4</span> <em>Maximum stem length</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="poverty-point-type-varieties.html#cb185-1"></a><span class="co"># anova = maximum stem length ~ tv1</span></span>
-<span id="cb185-2"><a href="poverty-point-type-varieties.html#cb185-2"></a>t1mstl&lt;-<span class="kw">lm.rrpp</span>(pp.maxstl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb185-3"><a href="poverty-point-type-varieties.html#cb185-3"></a><span class="kw">anova</span>(t1mstl)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="poverty-point-type-varieties.html#cb178-1"></a><span class="co"># anova = maximum stem length ~ tv1</span></span>
+<span id="cb178-2"><a href="poverty-point-type-varieties.html#cb178-2"></a>t1mstl&lt;-<span class="kw">lm.rrpp</span>(pp.maxstl <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb178-3"><a href="poverty-point-type-varieties.html#cb178-3"></a><span class="kw">anova</span>(t1mstl)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -813,9 +813,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Call: lm.rrpp(f1 = pp.maxstl ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
 ##     data = pvptmx, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="poverty-point-type-varieties.html#cb187-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></span>
-<span id="cb187-2"><a href="poverty-point-type-varieties.html#cb187-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mstl,pp.tvDF)</span>
-<span id="cb187-3"><a href="poverty-point-type-varieties.html#cb187-3"></a>ppPreds</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="poverty-point-type-varieties.html#cb180-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></span>
+<span id="cb180-2"><a href="poverty-point-type-varieties.html#cb180-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mstl,pp.tvDF)</span>
+<span id="cb180-3"><a href="poverty-point-type-varieties.html#cb180-3"></a>ppPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -845,11 +845,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L   22.04193
 ## M/T 16.47716
 ## S   13.87146</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="poverty-point-type-varieties.html#cb189-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="poverty-point-type-varieties.html#cb182-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxstl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="poverty-point-type-varieties.html#cb190-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
-<span id="cb190-2"><a href="poverty-point-type-varieties.html#cb190-2"></a>pp.mstl&lt;-<span class="kw">pairwise</span>(t1mstl, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb190-3"><a href="poverty-point-type-varieties.html#cb190-3"></a><span class="kw">summary</span>(pp.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="poverty-point-type-varieties.html#cb183-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
+<span id="cb183-2"><a href="poverty-point-type-varieties.html#cb183-2"></a>pp.mstl&lt;-<span class="kw">pairwise</span>(t1mstl, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb183-3"><a href="poverty-point-type-varieties.html#cb183-3"></a><span class="kw">summary</span>(pp.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -865,8 +865,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L:M/T 4.539607  1.650492  7.621466  1e-04
 ## L:S   7.497403  1.816244 12.055362  1e-04
 ## M/T:S 2.957795  0.975337  8.516404  1e-04</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="poverty-point-type-varieties.html#cb192-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
-<span id="cb192-2"><a href="poverty-point-type-varieties.html#cb192-2"></a><span class="kw">summary</span>(pp.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="poverty-point-type-varieties.html#cb185-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
+<span id="cb185-2"><a href="poverty-point-type-varieties.html#cb185-2"></a><span class="kw">summary</span>(pp.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -888,9 +888,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 </div>
 <div id="maximum-stem-width-type-variety-at-poverty-point" class="section level3">
 <h3><span class="header-section-number">5.6.5</span> <em>Maximum stem width</em> ~ <em>type-variety</em> at Poverty Point</h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="poverty-point-type-varieties.html#cb194-1"></a><span class="co"># anova = maximum stem width ~ tv1</span></span>
-<span id="cb194-2"><a href="poverty-point-type-varieties.html#cb194-2"></a>t1mstw&lt;-<span class="kw">lm.rrpp</span>(pp.maxstw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb194-3"><a href="poverty-point-type-varieties.html#cb194-3"></a><span class="kw">anova</span>(t1mstw)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="poverty-point-type-varieties.html#cb187-1"></a><span class="co"># anova = maximum stem width ~ tv1</span></span>
+<span id="cb187-2"><a href="poverty-point-type-varieties.html#cb187-2"></a>t1mstw&lt;-<span class="kw">lm.rrpp</span>(pp.maxstw <span class="op">~</span><span class="st"> </span>pp.tv1, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> pvptmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb187-3"><a href="poverty-point-type-varieties.html#cb187-3"></a><span class="kw">anova</span>(t1mstw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -908,9 +908,9 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## 
 ## Call: lm.rrpp(f1 = pp.maxstw ~ pp.tv1, iter = 9999, SS.type = &quot;I&quot;,  
 ##     data = pvptmx, print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="poverty-point-type-varieties.html#cb196-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></span>
-<span id="cb196-2"><a href="poverty-point-type-varieties.html#cb196-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mstw,pp.tvDF)</span>
-<span id="cb196-3"><a href="poverty-point-type-varieties.html#cb196-3"></a>ppPreds</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="poverty-point-type-varieties.html#cb189-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety at poverty point</span></span>
+<span id="cb189-2"><a href="poverty-point-type-varieties.html#cb189-2"></a>ppPreds&lt;-<span class="kw">predict</span>(t1mstw,pp.tvDF)</span>
+<span id="cb189-3"><a href="poverty-point-type-varieties.html#cb189-3"></a>ppPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -940,11 +940,11 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L   26.10731
 ## M/T 21.22954
 ## S   18.69916</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="poverty-point-type-varieties.html#cb198-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="poverty-point-type-varieties.html#cb191-1"></a><span class="kw">plot</span>(ppPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(pp.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pp.maxstw-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="poverty-point-type-varieties.html#cb199-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
-<span id="cb199-2"><a href="poverty-point-type-varieties.html#cb199-2"></a>pp.mstw&lt;-<span class="kw">pairwise</span>(t1mstw, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
-<span id="cb199-3"><a href="poverty-point-type-varieties.html#cb199-3"></a><span class="kw">summary</span>(pp.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="poverty-point-type-varieties.html#cb192-1"></a><span class="co"># pairwise comparison of LS means = which differ?</span></span>
+<span id="cb192-2"><a href="poverty-point-type-varieties.html#cb192-2"></a>pp.mstw&lt;-<span class="kw">pairwise</span>(t1mstw, <span class="dt">groups =</span> pvptmx<span class="op">$</span>tv1)</span>
+<span id="cb192-3"><a href="poverty-point-type-varieties.html#cb192-3"></a><span class="kw">summary</span>(pp.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -960,8 +960,8 @@ Figure 5.3: PCA by Gary type-varieties reported by Ford and Webb (1956) at Pover
 ## L:M/T 3.846102  1.683761  6.188505  1e-04
 ## L:S   6.725195  1.833718 10.603311  1e-04
 ## M/T:S 2.879093  0.978834  8.184337  1e-04</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="poverty-point-type-varieties.html#cb201-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
-<span id="cb201-2"><a href="poverty-point-type-varieties.html#cb201-2"></a><span class="kw">summary</span>(pp.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="poverty-point-type-varieties.html#cb194-1"></a><span class="co"># pairwise distance between variances = standardization?</span></span>
+<span id="cb194-2"><a href="poverty-point-type-varieties.html#cb194-2"></a><span class="kw">summary</span>(pp.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 

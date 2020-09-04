@@ -100,7 +100,7 @@ fig.cap = "PCA by site."
 
 ```{r anovasitemaxl, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot for maxl by site
-ggplot(data, aes(x=maxl, fill = Site)) +
+ggplot(data, aes(x=maxl, fill = Site, colour = Site)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,150)
@@ -126,7 +126,7 @@ summary(site.pwml, confidence = 0.95, test.type = "var")
 
 ```{r anovasitemaxw, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot for maxw by site
-ggplot(data, aes(x=maxw, fill = Site)) +
+ggplot(data, aes(x=maxw, fill = Site, colour = Site)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,75)
@@ -150,7 +150,7 @@ summary(site.pwmw, confidence = 0.95, test.type = "var")
 
 ```{r anovasitemaxth, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot for maxth by site
-ggplot(data, aes(x=maxth, fill = Site)) +
+ggplot(data, aes(x=maxth, fill = Site, colour = Site)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,25)
@@ -174,7 +174,7 @@ summary(site.pwmth, confidence = 0.95, test.type = "var")
 
 ```{r anovasitemaxstl, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot for maxstl by site
-ggplot(data, aes(x=maxstl, fill = Site)) +
+ggplot(data, aes(x=maxstl, fill = Site, colour = Site)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,35)
@@ -198,7 +198,7 @@ summary(site.pwmstl, confidence = 0.95, test.type = "var")
 
 ```{r anovasitemaxstw, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot for maxstw by site
-ggplot(data, aes(x=maxstw, fill = Site)) +
+ggplot(data, aes(x=maxstw, fill = Site, colour = Site)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,40)

@@ -137,7 +137,7 @@ pp.maxstl<-pvptmx$maxstl
 pp.maxstw<-pvptmx$maxstw
 pp.tv1<-pvptmx$tv1
 # density plot of maxl by tv1
-ggplot(pvptmx, aes(x=pp.maxl, fill = pp.tv1)) +
+ggplot(pvptmx, aes(x=pp.maxl, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(30,140) #full range of variation included in the linear measurements associated with type-varieties
@@ -147,7 +147,7 @@ ggplot(pvptmx, aes(x=pp.maxl, fill = pp.tv1)) +
 
 ```{r ppdensityw, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot of maxw by tv1
-ggplot(pvptmx, aes(x=pp.maxw, fill = pp.tv1)) +
+ggplot(pvptmx, aes(x=pp.maxw, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(5,45)
@@ -157,7 +157,7 @@ ggplot(pvptmx, aes(x=pp.maxw, fill = pp.tv1)) +
 
 ```{r ppdensityth, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot of maxth by tv1
-ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1)) +
+ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,30)
@@ -167,7 +167,7 @@ ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1)) +
 
 ```{r ppdensitystl, out.width = "100%", dpi = 300, echo=TRUE}
 # density plot of maxstl by tv1
-ggplot(pvptmx, aes(x=pp.maxstl, fill = pp.tv1)) +
+ggplot(pvptmx, aes(x=pp.maxstl, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
   scale_color_brewer(palette = "Set1") +
   xlim(0,30)
