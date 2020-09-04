@@ -281,30 +281,38 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 <span id="cb3-4"><a href="gary-dart-point-metrics-by-site.html#cb3-4"></a><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></span>
 <span id="cb3-5"><a href="gary-dart-point-metrics-by-site.html#cb3-5"></a><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></span>
 <span id="cb3-6"><a href="gary-dart-point-metrics-by-site.html#cb3-6"></a><span class="co"># load libraries</span></span>
-<span id="cb3-7"><a href="gary-dart-point-metrics-by-site.html#cb3-7"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb3-8"><a href="gary-dart-point-metrics-by-site.html#cb3-8"></a><span class="kw">library</span>(RRPP)</span>
-<span id="cb3-9"><a href="gary-dart-point-metrics-by-site.html#cb3-9"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb3-10"><a href="gary-dart-point-metrics-by-site.html#cb3-10"></a><span class="kw">library</span>(ggfortify)</span>
-<span id="cb3-11"><a href="gary-dart-point-metrics-by-site.html#cb3-11"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
+<span id="cb3-7"><a href="gary-dart-point-metrics-by-site.html#cb3-7"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="gary-dart-point-metrics-by-site.html#cb7-1"></a><span class="kw">library</span>(RRPP)</span>
+<span id="cb7-2"><a href="gary-dart-point-metrics-by-site.html#cb7-2"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb7-3"><a href="gary-dart-point-metrics-by-site.html#cb7-3"></a><span class="kw">library</span>(ggfortify)</span>
+<span id="cb7-4"><a href="gary-dart-point-metrics-by-site.html#cb7-4"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
 <div id="set-working-directory-load-data-and-define-variables" class="section level2">
 <h2><span class="header-section-number">3.1</span> Set working directory, load data, and define variables</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="gary-dart-point-metrics-by-site.html#cb4-1"></a><span class="co"># set working directory</span></span>
-<span id="cb4-2"><a href="gary-dart-point-metrics-by-site.html#cb4-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
-<span id="cb4-3"><a href="gary-dart-point-metrics-by-site.html#cb4-3"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span>
-<span id="cb4-4"><a href="gary-dart-point-metrics-by-site.html#cb4-4"></a><span class="co"># define variables</span></span>
-<span id="cb4-5"><a href="gary-dart-point-metrics-by-site.html#cb4-5"></a>maxl&lt;-data<span class="op">$</span>maxl <span class="co"># maximum length</span></span>
-<span id="cb4-6"><a href="gary-dart-point-metrics-by-site.html#cb4-6"></a>maxw&lt;-data<span class="op">$</span>maxw <span class="co"># maximum width</span></span>
-<span id="cb4-7"><a href="gary-dart-point-metrics-by-site.html#cb4-7"></a>maxth&lt;-data<span class="op">$</span>maxth <span class="co"># maximum thickness</span></span>
-<span id="cb4-8"><a href="gary-dart-point-metrics-by-site.html#cb4-8"></a>maxstl&lt;-data<span class="op">$</span>maxstl <span class="co"># maximum stem length</span></span>
-<span id="cb4-9"><a href="gary-dart-point-metrics-by-site.html#cb4-9"></a>maxstw&lt;-data<span class="op">$</span>maxstw <span class="co"># maximum stem width</span></span>
-<span id="cb4-10"><a href="gary-dart-point-metrics-by-site.html#cb4-10"></a>site&lt;-data<span class="op">$</span>Site <span class="co"># site name</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="gary-dart-point-metrics-by-site.html#cb8-1"></a><span class="co"># set working directory</span></span>
+<span id="cb8-2"><a href="gary-dart-point-metrics-by-site.html#cb8-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
+<span id="cb8-3"><a href="gary-dart-point-metrics-by-site.html#cb8-3"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span>
+<span id="cb8-4"><a href="gary-dart-point-metrics-by-site.html#cb8-4"></a><span class="co"># define variables</span></span>
+<span id="cb8-5"><a href="gary-dart-point-metrics-by-site.html#cb8-5"></a>maxl&lt;-data<span class="op">$</span>maxl <span class="co"># maximum length</span></span>
+<span id="cb8-6"><a href="gary-dart-point-metrics-by-site.html#cb8-6"></a>maxw&lt;-data<span class="op">$</span>maxw <span class="co"># maximum width</span></span>
+<span id="cb8-7"><a href="gary-dart-point-metrics-by-site.html#cb8-7"></a>maxth&lt;-data<span class="op">$</span>maxth <span class="co"># maximum thickness</span></span>
+<span id="cb8-8"><a href="gary-dart-point-metrics-by-site.html#cb8-8"></a>maxstl&lt;-data<span class="op">$</span>maxstl <span class="co"># maximum stem length</span></span>
+<span id="cb8-9"><a href="gary-dart-point-metrics-by-site.html#cb8-9"></a>maxstw&lt;-data<span class="op">$</span>maxstw <span class="co"># maximum stem width</span></span>
+<span id="cb8-10"><a href="gary-dart-point-metrics-by-site.html#cb8-10"></a>site&lt;-data<span class="op">$</span>Site <span class="co"># site name</span></span></code></pre></div>
 <div id="calculate-dart-arrow-index-rn20881" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Calculate dart-arrow index <span class="citation">(Hildebrandt and King <a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span></h3>
 <p>Others have noted the gradual diminution in the size of Gary dart points through time <span class="citation">(Baerreis <a href="#ref-RN20896" role="doc-biblioref">1951</a>; Ford and Webb <a href="#ref-RN20898" role="doc-biblioref">1956</a>; Schambach <a href="#ref-RN3132" role="doc-biblioref">1998</a>; Densmore <a href="#ref-RN20874" role="doc-biblioref">2007</a>)</span>, thus it was necessary to begin by asking whether the size of those points aggregated for this study may fall below the arbitrary 11.8 mm dart-arrow index (DAI) threshold posited by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. The temporal span associated with morphologically-diagnostic Gary dart points is thought to transcend the cultural shift in subsistence practices from hunter-gatherer to emergent horticulturalist, and overlaps temporally with the advent and flourescence of the bow and arrow.</p>
 <p>Stem width (neck width) and thickness are among those variables included in this study, and can be used to identify whether Gary dart points may transcend the threshold between dart and arrow points <span class="citation">(Hildebrandt and King <a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. The dart-arrow index was calculated for all specimens of Gary dart points used in this study, and none fall below the dart-arrow threshold posited by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span>. It is noteworthy that others <span class="citation">(Erlandson, Watts, and Jew <a href="#ref-RN20880" role="doc-biblioref">2014</a>)</span> have found that the DAI may not be universally applicable; however, the DAI and the threshold identified by Hildebrandt and King <span class="citation">(<a href="#ref-RN20881" role="doc-biblioref">2012</a>)</span> is a useful heuristic in this instance.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="gary-dart-point-metrics-by-site.html#cb5-1"></a><span class="co"># calculate dart-arrow index (max stem width + max thickness)</span></span>
-<span id="cb5-2"><a href="gary-dart-point-metrics-by-site.html#cb5-2"></a>dai&lt;-maxstw <span class="op">+</span><span class="st"> </span>maxth</span>
-<span id="cb5-3"><a href="gary-dart-point-metrics-by-site.html#cb5-3"></a>dai</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="gary-dart-point-metrics-by-site.html#cb9-1"></a><span class="co"># calculate dart-arrow index (max stem width + max thickness)</span></span>
+<span id="cb9-2"><a href="gary-dart-point-metrics-by-site.html#cb9-2"></a>dai&lt;-maxstw <span class="op">+</span><span class="st"> </span>maxth</span>
+<span id="cb9-3"><a href="gary-dart-point-metrics-by-site.html#cb9-3"></a>dai</span></code></pre></div>
 <pre><code>##   [1] 44.05 42.17 27.59 40.47 37.55 36.55 38.94 34.81 37.01 39.62 37.32 32.32 33.60
 ##  [14] 27.26 28.58 25.96 28.76 28.00 32.85 36.73 38.55 29.36 39.01 34.68 28.28 24.73
 ##  [27] 25.19 28.01 23.81 24.53 20.59 25.92 27.12 19.16 26.42 26.33 17.70 20.52 18.93
@@ -341,79 +349,90 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## [430] 33.41 31.03 35.22 28.90 30.55 32.59 37.72 33.77 36.86 42.75 35.55 35.32 33.88
 ## [443] 32.22 32.67 35.99 36.07 28.40 32.07 28.32 36.69 38.28 24.45 25.22 30.31 29.94
 ## [456] 33.34 27.10 43.35 28.07 32.08 33.99 25.74 26.83 32.18 32.15 27.02 28.29 31.12
-## [469] 31.76 25.34 36.45 27.17 30.09 24.78 26.00 29.54</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="gary-dart-point-metrics-by-site.html#cb7-1"></a><span class="co"># how many observations fall at or below 11.8 mm</span></span>
-<span id="cb7-2"><a href="gary-dart-point-metrics-by-site.html#cb7-2"></a>arrow&lt;-<span class="kw">sum</span>(data<span class="op">$</span>dai <span class="op">&lt;=</span><span class="st"> </span><span class="fl">11.8</span>)</span>
-<span id="cb7-3"><a href="gary-dart-point-metrics-by-site.html#cb7-3"></a>arrow</span></code></pre></div>
+## [469] 31.76 25.34 36.45 27.17 30.09 24.78 26.00 29.54 30.62 34.76 29.31 30.24 32.81
+## [482] 29.92 28.28 31.19 29.44 33.35 30.66 37.79 26.88 34.04 36.43 29.20 26.02 28.86
+## [495] 33.19 29.81 29.44 31.89 23.79 35.52 30.51 28.17 28.50 29.83</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="gary-dart-point-metrics-by-site.html#cb11-1"></a><span class="co"># how many observations fall at or below 11.8 mm</span></span>
+<span id="cb11-2"><a href="gary-dart-point-metrics-by-site.html#cb11-2"></a>arrow&lt;-<span class="kw">sum</span>(data<span class="op">$</span>dai <span class="op">&lt;=</span><span class="st"> </span><span class="fl">11.8</span>)</span>
+<span id="cb11-3"><a href="gary-dart-point-metrics-by-site.html#cb11-3"></a>arrow</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
 </div>
 <div id="boxplots-for-variable-by-site" class="section level2">
 <h2><span class="header-section-number">3.2</span> Boxplots for <em>variable</em> by <em>site</em></h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="gary-dart-point-metrics-by-site.html#cb9-1"></a><span class="co"># boxplot of maximum length ~ site</span></span>
-<span id="cb9-2"><a href="gary-dart-point-metrics-by-site.html#cb9-2"></a>sitemaxl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb9-3"><a href="gary-dart-point-metrics-by-site.html#cb9-3"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb9-4"><a href="gary-dart-point-metrics-by-site.html#cb9-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-5"><a href="gary-dart-point-metrics-by-site.html#cb9-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb9-6"><a href="gary-dart-point-metrics-by-site.html#cb9-6"></a><span class="co"># boxplot of maximum width ~ site</span></span>
-<span id="cb9-7"><a href="gary-dart-point-metrics-by-site.html#cb9-7"></a>sitemaxw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb9-8"><a href="gary-dart-point-metrics-by-site.html#cb9-8"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb9-9"><a href="gary-dart-point-metrics-by-site.html#cb9-9"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-10"><a href="gary-dart-point-metrics-by-site.html#cb9-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb9-11"><a href="gary-dart-point-metrics-by-site.html#cb9-11"></a><span class="co"># boxplot of maximum thickness ~ site</span></span>
-<span id="cb9-12"><a href="gary-dart-point-metrics-by-site.html#cb9-12"></a>sitemaxth&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxth,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb9-13"><a href="gary-dart-point-metrics-by-site.html#cb9-13"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb9-14"><a href="gary-dart-point-metrics-by-site.html#cb9-14"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-15"><a href="gary-dart-point-metrics-by-site.html#cb9-15"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb9-16"><a href="gary-dart-point-metrics-by-site.html#cb9-16"></a><span class="co"># boxplot of stem length ~ site</span></span>
-<span id="cb9-17"><a href="gary-dart-point-metrics-by-site.html#cb9-17"></a>sitemaxstl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb9-18"><a href="gary-dart-point-metrics-by-site.html#cb9-18"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb9-19"><a href="gary-dart-point-metrics-by-site.html#cb9-19"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-20"><a href="gary-dart-point-metrics-by-site.html#cb9-20"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb9-21"><a href="gary-dart-point-metrics-by-site.html#cb9-21"></a><span class="co"># boxplot of stem width ~ site</span></span>
-<span id="cb9-22"><a href="gary-dart-point-metrics-by-site.html#cb9-22"></a>sitemaxstw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
-<span id="cb9-23"><a href="gary-dart-point-metrics-by-site.html#cb9-23"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb9-24"><a href="gary-dart-point-metrics-by-site.html#cb9-24"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb9-25"><a href="gary-dart-point-metrics-by-site.html#cb9-25"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb9-26"><a href="gary-dart-point-metrics-by-site.html#cb9-26"></a><span class="co"># render figure</span></span>
-<span id="cb9-27"><a href="gary-dart-point-metrics-by-site.html#cb9-27"></a>sitefigure&lt;-<span class="kw">ggarrange</span>(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,</span>
-<span id="cb9-28"><a href="gary-dart-point-metrics-by-site.html#cb9-28"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
-<span id="cb9-29"><a href="gary-dart-point-metrics-by-site.html#cb9-29"></a>                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="gary-dart-point-metrics-by-site.html#cb13-1"></a><span class="co"># boxplot of maximum length ~ site</span></span>
+<span id="cb13-2"><a href="gary-dart-point-metrics-by-site.html#cb13-2"></a>sitemaxl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb13-3"><a href="gary-dart-point-metrics-by-site.html#cb13-3"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb13-4"><a href="gary-dart-point-metrics-by-site.html#cb13-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-5"><a href="gary-dart-point-metrics-by-site.html#cb13-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb13-6"><a href="gary-dart-point-metrics-by-site.html#cb13-6"></a><span class="co"># boxplot of maximum width ~ site</span></span>
+<span id="cb13-7"><a href="gary-dart-point-metrics-by-site.html#cb13-7"></a>sitemaxw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb13-8"><a href="gary-dart-point-metrics-by-site.html#cb13-8"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb13-9"><a href="gary-dart-point-metrics-by-site.html#cb13-9"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-10"><a href="gary-dart-point-metrics-by-site.html#cb13-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb13-11"><a href="gary-dart-point-metrics-by-site.html#cb13-11"></a><span class="co"># boxplot of maximum thickness ~ site</span></span>
+<span id="cb13-12"><a href="gary-dart-point-metrics-by-site.html#cb13-12"></a>sitemaxth&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxth,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb13-13"><a href="gary-dart-point-metrics-by-site.html#cb13-13"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb13-14"><a href="gary-dart-point-metrics-by-site.html#cb13-14"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-15"><a href="gary-dart-point-metrics-by-site.html#cb13-15"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb13-16"><a href="gary-dart-point-metrics-by-site.html#cb13-16"></a><span class="co"># boxplot of stem length ~ site</span></span>
+<span id="cb13-17"><a href="gary-dart-point-metrics-by-site.html#cb13-17"></a>sitemaxstl&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb13-18"><a href="gary-dart-point-metrics-by-site.html#cb13-18"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb13-19"><a href="gary-dart-point-metrics-by-site.html#cb13-19"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-20"><a href="gary-dart-point-metrics-by-site.html#cb13-20"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb13-21"><a href="gary-dart-point-metrics-by-site.html#cb13-21"></a><span class="co"># boxplot of stem width ~ site</span></span>
+<span id="cb13-22"><a href="gary-dart-point-metrics-by-site.html#cb13-22"></a>sitemaxstw&lt;-<span class="kw">ggplot</span>(data,<span class="kw">aes</span>(<span class="dt">x=</span>Site,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">notch =</span> <span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb13-23"><a href="gary-dart-point-metrics-by-site.html#cb13-23"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb13-24"><a href="gary-dart-point-metrics-by-site.html#cb13-24"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-25"><a href="gary-dart-point-metrics-by-site.html#cb13-25"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb13-26"><a href="gary-dart-point-metrics-by-site.html#cb13-26"></a><span class="co"># render figure</span></span>
+<span id="cb13-27"><a href="gary-dart-point-metrics-by-site.html#cb13-27"></a>sitefigure&lt;-<span class="kw">ggarrange</span>(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,</span>
+<span id="cb13-28"><a href="gary-dart-point-metrics-by-site.html#cb13-28"></a>                  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
+<span id="cb13-29"><a href="gary-dart-point-metrics-by-site.html#cb13-29"></a>                  <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="gary-dart-point-metrics-by-site.html#cb11-1"></a>sitefigure</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="gary-dart-point-metrics-by-site.html#cb15-1"></a>sitefigure</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/boxsite-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="gary-dart-point-metrics-by-site.html#cb12-1"></a>fig.cap =<span class="st"> &quot;Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="gary-dart-point-metrics-by-site.html#cb16-1"></a>fig.cap =<span class="st"> &quot;Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study.&quot;</span></span></code></pre></div>
 </div>
 <div id="principal-components-analysis-for-site" class="section level2">
 <h2><span class="header-section-number">3.3</span> Principal Components Analysis for <em>site</em></h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="gary-dart-point-metrics-by-site.html#cb13-1"></a><span class="co">#pca</span></span>
-<span id="cb13-2"><a href="gary-dart-point-metrics-by-site.html#cb13-2"></a>df&lt;-data[<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)]</span>
-<span id="cb13-3"><a href="gary-dart-point-metrics-by-site.html#cb13-3"></a>sitepca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> data, <span class="dt">colour =</span> <span class="st">&#39;Site&#39;</span>,</span>
-<span id="cb13-4"><a href="gary-dart-point-metrics-by-site.html#cb13-4"></a>         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb13-5"><a href="gary-dart-point-metrics-by-site.html#cb13-5"></a>         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
-<span id="cb13-6"><a href="gary-dart-point-metrics-by-site.html#cb13-6"></a>         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb13-7"><a href="gary-dart-point-metrics-by-site.html#cb13-7"></a><span class="co">#render figure</span></span>
-<span id="cb13-8"><a href="gary-dart-point-metrics-by-site.html#cb13-8"></a>sitepca</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="gary-dart-point-metrics-by-site.html#cb17-1"></a><span class="co">#pca</span></span>
+<span id="cb17-2"><a href="gary-dart-point-metrics-by-site.html#cb17-2"></a>df&lt;-data[<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)]</span>
+<span id="cb17-3"><a href="gary-dart-point-metrics-by-site.html#cb17-3"></a>sitepca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> data, <span class="dt">colour =</span> <span class="st">&#39;Site&#39;</span>,</span>
+<span id="cb17-4"><a href="gary-dart-point-metrics-by-site.html#cb17-4"></a>         <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb17-5"><a href="gary-dart-point-metrics-by-site.html#cb17-5"></a>         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
+<span id="cb17-6"><a href="gary-dart-point-metrics-by-site.html#cb17-6"></a>         <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning: `select_()` is deprecated as of dplyr 0.7.0.
+## Please use `select()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: `group_by_()` is deprecated as of dplyr 0.7.0.
+## Please use `group_by()` instead.
+## See vignette(&#39;programming&#39;) for more help
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="gary-dart-point-metrics-by-site.html#cb20-1"></a><span class="co">#render figure</span></span>
+<span id="cb20-2"><a href="gary-dart-point-metrics-by-site.html#cb20-2"></a>sitepca</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/pcasite-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="gary-dart-point-metrics-by-site.html#cb14-1"></a>fig.cap =<span class="st"> &quot;PCA by site.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="gary-dart-point-metrics-by-site.html#cb21-1"></a>fig.cap =<span class="st"> &quot;PCA by site.&quot;</span></span></code></pre></div>
 </div>
 <div id="analyses-of-variance-anova-for-variable-site" class="section level2">
 <h2><span class="header-section-number">3.4</span> Analyses of Variance (ANOVA) for <em>variable</em> ~ <em>site</em></h2>
 <div id="maximum-length-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> <em>Maximum length</em> of Gary points</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="gary-dart-point-metrics-by-site.html#cb15-1"></a><span class="co"># density plot for maxl by site</span></span>
-<span id="cb15-2"><a href="gary-dart-point-metrics-by-site.html#cb15-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxl, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
-<span id="cb15-3"><a href="gary-dart-point-metrics-by-site.html#cb15-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb15-4"><a href="gary-dart-point-metrics-by-site.html#cb15-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb15-5"><a href="gary-dart-point-metrics-by-site.html#cb15-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">150</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="gary-dart-point-metrics-by-site.html#cb22-1"></a><span class="co"># density plot for maxl by site</span></span>
+<span id="cb22-2"><a href="gary-dart-point-metrics-by-site.html#cb22-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxl, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
+<span id="cb22-3"><a href="gary-dart-point-metrics-by-site.html#cb22-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb22-4"><a href="gary-dart-point-metrics-by-site.html#cb22-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb22-5"><a href="gary-dart-point-metrics-by-site.html#cb22-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">150</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxl-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="gary-dart-point-metrics-by-site.html#cb16-1"></a><span class="co"># anova = maximum length ~ site</span></span>
-<span id="cb16-2"><a href="gary-dart-point-metrics-by-site.html#cb16-2"></a>siteml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb16-3"><a href="gary-dart-point-metrics-by-site.html#cb16-3"></a><span class="kw">anova</span>(siteml)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="gary-dart-point-metrics-by-site.html#cb23-1"></a><span class="co"># anova = maximum length ~ site</span></span>
+<span id="cb23-2"><a href="gary-dart-point-metrics-by-site.html#cb23-2"></a>siteml&lt;-<span class="kw">lm.rrpp</span>(maxl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb23-3"><a href="gary-dart-point-metrics-by-site.html#cb23-3"></a><span class="kw">anova</span>(siteml)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -423,19 +442,19 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df    SS      MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  2417 1208.68 0.03099 7.5634 2.0404  4e-04 ***
-## Residuals 473 75588  159.81 0.96901                         
-## Total     475 78006                                         
+## Site        2  2604 1301.86 0.03133 8.1015 2.0791  4e-04 ***
+## Residuals 501 80507  160.69 0.96867                         
+## Total     503 83111                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxl ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="gary-dart-point-metrics-by-site.html#cb18-1"></a><span class="co"># visualise model predictions for maximum length ~ site</span></span>
-<span id="cb18-2"><a href="gary-dart-point-metrics-by-site.html#cb18-2"></a>siteDF&lt;-<span class="kw">data.frame</span>(<span class="dt">Site =</span> <span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>))</span>
-<span id="cb18-3"><a href="gary-dart-point-metrics-by-site.html#cb18-3"></a><span class="kw">rownames</span>(siteDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>)</span>
-<span id="cb18-4"><a href="gary-dart-point-metrics-by-site.html#cb18-4"></a>sitePreds&lt;-<span class="kw">predict</span>(siteml,siteDF)</span>
-<span id="cb18-5"><a href="gary-dart-point-metrics-by-site.html#cb18-5"></a>sitePreds</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="gary-dart-point-metrics-by-site.html#cb25-1"></a><span class="co"># visualise model predictions for maximum length ~ site</span></span>
+<span id="cb25-2"><a href="gary-dart-point-metrics-by-site.html#cb25-2"></a>siteDF&lt;-<span class="kw">data.frame</span>(<span class="dt">Site =</span> <span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>))</span>
+<span id="cb25-3"><a href="gary-dart-point-metrics-by-site.html#cb25-3"></a><span class="kw">rownames</span>(siteDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;Cooper&quot;</span>,<span class="st">&quot;Means&quot;</span>,<span class="st">&quot;Pov Pt&quot;</span>)</span>
+<span id="cb25-4"><a href="gary-dart-point-metrics-by-site.html#cb25-4"></a>sitePreds&lt;-<span class="kw">predict</span>(siteml,siteDF)</span>
+<span id="cb25-5"><a href="gary-dart-point-metrics-by-site.html#cb25-5"></a>sitePreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -446,30 +465,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 55.68053
-## Means  49.33889
-## Pov Pt 56.33169
+## Cooper 55.66552
+## Means  49.34884
+## Pov Pt 56.56995
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 53.13432
-## Means  46.17080
-## Pov Pt 54.99151
+## Cooper 53.14035
+## Means  46.17803
+## Pov Pt 55.29674
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 58.31542
-## Means  52.63515
-## Pov Pt 57.68806</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="gary-dart-point-metrics-by-site.html#cb20-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
+## Cooper 58.33648
+## Means  52.68281
+## Pov Pt 57.91117</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="gary-dart-point-metrics-by-site.html#cb27-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxl-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="gary-dart-point-metrics-by-site.html#cb21-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb21-2"><a href="gary-dart-point-metrics-by-site.html#cb21-2"></a>site.pwml&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
-<span id="cb21-3"><a href="gary-dart-point-metrics-by-site.html#cb21-3"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="gary-dart-point-metrics-by-site.html#cb28-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb28-2"><a href="gary-dart-point-metrics-by-site.html#cb28-2"></a>site.pwml&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
+<span id="cb28-3"><a href="gary-dart-point-metrics-by-site.html#cb28-3"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -482,11 +501,11 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  6.3331418  4.257071  3.5123814 0.0030
-## Cooper:Pov Pt 0.6537127  2.982016 -0.6161095 0.6691
-## Means:Pov Pt  6.9868545  3.604376  4.9648618 0.0003</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="gary-dart-point-metrics-by-site.html#cb23-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
-<span id="cb23-2"><a href="gary-dart-point-metrics-by-site.html#cb23-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
+## Cooper:Means  6.3331418  4.294172  3.4721399 0.0039
+## Cooper:Pov Pt 0.8906804  2.932067 -0.3534792 0.5635
+## Means:Pov Pt  7.2238222  3.586769  5.2179905 0.0002</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="gary-dart-point-metrics-by-site.html#cb30-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
+<span id="cb30-2"><a href="gary-dart-point-metrics-by-site.html#cb30-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -498,12 +517,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1850022    0.20850
-## Cooper:Pov Pt 1 0.000000e+00 8.537736e-07 -0.7688362    0.68885
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.1748705    0.21055</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="gary-dart-point-metrics-by-site.html#cb25-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb25-2"><a href="gary-dart-point-metrics-by-site.html#cb25-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##               r angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1     0 8.537736e-07 -0.7575940    0.68540
+## Cooper:Pov Pt 1     0 8.537736e-07 -0.7691097    0.68885
+## Means:Pov Pt  1     0 8.537736e-07 -0.7561429    0.68500</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="gary-dart-point-metrics-by-site.html#cb32-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb32-2"><a href="gary-dart-point-metrics-by-site.html#cb32-2"></a><span class="kw">summary</span>(site.pwml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -515,25 +534,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 168.59212 
+## 180.31774  70.02501 169.14957 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  110.29274  95.30540  2.4321348 0.0247
-## Cooper:Pov Pt  11.72562  66.29519 -0.7851928 0.7430
-## Means:Pov Pt   98.56712  79.29345  2.6488268 0.0199</code></pre>
+## Cooper:Means  110.29274  97.51738  2.3861713 0.0263
+## Cooper:Pov Pt  11.16817  64.77982 -0.7765956 0.7448
+## Means:Pov Pt   99.12456  80.24933  2.6278708 0.0223</code></pre>
 </div>
 <div id="maximum-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> <em>Maximum width</em> of Gary points</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="gary-dart-point-metrics-by-site.html#cb27-1"></a><span class="co"># density plot for maxw by site</span></span>
-<span id="cb27-2"><a href="gary-dart-point-metrics-by-site.html#cb27-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxw, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
-<span id="cb27-3"><a href="gary-dart-point-metrics-by-site.html#cb27-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb27-4"><a href="gary-dart-point-metrics-by-site.html#cb27-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb27-5"><a href="gary-dart-point-metrics-by-site.html#cb27-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">75</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="gary-dart-point-metrics-by-site.html#cb34-1"></a><span class="co"># density plot for maxw by site</span></span>
+<span id="cb34-2"><a href="gary-dart-point-metrics-by-site.html#cb34-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxw, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
+<span id="cb34-3"><a href="gary-dart-point-metrics-by-site.html#cb34-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb34-4"><a href="gary-dart-point-metrics-by-site.html#cb34-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb34-5"><a href="gary-dart-point-metrics-by-site.html#cb34-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">75</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxw-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="gary-dart-point-metrics-by-site.html#cb28-1"></a><span class="co"># anova = maximum width ~ site</span></span>
-<span id="cb28-2"><a href="gary-dart-point-metrics-by-site.html#cb28-2"></a>sitemw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb28-3"><a href="gary-dart-point-metrics-by-site.html#cb28-3"></a><span class="kw">anova</span>(sitemw)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="gary-dart-point-metrics-by-site.html#cb35-1"></a><span class="co"># anova = maximum width ~ site</span></span>
+<span id="cb35-2"><a href="gary-dart-point-metrics-by-site.html#cb35-2"></a>sitemw&lt;-<span class="kw">lm.rrpp</span>(maxw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb35-3"><a href="gary-dart-point-metrics-by-site.html#cb35-3"></a><span class="kw">anova</span>(sitemw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -543,17 +562,17 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df      SS     MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  1860.6 930.29 0.11394 30.413 3.0893  1e-04 ***
-## Residuals 473 14468.6  30.59 0.88606                         
-## Total     475 16329.1                                        
+## Site        2  1876.4 938.21 0.11319 31.973 3.0989  1e-04 ***
+## Residuals 501 14701.3  29.34 0.88681                         
+## Total     503 16577.8                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxw ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="gary-dart-point-metrics-by-site.html#cb30-1"></a><span class="co"># visualise model predictions for maximum width ~ site</span></span>
-<span id="cb30-2"><a href="gary-dart-point-metrics-by-site.html#cb30-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemw,siteDF)</span>
-<span id="cb30-3"><a href="gary-dart-point-metrics-by-site.html#cb30-3"></a>sitePreds</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="gary-dart-point-metrics-by-site.html#cb37-1"></a><span class="co"># visualise model predictions for maximum width ~ site</span></span>
+<span id="cb37-2"><a href="gary-dart-point-metrics-by-site.html#cb37-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemw,siteDF)</span>
+<span id="cb37-3"><a href="gary-dart-point-metrics-by-site.html#cb37-3"></a>sitePreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -564,30 +583,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 28.18363
-## Means  22.15150
-## Pov Pt 28.19008
+## Cooper 28.19047
+## Means  22.15086
+## Pov Pt 28.19126
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 27.06466
-## Means  20.77878
-## Pov Pt 27.59875
+## Cooper 27.10737
+## Means  20.80496
+## Pov Pt 27.63357
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 29.32978
-## Means  23.60519
-## Pov Pt 28.79784</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="gary-dart-point-metrics-by-site.html#cb32-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
+## Cooper 29.34775
+## Means  23.59371
+## Pov Pt 28.76820</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="gary-dart-point-metrics-by-site.html#cb39-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxw-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="gary-dart-point-metrics-by-site.html#cb33-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
-<span id="cb33-2"><a href="gary-dart-point-metrics-by-site.html#cb33-2"></a>site.pwmw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
-<span id="cb33-3"><a href="gary-dart-point-metrics-by-site.html#cb33-3"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="gary-dart-point-metrics-by-site.html#cb40-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
+<span id="cb40-2"><a href="gary-dart-point-metrics-by-site.html#cb40-2"></a>site.pwmw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
+<span id="cb40-3"><a href="gary-dart-point-metrics-by-site.html#cb40-3"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -600,11 +619,11 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  6.3331418  4.257071  3.5123814 0.0030
-## Cooper:Pov Pt 0.6537127  2.982016 -0.6161095 0.6691
-## Means:Pov Pt  6.9868545  3.604376  4.9648618 0.0003</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="gary-dart-point-metrics-by-site.html#cb35-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
-<span id="cb35-2"><a href="gary-dart-point-metrics-by-site.html#cb35-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
+## Cooper:Means  6.3331418  4.294172  3.4721399 0.0039
+## Cooper:Pov Pt 0.8906804  2.932067 -0.3534792 0.5635
+## Means:Pov Pt  7.2238222  3.586769  5.2179905 0.0002</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="gary-dart-point-metrics-by-site.html#cb42-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
+<span id="cb42-2"><a href="gary-dart-point-metrics-by-site.html#cb42-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -616,12 +635,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1850022    0.20850
-## Cooper:Pov Pt 1 0.000000e+00 8.537736e-07 -0.7688362    0.68885
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.1748705    0.21055</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="gary-dart-point-metrics-by-site.html#cb37-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb37-2"><a href="gary-dart-point-metrics-by-site.html#cb37-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##               r angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1     0 8.537736e-07 -0.7575940    0.68540
+## Cooper:Pov Pt 1     0 8.537736e-07 -0.7691097    0.68885
+## Means:Pov Pt  1     0 8.537736e-07 -0.7561429    0.68500</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="gary-dart-point-metrics-by-site.html#cb44-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb44-2"><a href="gary-dart-point-metrics-by-site.html#cb44-2"></a><span class="kw">summary</span>(site.pwmw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -633,25 +652,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 168.59212 
+## 180.31774  70.02501 169.14957 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  110.29274  95.30540  2.4321348 0.0247
-## Cooper:Pov Pt  11.72562  66.29519 -0.7851928 0.7430
-## Means:Pov Pt   98.56712  79.29345  2.6488268 0.0199</code></pre>
+## Cooper:Means  110.29274  97.51738  2.3861713 0.0263
+## Cooper:Pov Pt  11.16817  64.77982 -0.7765956 0.7448
+## Means:Pov Pt   99.12456  80.24933  2.6278708 0.0223</code></pre>
 </div>
 <div id="maximum-thickness-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> <em>Maximum thickness</em> of Gary points</h3>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="gary-dart-point-metrics-by-site.html#cb39-1"></a><span class="co"># density plot for maxth by site</span></span>
-<span id="cb39-2"><a href="gary-dart-point-metrics-by-site.html#cb39-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxth, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
-<span id="cb39-3"><a href="gary-dart-point-metrics-by-site.html#cb39-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb39-4"><a href="gary-dart-point-metrics-by-site.html#cb39-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb39-5"><a href="gary-dart-point-metrics-by-site.html#cb39-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="gary-dart-point-metrics-by-site.html#cb46-1"></a><span class="co"># density plot for maxth by site</span></span>
+<span id="cb46-2"><a href="gary-dart-point-metrics-by-site.html#cb46-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxth, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
+<span id="cb46-3"><a href="gary-dart-point-metrics-by-site.html#cb46-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb46-4"><a href="gary-dart-point-metrics-by-site.html#cb46-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb46-5"><a href="gary-dart-point-metrics-by-site.html#cb46-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxth-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="gary-dart-point-metrics-by-site.html#cb40-1"></a><span class="co"># anova = maximum thickness ~ site</span></span>
-<span id="cb40-2"><a href="gary-dart-point-metrics-by-site.html#cb40-2"></a>sitemth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb40-3"><a href="gary-dart-point-metrics-by-site.html#cb40-3"></a><span class="kw">anova</span>(sitemth)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="gary-dart-point-metrics-by-site.html#cb47-1"></a><span class="co"># anova = maximum thickness ~ site</span></span>
+<span id="cb47-2"><a href="gary-dart-point-metrics-by-site.html#cb47-2"></a>sitemth&lt;-<span class="kw">lm.rrpp</span>(maxth <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb47-3"><a href="gary-dart-point-metrics-by-site.html#cb47-3"></a><span class="kw">anova</span>(sitemth)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -660,18 +679,18 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  279.18 139.590 0.11694 31.318 3.1137  1e-04 ***
-## Residuals 473 2108.26   4.457 0.88306                         
-## Total     475 2387.44                                         
+##            Df      SS      MS     Rsq     F      Z Pr(&gt;F)    
+## Site        2  273.78 136.891 0.11114 31.32 3.1584  1e-04 ***
+## Residuals 501 2189.71   4.371 0.88886                        
+## Total     503 2463.49                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxth ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="gary-dart-point-metrics-by-site.html#cb42-1"></a><span class="co"># visualise model predictions for maximum thickness ~ site</span></span>
-<span id="cb42-2"><a href="gary-dart-point-metrics-by-site.html#cb42-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemth,siteDF)</span>
-<span id="cb42-3"><a href="gary-dart-point-metrics-by-site.html#cb42-3"></a>sitePreds</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="gary-dart-point-metrics-by-site.html#cb49-1"></a><span class="co"># visualise model predictions for maximum thickness ~ site</span></span>
+<span id="cb49-2"><a href="gary-dart-point-metrics-by-site.html#cb49-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemth,siteDF)</span>
+<span id="cb49-3"><a href="gary-dart-point-metrics-by-site.html#cb49-3"></a>sitePreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -682,30 +701,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##             [,1]
-## Cooper  9.073399
-## Means   8.221285
-## Pov Pt 10.316355
+## Cooper  9.074888
+## Means   8.219044
+## Pov Pt 10.280013
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##             [,1]
-## Cooper  8.658223
-## Means   7.698920
-## Pov Pt 10.094636
+## Cooper  8.653097
+## Means   7.709632
+## Pov Pt 10.068302
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
-##             [,1]
-## Cooper  9.527147
-## Means   8.768124
-## Pov Pt 10.541596</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="gary-dart-point-metrics-by-site.html#cb44-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
+##            [,1]
+## Cooper  9.52024
+## Means   8.77732
+## Pov Pt 10.49239</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="gary-dart-point-metrics-by-site.html#cb51-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxth-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="gary-dart-point-metrics-by-site.html#cb45-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
-<span id="cb45-2"><a href="gary-dart-point-metrics-by-site.html#cb45-2"></a>site.pwmth&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
-<span id="cb45-3"><a href="gary-dart-point-metrics-by-site.html#cb45-3"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="gary-dart-point-metrics-by-site.html#cb52-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
+<span id="cb52-2"><a href="gary-dart-point-metrics-by-site.html#cb52-2"></a>site.pwmth&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
+<span id="cb52-3"><a href="gary-dart-point-metrics-by-site.html#cb52-3"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -718,11 +737,11 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  6.3331418  4.257071  3.5123814 0.0030
-## Cooper:Pov Pt 0.6537127  2.982016 -0.6161095 0.6691
-## Means:Pov Pt  6.9868545  3.604376  4.9648618 0.0003</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="gary-dart-point-metrics-by-site.html#cb47-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
-<span id="cb47-2"><a href="gary-dart-point-metrics-by-site.html#cb47-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
+## Cooper:Means  6.3331418  4.294172  3.4721399 0.0039
+## Cooper:Pov Pt 0.8906804  2.932067 -0.3534792 0.5635
+## Means:Pov Pt  7.2238222  3.586769  5.2179905 0.0002</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="gary-dart-point-metrics-by-site.html#cb54-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
+<span id="cb54-2"><a href="gary-dart-point-metrics-by-site.html#cb54-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -734,12 +753,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1850022    0.20850
-## Cooper:Pov Pt 1 0.000000e+00 8.537736e-07 -0.7688362    0.68885
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.1748705    0.21055</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="gary-dart-point-metrics-by-site.html#cb49-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb49-2"><a href="gary-dart-point-metrics-by-site.html#cb49-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##               r angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1     0 8.537736e-07 -0.7575940    0.68540
+## Cooper:Pov Pt 1     0 8.537736e-07 -0.7691097    0.68885
+## Means:Pov Pt  1     0 8.537736e-07 -0.7561429    0.68500</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="gary-dart-point-metrics-by-site.html#cb56-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb56-2"><a href="gary-dart-point-metrics-by-site.html#cb56-2"></a><span class="kw">summary</span>(site.pwmth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -751,25 +770,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 168.59212 
+## 180.31774  70.02501 169.14957 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  110.29274  95.30540  2.4321348 0.0247
-## Cooper:Pov Pt  11.72562  66.29519 -0.7851928 0.7430
-## Means:Pov Pt   98.56712  79.29345  2.6488268 0.0199</code></pre>
+## Cooper:Means  110.29274  97.51738  2.3861713 0.0263
+## Cooper:Pov Pt  11.16817  64.77982 -0.7765956 0.7448
+## Means:Pov Pt   99.12456  80.24933  2.6278708 0.0223</code></pre>
 </div>
 <div id="maximum-stem-length-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> <em>Maximum stem length</em> of Gary points</h3>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="gary-dart-point-metrics-by-site.html#cb51-1"></a><span class="co"># density plot for maxstl by site</span></span>
-<span id="cb51-2"><a href="gary-dart-point-metrics-by-site.html#cb51-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstl, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
-<span id="cb51-3"><a href="gary-dart-point-metrics-by-site.html#cb51-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb51-4"><a href="gary-dart-point-metrics-by-site.html#cb51-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb51-5"><a href="gary-dart-point-metrics-by-site.html#cb51-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="gary-dart-point-metrics-by-site.html#cb58-1"></a><span class="co"># density plot for maxstl by site</span></span>
+<span id="cb58-2"><a href="gary-dart-point-metrics-by-site.html#cb58-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstl, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
+<span id="cb58-3"><a href="gary-dart-point-metrics-by-site.html#cb58-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb58-4"><a href="gary-dart-point-metrics-by-site.html#cb58-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb58-5"><a href="gary-dart-point-metrics-by-site.html#cb58-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstl-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="gary-dart-point-metrics-by-site.html#cb52-1"></a><span class="co"># anova = maximum stem length ~ site</span></span>
-<span id="cb52-2"><a href="gary-dart-point-metrics-by-site.html#cb52-2"></a>sitemstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb52-3"><a href="gary-dart-point-metrics-by-site.html#cb52-3"></a><span class="kw">anova</span>(sitemstl)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="gary-dart-point-metrics-by-site.html#cb59-1"></a><span class="co"># anova = maximum stem length ~ site</span></span>
+<span id="cb59-2"><a href="gary-dart-point-metrics-by-site.html#cb59-2"></a>sitemstl&lt;-<span class="kw">lm.rrpp</span>(maxstl <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb59-3"><a href="gary-dart-point-metrics-by-site.html#cb59-3"></a><span class="kw">anova</span>(sitemstl)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -779,17 +798,17 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS      MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2  454.4 227.213 0.06228 15.706 2.5351  1e-04 ***
-## Residuals 473 6842.5  14.466 0.93772                         
-## Total     475 7297.0                                         
+## Site        2  467.2 233.591 0.06089 16.243 2.6426  1e-04 ***
+## Residuals 501 7204.8  14.381 0.93911                         
+## Total     503 7672.0                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxstl ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="gary-dart-point-metrics-by-site.html#cb54-1"></a><span class="co"># visualise model predictions for maximum stem length ~ site</span></span>
-<span id="cb54-2"><a href="gary-dart-point-metrics-by-site.html#cb54-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemstl,siteDF)</span>
-<span id="cb54-3"><a href="gary-dart-point-metrics-by-site.html#cb54-3"></a>sitePreds</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="gary-dart-point-metrics-by-site.html#cb61-1"></a><span class="co"># visualise model predictions for maximum stem length ~ site</span></span>
+<span id="cb61-2"><a href="gary-dart-point-metrics-by-site.html#cb61-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemstl,siteDF)</span>
+<span id="cb61-3"><a href="gary-dart-point-metrics-by-site.html#cb61-3"></a>sitePreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -800,30 +819,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 15.40902
-## Means  12.65254
-## Pov Pt 15.68261
+## Cooper 15.40793
+## Means  12.65321
+## Pov Pt 15.71062
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 14.63386
-## Means  11.70611
-## Pov Pt 15.27021
+## Cooper 14.64504
+## Means  11.69395
+## Pov Pt 15.31858
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 16.19133
-## Means  13.64617
-## Pov Pt 16.10247</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="gary-dart-point-metrics-by-site.html#cb56-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
+## Cooper 16.19052
+## Means  13.62317
+## Pov Pt 16.10450</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="gary-dart-point-metrics-by-site.html#cb63-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstl-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="gary-dart-point-metrics-by-site.html#cb57-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
-<span id="cb57-2"><a href="gary-dart-point-metrics-by-site.html#cb57-2"></a>site.pwmstl&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
-<span id="cb57-3"><a href="gary-dart-point-metrics-by-site.html#cb57-3"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="gary-dart-point-metrics-by-site.html#cb64-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
+<span id="cb64-2"><a href="gary-dart-point-metrics-by-site.html#cb64-2"></a>site.pwmstl&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
+<span id="cb64-3"><a href="gary-dart-point-metrics-by-site.html#cb64-3"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -836,11 +855,11 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  6.3331418  4.257071  3.5123814 0.0030
-## Cooper:Pov Pt 0.6537127  2.982016 -0.6161095 0.6691
-## Means:Pov Pt  6.9868545  3.604376  4.9648618 0.0003</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="gary-dart-point-metrics-by-site.html#cb59-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
-<span id="cb59-2"><a href="gary-dart-point-metrics-by-site.html#cb59-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
+## Cooper:Means  6.3331418  4.294172  3.4721399 0.0039
+## Cooper:Pov Pt 0.8906804  2.932067 -0.3534792 0.5635
+## Means:Pov Pt  7.2238222  3.586769  5.2179905 0.0002</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="gary-dart-point-metrics-by-site.html#cb66-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
+<span id="cb66-2"><a href="gary-dart-point-metrics-by-site.html#cb66-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -852,12 +871,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1850022    0.20850
-## Cooper:Pov Pt 1 0.000000e+00 8.537736e-07 -0.7688362    0.68885
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.1748705    0.21055</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="gary-dart-point-metrics-by-site.html#cb61-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb61-2"><a href="gary-dart-point-metrics-by-site.html#cb61-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##               r angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1     0 8.537736e-07 -0.7575940    0.68540
+## Cooper:Pov Pt 1     0 8.537736e-07 -0.7691097    0.68885
+## Means:Pov Pt  1     0 8.537736e-07 -0.7561429    0.68500</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="gary-dart-point-metrics-by-site.html#cb68-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb68-2"><a href="gary-dart-point-metrics-by-site.html#cb68-2"></a><span class="kw">summary</span>(site.pwmstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -869,25 +888,25 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 168.59212 
+## 180.31774  70.02501 169.14957 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  110.29274  95.30540  2.4321348 0.0247
-## Cooper:Pov Pt  11.72562  66.29519 -0.7851928 0.7430
-## Means:Pov Pt   98.56712  79.29345  2.6488268 0.0199</code></pre>
+## Cooper:Means  110.29274  97.51738  2.3861713 0.0263
+## Cooper:Pov Pt  11.16817  64.77982 -0.7765956 0.7448
+## Means:Pov Pt   99.12456  80.24933  2.6278708 0.0223</code></pre>
 </div>
 <div id="maximum-stem-width-of-gary-points" class="section level3">
 <h3><span class="header-section-number">3.4.5</span> <em>Maximum stem width</em> of Gary points</h3>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="gary-dart-point-metrics-by-site.html#cb63-1"></a><span class="co"># density plot for maxstw by site</span></span>
-<span id="cb63-2"><a href="gary-dart-point-metrics-by-site.html#cb63-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstw, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
-<span id="cb63-3"><a href="gary-dart-point-metrics-by-site.html#cb63-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb63-4"><a href="gary-dart-point-metrics-by-site.html#cb63-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb63-5"><a href="gary-dart-point-metrics-by-site.html#cb63-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="gary-dart-point-metrics-by-site.html#cb70-1"></a><span class="co"># density plot for maxstw by site</span></span>
+<span id="cb70-2"><a href="gary-dart-point-metrics-by-site.html#cb70-2"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>maxstw, <span class="dt">fill =</span> Site)) <span class="op">+</span></span>
+<span id="cb70-3"><a href="gary-dart-point-metrics-by-site.html#cb70-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb70-4"><a href="gary-dart-point-metrics-by-site.html#cb70-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb70-5"><a href="gary-dart-point-metrics-by-site.html#cb70-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstw-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="gary-dart-point-metrics-by-site.html#cb64-1"></a><span class="co"># anova = maximum stem width ~ site</span></span>
-<span id="cb64-2"><a href="gary-dart-point-metrics-by-site.html#cb64-2"></a>sitemstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb64-3"><a href="gary-dart-point-metrics-by-site.html#cb64-3"></a><span class="kw">anova</span>(sitemstw)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="gary-dart-point-metrics-by-site.html#cb71-1"></a><span class="co"># anova = maximum stem width ~ site</span></span>
+<span id="cb71-2"><a href="gary-dart-point-metrics-by-site.html#cb71-2"></a>sitemstw&lt;-<span class="kw">lm.rrpp</span>(maxstw <span class="op">~</span><span class="st"> </span>Site, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> data,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb71-3"><a href="gary-dart-point-metrics-by-site.html#cb71-3"></a><span class="kw">anova</span>(sitemstw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -897,17 +916,17 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## Site        2 1307.8 653.88 0.15303 42.731 3.4052  1e-04 ***
-## Residuals 473 7238.0  15.30 0.84697                         
-## Total     475 8545.8                                        
+## Site        2 1351.4 675.68 0.15338 45.381 3.4262  1e-04 ***
+## Residuals 501 7459.3  14.89 0.84662                         
+## Total     503 8810.7                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = maxstw ~ Site, iter = 9999, SS.type = &quot;I&quot;, data = data,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="gary-dart-point-metrics-by-site.html#cb66-1"></a><span class="co"># visualise model predictions for maximum stem width ~ site</span></span>
-<span id="cb66-2"><a href="gary-dart-point-metrics-by-site.html#cb66-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemstw,siteDF)</span>
-<span id="cb66-3"><a href="gary-dart-point-metrics-by-site.html#cb66-3"></a>sitePreds</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="gary-dart-point-metrics-by-site.html#cb73-1"></a><span class="co"># visualise model predictions for maximum stem width ~ site</span></span>
+<span id="cb73-2"><a href="gary-dart-point-metrics-by-site.html#cb73-2"></a>sitePreds&lt;-<span class="kw">predict</span>(sitemstw,siteDF)</span>
+<span id="cb73-3"><a href="gary-dart-point-metrics-by-site.html#cb73-3"></a>sitePreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -918,30 +937,30 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Predicted values:
 ## 
 ##            [,1]
-## Cooper 19.02428
-## Means  15.27366
-## Pov Pt 20.37446
+## Cooper 19.02708
+## Means  15.26598
+## Pov Pt 20.41402
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##            [,1]
-## Cooper 18.21697
-## Means  14.27911
-## Pov Pt 19.96076
+## Cooper 18.24722
+## Means  14.30402
+## Pov Pt 20.01731
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##            [,1]
-## Cooper 19.82013
-## Means  16.29817
-## Pov Pt 20.78902</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="gary-dart-point-metrics-by-site.html#cb68-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
+## Cooper 19.84348
+## Means  16.26053
+## Pov Pt 20.81871</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="gary-dart-point-metrics-by-site.html#cb75-1"></a><span class="kw">plot</span>(sitePreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(siteDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/anovasitemaxstw-2.png" width="100%" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="gary-dart-point-metrics-by-site.html#cb69-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
-<span id="cb69-2"><a href="gary-dart-point-metrics-by-site.html#cb69-2"></a>site.pwmstw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
-<span id="cb69-3"><a href="gary-dart-point-metrics-by-site.html#cb69-3"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="gary-dart-point-metrics-by-site.html#cb76-1"></a><span class="co"># pairwise comparison = which sites differ?</span></span>
+<span id="cb76-2"><a href="gary-dart-point-metrics-by-site.html#cb76-2"></a>site.pwmstw&lt;-<span class="kw">pairwise</span>(siteml, <span class="dt">groups =</span> data<span class="op">$</span>Site)</span>
+<span id="cb76-3"><a href="gary-dart-point-metrics-by-site.html#cb76-3"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -954,11 +973,11 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## 
 ## Pairwise distances between means, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  6.3331418  4.257071  3.5123814 0.0030
-## Cooper:Pov Pt 0.6537127  2.982016 -0.6161095 0.6691
-## Means:Pov Pt  6.9868545  3.604376  4.9648618 0.0003</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="gary-dart-point-metrics-by-site.html#cb71-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
-<span id="cb71-2"><a href="gary-dart-point-metrics-by-site.html#cb71-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
+## Cooper:Means  6.3331418  4.294172  3.4721399 0.0039
+## Cooper:Pov Pt 0.8906804  2.932067 -0.3534792 0.5635
+## Means:Pov Pt  7.2238222  3.586769  5.2179905 0.0002</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="gary-dart-point-metrics-by-site.html#cb78-1"></a><span class="co"># correlation between mean vectors (angles in degrees)</span></span>
+<span id="cb78-2"><a href="gary-dart-point-metrics-by-site.html#cb78-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;VC&quot;</span>, <span class="dt">angle.type =</span> <span class="st">&quot;deg&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -970,12 +989,12 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise statistics based on mean vector correlations
-##               r        angle    UCL (95%)          Z Pr &gt; angle
-## Cooper:Means  1 8.537736e-07 8.537736e-07  1.1850022    0.20850
-## Cooper:Pov Pt 1 0.000000e+00 8.537736e-07 -0.7688362    0.68885
-## Means:Pov Pt  1 8.537736e-07 8.537736e-07  1.1748705    0.21055</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="gary-dart-point-metrics-by-site.html#cb73-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb73-2"><a href="gary-dart-point-metrics-by-site.html#cb73-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##               r angle    UCL (95%)          Z Pr &gt; angle
+## Cooper:Means  1     0 8.537736e-07 -0.7575940    0.68540
+## Cooper:Pov Pt 1     0 8.537736e-07 -0.7691097    0.68885
+## Means:Pov Pt  1     0 8.537736e-07 -0.7561429    0.68500</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="gary-dart-point-metrics-by-site.html#cb80-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb80-2"><a href="gary-dart-point-metrics-by-site.html#cb80-2"></a><span class="kw">summary</span>(site.pwmstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -987,13 +1006,13 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 ## Observed variances by group
 ## 
 ##    Cooper     Means    Pov Pt 
-## 180.31774  70.02501 168.59212 
+## 180.31774  70.02501 169.14957 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                       d UCL (95%)          Z Pr &gt; d
-## Cooper:Means  110.29274  95.30540  2.4321348 0.0247
-## Cooper:Pov Pt  11.72562  66.29519 -0.7851928 0.7430
-## Means:Pov Pt   98.56712  79.29345  2.6488268 0.0199</code></pre>
+## Cooper:Means  110.29274  97.51738  2.3861713 0.0263
+## Cooper:Pov Pt  11.16817  64.77982 -0.7765956 0.7448
+## Means:Pov Pt   99.12456  80.24933  2.6278708 0.0223</code></pre>
 
 </div>
 </div>

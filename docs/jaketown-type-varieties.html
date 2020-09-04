@@ -279,51 +279,51 @@ This volume is in <b><a href="open.html#open">Open Review</a></b>. I want your f
 <h2><span class="header-section-number">4.1</span> Reconstructing Gary type-varieties</h2>
 <p>Reconstructing and expanding the type-varieties of Gary dart points proposed at Poverty Point, Cooper, and Means was necessary, as the type-variety assignments for each specimen were not reported or preserved on the associated paperwork when the collections were curated. Additionally, the collection of Gary dart points at Poverty Point has continued to grow, and this method provides a replicable means of assigning each new specimen to the previously-established type-varieties.</p>
 <p><em><strong>Data for Gary dart points from the Jaketown site have not yet been collected, and in the interim are substituted with those data from the Poverty Point site, which is closer in proximity than the Cooper and Means sites.</strong></em></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="jaketown-type-varieties.html#cb75-1"></a><span class="co"># install required analysis packages</span></span>
-<span id="cb75-2"><a href="jaketown-type-varieties.html#cb75-2"></a><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></span>
-<span id="cb75-3"><a href="jaketown-type-varieties.html#cb75-3"></a><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></span>
-<span id="cb75-4"><a href="jaketown-type-varieties.html#cb75-4"></a><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></span>
-<span id="cb75-5"><a href="jaketown-type-varieties.html#cb75-5"></a><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></span>
-<span id="cb75-6"><a href="jaketown-type-varieties.html#cb75-6"></a><span class="co"># load libraries</span></span>
-<span id="cb75-7"><a href="jaketown-type-varieties.html#cb75-7"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb75-8"><a href="jaketown-type-varieties.html#cb75-8"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb75-9"><a href="jaketown-type-varieties.html#cb75-9"></a><span class="kw">library</span>(RRPP)</span>
-<span id="cb75-10"><a href="jaketown-type-varieties.html#cb75-10"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb75-11"><a href="jaketown-type-varieties.html#cb75-11"></a><span class="kw">library</span>(ggfortify)</span>
-<span id="cb75-12"><a href="jaketown-type-varieties.html#cb75-12"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="jaketown-type-varieties.html#cb82-1"></a><span class="co"># install required analysis packages</span></span>
+<span id="cb82-2"><a href="jaketown-type-varieties.html#cb82-2"></a><span class="co">#devtools::install_github(&quot;tidyverse/tidyverse&quot;)</span></span>
+<span id="cb82-3"><a href="jaketown-type-varieties.html#cb82-3"></a><span class="co">#devtools::install_github(&quot;mlcollyer/RRPP&quot;)</span></span>
+<span id="cb82-4"><a href="jaketown-type-varieties.html#cb82-4"></a><span class="co">#devtools::install_github(&quot;kassambara/ggpubr&quot;)</span></span>
+<span id="cb82-5"><a href="jaketown-type-varieties.html#cb82-5"></a><span class="co">#devtools::install_github(&#39;sinhrks/ggfortify&#39;)</span></span>
+<span id="cb82-6"><a href="jaketown-type-varieties.html#cb82-6"></a><span class="co"># load libraries</span></span>
+<span id="cb82-7"><a href="jaketown-type-varieties.html#cb82-7"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb82-8"><a href="jaketown-type-varieties.html#cb82-8"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb82-9"><a href="jaketown-type-varieties.html#cb82-9"></a><span class="kw">library</span>(RRPP)</span>
+<span id="cb82-10"><a href="jaketown-type-varieties.html#cb82-10"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb82-11"><a href="jaketown-type-varieties.html#cb82-11"></a><span class="kw">library</span>(ggfortify)</span>
+<span id="cb82-12"><a href="jaketown-type-varieties.html#cb82-12"></a><span class="kw">library</span>(cluster)</span></code></pre></div>
 <div id="set-wd-and-load-data" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Set wd, and load data</h3>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="jaketown-type-varieties.html#cb76-1"></a><span class="co"># set working directory</span></span>
-<span id="cb76-2"><a href="jaketown-type-varieties.html#cb76-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
-<span id="cb76-3"><a href="jaketown-type-varieties.html#cb76-3"></a><span class="co"># load data</span></span>
-<span id="cb76-4"><a href="jaketown-type-varieties.html#cb76-4"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="jaketown-type-varieties.html#cb83-1"></a><span class="co"># set working directory</span></span>
+<span id="cb83-2"><a href="jaketown-type-varieties.html#cb83-2"></a><span class="kw">setwd</span>(<span class="kw">getwd</span>())</span>
+<span id="cb83-3"><a href="jaketown-type-varieties.html#cb83-3"></a><span class="co"># load data</span></span>
+<span id="cb83-4"><a href="jaketown-type-varieties.html#cb83-4"></a>data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;garymorphlm.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="gary-varieties-proposed-by-ford-phillips-and-haag--rn20899" class="section level2">
 <h2><span class="header-section-number">4.2</span> Gary varieties proposed by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span></h2>
 <p>The <code>tv0</code> argument used within this section articulates with five variants of the Gary type—including <em>Gary Stemmed</em>, <em>Typical Gary Stemmed</em>, <em>Broad Gary Stemmed</em>, <em>Thin Gary Stemmed</em>, and <em>Small Gary Stemmed</em>—which were assigned using those morphological criteria advanced by Ford, Phillips, and Haag <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> at the Jaketown site in west central Mississippi. The <em>Long Gary Stemmed</em> type was omitted from consideration due to the absence of reported metrics.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="jaketown-type-varieties.html#cb77-1"></a><span class="co"># Ford, Phillips, and Haag (1955)</span></span>
-<span id="cb77-2"><a href="jaketown-type-varieties.html#cb77-2"></a>fphl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</span>
-<span id="cb77-3"><a href="jaketown-type-varieties.html#cb77-3"></a>                 <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">35</span>), <span class="co"># in mm</span></span>
-<span id="cb77-4"><a href="jaketown-type-varieties.html#cb77-4"></a>                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">79</span>,<span class="dv">70</span>,<span class="dv">75</span>,<span class="dv">50</span>) <span class="co"># in mm</span></span>
-<span id="cb77-5"><a href="jaketown-type-varieties.html#cb77-5"></a>)</span>
-<span id="cb77-6"><a href="jaketown-type-varieties.html#cb77-6"></a>fphlength&lt;-<span class="kw">ggplot</span>(fphl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
-<span id="cb77-7"><a href="jaketown-type-varieties.html#cb77-7"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb77-8"><a href="jaketown-type-varieties.html#cb77-8"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb77-9"><a href="jaketown-type-varieties.html#cb77-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb77-10"><a href="jaketown-type-varieties.html#cb77-10"></a>fphw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</span>
-<span id="cb77-11"><a href="jaketown-type-varieties.html#cb77-11"></a>                 <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">20</span>), <span class="co"># in mm</span></span>
-<span id="cb77-12"><a href="jaketown-type-varieties.html#cb77-12"></a>                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">48</span>,<span class="dv">36</span>,<span class="dv">30</span>) <span class="co"># in mm</span></span>
-<span id="cb77-13"><a href="jaketown-type-varieties.html#cb77-13"></a>)</span>
-<span id="cb77-14"><a href="jaketown-type-varieties.html#cb77-14"></a>fphwidth&lt;-<span class="kw">ggplot</span>(fphw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
-<span id="cb77-15"><a href="jaketown-type-varieties.html#cb77-15"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb77-16"><a href="jaketown-type-varieties.html#cb77-16"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb77-17"><a href="jaketown-type-varieties.html#cb77-17"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb77-18"><a href="jaketown-type-varieties.html#cb77-18"></a><span class="co"># render figure</span></span>
-<span id="cb77-19"><a href="jaketown-type-varieties.html#cb77-19"></a>fphfig&lt;-<span class="kw">ggarrange</span>(fphlength,fphwidth,</span>
-<span id="cb77-20"><a href="jaketown-type-varieties.html#cb77-20"></a>                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>),</span>
-<span id="cb77-21"><a href="jaketown-type-varieties.html#cb77-21"></a>                    <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb77-22"><a href="jaketown-type-varieties.html#cb77-22"></a>fphfig</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="jaketown-type-varieties.html#cb84-1"></a><span class="co"># Ford, Phillips, and Haag (1955)</span></span>
+<span id="cb84-2"><a href="jaketown-type-varieties.html#cb84-2"></a>fphl&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</span>
+<span id="cb84-3"><a href="jaketown-type-varieties.html#cb84-3"></a>                 <span class="dt">Length=</span><span class="kw">c</span>(<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">35</span>), <span class="co"># in mm</span></span>
+<span id="cb84-4"><a href="jaketown-type-varieties.html#cb84-4"></a>                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">79</span>,<span class="dv">70</span>,<span class="dv">75</span>,<span class="dv">50</span>) <span class="co"># in mm</span></span>
+<span id="cb84-5"><a href="jaketown-type-varieties.html#cb84-5"></a>)</span>
+<span id="cb84-6"><a href="jaketown-type-varieties.html#cb84-6"></a>fphlength&lt;-<span class="kw">ggplot</span>(fphl,<span class="kw">aes</span>(<span class="dt">x=</span>Length,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
+<span id="cb84-7"><a href="jaketown-type-varieties.html#cb84-7"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb84-8"><a href="jaketown-type-varieties.html#cb84-8"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb84-9"><a href="jaketown-type-varieties.html#cb84-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb84-10"><a href="jaketown-type-varieties.html#cb84-10"></a>fphw&lt;-<span class="kw">data.frame</span>(<span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&#39;var.GaryStemmed&#39;</span>,<span class="st">&#39;var.TypicalGaryStemmed&#39;</span>,<span class="st">&#39;var.BroadGaryStemmed&#39;</span>,<span class="st">&#39;var.ThinGaryStemmed&#39;</span>,<span class="st">&#39;var.SmallGaryStemmed&#39;</span>),</span>
+<span id="cb84-11"><a href="jaketown-type-varieties.html#cb84-11"></a>                 <span class="dt">Width=</span><span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">32</span>,<span class="dv">30</span>,<span class="dv">20</span>), <span class="co"># in mm</span></span>
+<span id="cb84-12"><a href="jaketown-type-varieties.html#cb84-12"></a>                 <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">31</span>,<span class="dv">31</span>,<span class="dv">48</span>,<span class="dv">36</span>,<span class="dv">30</span>) <span class="co"># in mm</span></span>
+<span id="cb84-13"><a href="jaketown-type-varieties.html#cb84-13"></a>)</span>
+<span id="cb84-14"><a href="jaketown-type-varieties.html#cb84-14"></a>fphwidth&lt;-<span class="kw">ggplot</span>(fphw,<span class="kw">aes</span>(<span class="dt">x=</span>Width,<span class="dt">xend=</span>end,<span class="dt">y=</span>Name,<span class="dt">yend=</span>Name,<span class="dt">color=</span>Name)) <span class="op">+</span></span>
+<span id="cb84-15"><a href="jaketown-type-varieties.html#cb84-15"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb84-16"><a href="jaketown-type-varieties.html#cb84-16"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb84-17"><a href="jaketown-type-varieties.html#cb84-17"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb84-18"><a href="jaketown-type-varieties.html#cb84-18"></a><span class="co"># render figure</span></span>
+<span id="cb84-19"><a href="jaketown-type-varieties.html#cb84-19"></a>fphfig&lt;-<span class="kw">ggarrange</span>(fphlength,fphwidth,</span>
+<span id="cb84-20"><a href="jaketown-type-varieties.html#cb84-20"></a>                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>),</span>
+<span id="cb84-21"><a href="jaketown-type-varieties.html#cb84-21"></a>                    <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb84-22"><a href="jaketown-type-varieties.html#cb84-22"></a>fphfig</span></code></pre></div>
 <div class="figure"><span id="fig:fphgantt"></span>
 <img src="gt-v_files/figure-html/fphgantt-1.png" alt="Gantt charts illustrating the range of linear measurements for each type-variety reported by Ford, Phillips, and Haag (1955)." width="100%" />
 <p class="caption">
@@ -337,31 +337,31 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 <div id="subset-the-sample" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Subset the sample</h3>
 <p>During code development, the Poverty Point sample was used in place of the Jaketown sample as the requisite permissions and access were sought to access and scan those collections. Due to the COVID-19 pandemic, we were unable to collect data from the Jaketown sample; however, since those type-varieties presented at Poverty Point are representative of the logical maturation of these type-varieties, the Poverty Point specimens were classified using those metrics associated with the Gary dart point type-varieties that were advanced at Jaketown.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="jaketown-type-varieties.html#cb78-1"></a><span class="co"># subset poverty point data</span></span>
-<span id="cb78-2"><a href="jaketown-type-varieties.html#cb78-2"></a>jmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</span>
-<span id="cb78-3"><a href="jaketown-type-varieties.html#cb78-3"></a></span>
-<span id="cb78-4"><a href="jaketown-type-varieties.html#cb78-4"></a><span class="co"># assign varieties based upon reported metrics in Ford, Phillips, and Haag [1954]</span></span>
-<span id="cb78-5"><a href="jaketown-type-varieties.html#cb78-5"></a>fphlcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></span>
-<span id="cb78-6"><a href="jaketown-type-varieties.html#cb78-6"></a>fphlcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">79</span></span>
-<span id="cb78-7"><a href="jaketown-type-varieties.html#cb78-7"></a>fphlcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></span>
-<span id="cb78-8"><a href="jaketown-type-varieties.html#cb78-8"></a>fphlcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">55</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">75</span></span>
-<span id="cb78-9"><a href="jaketown-type-varieties.html#cb78-9"></a>fphlcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">50</span></span>
-<span id="cb78-10"><a href="jaketown-type-varieties.html#cb78-10"></a></span>
-<span id="cb78-11"><a href="jaketown-type-varieties.html#cb78-11"></a>fphwcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></span>
-<span id="cb78-12"><a href="jaketown-type-varieties.html#cb78-12"></a>fphwcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></span>
-<span id="cb78-13"><a href="jaketown-type-varieties.html#cb78-13"></a>fphwcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">32</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">48</span></span>
-<span id="cb78-14"><a href="jaketown-type-varieties.html#cb78-14"></a>fphwcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">36</span></span>
-<span id="cb78-15"><a href="jaketown-type-varieties.html#cb78-15"></a>fphwcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></span>
-<span id="cb78-16"><a href="jaketown-type-varieties.html#cb78-16"></a></span>
-<span id="cb78-17"><a href="jaketown-type-varieties.html#cb78-17"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></span>
-<span id="cb78-18"><a href="jaketown-type-varieties.html#cb78-18"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck1 <span class="op">&amp;</span><span class="st"> </span>fphwcheck1, <span class="st">&quot;GS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
-<span id="cb78-19"><a href="jaketown-type-varieties.html#cb78-19"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck2 <span class="op">&amp;</span><span class="st"> </span>fphwcheck2, <span class="st">&quot;TyGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
-<span id="cb78-20"><a href="jaketown-type-varieties.html#cb78-20"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck3 <span class="op">&amp;</span><span class="st"> </span>fphwcheck3, <span class="st">&quot;BGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
-<span id="cb78-21"><a href="jaketown-type-varieties.html#cb78-21"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck4 <span class="op">&amp;</span><span class="st"> </span>fphwcheck4, <span class="st">&quot;ThGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
-<span id="cb78-22"><a href="jaketown-type-varieties.html#cb78-22"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck5 <span class="op">&amp;</span><span class="st"> </span>fphwcheck5, <span class="st">&quot;SGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
-<span id="cb78-23"><a href="jaketown-type-varieties.html#cb78-23"></a></span>
-<span id="cb78-24"><a href="jaketown-type-varieties.html#cb78-24"></a>tv0&lt;-jmx<span class="op">$</span>tv0</span>
-<span id="cb78-25"><a href="jaketown-type-varieties.html#cb78-25"></a>tv0</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="jaketown-type-varieties.html#cb85-1"></a><span class="co"># subset poverty point data</span></span>
+<span id="cb85-2"><a href="jaketown-type-varieties.html#cb85-2"></a>jmx&lt;-<span class="kw">subset</span>(data,Site<span class="op">==</span><span class="st">&quot;Pov Pt&quot;</span>,<span class="dt">select=</span>maxl<span class="op">:</span>maxstw)</span>
+<span id="cb85-3"><a href="jaketown-type-varieties.html#cb85-3"></a></span>
+<span id="cb85-4"><a href="jaketown-type-varieties.html#cb85-4"></a><span class="co"># assign varieties based upon reported metrics in Ford, Phillips, and Haag [1954]</span></span>
+<span id="cb85-5"><a href="jaketown-type-varieties.html#cb85-5"></a>fphlcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></span>
+<span id="cb85-6"><a href="jaketown-type-varieties.html#cb85-6"></a>fphlcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">79</span></span>
+<span id="cb85-7"><a href="jaketown-type-varieties.html#cb85-7"></a>fphlcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">70</span></span>
+<span id="cb85-8"><a href="jaketown-type-varieties.html#cb85-8"></a>fphlcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">55</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">75</span></span>
+<span id="cb85-9"><a href="jaketown-type-varieties.html#cb85-9"></a>fphlcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxl <span class="op">&lt;=</span><span class="st"> </span><span class="dv">50</span></span>
+<span id="cb85-10"><a href="jaketown-type-varieties.html#cb85-10"></a></span>
+<span id="cb85-11"><a href="jaketown-type-varieties.html#cb85-11"></a>fphwcheck1 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></span>
+<span id="cb85-12"><a href="jaketown-type-varieties.html#cb85-12"></a>fphwcheck2 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">22</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">31</span></span>
+<span id="cb85-13"><a href="jaketown-type-varieties.html#cb85-13"></a>fphwcheck3 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">32</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">48</span></span>
+<span id="cb85-14"><a href="jaketown-type-varieties.html#cb85-14"></a>fphwcheck4 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">36</span></span>
+<span id="cb85-15"><a href="jaketown-type-varieties.html#cb85-15"></a>fphwcheck5 &lt;-<span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>jmx<span class="op">$</span>maxw <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span></span>
+<span id="cb85-16"><a href="jaketown-type-varieties.html#cb85-16"></a></span>
+<span id="cb85-17"><a href="jaketown-type-varieties.html#cb85-17"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> &quot;Gnv&quot;</span> <span class="co"># = Gary points (no variety)</span></span>
+<span id="cb85-18"><a href="jaketown-type-varieties.html#cb85-18"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck1 <span class="op">&amp;</span><span class="st"> </span>fphwcheck1, <span class="st">&quot;GS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
+<span id="cb85-19"><a href="jaketown-type-varieties.html#cb85-19"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck2 <span class="op">&amp;</span><span class="st"> </span>fphwcheck2, <span class="st">&quot;TyGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
+<span id="cb85-20"><a href="jaketown-type-varieties.html#cb85-20"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck3 <span class="op">&amp;</span><span class="st"> </span>fphwcheck3, <span class="st">&quot;BGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
+<span id="cb85-21"><a href="jaketown-type-varieties.html#cb85-21"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck4 <span class="op">&amp;</span><span class="st"> </span>fphwcheck4, <span class="st">&quot;ThGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
+<span id="cb85-22"><a href="jaketown-type-varieties.html#cb85-22"></a>jmx<span class="op">$</span>tv0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fphlcheck5 <span class="op">&amp;</span><span class="st"> </span>fphwcheck5, <span class="st">&quot;SGS&quot;</span>, jmx<span class="op">$</span>tv0)</span>
+<span id="cb85-23"><a href="jaketown-type-varieties.html#cb85-23"></a></span>
+<span id="cb85-24"><a href="jaketown-type-varieties.html#cb85-24"></a>tv0&lt;-jmx<span class="op">$</span>tv0</span>
+<span id="cb85-25"><a href="jaketown-type-varieties.html#cb85-25"></a>tv0</span></code></pre></div>
 <pre><code>##   [1] &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot;
 ##  [12] &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
 ##  [23] &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot;
@@ -391,51 +391,54 @@ Figure 4.1: Gantt charts illustrating the range of linear measurements for each 
 ## [287] &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;Gnv&quot;  &quot;ThGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;ThGS&quot;
 ## [298] &quot;TyGS&quot; &quot;Gnv&quot;  &quot;ThGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot;  &quot;Gnv&quot;  &quot;SGS&quot;  &quot;ThGS&quot;
 ## [309] &quot;ThGS&quot; &quot;Gnv&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;SGS&quot;  &quot;TyGS&quot; &quot;ThGS&quot; &quot;ThGS&quot; &quot;SGS&quot;  &quot;SGS&quot; 
-## [320] &quot;BGS&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;TyGS&quot; &quot;Gnv&quot;  &quot;SGS&quot;  &quot;ThGS&quot; &quot;TyGS&quot;</code></pre>
+## [320] &quot;BGS&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;TyGS&quot; &quot;Gnv&quot;  &quot;SGS&quot;  &quot;ThGS&quot; &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot;
+## [331] &quot;SGS&quot;  &quot;Gnv&quot;  &quot;Gnv&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;ThGS&quot; &quot;TyGS&quot; &quot;Gnv&quot;  &quot;ThGS&quot;
+## [342] &quot;ThGS&quot; &quot;Gnv&quot;  &quot;SGS&quot;  &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;TyGS&quot; &quot;SGS&quot;  &quot;SGS&quot;  &quot;SGS&quot; 
+## [353] &quot;TyGS&quot; &quot;TyGS&quot; &quot;SGS&quot;  &quot;BGS&quot;</code></pre>
 </div>
 </div>
 <div id="boxplots-for-site-by-ford-phillips-and-haags--rn20899-gary-type-varieties" class="section level2">
 <h2><span class="header-section-number">4.4</span> Boxplots for site by Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> Gary type-varieties</h2>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="jaketown-type-varieties.html#cb80-1"></a><span class="co"># boxplot of maximum length</span></span>
-<span id="cb80-2"><a href="jaketown-type-varieties.html#cb80-2"></a>jmaxl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-3"><a href="jaketown-type-varieties.html#cb80-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb80-4"><a href="jaketown-type-varieties.html#cb80-4"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
-<span id="cb80-5"><a href="jaketown-type-varieties.html#cb80-5"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-6"><a href="jaketown-type-varieties.html#cb80-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb80-7"><a href="jaketown-type-varieties.html#cb80-7"></a><span class="co"># boxplot of maximum width</span></span>
-<span id="cb80-8"><a href="jaketown-type-varieties.html#cb80-8"></a>jmaxw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-9"><a href="jaketown-type-varieties.html#cb80-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb80-10"><a href="jaketown-type-varieties.html#cb80-10"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb80-11"><a href="jaketown-type-varieties.html#cb80-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-12"><a href="jaketown-type-varieties.html#cb80-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb80-13"><a href="jaketown-type-varieties.html#cb80-13"></a><span class="co"># boxplot of maximum thickness</span></span>
-<span id="cb80-14"><a href="jaketown-type-varieties.html#cb80-14"></a>jmaxth&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-15"><a href="jaketown-type-varieties.html#cb80-15"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb80-16"><a href="jaketown-type-varieties.html#cb80-16"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb80-17"><a href="jaketown-type-varieties.html#cb80-17"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-18"><a href="jaketown-type-varieties.html#cb80-18"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb80-19"><a href="jaketown-type-varieties.html#cb80-19"></a><span class="co"># boxplot of maximum stem length</span></span>
-<span id="cb80-20"><a href="jaketown-type-varieties.html#cb80-20"></a>jmaxstl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-21"><a href="jaketown-type-varieties.html#cb80-21"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb80-22"><a href="jaketown-type-varieties.html#cb80-22"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb80-23"><a href="jaketown-type-varieties.html#cb80-23"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-24"><a href="jaketown-type-varieties.html#cb80-24"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb80-25"><a href="jaketown-type-varieties.html#cb80-25"></a><span class="co"># boxplot of maximum thickness</span></span>
-<span id="cb80-26"><a href="jaketown-type-varieties.html#cb80-26"></a>jmaxstw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-27"><a href="jaketown-type-varieties.html#cb80-27"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb80-28"><a href="jaketown-type-varieties.html#cb80-28"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
-<span id="cb80-29"><a href="jaketown-type-varieties.html#cb80-29"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb80-30"><a href="jaketown-type-varieties.html#cb80-30"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb80-31"><a href="jaketown-type-varieties.html#cb80-31"></a><span class="co"># render figure</span></span>
-<span id="cb80-32"><a href="jaketown-type-varieties.html#cb80-32"></a>jfigure&lt;-<span class="kw">ggarrange</span>(jmaxl,jmaxw,jmaxth,jmaxstl,jmaxstw,</span>
-<span id="cb80-33"><a href="jaketown-type-varieties.html#cb80-33"></a>                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
-<span id="cb80-34"><a href="jaketown-type-varieties.html#cb80-34"></a>                     <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="jaketown-type-varieties.html#cb87-1"></a><span class="co"># boxplot of maximum length</span></span>
+<span id="cb87-2"><a href="jaketown-type-varieties.html#cb87-2"></a>jmaxl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb87-3"><a href="jaketown-type-varieties.html#cb87-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb87-4"><a href="jaketown-type-varieties.html#cb87-4"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb87-5"><a href="jaketown-type-varieties.html#cb87-5"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-6"><a href="jaketown-type-varieties.html#cb87-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb87-7"><a href="jaketown-type-varieties.html#cb87-7"></a><span class="co"># boxplot of maximum width</span></span>
+<span id="cb87-8"><a href="jaketown-type-varieties.html#cb87-8"></a>jmaxw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb87-9"><a href="jaketown-type-varieties.html#cb87-9"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb87-10"><a href="jaketown-type-varieties.html#cb87-10"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb87-11"><a href="jaketown-type-varieties.html#cb87-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-12"><a href="jaketown-type-varieties.html#cb87-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb87-13"><a href="jaketown-type-varieties.html#cb87-13"></a><span class="co"># boxplot of maximum thickness</span></span>
+<span id="cb87-14"><a href="jaketown-type-varieties.html#cb87-14"></a>jmaxth&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxth,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb87-15"><a href="jaketown-type-varieties.html#cb87-15"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb87-16"><a href="jaketown-type-varieties.html#cb87-16"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb87-17"><a href="jaketown-type-varieties.html#cb87-17"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-18"><a href="jaketown-type-varieties.html#cb87-18"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb87-19"><a href="jaketown-type-varieties.html#cb87-19"></a><span class="co"># boxplot of maximum stem length</span></span>
+<span id="cb87-20"><a href="jaketown-type-varieties.html#cb87-20"></a>jmaxstl&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstl,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb87-21"><a href="jaketown-type-varieties.html#cb87-21"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb87-22"><a href="jaketown-type-varieties.html#cb87-22"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb87-23"><a href="jaketown-type-varieties.html#cb87-23"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-24"><a href="jaketown-type-varieties.html#cb87-24"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb87-25"><a href="jaketown-type-varieties.html#cb87-25"></a><span class="co"># boxplot of maximum thickness</span></span>
+<span id="cb87-26"><a href="jaketown-type-varieties.html#cb87-26"></a>jmaxstw&lt;-<span class="kw">ggplot</span>(jmx,<span class="kw">aes</span>(<span class="dt">x=</span>tv0,<span class="dt">y=</span>maxstw,<span class="dt">color=</span>tv0)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb87-27"><a href="jaketown-type-varieties.html#cb87-27"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb87-28"><a href="jaketown-type-varieties.html#cb87-28"></a><span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&#39;y&#39;</span>,<span class="dt">stackdir =</span> <span class="st">&#39;center&#39;</span>,<span class="dt">dotsize =</span> <span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb87-29"><a href="jaketown-type-varieties.html#cb87-29"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb87-30"><a href="jaketown-type-varieties.html#cb87-30"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb87-31"><a href="jaketown-type-varieties.html#cb87-31"></a><span class="co"># render figure</span></span>
+<span id="cb87-32"><a href="jaketown-type-varieties.html#cb87-32"></a>jfigure&lt;-<span class="kw">ggarrange</span>(jmaxl,jmaxw,jmaxth,jmaxstl,jmaxstw,</span>
+<span id="cb87-33"><a href="jaketown-type-varieties.html#cb87-33"></a>                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>),</span>
+<span id="cb87-34"><a href="jaketown-type-varieties.html#cb87-34"></a>                     <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="jaketown-type-varieties.html#cb82-1"></a>jfigure</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="jaketown-type-varieties.html#cb89-1"></a>jfigure</span></code></pre></div>
 <div class="figure"><span id="fig:boxplottv0"></span>
 <img src="gt-v_files/figure-html/boxplottv0-1.png" alt="Boxplots for maximum a, length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points assigned to the Ford, Phillips, and Haag type-varieties." width="100%" />
 <p class="caption">
@@ -447,68 +450,68 @@ Figure 4.2: Boxplots for maximum a, length; b, width; c, thickness; d, stem leng
 <h2><span class="header-section-number">4.5</span> Density plots for variables by type-varieties</h2>
 <div id="density-plot-for-maximum-length-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Density plot for maximum length by tv0</h3>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="jaketown-type-varieties.html#cb83-1"></a><span class="co"># define variables in jaketown subset</span></span>
-<span id="cb83-2"><a href="jaketown-type-varieties.html#cb83-2"></a>j.maxl&lt;-jmx<span class="op">$</span>maxl</span>
-<span id="cb83-3"><a href="jaketown-type-varieties.html#cb83-3"></a>j.maxw&lt;-jmx<span class="op">$</span>maxw</span>
-<span id="cb83-4"><a href="jaketown-type-varieties.html#cb83-4"></a>j.maxth&lt;-jmx<span class="op">$</span>maxth</span>
-<span id="cb83-5"><a href="jaketown-type-varieties.html#cb83-5"></a>j.maxstl&lt;-jmx<span class="op">$</span>maxstl</span>
-<span id="cb83-6"><a href="jaketown-type-varieties.html#cb83-6"></a>j.maxstw&lt;-jmx<span class="op">$</span>maxstw</span>
-<span id="cb83-7"><a href="jaketown-type-varieties.html#cb83-7"></a>j.tv0&lt;-jmx<span class="op">$</span>tv0</span>
-<span id="cb83-8"><a href="jaketown-type-varieties.html#cb83-8"></a><span class="co"># density plot of maxl by tv0</span></span>
-<span id="cb83-9"><a href="jaketown-type-varieties.html#cb83-9"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
-<span id="cb83-10"><a href="jaketown-type-varieties.html#cb83-10"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb83-11"><a href="jaketown-type-varieties.html#cb83-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb83-12"><a href="jaketown-type-varieties.html#cb83-12"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="jaketown-type-varieties.html#cb90-1"></a><span class="co"># define variables in jaketown subset</span></span>
+<span id="cb90-2"><a href="jaketown-type-varieties.html#cb90-2"></a>j.maxl&lt;-jmx<span class="op">$</span>maxl</span>
+<span id="cb90-3"><a href="jaketown-type-varieties.html#cb90-3"></a>j.maxw&lt;-jmx<span class="op">$</span>maxw</span>
+<span id="cb90-4"><a href="jaketown-type-varieties.html#cb90-4"></a>j.maxth&lt;-jmx<span class="op">$</span>maxth</span>
+<span id="cb90-5"><a href="jaketown-type-varieties.html#cb90-5"></a>j.maxstl&lt;-jmx<span class="op">$</span>maxstl</span>
+<span id="cb90-6"><a href="jaketown-type-varieties.html#cb90-6"></a>j.maxstw&lt;-jmx<span class="op">$</span>maxstw</span>
+<span id="cb90-7"><a href="jaketown-type-varieties.html#cb90-7"></a>j.tv0&lt;-jmx<span class="op">$</span>tv0</span>
+<span id="cb90-8"><a href="jaketown-type-varieties.html#cb90-8"></a><span class="co"># density plot of maxl by tv0</span></span>
+<span id="cb90-9"><a href="jaketown-type-varieties.html#cb90-9"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
+<span id="cb90-10"><a href="jaketown-type-varieties.html#cb90-10"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb90-11"><a href="jaketown-type-varieties.html#cb90-11"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb90-12"><a href="jaketown-type-varieties.html#cb90-12"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">140</span>) <span class="co">#full range of variation included in the linear measurements associated with type-varieties</span></span></code></pre></div>
 <p><img src="gt-v_files/figure-html/jdensity1-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-width-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Density plot for maximum width by tv0</h3>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="jaketown-type-varieties.html#cb84-1"></a><span class="co"># density plot of maxw by tv0</span></span>
-<span id="cb84-2"><a href="jaketown-type-varieties.html#cb84-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
-<span id="cb84-3"><a href="jaketown-type-varieties.html#cb84-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb84-4"><a href="jaketown-type-varieties.html#cb84-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb84-5"><a href="jaketown-type-varieties.html#cb84-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="jaketown-type-varieties.html#cb91-1"></a><span class="co"># density plot of maxw by tv0</span></span>
+<span id="cb91-2"><a href="jaketown-type-varieties.html#cb91-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
+<span id="cb91-3"><a href="jaketown-type-varieties.html#cb91-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb91-4"><a href="jaketown-type-varieties.html#cb91-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb91-5"><a href="jaketown-type-varieties.html#cb91-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">5</span>,<span class="dv">45</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_density).</code></pre>
 <p><img src="gt-v_files/figure-html/jdensityw-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-thickness-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Density plot for maximum thickness by tv0</h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="jaketown-type-varieties.html#cb86-1"></a><span class="co"># density plot of maxth by tv0</span></span>
-<span id="cb86-2"><a href="jaketown-type-varieties.html#cb86-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxth, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
-<span id="cb86-3"><a href="jaketown-type-varieties.html#cb86-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb86-4"><a href="jaketown-type-varieties.html#cb86-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb86-5"><a href="jaketown-type-varieties.html#cb86-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="jaketown-type-varieties.html#cb93-1"></a><span class="co"># density plot of maxth by tv0</span></span>
+<span id="cb93-2"><a href="jaketown-type-varieties.html#cb93-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxth, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
+<span id="cb93-3"><a href="jaketown-type-varieties.html#cb93-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb93-4"><a href="jaketown-type-varieties.html#cb93-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb93-5"><a href="jaketown-type-varieties.html#cb93-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">25</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/jdensityth-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-length-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.4</span> Density plot for maximum stem length by tv0</h3>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="jaketown-type-varieties.html#cb87-1"></a><span class="co"># density plot of maxstl by tv0</span></span>
-<span id="cb87-2"><a href="jaketown-type-varieties.html#cb87-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
-<span id="cb87-3"><a href="jaketown-type-varieties.html#cb87-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb87-4"><a href="jaketown-type-varieties.html#cb87-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb87-5"><a href="jaketown-type-varieties.html#cb87-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="jaketown-type-varieties.html#cb94-1"></a><span class="co"># density plot of maxstl by tv0</span></span>
+<span id="cb94-2"><a href="jaketown-type-varieties.html#cb94-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstl, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
+<span id="cb94-3"><a href="jaketown-type-varieties.html#cb94-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb94-4"><a href="jaketown-type-varieties.html#cb94-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb94-5"><a href="jaketown-type-varieties.html#cb94-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">35</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/jdensitystl-1.png" width="100%" /></p>
 </div>
 <div id="density-plot-for-maximum-stem-width-by-tv0" class="section level3">
 <h3><span class="header-section-number">4.5.5</span> Density plot for maximum stem width by tv0</h3>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="jaketown-type-varieties.html#cb88-1"></a><span class="co"># density plot of maxstw by tv0</span></span>
-<span id="cb88-2"><a href="jaketown-type-varieties.html#cb88-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
-<span id="cb88-3"><a href="jaketown-type-varieties.html#cb88-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
-<span id="cb88-4"><a href="jaketown-type-varieties.html#cb88-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
-<span id="cb88-5"><a href="jaketown-type-varieties.html#cb88-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">45</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="jaketown-type-varieties.html#cb95-1"></a><span class="co"># density plot of maxstw by tv0</span></span>
+<span id="cb95-2"><a href="jaketown-type-varieties.html#cb95-2"></a><span class="kw">ggplot</span>(jmx, <span class="kw">aes</span>(<span class="dt">x=</span>j.maxstw, <span class="dt">fill =</span> j.tv0)) <span class="op">+</span></span>
+<span id="cb95-3"><a href="jaketown-type-varieties.html#cb95-3"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb95-4"><a href="jaketown-type-varieties.html#cb95-4"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span></span>
+<span id="cb95-5"><a href="jaketown-type-varieties.html#cb95-5"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="dv">0</span>,<span class="dv">45</span>)</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/jdensitystw-1.png" width="100%" /></p>
 </div>
 </div>
 <div id="principal-components-analysis-for-ford-phillips-and-haags--rn20899-type-varieties-at-all-sites" class="section level2">
 <h2><span class="header-section-number">4.6</span> Principal Components Analysis for Ford, Phillips, and Haag’s <span class="citation">(<a href="#ref-RN20899" role="doc-biblioref">1955</a>)</span> type-varieties at all sites</h2>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="jaketown-type-varieties.html#cb89-1"></a><span class="co">#pca</span></span>
-<span id="cb89-2"><a href="jaketown-type-varieties.html#cb89-2"></a>df&lt;-jmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</span>
-<span id="cb89-3"><a href="jaketown-type-varieties.html#cb89-3"></a>tv0pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> jmx, <span class="dt">colour =</span> <span class="st">&#39;tv0&#39;</span>,</span>
-<span id="cb89-4"><a href="jaketown-type-varieties.html#cb89-4"></a>                 <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb89-5"><a href="jaketown-type-varieties.html#cb89-5"></a>                 <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
-<span id="cb89-6"><a href="jaketown-type-varieties.html#cb89-6"></a>                 <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb89-7"><a href="jaketown-type-varieties.html#cb89-7"></a><span class="co">#render figure</span></span>
-<span id="cb89-8"><a href="jaketown-type-varieties.html#cb89-8"></a>tv0pca</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="jaketown-type-varieties.html#cb96-1"></a><span class="co">#pca</span></span>
+<span id="cb96-2"><a href="jaketown-type-varieties.html#cb96-2"></a>df&lt;-jmx[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)]</span>
+<span id="cb96-3"><a href="jaketown-type-varieties.html#cb96-3"></a>tv0pca&lt;-<span class="kw">autoplot</span>(<span class="kw">prcomp</span>(df),<span class="dt">data =</span> jmx, <span class="dt">colour =</span> <span class="st">&#39;tv0&#39;</span>,</span>
+<span id="cb96-4"><a href="jaketown-type-varieties.html#cb96-4"></a>                 <span class="dt">loadings =</span> <span class="ot">TRUE</span>, <span class="dt">loadings.colour =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb96-5"><a href="jaketown-type-varieties.html#cb96-5"></a>                 <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>,<span class="dt">loadings.label.size =</span> <span class="dv">3</span>, </span>
+<span id="cb96-6"><a href="jaketown-type-varieties.html#cb96-6"></a>                 <span class="dt">frame =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb96-7"><a href="jaketown-type-varieties.html#cb96-7"></a><span class="co">#render figure</span></span>
+<span id="cb96-8"><a href="jaketown-type-varieties.html#cb96-8"></a>tv0pca</span></code></pre></div>
 <div class="figure"><span id="fig:pcatv0"></span>
 <img src="gt-v_files/figure-html/pcatv0-1.png" alt="PCA by Gary type-varieties reported by Ford, Phillips, and Haag (1955)." width="100%" />
 <p class="caption">
@@ -520,9 +523,9 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 <h2><span class="header-section-number">4.7</span> Analyses of Variance (ANOVA) for <em>linear variables</em> ~ <em>type-varieties</em></h2>
 <div id="maximum-length-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.1</span> <em>Maximum length</em> ~ <em>type-variety</em></h3>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="jaketown-type-varieties.html#cb90-1"></a><span class="co"># anova = maximum length ~ tv1</span></span>
-<span id="cb90-2"><a href="jaketown-type-varieties.html#cb90-2"></a>t0ml&lt;-<span class="kw">lm.rrpp</span>(j.maxl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb90-3"><a href="jaketown-type-varieties.html#cb90-3"></a><span class="kw">anova</span>(t0ml)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="jaketown-type-varieties.html#cb97-1"></a><span class="co"># anova = maximum length ~ tv1</span></span>
+<span id="cb97-2"><a href="jaketown-type-varieties.html#cb97-2"></a>t0ml&lt;-<span class="kw">lm.rrpp</span>(j.maxl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb97-3"><a href="jaketown-type-varieties.html#cb97-3"></a><span class="kw">anova</span>(t0ml)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -532,19 +535,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df    SS     MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0       4 16955 4238.7 0.30661 35.706 4.8276  1e-04 ***
-## Residuals 323 38343  118.7 0.69339                         
-## Total     327 55298                                        
+## j.tv0       4 19290 4822.6 0.32034 41.359 4.9486  1e-04 ***
+## Residuals 351 40927  116.6 0.67966                         
+## Total     355 60217                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = j.maxl ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="jaketown-type-varieties.html#cb92-1"></a><span class="co"># visualise model predictions for maximum length ~ type-variety</span></span>
-<span id="cb92-2"><a href="jaketown-type-varieties.html#cb92-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
-<span id="cb92-3"><a href="jaketown-type-varieties.html#cb92-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
-<span id="cb92-4"><a href="jaketown-type-varieties.html#cb92-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0ml,j.tvDF)</span>
-<span id="cb92-5"><a href="jaketown-type-varieties.html#cb92-5"></a>jPreds</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="jaketown-type-varieties.html#cb99-1"></a><span class="co"># visualise model predictions for maximum length ~ type-variety</span></span>
+<span id="cb99-2"><a href="jaketown-type-varieties.html#cb99-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
+<span id="cb99-3"><a href="jaketown-type-varieties.html#cb99-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
+<span id="cb99-4"><a href="jaketown-type-varieties.html#cb99-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0ml,j.tvDF)</span>
+<span id="cb99-5"><a href="jaketown-type-varieties.html#cb99-5"></a>jPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -555,36 +558,36 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   56.36340
-## TyGS 63.79019
-## BGS  56.36340
-## ThGS 44.45559
-## SGS  61.80156
+## GS   56.19772
+## TyGS 64.11792
+## BGS  56.19772
+## ThGS 44.76164
+## SGS  63.10728
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   51.87198
-## TyGS 60.77874
-## BGS  51.87198
-## ThGS 41.78228
-## SGS  58.98607
+## GS   51.79922
+## TyGS 61.23693
+## BGS  51.79922
+## ThGS 42.21871
+## SGS  60.35460
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   60.95150
-## TyGS 66.81731
-## BGS  60.95150
-## ThGS 47.12855
-## SGS  64.65586</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="jaketown-type-varieties.html#cb94-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
+## GS   60.60574
+## TyGS 66.99542
+## BGS  60.60574
+## ThGS 47.23763
+## SGS  65.82726</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="jaketown-type-varieties.html#cb101-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="jaketown-type-varieties.html#cb95-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb95-2"><a href="jaketown-type-varieties.html#cb95-2"></a>j.ml&lt;-<span class="kw">pairwise</span>(t0ml, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
-<span id="cb95-3"><a href="jaketown-type-varieties.html#cb95-3"></a><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="jaketown-type-varieties.html#cb102-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb102-2"><a href="jaketown-type-varieties.html#cb102-2"></a>j.ml&lt;-<span class="kw">pairwise</span>(t0ml, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
+<span id="cb102-3"><a href="jaketown-type-varieties.html#cb102-3"></a><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -596,19 +599,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                   d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv    5.462424  7.399171  1.06627252 0.1510
-## BGS:SGS   11.863718  7.330886  3.87651136 0.0014
-## BGS:ThGS   7.459576  7.436407  1.91487756 0.0493
-## BGS:TyGS   2.717252  7.235106 -0.09818628 0.4591
-## Gnv:SGS   17.326142  4.153867 12.08791474 0.0001
-## Gnv:ThGS   1.997152  4.521923  0.10706918 0.3885
-## Gnv:TyGS   2.745172  3.849445  0.97669362 0.1679
-## SGS:ThGS  19.323294  4.411533 12.89835612 0.0001
-## SGS:TyGS  14.580970  3.729826 11.31762101 0.0001
-## ThGS:TyGS  4.742324  4.044728  2.49109943 0.0214</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="jaketown-type-varieties.html#cb97-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb97-2"><a href="jaketown-type-varieties.html#cb97-2"></a><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##                   d UCL (95%)            Z Pr &gt; d
+## BGS:Gnv    6.908905  7.214486  1.782473135 0.0597
+## BGS:SGS   11.419333  7.138974  3.894589599 0.0019
+## BGS:ThGS   7.913048  7.343784  2.204431814 0.0345
+## BGS:TyGS   2.825680  7.014869 -0.009101267 0.4328
+## Gnv:SGS   18.328238  4.063987 13.208558512 0.0001
+## Gnv:ThGS   1.004143  4.381271 -0.580802999 0.6546
+## Gnv:TyGS   4.083224  3.779905  2.135446471 0.0353
+## SGS:ThGS  19.332381  4.177994 13.629673039 0.0001
+## SGS:TyGS  14.245014  3.598370 11.507048342 0.0001
+## ThGS:TyGS  5.087367  3.998237  2.851283611 0.0119</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="jaketown-type-varieties.html#cb104-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb104-2"><a href="jaketown-type-varieties.html#cb104-2"></a><span class="kw">summary</span>(j.ml, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -620,26 +623,26 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-##  58.27695 452.93200  12.54541  31.24612  43.35020 
+##  54.71670 455.14304  12.30057  31.65536  42.82517 
 ## 
 ## Pairwise distances between variances, plus statistics
 ##                   d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   394.65505 132.88188  8.0894591 0.0001
-## BGS:SGS    45.73154 131.31878 -0.2069802 0.5091
-## BGS:ThGS   27.03083 131.97669 -0.6689510 0.7054
-## BGS:TyGS   14.92675 125.40793 -0.9422242 0.8275
-## Gnv:SGS   440.38659  76.54391 17.0975271 0.0001
-## Gnv:ThGS  421.68588  80.24751 15.3558870 0.0001
-## Gnv:TyGS  409.58180  70.84601 17.1719579 0.0001
-## SGS:ThGS   18.70071  78.94648 -0.5586012 0.6497
-## SGS:TyGS   30.80479  68.91605  0.1250813 0.3792
-## ThGS:TyGS  12.10408  73.23235 -0.8028766 0.7519</code></pre>
+## BGS:Gnv   400.42634 127.98976  8.7106613 0.0001
+## BGS:SGS    42.41613 122.90947 -0.2324641 0.5145
+## BGS:ThGS   23.06134 126.69815 -0.7403346 0.7314
+## BGS:TyGS   11.89153 120.08026 -1.0093496 0.8546
+## Gnv:SGS   442.84247  72.19870 18.3061230 0.0001
+## Gnv:ThGS  423.48768  78.59028 16.0314886 0.0001
+## Gnv:TyGS  412.31787  67.52133 18.2233304 0.0001
+## SGS:ThGS   19.35479  74.64886 -0.4952932 0.6198
+## SGS:TyGS   30.52460  63.96003  0.2228039 0.3535
+## ThGS:TyGS  11.16981  70.73379 -0.8008018 0.7505</code></pre>
 </div>
 <div id="maximum-width-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.2</span> <em>Maximum width</em> ~ <em>type-variety</em></h3>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="jaketown-type-varieties.html#cb99-1"></a><span class="co"># anova = maximum width ~ tv1</span></span>
-<span id="cb99-2"><a href="jaketown-type-varieties.html#cb99-2"></a>t0mw&lt;-<span class="kw">lm.rrpp</span>(j.maxw <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb99-3"><a href="jaketown-type-varieties.html#cb99-3"></a><span class="kw">anova</span>(t0mw)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="jaketown-type-varieties.html#cb106-1"></a><span class="co"># anova = maximum width ~ tv1</span></span>
+<span id="cb106-2"><a href="jaketown-type-varieties.html#cb106-2"></a>t0mw&lt;-<span class="kw">lm.rrpp</span>(j.maxw <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb106-3"><a href="jaketown-type-varieties.html#cb106-3"></a><span class="kw">anova</span>(t0mw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -649,19 +652,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0       4 2954.0 738.51 0.33363 40.429 4.8935  1e-04 ***
-## Residuals 323 5900.1  18.27 0.66637                         
-## Total     327 8854.2                                        
+## j.tv0       4 3026.3 756.58 0.33304 43.817 5.0081  1e-04 ***
+## Residuals 351 6060.6  17.27 0.66696                         
+## Total     355 9086.9                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = j.maxw ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="jaketown-type-varieties.html#cb101-1"></a><span class="co"># visualise model predictions for maximum width ~ type-variety</span></span>
-<span id="cb101-2"><a href="jaketown-type-varieties.html#cb101-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
-<span id="cb101-3"><a href="jaketown-type-varieties.html#cb101-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
-<span id="cb101-4"><a href="jaketown-type-varieties.html#cb101-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mw,j.tvDF)</span>
-<span id="cb101-5"><a href="jaketown-type-varieties.html#cb101-5"></a>jPreds</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="jaketown-type-varieties.html#cb108-1"></a><span class="co"># visualise model predictions for maximum width ~ type-variety</span></span>
+<span id="cb108-2"><a href="jaketown-type-varieties.html#cb108-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
+<span id="cb108-3"><a href="jaketown-type-varieties.html#cb108-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
+<span id="cb108-4"><a href="jaketown-type-varieties.html#cb108-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mw,j.tvDF)</span>
+<span id="cb108-5"><a href="jaketown-type-varieties.html#cb108-5"></a>jPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -672,36 +675,36 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   34.08077
-## TyGS 30.54851
-## BGS  34.08077
-## ThGS 23.00571
-## SGS  27.15572
+## GS   34.07261
+## TyGS 30.54750
+## BGS  34.07261
+## ThGS 23.32636
+## SGS  27.19860
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   32.28723
-## TyGS 29.37177
-## BGS  32.28723
-## ThGS 21.94548
-## SGS  26.01446
+## GS   32.41985
+## TyGS 29.46952
+## BGS  32.41985
+## ThGS 22.37523
+## SGS  26.13678
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   35.89649
-## TyGS 31.74900
-## BGS  35.89649
-## ThGS 24.07013
-## SGS  28.32750</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="jaketown-type-varieties.html#cb103-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
+## GS   35.80168
+## TyGS 31.65197
+## BGS  35.80168
+## ThGS 24.29293
+## SGS  28.25392</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="jaketown-type-varieties.html#cb110-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxw-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="jaketown-type-varieties.html#cb104-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb104-2"><a href="jaketown-type-varieties.html#cb104-2"></a>j.mw&lt;-<span class="kw">pairwise</span>(t0mw, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
-<span id="cb104-3"><a href="jaketown-type-varieties.html#cb104-3"></a><span class="kw">summary</span>(j.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="jaketown-type-varieties.html#cb111-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb111-2"><a href="jaketown-type-varieties.html#cb111-2"></a>j.mw&lt;-<span class="kw">pairwise</span>(t0mw, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
+<span id="cb111-3"><a href="jaketown-type-varieties.html#cb111-3"></a><span class="kw">summary</span>(j.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -714,18 +717,18 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Pairwise distances between means, plus statistics
 ##                   d UCL (95%)         Z Pr &gt; d
-## BGS:Gnv    6.912619  2.970290  6.245974 0.0001
-## BGS:SGS   11.055952  2.905908 10.973945 0.0001
-## BGS:ThGS   3.514879  3.021430  2.498160 0.0227
-## BGS:TyGS   8.942439  2.824976  8.848587 0.0001
-## Gnv:SGS    4.143333  1.708950  6.516952 0.0001
-## Gnv:ThGS   3.397740  1.799223  4.727031 0.0006
-## Gnv:TyGS   2.029820  1.558440  2.906126 0.0108
-## SGS:ThGS   7.541073  1.737643 12.505905 0.0001
-## SGS:TyGS   2.113514  1.500796  3.255792 0.0054
-## ThGS:TyGS  5.427560  1.618353  9.510448 0.0001</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="jaketown-type-varieties.html#cb106-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb106-2"><a href="jaketown-type-varieties.html#cb106-2"></a><span class="kw">summary</span>(j.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+## BGS:Gnv    6.882762  2.837729  6.592279 0.0001
+## BGS:SGS   10.751310  2.747902 11.314483 0.0001
+## BGS:ThGS   3.527079  2.812398  2.728300 0.0130
+## BGS:TyGS   8.934424  2.694829  9.380476 0.0001
+## Gnv:SGS    3.868548  1.584093  6.604897 0.0001
+## Gnv:ThGS   3.355683  1.720479  5.011485 0.0001
+## Gnv:TyGS   2.051662  1.499689  3.108727 0.0073
+## SGS:ThGS   7.224231  1.640726 12.927142 0.0001
+## SGS:TyGS   1.816886  1.397445  2.904567 0.0107
+## ThGS:TyGS  5.407345  1.526170 10.033394 0.0001</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="jaketown-type-varieties.html#cb113-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb113-2"><a href="jaketown-type-varieties.html#cb113-2"></a><span class="kw">summary</span>(j.mw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -737,26 +740,26 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-## 13.022864 69.888740  5.550720  2.689489  4.626414 
+## 12.170812 66.315102  6.010307  2.580132  4.550106 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv   56.8658766  22.32388  6.60389537 0.0002
-## BGS:SGS    7.4721441  22.07962 -0.24952584 0.5260
-## BGS:ThGS  10.3333747  22.69051  0.12083039 0.3836
-## BGS:TyGS   8.3964494  21.04571 -0.09856106 0.4752
-## Gnv:SGS   64.3380207  13.17756 14.44908828 0.0001
-## Gnv:ThGS  67.1992513  14.28803 13.98359808 0.0001
-## Gnv:TyGS  65.2623260  12.12975 15.89460981 0.0001
-## SGS:ThGS   2.8612306  13.16236 -0.64544917 0.6851
-## SGS:TyGS   0.9243053  11.54529 -1.07715041 0.8748
-## ThGS:TyGS  1.9369253  12.33291 -0.82582280 0.7640</code></pre>
+##                   d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   54.144290  20.92185  6.8365046 0.0003
+## BGS:SGS    6.160505  20.51743 -0.3797283 0.5822
+## BGS:ThGS   9.590680  21.15572  0.1212481 0.3834
+## BGS:TyGS   7.620706  19.79964 -0.1295988 0.4885
+## Gnv:SGS   60.304795  11.97344 14.8922061 0.0001
+## Gnv:ThGS  63.734970  13.13008 14.3767573 0.0001
+## Gnv:TyGS  61.764996  11.16112 16.4710207 0.0001
+## SGS:ThGS   3.430175  12.45480 -0.4298322 0.5857
+## SGS:TyGS   1.460201  10.59572 -0.8859192 0.7872
+## ThGS:TyGS  1.969974  11.73927 -0.8005648 0.7553</code></pre>
 </div>
 <div id="maximum-thickness-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.3</span> <em>Maximum thickness</em> ~ <em>type-variety</em></h3>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="jaketown-type-varieties.html#cb108-1"></a><span class="co"># anova = maximum thickness ~ tv1</span></span>
-<span id="cb108-2"><a href="jaketown-type-varieties.html#cb108-2"></a>t0mth&lt;-<span class="kw">lm.rrpp</span>(j.maxth <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb108-3"><a href="jaketown-type-varieties.html#cb108-3"></a><span class="kw">anova</span>(t0mth)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="jaketown-type-varieties.html#cb115-1"></a><span class="co"># anova = maximum thickness ~ tv1</span></span>
+<span id="cb115-2"><a href="jaketown-type-varieties.html#cb115-2"></a>t0mth&lt;-<span class="kw">lm.rrpp</span>(j.maxth <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb115-3"><a href="jaketown-type-varieties.html#cb115-3"></a><span class="kw">anova</span>(t0mth)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -765,20 +768,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Sums of Squares and Cross-products: Type I 
 ## Effect sizes (Z) based on F distributions
 ## 
-##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0       4   95.25 23.8113 0.06317 5.4448 2.4146  6e-04 ***
-## Residuals 323 1412.55  4.3732 0.93683                         
-## Total     327 1507.79                                         
+##            Df      SS      MS     Rsq      F      Z Pr(&gt;F)   
+## j.tv0       4   84.89 21.2225 0.05342 4.9517 2.3148  0.001 **
+## Residuals 351 1504.35  4.2859 0.94658                        
+## Total     355 1589.24                                        
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = j.maxth ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="jaketown-type-varieties.html#cb110-1"></a><span class="co"># visualise model predictions for maximum thickness ~ type-variety</span></span>
-<span id="cb110-2"><a href="jaketown-type-varieties.html#cb110-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
-<span id="cb110-3"><a href="jaketown-type-varieties.html#cb110-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
-<span id="cb110-4"><a href="jaketown-type-varieties.html#cb110-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mth,j.tvDF)</span>
-<span id="cb110-5"><a href="jaketown-type-varieties.html#cb110-5"></a>jPreds</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="jaketown-type-varieties.html#cb117-1"></a><span class="co"># visualise model predictions for maximum thickness ~ type-variety</span></span>
+<span id="cb117-2"><a href="jaketown-type-varieties.html#cb117-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
+<span id="cb117-3"><a href="jaketown-type-varieties.html#cb117-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
+<span id="cb117-4"><a href="jaketown-type-varieties.html#cb117-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mth,j.tvDF)</span>
+<span id="cb117-5"><a href="jaketown-type-varieties.html#cb117-5"></a>jPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -789,36 +792,36 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##           [,1]
-## GS   10.859186
-## TyGS 10.909941
-## BGS  10.859186
-## ThGS  9.345164
-## SGS  10.241888
+## GS   10.663507
+## TyGS 10.867774
+## BGS  10.663507
+## ThGS  9.432958
+## SGS  10.321366
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##           [,1]
-## GS   10.048678
-## TyGS 10.345456
-## BGS  10.048678
-## ThGS  8.840378
-## SGS   9.704970
+## GS    9.851738
+## TyGS 10.326188
+## BGS   9.851738
+## ThGS  8.951399
+## SGS   9.804554
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##           [,1]
-## GS   11.771087
-## TyGS 11.489811
-## BGS  11.771087
-## ThGS  9.864621
-## SGS  10.791879</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="jaketown-type-varieties.html#cb112-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
+## GS   11.555229
+## TyGS 11.437216
+## BGS  11.555229
+## ThGS  9.915304
+## SGS  10.862887</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="jaketown-type-varieties.html#cb119-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxth-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="jaketown-type-varieties.html#cb113-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb113-2"><a href="jaketown-type-varieties.html#cb113-2"></a>j.mth&lt;-<span class="kw">pairwise</span>(t0mth, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
-<span id="cb113-3"><a href="jaketown-type-varieties.html#cb113-3"></a><span class="kw">summary</span>(j.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="jaketown-type-varieties.html#cb120-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb120-2"><a href="jaketown-type-varieties.html#cb120-2"></a>j.mth&lt;-<span class="kw">pairwise</span>(t0mth, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
+<span id="cb120-3"><a href="jaketown-type-varieties.html#cb120-3"></a><span class="kw">summary</span>(j.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -830,19 +833,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                    d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv   0.61835498 1.2455076  0.30160734 0.3305
-## BGS:SGS   1.51137363 1.2253123  2.66954766 0.0170
-## BGS:ThGS  0.04539952 1.2317155 -1.19735019 0.9425
-## BGS:TyGS  0.48876448 1.1980817  0.01473755 0.4157
-## Gnv:SGS   0.89301865 0.6955245  2.83418927 0.0118
-## Gnv:ThGS  0.66375449 0.7612659  1.52473669 0.0871
-## Gnv:TyGS  0.12959050 0.6411585 -0.66820311 0.6939
-## SGS:ThGS  1.55677314 0.7203665  5.72532084 0.0001
-## SGS:TyGS  1.02260915 0.6182058  4.05214999 0.0013
-## ThGS:TyGS 0.53416399 0.6668300  1.27620809 0.1201</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="jaketown-type-varieties.html#cb115-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb115-2"><a href="jaketown-type-varieties.html#cb115-2"></a><span class="kw">summary</span>(j.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##                    d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   0.34228571 1.1840500 -0.3812994 0.5686
+## BGS:SGS   1.23239080 1.1742379  2.0891483 0.0401
+## BGS:ThGS  0.20139683 1.1943270 -0.7719057 0.7397
+## BGS:TyGS  0.35647934 1.1332645 -0.3072950 0.5398
+## Gnv:SGS   0.89010509 0.6734429  2.9736021 0.0105
+## Gnv:ThGS  0.54368254 0.7049151  1.1662244 0.1359
+## Gnv:TyGS  0.01419362 0.6188537 -1.2560437 0.9635
+## SGS:ThGS  1.43378763 0.6809453  5.5049628 0.0002
+## SGS:TyGS  0.87591147 0.5793380  3.5569879 0.0039
+## ThGS:TyGS 0.55787616 0.6342675  1.5136128 0.0874</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="jaketown-type-varieties.html#cb122-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb122-2"><a href="jaketown-type-varieties.html#cb122-2"></a><span class="kw">summary</span>(j.mth, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -854,26 +857,26 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##      BGS      Gnv      SGS     ThGS     TyGS 
-## 5.358992 5.805202 3.464058 4.678921 3.676823 
+## 5.698824 5.594223 3.521335 4.695872 3.513040 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                   d UCL (95%)            Z Pr &gt; d
-## BGS:Gnv   0.4462097  5.136144 -0.934971839 0.8562
-## BGS:SGS   1.8949341  5.130425 -0.041299692 0.4232
-## BGS:ThGS  0.6800712  5.350741 -0.788158933 0.7781
-## BGS:TyGS  1.6821692  5.080120 -0.147944789 0.4718
-## Gnv:SGS   2.3411438  2.880274  1.306702478 0.1154
-## Gnv:ThGS  1.1262809  3.126557 -0.166528311 0.4918
-## Gnv:TyGS  2.1283790  2.705275  1.241364331 0.1247
-## SGS:ThGS  1.2148629  2.943999 -0.007764471 0.4296
-## SGS:TyGS  0.2127649  2.515477 -1.081890012 0.8705
-## ThGS:TyGS 1.0020981  2.785218 -0.178645754 0.4920</code></pre>
+##                     d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv   0.104601224  4.904627 -1.11910922 0.9651
+## BGS:SGS   2.177488658  4.886107  0.21170210 0.3187
+## BGS:ThGS  1.002951538  5.018295 -0.56884969 0.6648
+## BGS:TyGS  2.185783866  4.720676  0.25224475 0.3042
+## Gnv:SGS   2.072887434  2.677425  1.15205667 0.1374
+## Gnv:ThGS  0.898350314  2.941333 -0.35111656 0.5614
+## Gnv:TyGS  2.081182642  2.515523  1.35012424 0.1052
+## SGS:ThGS  1.174537120  2.776295  0.04022782 0.4107
+## SGS:TyGS  0.008295208  2.348919 -1.34798821 0.9950
+## ThGS:TyGS 1.182832328  2.592889  0.14881981 0.3836</code></pre>
 </div>
 <div id="maximum-stem-length-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.4</span> <em>Maximum stem length</em> ~ <em>type-variety</em></h3>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="jaketown-type-varieties.html#cb117-1"></a><span class="co"># anova = maximum stem length ~ tv1</span></span>
-<span id="cb117-2"><a href="jaketown-type-varieties.html#cb117-2"></a>t0mstl&lt;-<span class="kw">lm.rrpp</span>(j.maxstl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb117-3"><a href="jaketown-type-varieties.html#cb117-3"></a><span class="kw">anova</span>(t0mstl)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="jaketown-type-varieties.html#cb124-1"></a><span class="co"># anova = maximum stem length ~ tv1</span></span>
+<span id="cb124-2"><a href="jaketown-type-varieties.html#cb124-2"></a>t0mstl&lt;-<span class="kw">lm.rrpp</span>(j.maxstl <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb124-3"><a href="jaketown-type-varieties.html#cb124-3"></a><span class="kw">anova</span>(t0mstl)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -883,19 +886,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS     MS     Rsq      F      Z Pr(&gt;F)   
-## j.tv0       4  200.7 50.173 0.04267 3.5991 1.9334  0.006 **
-## Residuals 323 4502.7 13.940 0.95733                        
-## Total     327 4703.4                                       
+## j.tv0       4  247.5 61.870 0.04885 4.5072 2.2081 0.0012 **
+## Residuals 351 4818.2 13.727 0.95115                        
+## Total     355 5065.7                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = j.maxstl ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="jaketown-type-varieties.html#cb119-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety</span></span>
-<span id="cb119-2"><a href="jaketown-type-varieties.html#cb119-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
-<span id="cb119-3"><a href="jaketown-type-varieties.html#cb119-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
-<span id="cb119-4"><a href="jaketown-type-varieties.html#cb119-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mstl,j.tvDF)</span>
-<span id="cb119-5"><a href="jaketown-type-varieties.html#cb119-5"></a>jPreds</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="jaketown-type-varieties.html#cb126-1"></a><span class="co"># visualise model predictions for maximum stem length ~ type-variety</span></span>
+<span id="cb126-2"><a href="jaketown-type-varieties.html#cb126-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
+<span id="cb126-3"><a href="jaketown-type-varieties.html#cb126-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
+<span id="cb126-4"><a href="jaketown-type-varieties.html#cb126-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mstl,j.tvDF)</span>
+<span id="cb126-5"><a href="jaketown-type-varieties.html#cb126-5"></a>jPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -906,36 +909,36 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   16.13607
-## TyGS 15.76108
-## BGS  16.13607
-## ThGS 14.33851
-## SGS  16.26801
+## GS   16.21253
+## TyGS 15.74033
+## BGS  16.21253
+## ThGS 14.29325
+## SGS  16.50766
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   14.61939
-## TyGS 14.72928
-## BGS  14.61939
-## ThGS 13.40802
-## SGS  15.30425
+## GS   14.77318
+## TyGS 14.78679
+## BGS  14.77318
+## ThGS 13.42684
+## SGS  15.55667
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   17.73543
-## TyGS 16.78509
-## BGS  17.73543
-## ThGS 15.27197
-## SGS  17.27494</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="jaketown-type-varieties.html#cb121-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
+## GS   17.71381
+## TyGS 16.72816
+## BGS  17.71381
+## ThGS 15.16634
+## SGS  17.44394</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="jaketown-type-varieties.html#cb128-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxstl-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="jaketown-type-varieties.html#cb122-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb122-2"><a href="jaketown-type-varieties.html#cb122-2"></a>j.mstl&lt;-<span class="kw">pairwise</span>(t0mstl, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
-<span id="cb122-3"><a href="jaketown-type-varieties.html#cb122-3"></a><span class="kw">summary</span>(j.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="jaketown-type-varieties.html#cb129-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb129-2"><a href="jaketown-type-varieties.html#cb129-2"></a>j.mstl&lt;-<span class="kw">pairwise</span>(t0mstl, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
+<span id="cb129-3"><a href="jaketown-type-varieties.html#cb129-3"></a><span class="kw">summary</span>(j.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -947,19 +950,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Vectors hidden (use show.vectors = TRUE to view)
 ## 
 ## Pairwise distances between means, plus statistics
-##                    d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv   0.13692641  2.210096 -1.12561255 0.9002
-## BGS:SGS   1.79556777  2.142181  1.38457200 0.1006
-## BGS:ThGS  0.38276029  2.203219 -0.75935116 0.7278
-## BGS:TyGS  0.10111969  2.077279 -1.16650610 0.9267
-## Gnv:SGS   1.93249417  1.218957  3.80385747 0.0021
-## Gnv:ThGS  0.51968670  1.330400 -0.05895282 0.4446
-## Gnv:TyGS  0.03580672  1.149409 -1.22386284 0.9517
-## SGS:ThGS  1.41280748  1.275430  2.28944036 0.0299
-## SGS:TyGS  1.89668746  1.091477  4.32620920 0.0005
-## ThGS:TyGS 0.48387998  1.189214  0.01203858 0.4241</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="jaketown-type-varieties.html#cb124-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb124-2"><a href="jaketown-type-varieties.html#cb124-2"></a><span class="kw">summary</span>(j.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+##                   d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   0.2961905  2.092162 -0.8588279 0.7833
+## BGS:SGS   1.9197931  2.041501  1.7161999 0.0659
+## BGS:ThGS  0.4791746  2.128579 -0.5767813 0.6522
+## BGS:TyGS  0.0544022  1.999867 -1.2141509 0.9561
+## Gnv:SGS   2.2159836  1.188499  4.7400325 0.0005
+## Gnv:ThGS  0.7753651  1.276674  0.6355189 0.2362
+## Gnv:TyGS  0.3505927  1.097664 -0.2963921 0.5380
+## SGS:ThGS  1.4406185  1.206131  2.5511105 0.0194
+## SGS:TyGS  1.8653909  1.038619  4.5335894 0.0006
+## ThGS:TyGS 0.4247724  1.151267 -0.1290262 0.4712</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="jaketown-type-varieties.html#cb131-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb131-2"><a href="jaketown-type-varieties.html#cb131-2"></a><span class="kw">summary</span>(j.mstl, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -971,26 +974,26 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-##  9.766739 25.132829 10.639350  7.202454 13.084756 
+##  9.280073 25.431679 10.505775  7.748223 12.368841 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)           Z Pr &gt; d
-## BGS:Gnv   15.3660901 14.315650  2.15273557 0.0442
-## BGS:SGS    0.8726109 13.697307 -0.90128003 0.8876
-## BGS:ThGS   2.5642852 14.589305 -0.54991679 0.6642
-## BGS:TyGS   3.3180176 13.682241 -0.34702341 0.5637
-## Gnv:SGS   14.4934792  7.751369  4.77891218 0.0001
-## Gnv:ThGS  17.9303752  8.231227  5.77429489 0.0001
-## Gnv:TyGS  12.0480725  7.123866  4.14831734 0.0006
-## SGS:ThGS   3.4368960  7.941209  0.07709768 0.4011
-## SGS:TyGS   2.4454067  6.720503 -0.19375188 0.5061
-## ThGS:TyGS  5.8823028  7.324202  1.25807692 0.1219</code></pre>
+##                   d UCL (95%)          Z Pr &gt; d
+## BGS:Gnv   16.151606 12.608348  2.5588672 0.0306
+## BGS:SGS    1.225702 12.471369 -0.8218775 0.8283
+## BGS:ThGS   1.531850 13.025161 -0.7630465 0.7851
+## BGS:TyGS   3.088768 12.022722 -0.3699217 0.5764
+## Gnv:SGS   14.925904  7.253572  5.4084429 0.0001
+## Gnv:ThGS  17.683456  7.791558  6.0003294 0.0001
+## Gnv:TyGS  13.062838  6.700559  4.9953717 0.0002
+## SGS:ThGS   2.757552  7.481601 -0.1232048 0.4705
+## SGS:TyGS   1.863066  6.190038 -0.3992955 0.5815
+## ThGS:TyGS  4.620618  7.200199  0.7811228 0.2038</code></pre>
 </div>
 <div id="maximum-stem-width-type-variety" class="section level3">
 <h3><span class="header-section-number">4.7.5</span> <em>Maximum stem width</em> ~ <em>type-variety</em></h3>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="jaketown-type-varieties.html#cb126-1"></a><span class="co"># anova = maximum stem width ~ tv1</span></span>
-<span id="cb126-2"><a href="jaketown-type-varieties.html#cb126-2"></a>t0mstw&lt;-<span class="kw">lm.rrpp</span>(j.maxstw <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb126-3"><a href="jaketown-type-varieties.html#cb126-3"></a><span class="kw">anova</span>(t0mstw)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="jaketown-type-varieties.html#cb133-1"></a><span class="co"># anova = maximum stem width ~ tv1</span></span>
+<span id="cb133-2"><a href="jaketown-type-varieties.html#cb133-2"></a>t0mstw&lt;-<span class="kw">lm.rrpp</span>(j.maxstw <span class="op">~</span><span class="st"> </span>j.tv0, <span class="dt">SS.type =</span> <span class="st">&quot;I&quot;</span>,<span class="dt">data =</span> jmx,<span class="dt">iter =</span> <span class="dv">9999</span>,<span class="dt">print.progress =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb133-3"><a href="jaketown-type-varieties.html#cb133-3"></a><span class="kw">anova</span>(t0mstw)</span></code></pre></div>
 <pre><code>## 
 ## Analysis of Variance, using Residual Randomization
 ## Permutation procedure: Randomization of null model residuals 
@@ -1000,19 +1003,19 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Effect sizes (Z) based on F distributions
 ## 
 ##            Df     SS      MS     Rsq      F      Z Pr(&gt;F)    
-## j.tv0       4  418.0 104.498 0.08439 7.4423 2.8562  1e-04 ***
-## Residuals 323 4535.3  14.041 0.91561                         
-## Total     327 4953.2                                         
+## j.tv0       4  442.7 110.676 0.08555 8.2098 2.9404  1e-04 ***
+## Residuals 351 4731.8  13.481 0.91445                         
+## Total     355 5174.5                                         
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Call: lm.rrpp(f1 = j.maxstw ~ j.tv0, iter = 9999, SS.type = &quot;I&quot;, data = jmx,  
 ##     print.progress = FALSE)</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="jaketown-type-varieties.html#cb128-1"></a><span class="co"># visualise model predictions for maximum stem width ~ type-variety</span></span>
-<span id="cb128-2"><a href="jaketown-type-varieties.html#cb128-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
-<span id="cb128-3"><a href="jaketown-type-varieties.html#cb128-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
-<span id="cb128-4"><a href="jaketown-type-varieties.html#cb128-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mstw,j.tvDF)</span>
-<span id="cb128-5"><a href="jaketown-type-varieties.html#cb128-5"></a>jPreds</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="jaketown-type-varieties.html#cb135-1"></a><span class="co"># visualise model predictions for maximum stem width ~ type-variety</span></span>
+<span id="cb135-2"><a href="jaketown-type-varieties.html#cb135-2"></a>j.tvDF&lt;-<span class="kw">data.frame</span>(<span class="dt">j.tv0 =</span> <span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>))</span>
+<span id="cb135-3"><a href="jaketown-type-varieties.html#cb135-3"></a><span class="kw">rownames</span>(j.tvDF)&lt;-<span class="kw">c</span>(<span class="st">&quot;GS&quot;</span>,<span class="st">&quot;TyGS&quot;</span>,<span class="st">&quot;BGS&quot;</span>,<span class="st">&quot;ThGS&quot;</span>,<span class="st">&quot;SGS&quot;</span>)</span>
+<span id="cb135-4"><a href="jaketown-type-varieties.html#cb135-4"></a>jPreds&lt;-<span class="kw">predict</span>(t0mstw,j.tvDF)</span>
+<span id="cb135-5"><a href="jaketown-type-varieties.html#cb135-5"></a>jPreds</span></code></pre></div>
 <pre><code>## 
 ## Linear Model fit with lm.rrpp
 ## 
@@ -1023,36 +1026,36 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Predicted values:
 ## 
 ##          [,1]
-## GS   21.43862
-## TyGS 21.54600
-## BGS  21.43862
-## ThGS 18.45532
-## SGS  20.83165
+## GS   21.48051
+## TyGS 21.56590
+## BGS  21.48051
+## ThGS 18.57992
+## SGS  20.94332
 ## 
 ## 
 ##  95 % Lower confidence limits:
 ## 
 ##          [,1]
-## GS   19.89672
-## TyGS 20.51771
-## BGS  19.89672
-## ThGS 17.54156
-## SGS  19.84886
+## GS   20.04739
+## TyGS 20.57728
+## BGS  20.04739
+## ThGS 17.72787
+## SGS  20.01391
 ## 
 ## 
 ##  95 % Upper confidence limits:
 ## 
 ##          [,1]
-## GS   23.04029
-## TyGS 22.57319
-## BGS  23.04029
-## ThGS 19.38242
-## SGS  21.82042</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="jaketown-type-varieties.html#cb130-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
+## GS   22.97655
+## TyGS 22.55850
+## BGS  22.97655
+## ThGS 19.43613
+## SGS  21.86921</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="jaketown-type-varieties.html#cb137-1"></a><span class="kw">plot</span>(jPreds, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">NROW</span>(j.tvDF))</span></code></pre></div>
 <p><img src="gt-v_files/figure-html/j.maxstw-x-tv-1.png" width="100%" /></p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="jaketown-type-varieties.html#cb131-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
-<span id="cb131-2"><a href="jaketown-type-varieties.html#cb131-2"></a>j.mstw&lt;-<span class="kw">pairwise</span>(t0mstw, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
-<span id="cb131-3"><a href="jaketown-type-varieties.html#cb131-3"></a><span class="kw">summary</span>(j.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="jaketown-type-varieties.html#cb138-1"></a><span class="co"># pairwise comparison of LS means = which sites differ?</span></span>
+<span id="cb138-2"><a href="jaketown-type-varieties.html#cb138-2"></a>j.mstw&lt;-<span class="kw">pairwise</span>(t0mstw, <span class="dt">groups =</span> jmx<span class="op">$</span>tv0)</span>
+<span id="cb138-3"><a href="jaketown-type-varieties.html#cb138-3"></a><span class="kw">summary</span>(j.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;dist&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -1065,18 +1068,18 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## 
 ## Pairwise distances between means, plus statistics
 ##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   0.61335498  2.232102 -0.4430760 0.5954
-## BGS:SGS   2.98688645  2.210389  3.0987200 0.0084
-## BGS:ThGS  0.09268765  2.239486 -1.1979053 0.9384
-## BGS:TyGS  1.84957529  2.156985  1.4761122 0.0917
-## Gnv:SGS   2.37353147  1.278582  4.7258247 0.0004
-## Gnv:ThGS  0.70604263  1.384728  0.3417434 0.3183
-## Gnv:TyGS  1.23622031  1.185429  2.0715822 0.0406
-## SGS:ThGS  3.07957410  1.301011  6.3415118 0.0001
-## SGS:TyGS  1.13731116  1.114204  1.9641402 0.0462
-## ThGS:TyGS 1.94226294  1.217581  3.8846450 0.0017</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="jaketown-type-varieties.html#cb133-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
-<span id="cb133-2"><a href="jaketown-type-varieties.html#cb133-2"></a><span class="kw">summary</span>(j.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
+## BGS:Gnv   0.53457143  2.120948 -0.5162396 0.6284
+## BGS:SGS   2.89710345  2.071960  3.2342649 0.0064
+## BGS:ThGS  0.09139683  2.109721 -1.2008655 0.9351
+## BGS:TyGS  1.86433058  2.026969  1.6445431 0.0724
+## Gnv:SGS   2.36253202  1.211486  5.0142891 0.0004
+## Gnv:ThGS  0.62596825  1.282566  0.2580651 0.3383
+## Gnv:TyGS  1.32975915  1.129386  2.5160642 0.0205
+## SGS:ThGS  2.98850027  1.243366  6.5399587 0.0001
+## SGS:TyGS  1.03277287  1.052484  1.8777089 0.0543
+## ThGS:TyGS 1.95572740  1.145558  4.1731190 0.0018</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="jaketown-type-varieties.html#cb140-1"></a><span class="co"># pairwise distances between variances = standardization?</span></span>
+<span id="cb140-2"><a href="jaketown-type-varieties.html#cb140-2"></a><span class="kw">summary</span>(j.mstw, <span class="dt">confidence =</span> <span class="fl">0.95</span>, <span class="dt">test.type =</span> <span class="st">&quot;var&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Pairwise comparisons
 ## 
@@ -1088,20 +1091,20 @@ Figure 4.3: PCA by Gary type-varieties reported by Ford, Phillips, and Haag (195
 ## Observed variances by group
 ## 
 ##       BGS       Gnv       SGS      ThGS      TyGS 
-## 16.079849 27.419990  9.872269 11.393408  9.533045 
+## 15.017957 26.302963  9.977950 11.305069  8.967425 
 ## 
 ## Pairwise distances between variances, plus statistics
-##                    d UCL (95%)          Z Pr &gt; d
-## BGS:Gnv   11.3401412 10.368285  2.2073323 0.0348
-## BGS:SGS    6.2075798  9.985009  0.6428459 0.2277
-## BGS:ThGS   4.6864405 10.523329  0.1254214 0.3787
-## BGS:TyGS   6.5468035  9.873386  0.7951743 0.1899
-## Gnv:SGS   17.5477210  5.863520  8.4302687 0.0001
-## Gnv:ThGS  16.0265818  6.227976  7.0229023 0.0001
-## Gnv:TyGS  17.8869448  5.371185  9.3786327 0.0001
-## SGS:ThGS   1.5211393  6.151144 -0.5136861 0.6222
-## SGS:TyGS   0.3392237  5.209366 -1.1087081 0.9016
-## ThGS:TyGS  1.8603630  5.670742 -0.2600028 0.5206</code></pre>
+##                   d UCL (95%)           Z Pr &gt; d
+## BGS:Gnv   11.285005  9.714969  2.43563263 0.0252
+## BGS:SGS    5.040007  9.444678  0.39007295 0.2978
+## BGS:ThGS   3.712888  9.730007 -0.07139309 0.4463
+## BGS:TyGS   6.050533  9.259465  0.75816509 0.1949
+## Gnv:SGS   16.325012  5.448928  8.33819751 0.0001
+## Gnv:ThGS  14.997893  5.873124  7.00101352 0.0001
+## Gnv:TyGS  17.335538  5.050535  9.77217661 0.0001
+## SGS:ThGS   1.327119  5.586822 -0.54985525 0.6399
+## SGS:TyGS   1.010525  4.786219 -0.65426779 0.6863
+## ThGS:TyGS  2.337645  5.319018  0.10984773 0.3854</code></pre>
 
 </div>
 </div>
