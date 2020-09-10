@@ -12,6 +12,7 @@ library(RRPP)
 library(ggpubr)
 library(ggfortify)
 library(cluster)
+library(wesanderson)
 ```
 
 ## Set working directory, load data, and define variables
@@ -46,78 +47,143 @@ arrow
 
 ## Boxplots for _variable_ by _site_
 
-```{r boxsite, out.width = "100%", dpi = 300, echo=TRUE}
+```{r boxsite, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study."}
 # boxplot of maximum length ~ site
 sitemaxl<-ggplot(data,aes(x=Site,y=maxl,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Max Length')
+
 # boxplot of maximum width ~ site
 sitemaxw<-ggplot(data,aes(x=Site,y=maxw,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Max Width')
+
 # boxplot of maximum thickness ~ site
 sitemaxth<-ggplot(data,aes(x=Site,y=maxth,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Max Thick')
+
 # boxplot of stem length ~ site
 sitemaxstl<-ggplot(data,aes(x=Site,y=maxstl,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Stem Length')
+
 # boxplot of stem width ~ site
 sitemaxstw<-ggplot(data,aes(x=Site,y=maxstw,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Stem Width')
+
 # render figure
 sitefigure<-ggarrange(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,
                   labels = c("a","b","c","d","e"),
                   ncol = 3, nrow = 2)
+# plot figure
 sitefigure
-fig.cap = "Boxplots for maximum length, width, thickness, stem length, and stem width for Gary dart points from the Cooper, Means, and Poverty Point sites used in this study."
 ```
 
 ## Principal Components Analysis for _site_
 
-```{r pcasite, out.width = "100%", dpi = 300, echo=TRUE}
-#pca
+```{r pcasite, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "PCA by site."}
+#attributes for plot
 df<-data[c(2:6)]
-sitepca<-autoplot(prcomp(df),data = data, colour = 'Site',
-         loadings = TRUE, loadings.colour = 'blue',
-         loadings.label = TRUE,loadings.label.size = 3, 
-         frame = TRUE)
-#render figure
-sitepca
-fig.cap = "PCA by site."
+pch.gps.gp <- c(15,17,19)[as.factor(site)]
+col.gps.gp <- wes_palette("Moonrise2")[as.factor(site)]
+
+#pca
+autoplot(prcomp(df),
+         data = data,
+         shape = pch.gps.gp,
+         colour = 'Site',
+         loadings = TRUE, 
+         loadings.colour = 'blue',
+         loadings.label = TRUE,
+         loadings.label.size = 3, 
+         frame = TRUE) +
+    scale_fill_manual(values = wes_palette("Moonrise2")) +
+    scale_colour_manual(values = wes_palette("Moonrise2"))
 ```
 
+## Density plots for _variable_ ~ _group_
+
+```{r anova.dens.maxl, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxl by site
+ggplot(data, aes(x = maxl, fill = Site, colour = Site)) +
+  geom_density(alpha = .5) +
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,150) +
+  labs(x = 'Max Length', y = 'density')
+```
+
+```{r anova.dens.maxw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxw by site
+ggplot(data, aes(x=maxw, fill = Site, colour = Site)) +
+  geom_density(alpha = .4) +
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,75) +
+  labs(x = 'Max Width', y = 'density')
+```
+
+```{r anova.dens.maxth, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxth by site
+ggplot(data, aes(x=maxth, fill = Site, colour = Site)) +
+  geom_density(alpha = .4) +
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,25) +
+  labs(x = 'Max Thickness', y = 'density')
+```
+
+```{r anova.dens.maxstl, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxstl by site
+ggplot(data, aes(x=maxstl, fill = Site, colour = Site)) +
+  geom_density(alpha = .4) +
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,35) +
+  labs(x = 'Max Stem Length', y = 'density')
+```
+
+```{r anova.dens.maxstw, out.width = "100%", dpi = 300, echo=TRUE}
+# density plot for maxstw by site
+ggplot(data, aes(x=maxstw, fill = Site, colour = Site)) +
+  geom_density(alpha = .4) +
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,40) +
+  labs(x = 'Max Stem Width', y = 'density')
+```
 ## Analyses of Variance (ANOVA) for _variable_ ~ _site_
 
 ### _Maximum length_ of Gary points
 
 ```{r anovasitemaxl, out.width = "100%", dpi = 300, echo=TRUE}
-# density plot for maxl by site
-ggplot(data, aes(x=maxl, fill = Site, colour = Site)) +
-  geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,150)
 # anova = maximum length ~ site
 siteml<-lm.rrpp(maxl ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
 anova(siteml)
+
 # visualise model predictions for maximum length ~ site
 siteDF<-data.frame(Site = c("Cooper","Means","Pov Pt"))
 rownames(siteDF)<-c("Cooper","Means","Pov Pt")
 sitePreds<-predict(siteml,siteDF)
 sitePreds
 plot(sitePreds, col = 1:NROW(siteDF))
+
 # pairwise comparison of LS means = which sites differ?
 site.pwml<-pairwise(siteml, groups = data$Site)
 summary(site.pwml, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(site.pwml, confidence = 0.95, test.type = "VC", angle.type = "deg")
+
 # pairwise distances between variances = standardization?
 summary(site.pwml, confidence = 0.95, test.type = "var")
 ```
@@ -125,23 +191,19 @@ summary(site.pwml, confidence = 0.95, test.type = "var")
 ### _Maximum width_ of Gary points
 
 ```{r anovasitemaxw, out.width = "100%", dpi = 300, echo=TRUE}
-# density plot for maxw by site
-ggplot(data, aes(x=maxw, fill = Site, colour = Site)) +
-  geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,75)
 # anova = maximum width ~ site
 sitemw<-lm.rrpp(maxw ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
 anova(sitemw)
+
 # visualise model predictions for maximum width ~ site
 sitePreds<-predict(sitemw,siteDF)
 sitePreds
 plot(sitePreds, col = 1:NROW(siteDF))
+
 # pairwise comparison = which sites differ?
 site.pwmw<-pairwise(siteml, groups = data$Site)
 summary(site.pwmw, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(site.pwmw, confidence = 0.95, test.type = "VC", angle.type = "deg")
+
 # pairwise distances between variances = standardization?
 summary(site.pwmw, confidence = 0.95, test.type = "var")
 ```
@@ -149,23 +211,19 @@ summary(site.pwmw, confidence = 0.95, test.type = "var")
 ### _Maximum thickness_ of Gary points
 
 ```{r anovasitemaxth, out.width = "100%", dpi = 300, echo=TRUE}
-# density plot for maxth by site
-ggplot(data, aes(x=maxth, fill = Site, colour = Site)) +
-  geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,25)
 # anova = maximum thickness ~ site
 sitemth<-lm.rrpp(maxth ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
 anova(sitemth)
+
 # visualise model predictions for maximum thickness ~ site
 sitePreds<-predict(sitemth,siteDF)
 sitePreds
 plot(sitePreds, col = 1:NROW(siteDF))
+
 # pairwise comparison = which sites differ?
 site.pwmth<-pairwise(siteml, groups = data$Site)
 summary(site.pwmth, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(site.pwmth, confidence = 0.95, test.type = "VC", angle.type = "deg")
+
 # pairwise distances between variances = standardization?
 summary(site.pwmth, confidence = 0.95, test.type = "var")
 ```
@@ -173,23 +231,19 @@ summary(site.pwmth, confidence = 0.95, test.type = "var")
 ### _Maximum stem length_ of Gary points
 
 ```{r anovasitemaxstl, out.width = "100%", dpi = 300, echo=TRUE}
-# density plot for maxstl by site
-ggplot(data, aes(x=maxstl, fill = Site, colour = Site)) +
-  geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,35)
 # anova = maximum stem length ~ site
 sitemstl<-lm.rrpp(maxstl ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
 anova(sitemstl)
+
 # visualise model predictions for maximum stem length ~ site
 sitePreds<-predict(sitemstl,siteDF)
 sitePreds
 plot(sitePreds, col = 1:NROW(siteDF))
+
 # pairwise comparison = which sites differ?
 site.pwmstl<-pairwise(siteml, groups = data$Site)
 summary(site.pwmstl, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(site.pwmstl, confidence = 0.95, test.type = "VC", angle.type = "deg")
+
 # pairwise distances between variances = standardization?
 summary(site.pwmstl, confidence = 0.95, test.type = "var")
 ```
@@ -197,24 +251,19 @@ summary(site.pwmstl, confidence = 0.95, test.type = "var")
 ### _Maximum stem width_ of Gary points
 
 ```{r anovasitemaxstw, out.width = "100%", dpi = 300, echo=TRUE}
-# density plot for maxstw by site
-ggplot(data, aes(x=maxstw, fill = Site, colour = Site)) +
-  geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,40)
 # anova = maximum stem width ~ site
 sitemstw<-lm.rrpp(maxstw ~ Site, SS.type = "I",data = data,iter = 9999,print.progress = FALSE)
 anova(sitemstw)
+
 # visualise model predictions for maximum stem width ~ site
 sitePreds<-predict(sitemstw,siteDF)
 sitePreds
 plot(sitePreds, col = 1:NROW(siteDF))
+
 # pairwise comparison = which sites differ?
 site.pwmstw<-pairwise(siteml, groups = data$Site)
 summary(site.pwmstw, confidence = 0.95, test.type = "dist")
-# correlation between mean vectors (angles in degrees)
-summary(site.pwmstw, confidence = 0.95, test.type = "VC", angle.type = "deg")
+
 # pairwise distances between variances = standardization?
 summary(site.pwmstw, confidence = 0.95, test.type = "var")
 ```
-

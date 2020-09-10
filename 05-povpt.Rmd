@@ -12,6 +12,7 @@ library(RRPP)
 library(ggpubr)
 library(ggfortify)
 library(cluster)
+library(wesanderson)
 ```
 
 ## Gary varieties proposed by Ford and Webb [-@RN20898]
@@ -35,7 +36,7 @@ fwebbl<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall')
 )
 fwebblength<-ggplot(fwebbl,aes(x=Length,xend=end,y=Name,yend=Name,color=Name)) +
   geom_segment(size=2) +
-  scale_color_brewer(palette = "Set1") +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none")
 fwebbw<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall'),
            Width=c(30,20,19), # in mm
@@ -43,7 +44,7 @@ fwebbw<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall')
 )
 fwebbwidth<-ggplot(fwebbw,aes(x=Width,xend=end,y=Name,yend=Name,color=Name)) +
   geom_segment(size=2) +
-  scale_color_brewer(palette = "Set1") +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none")
 # thickness values were not precisely reported for GaryLarge and GaryTypical, and are included here for reference only
 fwebbth<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall'),
@@ -52,7 +53,7 @@ fwebbth<-data.frame(Name=c('var.GaryLarge','var.GaryMed/Typical','var.GarySmall'
 )
 fwebbthickness<-ggplot(fwebbth,aes(x=Thickness,xend=end,y=Name,yend=Name,color=Name)) +
   geom_segment(size=2) +
-  scale_color_brewer(palette = "Set1") +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none")
 # render figure
 fwebbfig<-ggarrange(fwebblength,fwebbwidth,fwebbthickness,
@@ -86,42 +87,70 @@ tv1
 ## Boxplots for Ford and Webb's [-@RN20898] type-varieties of Gary dart points from Poverty Point
 
 ```{r boxplotpp, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "Boxplots for a, maximum length; b, width; c, thickness; d, stem length; and e, stem width for Gary dart points from the Poverty Point site."}
-
 # boxplot of maximum length
-pvptmaxl<-ggplot(pvptmx,aes(x=tv1,y=maxl,color=tv1)) + 
+pvptmaxl <- ggplot(pvptmx, aes(x = tv1, y = maxl, color = tv1)) + 
   geom_boxplot() +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Type-Variety', y = 'Max Length')
+
 # boxplot of maximum width
-pvptmaxw<-ggplot(pvptmx,aes(x=tv1,y=maxw,color=tv1)) + 
+pvptmaxw <- ggplot(pvptmx, aes(x = tv1, y = maxw, color = tv1)) + 
   geom_boxplot() +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Type-Variety', y = 'Max Width')
+
 # boxplot of maximum thickness
-pvptmaxth<-ggplot(pvptmx,aes(x=tv1,y=maxth,color=tv1)) + 
+pvptmaxth <- ggplot(pvptmx, aes(x = tv1, y = maxth, color = tv1)) + 
   geom_boxplot() +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Type-Variety', y = 'Max Thick')
+
 # boxplot of maximum stem length
-pvptmaxstl<-ggplot(pvptmx,aes(x=tv1,y=maxstl,color=tv1)) + 
+pvptmaxstl <- ggplot(pvptmx, aes(x = tv1, y = maxstl, color = tv1)) + 
   geom_boxplot() +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
-# boxplot of maximum thickness
-pvptmaxstw<-ggplot(pvptmx,aes(x=tv1,y=maxstw,color=tv1)) + 
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Type-Variety', y = 'Stem Length')
+
+# boxplot of stem width
+pvptmaxstw <- ggplot(pvptmx, aes(x = tv1, y = maxstw, color = tv1)) + 
   geom_boxplot() +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3)+
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "none")
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  theme(legend.position = "none") +
+  labs(x = 'Type-Variety', y = 'Stem Width')
+
 # render figure
 ppfigure<-ggarrange(pvptmaxl,pvptmaxw,pvptmaxth,pvptmaxstl,pvptmaxstw,
                   labels = c("a","b","c","d","e"),
                   ncol = 3, nrow = 2)
+
+# plot figure
 ppfigure
+```
+
+## Principal Components Analysis for Ford and Webb's [-@RN20898] type-varieties at Poverty Point
+
+```{r pca, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "PCA by Gary type-varieties reported by Ford and Webb (1956) at Poverty Point."}
+#pca
+df <- pvptmx[c(1:5)]
+autoplot(prcomp(df),
+                data = pvptmx, 
+                colour = 'tv1',
+                loadings = TRUE,
+                loadings.colour = 'blue',
+                loadings.label = TRUE,
+                loadings.label.size = 3,
+                frame = TRUE) +
+      scale_fill_manual(values = wes_palette("Moonrise2")) +
+      scale_colour_manual(values = wes_palette("Moonrise2"))
 ```
 
 ## Density plots for variables by type-varieties
@@ -130,17 +159,22 @@ ppfigure
 
 ```{r ppdensity1, out.width = "100%", dpi = 300, echo=TRUE}
 # define variables in poverty point subset
-pp.maxl<-pvptmx$maxl
-pp.maxw<-pvptmx$maxw
-pp.maxth<-pvptmx$maxth
-pp.maxstl<-pvptmx$maxstl
-pp.maxstw<-pvptmx$maxstw
-pp.tv1<-pvptmx$tv1
+pp.maxl <- pvptmx$maxl
+pp.maxw <- pvptmx$maxw
+pp.maxth <- pvptmx$maxth
+pp.maxstl <- pvptmx$maxstl
+pp.maxstw <- pvptmx$maxstw
+pp.tv1 <- pvptmx$tv1
+pch.gps.gp <- c(15,17,19)[as.factor(pp.tv1)]
+col.gps.gp <- wes_palette("Moonrise2")[as.factor(pp.tv1)]
+
 # density plot of maxl by tv1
 ggplot(pvptmx, aes(x=pp.maxl, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(30,140) #full range of variation included in the linear measurements associated with type-varieties
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(20,115) + #full range of variation included in the linear measurements associated with type-varieties
+  labs(x = 'Max Length', y = 'density')
 ```
 
 ### Density plot for maximum width by tv1
@@ -149,8 +183,10 @@ ggplot(pvptmx, aes(x=pp.maxl, fill = pp.tv1, colour = pp.tv1)) +
 # density plot of maxw by tv1
 ggplot(pvptmx, aes(x=pp.maxw, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(5,45)
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(5,55) +
+  labs(x = 'Max Width', y = 'density')
 ```
 
 ### Density plot for maximum thickness by tv1
@@ -159,8 +195,10 @@ ggplot(pvptmx, aes(x=pp.maxw, fill = pp.tv1, colour = pp.tv1)) +
 # density plot of maxth by tv1
 ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,30)
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,25) +
+  labs(x = 'Max Thickness', y = 'density')
 ```
 
 ### Density plot for maximum stem length by tv1
@@ -169,8 +207,10 @@ ggplot(pvptmx, aes(x=pp.maxth, fill = pp.tv1, colour = pp.tv1)) +
 # density plot of maxstl by tv1
 ggplot(pvptmx, aes(x=pp.maxstl, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,30)
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(0,30) +
+  labs(x = 'Max Stem Length', y = 'density')
 ```
 
 ### Density plot for maximum stem width by tv1
@@ -179,21 +219,10 @@ ggplot(pvptmx, aes(x=pp.maxstl, fill = pp.tv1, colour = pp.tv1)) +
 # density plot of maxstw by tv1
 ggplot(pvptmx, aes(x=pp.maxstw, fill = pp.tv1, colour = pp.tv1)) +
   geom_density(alpha = .4) +
-  scale_color_brewer(palette = "Set1") +
-  xlim(0,40)
-```
-
-## Principal Components Analysis for Ford and Webb's [-@RN20898] type-varieties at Poverty Point
-
-```{r pca, out.width = "100%", dpi = 300, echo=TRUE, fig.cap = "PCA by Gary type-varieties reported by Ford and Webb (1956) at Poverty Point."}
-#pca
-df<-pvptmx[c(1:5)]
-t1pca<-autoplot(prcomp(df),data = pvptmx, colour = 'tv1',
-         loadings = TRUE, loadings.colour = 'blue',
-         loadings.label = TRUE,loadings.label.size = 3, 
-         frame = TRUE)
-#render figure
-t1pca
+  scale_fill_manual(values = wes_palette("Moonrise2")) +
+  scale_colour_manual(values = wes_palette("Moonrise2")) +
+  xlim(5,35) +
+  labs(x = 'Max Stem Width', y = 'density')
 ```
 
 ## Analyses of Variance (ANOVA) for _linear variables_ ~ _type-varieties_
@@ -202,17 +231,20 @@ t1pca
 
 ```{r pp.maxl-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum length ~ tv1
-t1ml<-lm.rrpp(pp.maxl ~ pp.tv1, SS.type = "I",data = pvptmx,iter = 9999,print.progress = FALSE)
+t1ml <- lm.rrpp(pp.maxl ~ pp.tv1, SS.type = "I", data = pvptmx, iter = 9999, print.progress = FALSE)
 anova(t1ml)
+
 # visualise model predictions for maximum length ~ type-variety at poverty point
-pp.tvDF<-data.frame(pp.tv1 = c("L","M/T","S"))
-rownames(pp.tvDF)<-c("L","M/T","S")
-ppPreds<-predict(t1ml,pp.tvDF)
+pp.tvDF <- data.frame(pp.tv1 = c("L","M/T","S"))
+rownames(pp.tvDF) <- c("L","M/T","S")
+ppPreds <- predict(t1ml, pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+
 # pairwise comparison of LS means = which differ?
-pp.ml<-pairwise(t1ml, groups = pvptmx$tv1)
+pp.ml <- pairwise(t1ml, groups = pvptmx$tv1)
 summary(pp.ml, confidence = 0.95, test.type = "dist")
+
 # pairwise distance between variances = standardization?
 summary(pp.ml, confidence = 0.95, test.type = "var")
 ```
@@ -221,15 +253,18 @@ summary(pp.ml, confidence = 0.95, test.type = "var")
 
 ```{r pp.maxw-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum width ~ tv1
-t1mw<-lm.rrpp(pp.maxw ~ pp.tv1, SS.type = "I",data = pvptmx,iter = 9999,print.progress = FALSE)
+t1mw <- lm.rrpp(pp.maxw ~ pp.tv1, SS.type = "I", data = pvptmx, iter = 9999, print.progress = FALSE)
 anova(t1mw)
+
 # visualise model predictions for maximum width ~ type-variety at poverty point
-ppPreds<-predict(t1mw,pp.tvDF)
+ppPreds <- predict(t1mw, pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+
 # pairwise comparison of LS means = which differ?
-pp.mw<-pairwise(t1mw, groups = pvptmx$tv1)
+pp.mw <- pairwise(t1mw, groups = pvptmx$tv1)
 summary(pp.mw, confidence = 0.95, test.type = "dist")
+
 # pairwise distance between variances = standardization?
 summary(pp.mw, confidence = 0.95, test.type = "var")
 ```
@@ -238,15 +273,18 @@ summary(pp.mw, confidence = 0.95, test.type = "var")
 
 ```{r pp.maxth-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum thickness ~ tv1
-t1mth<-lm.rrpp(pp.maxth ~ pp.tv1, SS.type = "I",data = pvptmx,iter = 9999,print.progress = FALSE)
+t1mth <- lm.rrpp(pp.maxth ~ pp.tv1, SS.type = "I", data = pvptmx, iter = 9999, print.progress = FALSE)
 anova(t1mth)
+
 # visualise model predictions for maximum thickness ~ type-variety at poverty point
-ppPreds<-predict(t1mth,pp.tvDF)
+ppPreds <- predict(t1mth, pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+
 # pairwise comparison of LS means = which differ?
-pp.mth<-pairwise(t1mth, groups = pvptmx$tv1)
+pp.mth <- pairwise(t1mth, groups = pvptmx$tv1)
 summary(pp.mth, confidence = 0.95, test.type = "dist")
+
 # pairwise distance between variances = standardization?
 summary(pp.mth, confidence = 0.95, test.type = "var")
 ```
@@ -255,15 +293,18 @@ summary(pp.mth, confidence = 0.95, test.type = "var")
 
 ```{r pp.maxstl-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum stem length ~ tv1
-t1mstl<-lm.rrpp(pp.maxstl ~ pp.tv1, SS.type = "I",data = pvptmx,iter = 9999,print.progress = FALSE)
+t1mstl <- lm.rrpp(pp.maxstl ~ pp.tv1, SS.type = "I", data = pvptmx, iter = 9999, print.progress = FALSE)
 anova(t1mstl)
+
 # visualise model predictions for maximum stem length ~ type-variety at poverty point
-ppPreds<-predict(t1mstl,pp.tvDF)
+ppPreds <-predict(t1mstl, pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+
 # pairwise comparison of LS means = which differ?
-pp.mstl<-pairwise(t1mstl, groups = pvptmx$tv1)
+pp.mstl <- pairwise(t1mstl, groups = pvptmx$tv1)
 summary(pp.mstl, confidence = 0.95, test.type = "dist")
+
 # pairwise distance between variances = standardization?
 summary(pp.mstl, confidence = 0.95, test.type = "var")
 ```
@@ -272,15 +313,18 @@ summary(pp.mstl, confidence = 0.95, test.type = "var")
 
 ```{r pp.maxstw-x-tv, out.width = "100%", dpi = 300, echo=TRUE}
 # anova = maximum stem width ~ tv1
-t1mstw<-lm.rrpp(pp.maxstw ~ pp.tv1, SS.type = "I",data = pvptmx,iter = 9999,print.progress = FALSE)
+t1mstw <- lm.rrpp(pp.maxstw ~ pp.tv1, SS.type = "I", data = pvptmx, iter = 9999, print.progress = FALSE)
 anova(t1mstw)
+
 # visualise model predictions for maximum stem length ~ type-variety at poverty point
-ppPreds<-predict(t1mstw,pp.tvDF)
+ppPreds <- predict(t1mstw, pp.tvDF)
 ppPreds
 plot(ppPreds, col = 1:NROW(pp.tvDF))
+
 # pairwise comparison of LS means = which differ?
-pp.mstw<-pairwise(t1mstw, groups = pvptmx$tv1)
+pp.mstw <- pairwise(t1mstw, groups = pvptmx$tv1)
 summary(pp.mstw, confidence = 0.95, test.type = "dist")
+
 # pairwise distance between variances = standardization?
 summary(pp.mstw, confidence = 0.95, test.type = "var")
 ```
