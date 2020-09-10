@@ -54,30 +54,35 @@ sitemaxl<-ggplot(data,aes(x=Site,y=maxl,color=Site)) + geom_boxplot(notch = TRUE
   scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none") +
   labs(x = 'Site', y = 'Max Length')
+
 # boxplot of maximum width ~ site
 sitemaxw<-ggplot(data,aes(x=Site,y=maxw,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
   scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none") +
   labs(x = 'Site', y = 'Max Width')
+
 # boxplot of maximum thickness ~ site
 sitemaxth<-ggplot(data,aes(x=Site,y=maxth,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
   scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none") +
   labs(x = 'Site', y = 'Max Thick')
+
 # boxplot of stem length ~ site
 sitemaxstl<-ggplot(data,aes(x=Site,y=maxstl,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
   scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none") +
   labs(x = 'Site', y = 'Stem Length')
+
 # boxplot of stem width ~ site
 sitemaxstw<-ggplot(data,aes(x=Site,y=maxstw,color=Site)) + geom_boxplot(notch = TRUE) +
   geom_dotplot(binaxis = 'y',stackdir = 'center',dotsize = 0.3) +
   scale_colour_manual(values = wes_palette("Moonrise2")) +
   theme(legend.position = "none") +
   labs(x = 'Site', y = 'Stem Width')
+
 # render figure
 sitefigure<-ggarrange(sitemaxl,sitemaxw,sitemaxth,sitemaxstl,sitemaxstw,
                   labels = c("a","b","c","d","e"),
@@ -103,7 +108,7 @@ autoplot(prcomp(df),
          loadings.colour = 'blue',
          loadings.label = TRUE,
          loadings.label.size = 3, 
-         frame = TRUE)+
+         frame = TRUE) +
     scale_fill_manual(values = wes_palette("Moonrise2")) +
     scale_colour_manual(values = wes_palette("Moonrise2"))
 ```
